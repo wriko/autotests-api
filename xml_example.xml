@@ -1,0 +1,15 @@
+<person>
+    <id>1</id>
+    <name>John Doe</name>
+    <age>30</age>
+    <email>ww@ww.ru</email>
+    <address>
+        <street>Main St</street>
+        <city>Springfield</city>
+        <state>IL</state>
+        <zip>62701</zip>
+    </address>
+</person>
+
+
+
