@@ -3,7 +3,7 @@ from httpx import Response  # импортируем класс Response из б
 from typing import TypedDict  # импортируем TypedDict для создания словарей с фиксированными ключами и типами значений
 
 
-class CreateUserDict(TypedDict):  # создаем класс CreateUserDict, который наследуется от TypedDict для создания словарей с фиксированными ключами и типами значений
+class CreateUserRequestDict(TypedDict):  # создаем класс CreateUserDict, который наследуется от TypedDict для создания словарей с фиксированными ключами и типами значений
     """
     Описание структуры запроса на создание пользователя.
     """
@@ -20,7 +20,7 @@ class PublicUsersClient(
     Клиент для работы с /api/v1/users для создания пользователя
     """
 
-    def create_user_api(self, request: CreateUserDict) -> Response:  # создаем метод для отправки запроса на создание пользователя в системе и получение ответа от сервера
+    def create_user_api(self, request: CreateUserRequestDict) -> Response:  # создаем метод для отправки запроса на создание пользователя в системе и получение ответа от сервера
         """
         Метод выполняет создание нового пользователя в системе с помощью POST-запроса.
 
