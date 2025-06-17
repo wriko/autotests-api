@@ -1,6 +1,6 @@
 from httpx import Response
 
-from clients.api_client import ApiClient
+from clients.api_client import APIClient
 from typing import TypedDict
 
 class UpdateUserRequestDict(TypedDict):
@@ -13,7 +13,7 @@ class UpdateUserRequestDict(TypedDict):
     firsName: str | None
     middleName: str | None
 
-class PrivateUsersClient(ApiClient):
+class PrivateUsersClient(APIClient):
     """
     Клиент для работы с /api/v1/users
     """

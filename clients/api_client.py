@@ -4,7 +4,7 @@ from typing import Any
 from httpx._types import RequestData, RequestFiles
 
 
-class ApiClient:
+class APIClient:
     def __init__(self, client: Client): # тут мы принимаем экземпляр httpx.Client для выполнения HTTP-запросов и передаем его в конструктор класса ApiClient
         """
         Базовый API клиент, принимающий объект httpx.Client.

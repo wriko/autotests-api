@@ -1,4 +1,4 @@
-from clients.api_client import ApiClient   #  импортируем базовый класс ApiClient для выполнения HTTP-запросов
+from clients.api_client import APIClient   #  импортируем базовый класс ApiClient для выполнения HTTP-запросов
 from httpx import Response  # импортируем класс Response из библиотеки httpx для работы с ответами на HTTP-запросы
 from typing import TypedDict # импортируем TypedDict для создания словарей с фиксированными ключами и типами значений
 
@@ -19,7 +19,7 @@ class RefreshRequestDict(TypedDict): # создаем словарь с фикс
 
 
 
-class AuthenticationClient(ApiClient): # создаем класс AuthenticationClient, который наследуется от ApiClient для выполнения запросов к API авторизации
+class AuthenticationClient(APIClient): # создаем класс AuthenticationClient, который наследуется от ApiClient для выполнения запросов к API авторизации
     """
     Клиент для работы с /api/v1/authentication
     """

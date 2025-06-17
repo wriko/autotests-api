@@ -1,4 +1,4 @@
-from clients.api_client import ApiClient  # импортируем базовый класс ApiClient для выполнения HTTP-запросов
+from clients.api_client import APIClient  # импортируем базовый класс ApiClient для выполнения HTTP-запросов
 from httpx import Response  # импортируем класс Response из библиотеки httpx для работы с ответами на HTTP-запросы
 from typing import TypedDict  # импортируем TypedDict для создания словарей с фиксированными ключами и типами значений
 
@@ -15,7 +15,7 @@ class CreateUserRequestDict(TypedDict):  # создаем класс CreateUserD
 
 
 class PublicUsersClient(
-    ApiClient):  # создаем класс PublicUsersClient, который наследуется от ApiClient для выполнения запросов к API создания пользователя
+    APIClient):  # создаем класс PublicUsersClient, который наследуется от ApiClient для выполнения запросов к API создания пользователя
     """
     Клиент для работы с /api/v1/users для создания пользователя
     """

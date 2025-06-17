@@ -1,6 +1,6 @@
 from httpx import Response
 
-from clients.api_client import ApiClient
+from clients.api_client import APIClient
 from typing import TypedDict
 
 class CreateFileRequestDict(TypedDict):
@@ -12,7 +12,7 @@ class CreateFileRequestDict(TypedDict):
     directory: str
     upload_file: str
 
-class FilesClient(ApiClient):
+class FilesClient(APIClient):
     """
     Клиент для работы с /api/v1/files
     """

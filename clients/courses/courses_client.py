@@ -1,6 +1,6 @@
 from httpx import Response
 
-from clients.api_client import ApiClient
+from clients.api_client import APIClient
 from typing import TypedDict
 
 class GetCoursesQueryDict(TypedDict):
@@ -32,7 +32,7 @@ class UpdateCourseRequestDict(TypedDict):
     estimatedTime: str | None
 
 
-class CoursesClient(ApiClient):
+class CoursesClient(APIClient):
     """
     Клиент для работы с /api/v1/courses
     """
