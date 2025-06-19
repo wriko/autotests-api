@@ -65,7 +65,7 @@ class FilesClient(APIClient):
         """
         return self.delete(f"/api/v1/files/{file_id}")  # удаление файла по идентификатору. Возвращает 204. Необходимо проверить, что файл действительно удален. В случае удаления возвращает пустой объект.
 
-
+    # Добавили новый метод
     def create_file(self, request: CreateFileRequestDict) -> CreateFileResponseDict: # Метод создания файла с использованием клиента FilesClient. Возвращает ответ от сервера. Обязательно проверить, что файл действительно создан.
         response = self.create_file_api(request)
         return response.json()
@@ -74,9 +74,8 @@ class FilesClient(APIClient):
  # Добавляем builder для FilesClient
 def get_files_client(user: AuthenticationUserDict) -> FilesClient:
     """
-    Функция создает экземпляр FilesClient с уже настроенным HTTP-клиентом.
+    Функция создаёт экземпляр FilesClient с уже настроенным HTTP-клиентом.
 
-    :param user: Словарь с email и password для аутентификации.
     :return: Готовый к использованию FilesClient.
     """
     return FilesClient(client=get_private_http_client(user))  # Настройка клиента с базовым URL и таймаутом
