@@ -31,7 +31,7 @@ class CreateUserRequestSchema(BaseModel):
         middleName (str): Отчество пользователя.
     """
     email: EmailStr
-    password: constr(min_length=3)
+    password: constr = Field(min_length=3, description="Минимальная длина пароля - 3 символа")
     last_name: str = Field(alias="lastName")
     first_name: str = Field(alias="firstName")
     middle_name: str = Field(alias="middleName")
