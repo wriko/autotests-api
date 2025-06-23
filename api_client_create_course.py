@@ -1,9 +1,10 @@
-from clients.courses.courses_client import get_courses_client, CreateCourseRequestDict
+from clients.courses.courses_client import get_courses_client
 from clients.private_http_builder import AuthenticationUserSchema
 from clients.users.public_users_client import get_public_users_client
 from clients.users.users_schema import CreateUserRequestSchema
 from clients.files.files_client import get_files_client
 from clients.files.files_schema import CreateFileRequestSchema
+from clients.courses.courses_schema import CreateCourseRequestSchema
 from tools.fakers import get_random_email
 
 # Инициализируем клиент PublicUsersClient
@@ -13,9 +14,9 @@ public_users_client = get_public_users_client()  # Получаем экземп
 create_user_request = CreateUserRequestSchema(
     email = get_random_email(),
     password = "string",
-    last_name = "string",
-    first_name = "string",
-    middle_name ="string"
+    last_name = "string",  # Передаем аргументы  в формате snake_case вместо camelCase
+    first_name = "string", # Передаем аргументы в формате snake_case вместо camelCase
+    middle_name ="string"  # Передаем аргументы в формате snake_case вместо camelCase
 )
 
 # Отправляем POST запрос на создание пользователя (метод create_user)
@@ -41,14 +42,14 @@ create_file_response = files_client.create_file(create_file_request) # Созд�
 print(f"Cоздан файл: {create_file_response}")
 
 # Создаем курс
-create_course_request = CreateCourseRequestDict(
+create_course_request = CreateCourseRequestSchema(
     title = "Python",
-    maxScore = 100,
-    minScore = 10,
+    max_score = 100, # Передаем аргументы в формате snake_case вместо camelCase
+    min_score = 10, # Передаем аргументы в формате snake_case вместо camelCase
     description = "Python API Course",
-    estimatedTime = "2 weeks",
-    previewFileId = create_file_response.file.id,
-    createdByUserId = create_user_response.users.id
+    estimated_time = "2 weeks", # Передаем аргументы в формате snake_case вместо camelCase
+    preview_file_id = create_file_response.file.id, # Передаем аргументы в формате snake_case вместо camelCase
+    created_by_user_id = create_user_response.user.id # Передаем аргументы в формате snake_case вместо camelCase
 )
 
 create_course_response = courses_client.create_course(create_course_request) # Создаем курс с помощью метода create_course и сохраняем ответ в переменную create_course_response
