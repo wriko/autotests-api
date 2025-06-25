@@ -20,14 +20,14 @@
     from clients.private_http_builder import AuthenticationUserDict
     from clients.users.private_users_client import get_private_users_client
     from clients.users.public_users_client import get_public_users_client, CreateUserRequestDict
-    from tools.fakers import get_random_email
+    from tools.fakers import fake
 
     # Инициализируем клиент PublicUsersClient
     public_users_client = get_public_users_client()
 
     # Инициализируем запрос на создание пользователя
     create_user_request = CreateUserRequestDict(
-        email=get_random_email(),
+        email=fake.email(),
         password="string",
         lastName="string",
         firstName="string",
@@ -58,11 +58,11 @@
 
     import httpx
 
-    from tools.fakers import get_random_email
+    from tools.fakers import fake
 
     # Создаем пользователя
     create_user_payload = {
-        "email": get_random_email(),
+        "email": fake.email(),
         "password": "string",
         "lastName": "string",
         "firstName": "string",
@@ -289,12 +289,12 @@
     from clients.private_http_builder import AuthenticationUserDict
     from clients.users.private_users_client import get_private_users_client
     from clients.users.public_users_client import get_public_users_client, CreateUserRequestDict
-    from tools.fakers import get_random_email
+    from tools.fakers import fake
 
     public_users_client = get_public_users_client()
 
     create_user_request = CreateUserRequestDict(
-        email=get_random_email(),
+        email=fake.email(),
         password="string",
         lastName="string",
         firstName="string",

@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field, ConfigDict
 from clients.files.files_schema import FileSchema
 from clients.users.users_schema import UserSchema
+from tools.fakers import fake
 
 
 class CourseSchema(BaseModel):
@@ -11,12 +12,12 @@ class CourseSchema(BaseModel):
 
     id: str
     title: str
-    max_score: int = Field(alias="maxScore")  # Используем alias для соответствия полю maxScore
-    min_score: int = Field(alias="minScore")  # Используем alias для соответствия полю minScore
+    max_score: int = Field(alias="maxScore")
+    min_score: int = Field(alias="minScore")
     description: str
-    preview_file: FileSchema = Field(alias="previewFile")  # Используем alias для соответствия полю previewFileId
-    estimated_time: str = Field(alias="estimatedTime") # Используем alias для соответствия полю estimatedTime
-    created_by_user: UserSchema = Field(alias="createdByUser")  # Используем alias для соответствия полю createdByUserId
+    preview_file: FileSchema = Field(alias="previewFile")
+    estimated_time: str = Field(alias="estimatedTime")
+    created_by_user: UserSchema = Field(alias="createdByUser")
 
 
 class GetCoursesQuerySchema(BaseModel):
@@ -34,13 +35,13 @@ class CreateCourseRequestSchema(BaseModel):
     """
     model_config = ConfigDict(populate_by_name=True)  # Настройка Pydantic для использования имен полей как по алиасу так и по имени
 
-    title: str
-    max_score: int = Field(alias="maxScore")  # Используем alias для соответствия полю maxScore
-    min_score: int = Field(alias="minScore")  # Используем alias для соответствия полю minScore
-    description: str
-    estimated_time: str = Field(alias="estimatedTime")  # Используем alias для соответствия полю estimatedTime
-    preview_file_id: str = Field(alias="previewFileId")  # Используем alias для соответствия полю previewFileId
-    created_by_user_id: str = Field(alias="createdByUserId")  # Используем alias для соответствия полю createdByUserId
+    title: str = Field(default_factory=fake.sentence) # Используем фабрику для генерации случайного заголовка курса
+    max_score: int = Field(default_factory=fake.max_score, alias="maxScore")  # Используем фабрику для генерации случайного максимального балла и alias для соответствия полю maxScore
+    min_score: int = Field(default_factory=fake.min_score,alias="minScore")  # Используем alias для соответствия полю minScore
+    description: str = Field(default_factory=fake.text)  # Используем фабрику для генерации случайного описания курса
+    estimated_time: str = Field(default_factory=fake.estimated_time, alias="estimatedTime")  # Используем фабрику для генерации случайного времени и alias для соответствия полю estimatedTime
+    preview_file_id: str = Field(default_factory=fake.uuid4, alias="previewFileId")  # Используем фабрику для генерации случайного идентификатора файла превью и alias для соответствия полю previewFileId
+    created_by_user_id: str = Field(default_factory=fake.uuid4, alias="createdByUserId")  #  Используем фабрику для генерации случайного идентификатора пользователя создателя и alias для соответствия полю createdByUserId
 
 
 class CreateCourseResponseSchema(BaseModel):
@@ -57,7 +58,8 @@ class UpdateCourseRequestSchema(BaseModel):
     model_config = ConfigDict(populate_by_name=True)  # Настройка Pydantic для использования имен полей как по алиасу так и по имени
 
     title: str | None
-    max_score: int | None = Field(alias="maxScore")  # Используем alias для соответствия полю maxScore
-    min_score: int | None = Field(alias="minScore")  # Используем alias для соответствия полю minScore
-    description: str | None
-    estimated_time: str | None = Field(alias="estimatedTime")  # Используем alias для соответствия полю estimatedTime
+    max_score: int | None = Field(default_factory=fake.max_score, alias="maxScore")  # Используем фабрику для генерации случайного максимального балла и alias для соответствия полю maxScore
+    min_score: int | None = Field(default_factory=fake.min_score, alias="minScore")  #  Используем alias для соответствия полю minScore
+    description: str | None = Field(default_factory=fake.text)  #  Используем фабрику для генерации случайного описания курса
+    estimated_time: str | None = Field(default_factory=fake.estimated_time, alias="estimatedTime")  #  Используем фабрику для генерации случайного времени и alias для соответствия полю estimatedTime
+

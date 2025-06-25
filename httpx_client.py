@@ -1,6 +1,6 @@
 import httpx
 
-from tools.fakers import get_random_email
+from tools.fakers import fake
 
 """
 Авторизация пользователя и получение токена доступа

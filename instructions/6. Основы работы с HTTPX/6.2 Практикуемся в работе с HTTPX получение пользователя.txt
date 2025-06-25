@@ -14,11 +14,11 @@
 
 import httpx
 
-from tools.fakers import get_random_email
+from tools.fakers import fake
 
 # Создаем пользователя
 create_user_payload = {
-    "email": get_random_email(),
+    "email": fake.email(),
     "password": "string",
     "lastName": "string",
     "firstName": "string",
@@ -31,11 +31,11 @@ print('Create user data:', create_user_response_data)
 
 import httpx
 
-from tools.fakers import get_random_email
+from tools.fakers import fake
 
 # Создаем пользователя
 create_user_payload = {
-    "email": get_random_email(),
+    "email": fake.email(),
     "password": "string",
     "lastName": "string",
     "firstName": "string",
@@ -57,11 +57,11 @@ print('Login data:', login_response_data)
 
 import httpx
 
-from tools.fakers import get_random_email
+from tools.fakers import fake
 
 # Создаем пользователя
 create_user_payload = {
-    "email": get_random_email(),
+    "email": fake.email(),
     "password": "string",
     "lastName": "string",
     "firstName": "string",

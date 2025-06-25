@@ -5,19 +5,13 @@ from clients.users.users_schema import CreateUserRequestSchema
 from clients.files.files_client import get_files_client
 from clients.files.files_schema import CreateFileRequestSchema
 from clients.courses.courses_schema import CreateCourseRequestSchema
-from tools.fakers import get_random_email
+
 
 # Инициализируем клиент PublicUsersClient
 public_users_client = get_public_users_client()  # Получаем экземпляр PublicUsersClient с уже настроенным HTTP-клиентом
 
 # Создаем пользователя
-create_user_request = CreateUserRequestSchema(
-    email = get_random_email(),
-    password = "string",
-    last_name = "string",  # Передаем аргументы  в формате snake_case вместо camelCase
-    first_name = "string", # Передаем аргументы в формате snake_case вместо camelCase
-    middle_name ="string"  # Передаем аргументы в формате snake_case вместо camelCase
-)
+create_user_request = CreateUserRequestSchema() # Создаем объект запроса на создание пользователя. Сами поля будут заполнены случайными данными с помощью фабрик, определенных в классе CreateUserRequestSchema
 
 # Отправляем POST запрос на создание пользователя (метод create_user)
 create_user_response = public_users_client.create_user(create_user_request)  # Создаем пользователя с помощью метода create_user и сохраняем ответ в переменную create_user_response
@@ -32,24 +26,15 @@ files_client = get_files_client(autentication_user) # Получаем экзе�
 courses_client = get_courses_client(autentication_user) # Получаем экземпляр CoursesClient с уже настроенным HTTP-клиентом и передаем в него данные для аутентификации
 
 # Загружаем файл
-create_file_request = CreateFileRequestSchema(
-    filename = "image.png",
-    directory = "courses",
-    upload_file = "./testdata/files/image.png"  # Путь к файлу, который нужно загрузить
-)
+create_file_request = CreateFileRequestSchema(upload_file = "./testdata/files/image.png") # Создаем объект запроса на создание файла. Сами поля будут заполнены случайными данными с помощью фабрик, определенных в классе CreateFileRequestSchema # Путь к файлу, который нужно загрузить)
 
 create_file_response = files_client.create_file(create_file_request) # Создаем файл с помощью метода create_file и сохраняем ответ в переменную create_file_response
 print(f"Cоздан файл: {create_file_response}")
 
 # Создаем курс
-create_course_request = CreateCourseRequestSchema(
-    title = "Python",
-    max_score = 100, # Передаем аргументы в формате snake_case вместо camelCase
-    min_score = 10, # Передаем аргументы в формате snake_case вместо camelCase
-    description = "Python API Course",
-    estimated_time = "2 weeks", # Передаем аргументы в формате snake_case вместо camelCase
-    preview_file_id = create_file_response.file.id, # Передаем аргументы в формате snake_case вместо camelCase
-    created_by_user_id = create_user_response.user.id # Передаем аргументы в формате snake_case вместо camelCase
+create_course_request = CreateCourseRequestSchema( # Создаем объект запроса на создание курса. Сами поля будут заполнены случайными данными с помощью фабрик, определенных в классе CreateCourseRequestSchema, кроме полей, которые мы передаем явно
+    preview_file_id = create_file_response.file.id,
+    created_by_user_id = create_user_response.user.id
 )
 
 create_course_response = courses_client.create_course(create_course_request) # Создаем курс с помощью метода create_course и сохраняем ответ в переменную create_course_response
