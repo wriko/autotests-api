@@ -1,8 +1,5 @@
 from pydantic import BaseModel, Field, ConfigDict
-from clients.files.files_schema import FileSchema
-from clients.users.users_schema import UserSchema
-
-
+from tools.fakers import fake
 
 
 class ExerciseSchema(BaseModel):
@@ -25,9 +22,9 @@ class GetExercisesQuerySchema(BaseModel):
     """
     Описание структуры запроса на получение списка заданий для определенного курса.
     """
-    model_config = ConfigDict(populate_by_name=True) # Настройка Pydantic для использования имен полей как по алиасу так и по имени поля в классе.
+    model_config = ConfigDict(populate_by_name=True)  # Настройка Pydantic для использования имен полей как по алиасу так и по имени поля в классе.
 
-    course_id: str = Field(alias="courseId") # Используем alias для соответствия полю courseId в запросе и полю course_id в классе.
+    course_id: str = Field(alias="courseId")  # Используем alias для соответствия полю courseId в запросе и полю course_id в классе.
 
 
 class GetExercisesResponseSchema(BaseModel):
@@ -44,30 +41,30 @@ class ExerciseResponseSchema(BaseModel):
     exercise: ExerciseSchema
 
 
-class CreateExerciseRequestSchema(BaseModel): # Тип словаря с данными для создания задания. Принимает: title, courseId, maxScore, minScore, orderIndex, description, estimatedTime.
+class CreateExerciseRequestSchema(BaseModel):
     """
     Описание структуры запроса на создание задания.
     """
     model_config = ConfigDict(populate_by_name=True)
 
-    title: str
-    course_id: str = Field(alias="courseId")
-    max_score: int = Field(alias="maxScore")
-    min_score: int = Field(alias="minScore")
-    order_index: int = Field(alias="orderIndex")
-    description: str
-    estimated_time: str = Field(alias="estimatedTime")
+    title: str = Field(default_factory=fake.sentence)
+    course_id: str = Field(default_factory=fake.uuid4, alias="courseId")
+    max_score: int = Field(default_factory=fake.max_score, alias="maxScore")
+    min_score: int = Field(default_factory=fake.min_score, alias="minScore")
+    order_index: int = Field(default_factory=fake.integer, alias="orderIndex")
+    description: str = Field(default_factory=fake.text)
+    estimated_time: str = Field(default_factory=fake.estimated_time, alias="estimatedTime")
 
 
-class UpdateExerciseRequestSchema(BaseModel): # Тип словаря с данными для обновления задания. Принимает: title, courseId, maxScore, minScore, orderIndex, description, estimatedTime.
+class UpdateExerciseRequestSchema(BaseModel):
     """
     Описание структуры запроса на обновление задания.
     """
     model_config = ConfigDict(populate_by_name=True)
 
-    title: str | None
-    max_score: int | None = Field(alias="maxScore")
-    min_score: int | None = Field(alias="minScore")
-    order_index: int | None = Field(alias="orderIndex")
-    description: str | None = Field(alias="description")
-    estimated_time: str | None = Field(alias="estimatedTime")
+    title: str | None = Field(default_factory=fake.sentence)
+    max_score: int | None = Field(default_factory=fake.max_score, alias="maxScore")
+    min_score: int | None = Field(default_factory=fake.min_score, alias="minScore")
+    order_index: int | None = Field(default_factory=fake.integer, alias="orderIndex")
+    description: str | None = Field(default_factory=fake.text)
+    estimated_time: str | None = Field(default_factory=fake.estimated_time, alias="estimatedTime")
