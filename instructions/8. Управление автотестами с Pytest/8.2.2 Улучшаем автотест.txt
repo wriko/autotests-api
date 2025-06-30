@@ -1,0 +1,324 @@
+Улучшаем первый API автотест
+В данном уроке мы улучшим наш автотест test_create_user. Он уже выполняет свою основную задачу — проверку создания пользователя, но в него можно добавить следующие улучшения:
+
+ - Добавить валидацию JSON-схемы.
+ - Вынести проверки статус-кода ответа в отдельную функцию.
+ - Вынести проверки ответа эндпоинта в отдельную функцию.
+
+ ----------------------------------
+1. Добавляем валидацию JSON Schema
+----------------------------------
+Возможно, у вас возникнет вопрос: зачем нам вообще валидировать JSON-схему, если при выполнении этого кода:
+    response_data = CreateUserResponseSchema.model_validate_json(response.text)
+
+Pydantic сам все провалидирует и покажет ошибку, если данные не соответствуют модели?
+
+Не совсем так. Давайте разберем это подробнее.
+
+Pydantic действительно проверяет структуру данных и выдаст ошибку, если каких-то обязательных полей не будет. Однако у него есть один нюанс: он автоматически преобразует данные, если они пришли не в том формате. Например, если ожидается поле number: int, а в JSON пришло "number": "100" (строка), Pydantic без ошибок преобразует строку в число. Рассмотрим пример:
+
+    from pydantic import BaseModel
+
+    class MyModel(BaseModel):
+        a: int
+        b: str
+
+    # Входные данные в виде строки (поле "a" задано строкой, а не числом)
+    data_json = '{"a": "1", "b": "Hello!"}'
+    my_model = MyModel.model_validate_json(data_json)  # Ошибки не будет
+
+    print(my_model)  # Выведет: a=1 b='Hello!'
+
+Хотя a должен быть числом, Pydantic просто преобразует строку "1" в 1 без ошибки.
+
+Использование JSON Schema для строгой проверки
+Если мы валидируем данные с помощью jsonschema, то такая ошибка не пройдет:
+
+from jsonschema import validate
+
+data_json = {"a": "1", "b": "Hello!"}
+
+# Здесь будет ошибка, так как "a" ожидается числом
+# jsonschema.exceptions.ValidationError: '1' is not of type 'integer'
+validate(data_json, MyModel.model_json_schema())
+Можно ли использовать strict=True в Pydantic?
+Да, начиная с Pydantic v2, в метод model_validate_json можно передать strict=True, чтобы включить строгую проверку типов:
+
+my_model = MyModel.model_validate_json(data_json, strict=True)  # Ошибка, если типы не совпадают
+Но у этого подхода есть недостатки:
+
+Нужно каждый раз явно передавать strict=True, что может быть забыто.
+Можно создать кастомную базовую модель, которая всегда включает strict=True, но это усложняет проект. Даже если сделать кастомную модель, то у вас уже будет два метода: один из Pydantic для валидации модели из JSON, а второй ваш кастомный, и придется постоянно держать это в голове. А если придет новичок, то он точно про это не узнает.
+В итоге более надежное решение —
+
+Использовать Pydantic для работы с данными (преобразование JSON → объект Python).
+Использовать jsonschema для строгой проверки схемы.
+Кроме того, вынесение проверки JSON-схемы в отдельную функцию позволяет:
+
+Легко добавлять логирование и шаги Allure.
+Гарантировать, что валидация всегда выполняется правильно.
+Обновленный код с проверкой JSON Schema
+from http import HTTPStatus
+
+from clients.users.public_users_client import get_public_users_client
+from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema
+# Импортируем функцию для валидации JSON Schema
+from tools.assertions.schema import validate_json_schema
+
+
+def test_create_user():
+    public_users_client = get_public_users_client()
+
+    request = CreateUserRequestSchema()
+    response = public_users_client.create_user_api(request)
+    response_data = CreateUserResponseSchema.model_validate_json(response.text)
+
+    assert response.status_code == HTTPStatus.OK, 'Некорректный статус-код ответа'
+
+    assert response_data.user.email == request.email, 'Некорректный email пользователя'
+    assert response_data.user.last_name == request.last_name, 'Некорректный last_name пользователя'
+    assert response_data.user.first_name == request.first_name, 'Некорректный first_name пользователя'
+    assert response_data.user.middle_name == request.middle_name, 'Некорректный middle_name пользователя'
+
+    # Проверяем, что тело ответа соответствует ожидаемой JSON-схеме
+    validate_json_schema(response.json(), response_data.model_json_schema())
+Разбор кода:
+validate_json_schema(response.json(), response_data.model_json_schema())
+
+Проверяет, что ответ сервера полностью соответствует ожидаемой JSON-схеме.
+
+Предотвращает случайные приведения типов и скрытые ошибки.
+
+Разделение ответственности:
+
+Pydantic отвечает за удобное преобразование данных.
+
+jsonschema.validate проверяет их корректность.
+
+Преимущества вынесения валидации в отдельную функцию:
+
+Можно легко добавить логирование ошибок.
+
+Можно включить шаги Allure для отчета о тестах.
+
+Добавление проверки JSON Schema повышает надежность автотеста. Теперь мы:
+
+Исключили ошибки, связанные с неявным преобразованием данных.
+Обеспечили строгую проверку структуры ответа API.
+2. Вынести проверки статус-кода ответа в отдельную функцию
+Рассмотрим проверку статус-кода ответа в автотесте test_create_course:
+
+assert response.status_code == HTTPStatus.OK, 'Некорректный статус-код ответа'
+В будущем нам предстоит многократно проверять статус-код в различных автотестах. При этом полезно иметь:
+
+Логирование успешных и неуспешных проверок.
+Добавление шага в Allure для наглядности.
+Избавление от дублирования кода (бойлерплейта).
+Упрощение поддержки тестов.
+Чтобы добиться этого, вынесем проверку статус-кода в отдельную функцию.
+
+1. Создание файла base.py
+Создадим файл base.py в папке /tools/assertions/, где будем хранить базовые проверки, включая проверку статус-кода:
+
+.
+└── autotests-api/
+    └── tools/
+        └── assertions/
+            └── base.py
+2. Создание функции assert_status_code
+Добавим в tools/assertions/base.py функцию для проверки статус-кода:
+
+def assert_status_code(actual: int, expected: int):
+    """
+    Проверяет, что фактический статус-код ответа соответствует ожидаемому.
+
+    :param actual: Фактический статус-код ответа.
+    :param expected: Ожидаемый статус-код.
+    :raises AssertionError: Если статус-коды не совпадают.
+    """
+    assert actual == expected, (
+        f'Incorrect response status code. '
+        f'Expected status code: {expected}. '
+        f'Actual status code: {actual}'
+    )
+Почему это полезно?
+
+При использовании такой функции мы теряем преимущество встроенной проверки assert в pytest, но получаем:
+
+Инкапсуляцию логики проверки.
+Уменьшение бойлерплейт-кода.
+Возможность добавить логирование в будущем.
+Возможность добавить шаг в Allure в будущем.
+Упрощение поддержки кода.
+3. Применение assert_status_code в тесте
+Теперь обновим тест test_create_user, заменив стандартную проверку статус-кода на нашу функцию:
+
+from http import HTTPStatus
+
+from clients.users.public_users_client import get_public_users_client
+from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema
+# Импортируем функцию проверки статус-кода
+from tools.assertions.base import assert_status_code
+from tools.assertions.schema import validate_json_schema
+
+
+def test_create_user():
+    public_users_client = get_public_users_client()
+
+    request = CreateUserRequestSchema()
+    response = public_users_client.create_user_api(request)
+    response_data = CreateUserResponseSchema.model_validate_json(response.text)
+
+    # Используем функцию для проверки статус-кода
+    assert_status_code(response.status_code, HTTPStatus.OK)
+
+    assert response_data.user.email == request.email, 'Некорректный email пользователя'
+    assert response_data.user.last_name == request.last_name, 'Некорректный last_name пользователя'
+    assert response_data.user.first_name == request.first_name, 'Некорректный first_name пользователя'
+    assert response_data.user.middle_name == request.middle_name, 'Некорректный middle_name пользователя'
+
+    validate_json_schema(response.json(), response_data.model_json_schema())
+Итог
+Теперь тест стал чище, а проверка статус-кода — универсальной и переиспользуемой. В будущем мы сможем легко добавить логирование, шаги Allure и другие улучшения без необходимости редактировать каждый тест.
+
+3. Вынести проверки ответа эндпоинта в отдельную функцию
+Рассмотрим следующий блок кода с проверками в тесте:
+
+assert response_data.user.email == request.email, 'Некорректный email пользователя'
+assert response_data.user.last_name == request.last_name, 'Некорректный last_name пользователя'
+assert response_data.user.first_name == request.first_name, 'Некорректный first_name пользователя'
+assert response_data.user.middle_name == request.middle_name, 'Некорректный middle_name пользователя'
+Здесь присутствует большое количество повторяющегося кода. Можно выделить две основные проблемы:
+
+Дублирование кода – каждая проверка повторяет одинаковую структуру assert actual == expected, "Ошибка".
+Низкая переиспользуемость – этот блок кода привязан к конкретному тесту, что затрудняет его повторное использование.
+Чтобы устранить эти недостатки, разберем код на две части:
+
+Функция assert_equal – универсальная функция для сравнения двух полей, которая принимает имя поля и его ожидаемое и актуальное значения.
+Функция assert_create_user_response – специализированная функция для проверки ответа создания пользователя, использующая assert_equal для проверки каждого поля.
+1. Создаем функцию assert_equal
+Добавим в файл /tools/assertions/base.py функцию assert_equal, которая будет использоваться для проверки любых пар значений:
+
+from typing import Any
+
+
+def assert_status_code(actual: int, expected: int):
+    """
+    Проверяет, что фактический статус-код ответа соответствует ожидаемому.
+
+    :param actual: Фактический статус-код ответа.
+    :param expected: Ожидаемый статус-код.
+    :raises AssertionError: Если статус-коды не совпадают.
+    """
+    assert actual == expected, (
+        f'Incorrect response status code. '
+        f'Expected status code: {expected}. '
+        f'Actual status code: {actual}'
+    )
+
+
+def assert_equal(actual: Any, expected: Any, name: str):
+    """
+    Проверяет, что фактическое значение равно ожидаемому.
+
+    :param name: Название проверяемого значения.
+    :param actual: Фактическое значение.
+    :param expected: Ожидаемое значение.
+    :raises AssertionError: Если фактическое значение не равно ожидаемому.
+    """
+    assert actual == expected, (
+        f'Incorrect value: "{name}". '
+        f'Expected value: {expected}. '
+        f'Actual value: {actual}'
+    )
+
+Разбор кода assert_equal:
+
+Функция принимает три аргумента:
+actual – фактическое значение.
+expected – ожидаемое значение.
+name – название проверяемого значения (для понятности сообщений об ошибке).
+Если значения не совпадают, то есть не равны друг другу, вызывается AssertionError с понятным сообщением.
+Эта функция универсальна – ее можно использовать не только в данном тесте, но и в любых других местах, где нужно проверить равенство двух значений.
+
+----------------------------------
+2. Создаем функцию assert_create_user_response
+----------------------------------
+Создадим файл users.py в /tools/assertions:
+
+.
+└── autotests-api/
+    └── tools/
+        └── assertions/
+            └── users.py
+
+Добавим в users.py функцию assert_create_user_response, которая будет проверять, что ответ на создание пользователя соответствует запросу:
+
+    from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema
+    from tools.assertions.base import assert_equal
+
+
+    def assert_create_user_response(request: CreateUserRequestSchema, response: CreateUserResponseSchema):
+        """
+        Проверяет, что ответ на создание пользователя соответствует запросу.
+
+        :param request: Исходный запрос на создание пользователя.
+        :param response: Ответ API с данными пользователя.
+        :raises AssertionError: Если хотя бы одно поле не совпадает.
+        """
+        assert_equal(response.user.email, request.email, "email")
+        assert_equal(response.user.last_name, request.last_name, "last_name")
+        assert_equal(response.user.first_name, request.first_name, "first_name")
+        assert_equal(response.user.middle_name, request.middle_name, "middle_name")
+
+Разбор кода assert_create_user_response:
+
+Функция инкапсулирует проверку всех полей ответа, что:
+ - Упрощает код в тестах.
+ - Позволяет переиспользовать эту функцию в других тестах.
+ - В будущем позволяет добавить allure-шаги и логирование без изменения тестов.
+
+-------------------------------------------------------
+3. Применяем функцию assert_create_user_response в тесте
+-------------------------------------------------------
+Теперь используем новую функцию в test_create_user:
+
+    from http import HTTPStatus
+
+    from clients.users.public_users_client import get_public_users_client
+    from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema
+    from tools.assertions.base import assert_status_code
+    from tools.assertions.schema import validate_json_schema
+    # Импортируем функцию для проверки ответа создания юзера
+    from tools.assertions.users import assert_create_user_response
+
+
+    def test_create_user():
+        public_users_client = get_public_users_client()
+
+        request = CreateUserRequestSchema()
+        response = public_users_client.create_user_api(request)
+        response_data = CreateUserResponseSchema.model_validate_json(response.text)
+
+        assert_status_code(response.status_code, HTTPStatus.OK)
+        # Используем функцию для проверки ответа создания юзера
+        assert_create_user_response(request, response_data)
+
+        validate_json_schema(response.json(), response_data.model_json_schema())
+
+Разбор изменений:
+Вместо четырех отдельных assert теперь используется одна строка с assert_create_user_response, что:
+Сокращает код.
+Повышает читаемость теста.
+Делает код легче поддерживаемым.
+
+----------------------------------
+Итог
+----------------------------------
+Тест test_create_user теперь лаконичный и переиспользуемый: Минимум бойлерплейта.
+
+1. Вынесены проверки в отдельные функции.
+2. JSON-схема валидируется с помощью validate_json_schema.
+3. API-клиент инкапсулирует логику работы с API, позволяя тесту сфокусироваться на бизнес-логике.
+
+В будущем тест можно дополнить фикстурами для дальнейшей оптимизации. Но уже сейчас он стал гораздо чище и поддерживаемее.
