@@ -15,13 +15,13 @@ create_user_response = public_users_client.create_user(create_user_request)  # �
 print(f"Создан пользователь: {create_user_response}")
 
 # Инициализируем пользовательские данные для аутентификации
-autentication_user = AuthenticationUserSchema( # Создаем объект аутентификации пользователя в формате AuthenticationUserDict для удобства чтения и проверки его содержимого
+authentication_user = AuthenticationUserSchema( # Создаем объект аутентификации пользователя в формате AuthenticationUserDict для удобства чтения и проверки его содержимого
     email = create_user_request.email,
     password = create_user_request.password
 )
 
 # Инициализируем клиент PrivateUsersClient
-private_users_client = get_private_users_client(autentication_user)
+private_users_client = get_private_users_client(authentication_user)
 
 # Отправляем GET запрос на получение данных пользователя (метод get_user)
 get_user_response = private_users_client.get_user(create_user_response.user.id)  # Получаем пользователя по ID с помощью метода get_user_api из private_users_client
