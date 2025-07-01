@@ -11,8 +11,9 @@ from tools.assertions.schema import validate_json_schema
 
 
 def test_login():
-    # инициализация клиента создания пользователя
+    # инициализация клиентов
     public_users_client = get_public_users_client()
+    authentication_client = get_authentication_client()
 
     # подготовка и отправка запроса на создание пользователя
     create_user_request = CreateUserRequestSchema()
@@ -20,12 +21,9 @@ def test_login():
     # отправка запроса на создание пользователя с помощью метода create_user_api и данных запроса create_user_request
     create_user_response = public_users_client.create_user(create_user_request)
 
-    # инициализация клиента аутентификации
-    authentication_client = get_authentication_client()
-
     # подготовка данных для аутентификации
     login_request = LoginRequestSchema(
-        email=create_user_response.user.email,
+        email=create_user_request.email,
         password=create_user_request.password
     )
 
@@ -38,4 +36,4 @@ def test_login():
     # проверки ответа на аутентификацию
     assert_status_code(login_response.status_code, HTTPStatus.OK)  # проверка, что статус-код ответа соответствует ожидаемому (200 OK)
     assert_login_response(login_response_data)  # проверка, что ответ соответствует ожидаемому формату
-    validate_json_schema(login_response.json(),login_response_data.model_json_schema())  # проверка, что ответ соответствует схеме LoginResponseSchema
+    validate_json_schema(login_response.json(), login_response_data.model_json_schema())  # проверка, что ответ соответствует схеме LoginResponseSchema
