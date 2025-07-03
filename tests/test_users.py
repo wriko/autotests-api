@@ -1,5 +1,5 @@
 import pytest
-from clients.users.public_users_client import get_public_users_client
+from clients.users.public_users_client import get_public_users_client, PublicUsersClient
 from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema
 from http import HTTPStatus
 
@@ -10,8 +10,8 @@ from tools.assertions.users import assert_create_user_response
 
 @pytest.mark.users
 @pytest.mark.regression
-def test_create_user():
-    public_users_client = get_public_users_client()  # инициализация клиента созданием пользователя
+def test_create_user(public_users_client: PublicUsersClient): # Инициализация клиента public_users_client с помощью фикстуры, которая возвращает экземпляр PublicUsersClient
+
 
     request = CreateUserRequestSchema()  # создание запроса на создание пользователя c помощью схемы CreateUserRequestSchema (aтрибуты будут заполнены случайными фейковыми значениями)
     response = public_users_client.create_user_api(request)  # отправка запроса на создание пользователя c помощью метода create_user_api (для анализа Response)

@@ -1,0 +1,243 @@
+Рассмотрим внимательно тест test_login и обратим внимание на следующий код:
+
+    @pytest.mark.regression
+    @pytest.mark.authentication
+    def test_login(public_users_client: PublicUsersClient, authentication_client: AuthenticationClient):
+        create_user_request = CreateUserRequestSchema()
+        public_users_client.create_user(create_user_request)
+
+        # Остальной код
+
+Этот фрагмент отвечает за создание пользователя перед выполнением теста. Однако стоит задать себе вопрос: что именно проверяет данный тест?
+
+Основная цель теста — проверка успешной аутентификации. Это означает, что создание пользователя — не часть самого теста, а его предусловие. Идеальный тест должен проверять только один конкретный сценарий, не отвлекаясь на подготовку данных.
+
+Таким образом, логично вынести создание пользователя в фикстуру. Это позволит нам передавать в тест уже готового пользователя, а сам тест будет сфокусирован исключительно на проверке аутентификации.
+
+Использование фикстур для подготовки тестовых данных делает код тестов чище, короче и более читаемым, а также упрощает повторное использование данных в других тестах
+
+1. Создадим фикстуру function_user
+В файле /tests/conftest.py добавим фикстуру function_user, которая будет создавать пользователя:
+
+import pytest
+from pydantic import BaseModel, EmailStr
+
+from clients.authentication.authentication_client import AuthenticationClient, get_authentication_client
+from clients.users.public_users_client import get_public_users_client, PublicUsersClient
+# Импортируем запрос и ответ создания пользователя, модель данных пользователя
+from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, UserSchema
+
+
+# Модель для агрегации возвращаемых данных фикстурой function_user
+class UserFixture(BaseModel):
+    request: CreateUserRequestSchema
+    response: CreateUserResponseSchema
+
+    @property
+    def email(self) -> EmailStr:  # Быстрый доступ к email пользователя
+        return self.request.email
+
+    @property
+    def password(self) -> str:  # Быстрый доступ к password пользователя
+        return self.request.password
+
+
+    @pytest.fixture
+    def authentication_client() -> AuthenticationClient:
+        return get_authentication_client()
+
+
+    @pytest.fixture
+    def public_users_client() -> PublicUsersClient:
+        return get_public_users_client()
+
+
+    # Фикстура для создания пользователя
+    @pytest.fixture
+    # Используем фикстуру public_users_client, которая создает нужный API клиент
+    def function_user(public_users_client: PublicUsersClient) -> UserFixture:
+        request = CreateUserRequestSchema()
+        response = public_users_client.create_user(request)
+        return UserFixture(request=request, response=response)  # Возвращаем все нужные данные
+
+
+1. Почему такое название?
+Фикстура называется function_user, и это не случайно. Название строится по шаблону {scope фикстуры}_{название создаваемой сущности}. В данном случае:
+ - function — означает, что пользователь создается заново перед каждым тестом (scope = function).
+ - user — указывает, что создается пользователь.
+
+Зачем такая структура именования? Дело в том, что в будущем нам могут понадобиться другие уровни (scopes) фикстуры:
+ - class_user — если нужен один пользователь на весь тестовый класс.
+ - session_user — если нужен один пользователь на всю тестовую сессию.
+Такой подход позволяет гибко управлять фикстурами, а не дублировать их под разные ситуации. Многие QA Automation Engineers сначала делают фикстуру на function, а потом, когда появляется требование на class или session, начинают писать дублирующий код. Мы же сразу закладываем гибкость.
+
+Важно! В pytest нельзя динамически менять scope фикстуры на лету. Это означает, что если фикстура была объявлена с function, то во время выполнения тестов изменить её на class или session невозможно. Поэтому лучше заранее продумывать структуру имен.
+
+
+2. Зачем нам модель UserFixture?
+На первый взгляд кажется, что фикстура могла бы просто вернуть CreateUserResponseSchema, но есть нюанс. Если мы посмотрим на модель UserSchema, то увидим, что в ней нет поля password. Это правильно, потому что API не должно возвращать пароль — это небезопасно.
+
+Но в тестах нам пароль может понадобиться, например, для аутентификации пользователя и получения токенов. Поэтому фикстура должна вернуть:
+ - request — запрос на создание пользователя (там есть email и пароль).
+ - response — ответ с данными пользователя (но без пароля).
+
+Чтобы было удобно работать с этими данными, мы создаем дополнительный слой UserFixture, который объединяет запрос и ответ. В будущем мы сможем легко добавить в UserFixture другие данные, если они понадобятся.
+
+Часто QA Automation Engineers делают иначе:
+
+Возвращают кортежи ((request, response)).
+Возвращают словари ({"request": ..., "response": ...}).
+Используют dataclass.
+Но проблема в том, что если в проекте используются разные подходы одновременно, это приводит к хаосу. Одни фикстуры возвращают кортежи, другие словари, третьи dataclass — и в итоге поддерживать такой код становится сложнее.
+
+Поэтому мы сразу стандартизируем формат и используем Pydantic-модель UserFixture, в которой удобно определять свойства @property и делать быстрый доступ к данным пользователя.
+
+Аналогично, если мы создавали бы файлы в фикстуре function_file, можно было бы добавить FileFixture с нужными атрибутами.
+
+
+
+3. Почему мы не удаляем пользователя после теста?
+Возможно, вы слышали мнение, что хороший автотест должен очищать все данные после себя. Это правда, но не всегда. Есть три причины, почему в данном случае удаление данных — плохая идея:
+
+1. Отладка и разбор ошибок
+Представьте, что тест упал: пользователь был создан, но не смог авторизоваться. Если после теста мы удалим пользователя, то не сможем посмотреть:
+
+Как пользователь записан в БД.
+Какие у него атрибуты.
+Что вернул API.
+Удаление данных после теста делает дебаг сложнее, поэтому в данном случае мы его избегаем.
+
+2. В реальных системах данные часто нельзя удалить
+В банковских и финансовых системах данные не удаляются физически. Даже если пользователь закрыл счет, его данные остаются в системе. Это вопрос безопасности и законодательства. В некоторых системах удаление данных вообще запрещено.
+
+Если у вас API с "удалением", скорее всего, это просто смена статуса на DELETED, но запись остается в БД. В таких условиях попытки удалить тестовые данные бессмысленны.
+
+3. Удаление данных может ломать тесты
+Если у нас сложная система, где данные связаны между собой (например, аккаунты, заказы, платежи), удаление одного объекта может привести к каскадному удалению других. Это может ломать тестовую среду.
+
+Как решить проблему с "мусорными" тестовыми данными?
+
+Если вас беспокоит, что тестовые данные копятся:
+
+Можно делать уникальные данные для каждого теста (например, email=f"test_user_{uuid4()}@example.com").
+Можно запускать раз в неделю скрипт для очистки старых тестовых данных.
+Но не стоит пытаться удалять данные сразу после каждого теста.
+
+
+Итог:
+
+Фикстура function_user создаёт пользователя перед каждым тестом.
+Структура именования {scope}_{сущность} позволяет легко управлять разными уровнями фикстур (function_user, class_user, session_user).
+Используем UserFixture, чтобы удобно работать с данными (запрос + ответ).
+Не удаляем пользователя после теста, чтобы сохранять возможность отладки
+
+
+
+2. Используем фикстуру function_user в тесте
+Теперь давайте применим фикстуру function_user внутри теста test_login. Это позволит убрать дублирование кода, сделать тест короче, читабельнее и легче в поддержке.
+
+Рассмотрим, как выглядел тест до использования фикстуры:
+
+    from http import HTTPStatus
+
+    import pytest
+
+    from clients.authentication.authentication_client import AuthenticationClient
+    from clients.authentication.authentication_schema import LoginRequestSchema, LoginResponseSchema
+    from clients.users.public_users_client import PublicUsersClient
+    from clients.users.users_schema import CreateUserRequestSchema
+    from tools.assertions.authentication import assert_login_response
+    from tools.assertions.base import assert_status_code
+    from tools.assertions.schema import validate_json_schema
+
+
+    @pytest.mark.regression
+    @pytest.mark.authentication
+    def test_login(public_users_client: PublicUsersClient, authentication_client: AuthenticationClient):
+        create_user_request = CreateUserRequestSchema()
+        public_users_client.create_user(create_user_request)
+
+        login_request = LoginRequestSchema(
+            email=create_user_request.email,
+            password=create_user_request.password
+        )
+        login_response = authentication_client.login_api(login_request)
+        login_response_data = LoginResponseSchema.model_validate_json(login_response.text)
+
+        assert_status_code(login_response.status_code, HTTPStatus.OK)
+        assert_login_response(login_response_data)
+
+        validate_json_schema(login_response.json(), login_response_data.model_json_schema())
+
+Здесь мы вручную создаем пользователя перед выполнением запроса логина. Однако такую логику лучше вынести в фикстуру, чтобы избежать дублирования кода и улучшить читаемость тестов.
+
+Теперь посмотрим, как выглядит тест после использования фикстуры function_user:
+
+from http import HTTPStatus
+
+import pytest
+
+from clients.authentication.authentication_client import AuthenticationClient
+from clients.authentication.authentication_schema import LoginRequestSchema, LoginResponseSchema
+from tests.conftest import UserFixture
+from tools.assertions.authentication import assert_login_response
+from tools.assertions.base import assert_status_code
+from tools.assertions.schema import validate_json_schema
+
+
+@pytest.mark.regression
+@pytest.mark.authentication
+def test_login(
+        function_user: UserFixture,  # Используем фикстуру для создания пользователя
+        authentication_client: AuthenticationClient
+):
+    # Запрос на логин (login_request -> request)
+    request = LoginRequestSchema(email=function_user.email, password=function_user.password)
+    # Выполняем логин (login_response -> response)
+    response = authentication_client.login_api(request)
+    # Валидация ответа (login_response_data -> response_data)
+    response_data = LoginResponseSchema.model_validate_json(response.text)
+
+    assert_status_code(response.status_code, HTTPStatus.OK)
+    assert_login_response(response_data)
+
+    validate_json_schema(response.json(), response_data.model_json_schema())
+
+Что изменилось и почему это лучше?
+Удалили дублирование кода
+
+Создание пользователя теперь выполняется на уровне фикстуры function_user, что делает тест чище.
+Тест стал короче и понятнее
+
+Мы фокусируемся только на логике логина, а не на предварительной подготовке данных.
+Переименованы переменные
+
+login_request → request
+login_response → response
+login_response_data → response_data
+Это улучшает читаемость и сокращает лишние слова в коде.
+Следуем лучшим практикам
+
+Вынесение подготовки данных в фикстуры делает тесты проще в поддержке и переиспользовании.
+Благодаря этим изменениям наш автотест стал компактнее, структурированнее и более соответствующим best practices.
+
+3. Запускаем автотест test_login
+Теперь, когда мы рефакторизовали тест и вынесли создание пользователя в фикстуру function_user, давайте запустим его, чтобы убедиться, что все работает корректно и никаких ошибок не возникло.
+
+Для этого выполним команду:
+    python -m pytest -k "test_login" -s -v
+
+При успешном применении фикстуры function_user тест должен пройти без ошибок, и в выводе появится лог, похожий на следующий:
+
+    (.venv) username@ip-8-8-8-8 autotests-api % python -m pytest -k "test_login" -s -v
+    ====================================================================== test session starts =======================================================================
+    platform darwin -- Python 3.11.9, pytest-8.3.5, pluggy-1.5.0 -- /Users/username/Documents/autotests-api/.venv/bin/python
+    cachedir: .pytest_cache
+    rootdir: /Users/username/Documents/autotests-api
+    configfile: pytest.ini
+    plugins: Faker-36.2.2, anyio-4.8.0
+    collected 5 items / 4 deselected / 1 selected
+
+    tests/test_authentication.py::test_login PASSED
+
+    ================================================================ 1 passed, 4 deselected in 0.76s =================================================================
