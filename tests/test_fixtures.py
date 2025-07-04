@@ -37,7 +37,7 @@ class TestAccountFlow:
 @pytest.fixture
 def user_data() -> dict:
     print("Создаем пользователя до теста")  # Запускается каждый раз перед тестом
-    yield {"username": "user", "email": "test@example.com"} # выполняется сам тест
+    yield {"username": "user", "email": "test@example.com"} # выполняется сам тест, после чего поток возвращается в фикстуру
     print("Удаляем пользователя после  теста")  # Запускается после теста
 
 def test_user_email(user_data: dict):

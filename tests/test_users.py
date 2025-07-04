@@ -5,6 +5,7 @@ from clients.users.public_users_client import get_public_users_client, PublicUse
 from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, GetUserResponseSchema
 from http import HTTPStatus
 
+from tests.conftest import UserFixture
 from tools.assertions.base import assert_status_code
 from tools.assertions.schema import validate_json_schema
 from tools.assertions.users import assert_create_user_response, assert_get_user_response
@@ -25,10 +26,11 @@ def test_create_user(public_users_client: PublicUsersClient): # Инициали
 
 @pytest.mark.users
 @pytest.mark.regression
-def test_get_user_me(private_users_client: PrivateUsersClient, function_user): # Инициализация клиента private_users_client с помощью фикстуры, которая возвращает экземпляр PrivateUsersClient
-    response = private_users_client.get_user_me_api() # отправка запроса на получение данных текущего пользователя с помощью метода get_user_me_api
-    response_data = GetUserResponseSchema.model_validate_json(response.text) # преобразование ответа в словарь с данными пользователя с помощью метода model_value_json класса GetUserResponseSchema
+def test_get_user_me(function_user: UserFixture, private_users_client: PrivateUsersClient): # Инициализация клиента private_users_client с помощью фикстуры, которая возвращает экземпляр PrivateUsersClient
+    response = private_users_client.get_user_me_api()  # отправка запроса на получение текущего пользователя c помощью метода get_user_me_api (для анализа Response)
+    response_data = GetUserResponseSchema.model_validate_json(response.text)  # преобразование ответа в словарь с данными пользователя с помощью метода model_value_json класса CreateUserResponseSchema
 
-    assert_status_code(response.status_code, HTTPStatus.OK) # проверка, что статус ответа равен 200 (успешное получение данных пользователя)
-    assert_get_user_response(response_data, function_user.response) # проверка, что ответ соответствует полученным данным пользователя
-    validate_json_schema(response.json(), response_data.model_json_schema()) # проверка, что ответ соответствует схеме GetUserResponseSchema
+    assert_status_code(response.status_code, HTTPStatus.OK)  # проверка, что статус ответа равен 200 (успешное создание пользователя)
+    assert_get_user_response(response_data, function_user.response) # проверка, что ответ соответствует запросу на создание пользователя. response_data - это ответ на получение пользователя, а function_user.response - это ответ на создание пользователя
+
+    validate_json_schema(response.json(), response_data.model_json_schema()) #  проверка, что ответ соответствует схеме GetUserResponseSchema

@@ -13,7 +13,7 @@ from tools.assertions.schema import validate_json_schema
 
 @pytest.mark.regression
 @pytest.mark.authentication
-def test_login(function_user: UserFixture, authentication_client: AuthenticationClient): # инициализация клиентов  с помощью фикстур, которые возвращают экземпляры PublicUsersClient и AuthenticationClient
+def test_login(function_user: UserFixture, authentication_client: AuthenticationClient): # инициализация клиента и создание пользователя с помощью фикстуры function_user, которая возвращает экземпляр UserFixture с данными пользователя
     # подготовка данных для аутентификации
     request = LoginRequestSchema(email=function_user.email, password=function_user.password) # создание запроса на аутентификацию с помощью LoginRequestSchema, используя email и password из фикстуры function_user
     # отправка запроса на аутентификацию c помощью метода login_api и данных запроса login_request
