@@ -1,0 +1,176 @@
+Реорганизация проекта с использованием плагинов
+Теперь интегрируем работу с плагинами в наш проект. Основная цель — перенести фикстуры, отвечающие за работу с пользователями и аутентификацией, в отдельные модули. Это упростит поддержку кода и сделает его более модульным. В будущем мы сможем добавлять другие плагины, например, для работы с файлами, курсами и заданиями.
+
+-------------------------------------------------------
+1. Перенос фикстур аутентификации в плагины
+-------------------------------------------------------
+1.1. Создание структуры для плагинов
+Сначала создадим папку fixtures в корне проекта. В ней будут храниться модули с фикстурами:
+
+.
+└── autotests-api/
+    └── fixtures/
+        └── __init__.py
+Затем создаем в этой папке файл authentication.py, в который перенесем фикстуры, связанные с аутентификацией:
+
+.
+└── autotests-api/
+    └── fixtures/
+        ├── __init__.py
+        └── authentication.py
+1.2. Перенос фикстур из conftest.py в authentication.py
+Теперь откроем /fixtures/authentication.py и добавим в него следующий код:
+
+import pytest
+
+from clients.authentication.authentication_client import AuthenticationClient, get_authentication_client
+
+
+@pytest.fixture
+def authentication_client() -> AuthenticationClient:
+    return get_authentication_client()
+Фактически, мы просто перенесли фикстуру authentication_client и все необходимые импорты из tests/conftest.py в fixtures/authentication.py.
+
+Почему это работает?
+В pytest можно подключать фикстуры из отдельных файлов, используя механизм плагинов. В файле conftest.py (который pytest автоматически загружает) мы укажем, что фикстуры находятся в модуле fixtures.authentication.
+
+1.3. Объявление плагинов в conftest.py
+Создадим файл conftest.py в корневой директории проекта:
+
+.
+└── autotests-api/
+    └── conftest.py
+Добавим в него следующий код:
+
+pytest_plugins = (
+    "fixtures.authentication"
+)
+Что это делает?
+Запись pytest_plugins = ("fixtures.authentication",) указывает pytest, что фикстуры необходимо загружать из fixtures/authentication.py. Это позволяет использовать фикстуры из плагинов без необходимости использования множества conftest.py файлов.
+-------------------------------------------------------
+2. Перенос фикстур пользователей в плагины
+-------------------------------------------------------
+Теперь аналогично перенесем фикстуры, связанные с пользователями.
+
+2.1. Создание файла users.py
+Добавляем новый файл users.py в папку fixtures:
+
+.
+└── autotests-api/
+    └── fixtures/
+        ├── __init__.py
+        ├── users.py
+        └── authentication.py
+2.2. Перенос фикстур пользователей в users.py
+Откроем /fixtures/users.py и добавим в него код:
+
+import pytest
+from pydantic import BaseModel, EmailStr
+
+from clients.private_http_builder import AuthenticationUserSchema
+from clients.users.private_users_client import get_private_users_client, PrivateUsersClient
+from clients.users.public_users_client import get_public_users_client, PublicUsersClient
+from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema
+
+
+class UserFixture(BaseModel):
+    request: CreateUserRequestSchema
+    response: CreateUserResponseSchema
+
+    @property
+    def email(self) -> EmailStr:
+        return self.request.email
+
+    @property
+    def password(self) -> str:
+        return self.request.password
+
+    @property
+    def authentication_user(self) -> AuthenticationUserSchema:
+        return AuthenticationUserSchema(email=self.email, password=self.password)
+
+
+@pytest.fixture
+def public_users_client() -> PublicUsersClient:
+    return get_public_users_client()
+
+
+@pytest.fixture
+def private_users_client(function_user: UserFixture) -> PrivateUsersClient:
+    return get_private_users_client(function_user.authentication_user)
+
+
+@pytest.fixture
+def function_user(public_users_client: PublicUsersClient) -> UserFixture:
+    request = CreateUserRequestSchema()
+    response = public_users_client.create_user(request)
+    return UserFixture(request=request, response=response)
+Здесь мы просто перенесли фикстуры работы с пользователями из conftest.py, а также оставили класс UserFixture, который использовался для аннотаций в тестах.
+
+2.3. Объявление плагинов в conftest.py
+Теперь подключим фикстуры users.py в pytest_plugins:
+
+pytest_plugins = (
+    "fixtures.users",
+    "fixtures.authentication"
+)
+Теперь pytest будет автоматически загружать фикстуры и из fixtures.users, и из fixtures.authentication.
+
+-------------------------------------------------------
+3. Обновление импортов в тестах
+-------------------------------------------------------
+Так как мы перенесли фикстуры в плагины, необходимо обновить импорты.
+
+tests/test_authentication.py
+
+from http import HTTPStatus
+
+import pytest
+
+from clients.authentication.authentication_client import AuthenticationClient
+from clients.authentication.authentication_schema import LoginRequestSchema, LoginResponseSchema
+from clients.users.public_users_client import PublicUsersClient
+from fixtures.users import UserFixture  # Заменяем импорт
+from tools.assertions.authentication import assert_login_response
+from tools.assertions.base import assert_status_code
+from tools.assertions.schema import validate_json_schema
+
+# Остальной код без изменений
+tests/test_users.py
+
+from http import HTTPStatus
+
+import pytest
+
+from clients.users.private_users_client import PrivateUsersClient
+from clients.users.public_users_client import PublicUsersClient
+from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, GetUserResponseSchema
+from fixtures.users import UserFixture  # Заменяем импорт
+from tools.assertions.base import assert_status_code
+from tools.assertions.schema import validate_json_schema
+from tools.assertions.users import assert_create_user_response, assert_get_user_response
+
+# Остальной код без изменений
+
+-------------------------------------------------------
+4. Удаление tests/conftest.py
+-------------------------------------------------------
+После переноса всех фикстур conftest.py в папку fixtures, он больше не нужен, поэтому удаляем его:
+
+    .
+    └── autotests-api/
+        └── tests/
+            └── conftest.py  # Удаляем файл conftest.py
+
+Данный файл нам больше не нужен так как мы перенесли все фикстуры в плагины
+
+-------------------------------------------------------
+5. Проверка работоспособности тестов
+-------------------------------------------------------
+После всех изменений необходимо запустить тесты, чтобы убедиться, что фикстуры корректно подгружаются.
+
+python -m pytest -m regression -s -v
+Итог
+Перенос фикстур в плагины сделал код более структурированным и модульным.
+Теперь фикстуры разделены по логическим группам (аутентификация, пользователи и т. д.), что упрощает поддержку
+conftest.py в tests теперь не нужен, так как все фикстуры загружаются через pytest_plugins.
