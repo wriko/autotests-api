@@ -1,0 +1,173 @@
+================================
+Параметризация фикстур
+================================
+Параметризация фикстур в pytest позволяет передавать в фикстуру различные значения, которые затем автоматически используются в тестах. Это упрощает тестирование с разными наборами данных без дублирования кода. На практике встречается довольно редко, но знать об этом тоже важно
+
+1. Добавим в файл test_parametrization.py следующий код:
+
+    import pytest
+    from _pytest.fixtures import SubRequest
+
+
+    @pytest.fixture(params=[
+        "https://dev.company.com",
+        "https://stable.company.com",
+        "https://prod.company.com"
+    ])
+    # Фикстура будет возвращать три разных хоста
+    # Соотвественно все автотесты использующие данную фикстуру будут запускаться три раза
+    def host(request: SubRequest) -> str:
+        # Внутри атрибута param находится одно из значений "https://dev.company.com",
+        # "https://stable.company.com", "https://prod.company.com"
+        return request.param
+
+
+    # В самом автотесте уже не нужно добавлять параметризацию, он будет автоматически параметризован из фикстуры
+    def test_host(host: str):
+        # Используем фикстуру в автотесте, она вернет нам хост в виде строки
+        print(f"Running test on host: {host}")
+
+
+2. Запустим автотест test_host:
+    python -m pytest -k "test_host" -s -v
+
+Пример вывода в консоль при успешном запуске команды будет выглядеть так:
+
+    (.venv) username@ip-8-8-8-8 autotests-api % python -m pytest -k "test_host" -s -v
+    ====================================================================== test session starts =======================================================================
+    platform darwin -- Python 3.11.9, pytest-8.3.3, pluggy-1.5.0 -- /Users/username/Documents/autotests-api/.venv/bin/python
+    cachedir: .pytest_cache
+    rootdir: /Users/username/Documents/autotests-api
+    configfile: pytest.ini
+    plugins: Faker-36.2.2, anyio-4.8.0
+    collected 37 items / 34 deselected / 3 selected
+
+    tests/test_parametrization.py::test_host[https://dev.company.com] Running test on host: https://dev.company.com
+    PASSED
+    tests/test_parametrization.py::test_host[https://stable.company.com] Running test on host: https://stable.company.com
+    PASSED
+    tests/test_parametrization.py::test_host[https://prod.company.com] Running test on host: https://prod.company.com
+    PASSED
+
+    ================================================================ 3 passed, 34 deselected in 0.01s ================================================================
+
+Как мы видим из логов, автотест test_host выполнился три раза с разными хостами, которые были указаны в фикстуре host
+
+
+================================
+Параметризация классов
+================================
+Параметризация классов очень мощный инструмент, который работает по аналогии с параметризацией обычных тестовых функций. Рассмотрим на примере
+
+1. Добавим в файл test_parametrization.py следующий код:
+
+    # Для тестовых классов параметризациф указывается для самого класса
+    @pytest.mark.parametrize("user", ["Alice", "Zara"])
+    class TestOperations:
+        # Параметр "user" передается в качестве аргумента в каждый тестовый метод класса
+        def test_user_with_operations(self, user: str):
+            print(f"User with operations: {user}")
+
+        # Аналогично тут передается "user"
+        def test_user_without_operations(self, user: str):
+            print(f"User without operations: {user}")
+
+2. Запустим все автотесты в тестовом классе TestOperations:
+    python -m pytest -k "TestOperations" -s -v
+
+Пример вывода в консоль при успешном запуске команды будет выглядеть так:
+
+    (.venv) username@ip-8-8-8-8 autotests-api % python -m pytest -k "TestOperations" -s -v
+    ====================================================================== test session starts =======================================================================
+    platform darwin -- Python 3.11.9, pytest-8.3.3, pluggy-1.5.0 -- /Users/username/Documents/autotests-api/.venv/bin/python
+    cachedir: .pytest_cache
+    rootdir: /Users/username/Documents/autotests-api
+    configfile: pytest.ini
+    plugins: Faker-36.2.2, anyio-4.8.0
+    collected 41 items / 37 deselected / 4 selected
+
+    tests/test_parametrization.py::TestOperations::test_user_with_operations[Alice] User with operations: Alice
+    PASSED
+    tests/test_parametrization.py::TestOperations::test_user_with_operations[Zara] User with operations: Zara
+    PASSED
+    tests/test_parametrization.py::TestOperations::test_user_without_operations[Alice] User without operations: Alice
+    PASSED
+    tests/test_parametrization.py::TestOperations::test_user_without_operations[Zara] User without operations: Zara
+    PASSED
+
+    ================================================================ 4 passed, 37 deselected in 0.02s ================================================================
+
+В логе видно, что каждый метод класса выполнен дважды — один раз для пользователя Alice и один раз для пользователя Zara. Для каждого запуска теста параметр user подставляется в качестве аргумента.
+
+    tests/test_parametrization.py::TestOperations::test_user_with_operations[Alice] User with operations: Alice
+    PASSED
+           - test_user_with_operations[Alice] — первый запуск метода test_user_with_operations с параметром "Alice". В консоль выводится сообщение: User with operations: Alice. Тест завершился успешно (PASSED).
+
+    tests/test_parametrization.py::TestOperations::test_user_with_operations[Zara] User with operations: Zara
+    PASSED
+          - Второй запуск метода test_user_with_operations, но уже с параметром "Zara". Сообщение: User with operations: Zara. Тест также прошёл успешно.
+
+Тот же процесс повторяется для метода test_user_without_operations:
+
+    tests/test_parametrization.py::TestOperations::test_user_without_operations[Alice] User without operations: Alice
+    PASSED
+
+    tests/test_parametrization.py::TestOperations::test_user_without_operations[Zara] User without operations: Zara
+    PASSED
+
+Важно! Параметризироваться также могут тестовые классы вместе с тестовыми методами, тогда будет работать "перемножение" параметров, как мы разбирали ранее. Например:
+
+    @pytest.mark.parametrize("user", ["Alice", "Zara"])
+    class TestOperations:
+        @pytest.mark.parametrize("account", ["Credit card", "Debit card"])
+        def test_user_with_operations(self, user: str, account: str):
+            # Данный автотест будет запущен 4 раза
+            print(f"User with operations: {user}")
+
+================================
+Финальный файл test_parametrization.py
+================================
+    import pytest
+    from _pytest.fixtures import SubRequest
+
+
+    @pytest.mark.parametrize("number", [1, 2, 3, -1])
+    def test_numbers(number: int):
+        assert number > 0
+
+
+    @pytest.mark.parametrize("number, expected", [(1, 1), (2, 4), (3, 9)])
+    def test_several_numbers(number: int, expected: int):
+        assert number ** 2 == expected
+
+
+    @pytest.mark.parametrize("os", ["macos", "windows", "linux", "debian"])
+    @pytest.mark.parametrize("host", [
+        "https://dev.company.com",
+        "https://stable.company.com",
+        "https://prod.company.com"
+    ])
+    def test_multiplication_of_numbers(os: str, host: str):
+        assert len(os + host) > 0
+
+
+    @pytest.fixture(params=[
+        "https://dev.company.com",
+        "https://stable.company.com",
+        "https://prod.company.com"
+    ])
+    def host(request: SubRequest) -> str:
+        return request.param
+
+
+    def test_host(host: str):
+        print(f"Running test on host: {host}")
+
+
+    @pytest.mark.parametrize("user", ["Alice", "Zara"])
+    class TestOperations:
+        def test_user_with_operations(self, user: str):
+            print(f"User with operations: {user}")
+
+        def test_user_without_operations(self, user: str):
+            print(f"User without operations: {user}")

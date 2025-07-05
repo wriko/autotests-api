@@ -1,0 +1,144 @@
+Идентификаторы
+Ссылки:
+
+Официальная документация Pytest по работе с идентификаторами в параметризации
+В фикстурах есть возможность кастомизировать названия параметров, что значительно улучшает читабельность тестов. Рассмотрим это на примере тестирования банковского приложения. Допустим, мы пишем автотест, в котором нам нужно авторизоваться в приложении под тремя разными пользователями. Для авторизации используем номера телефонов:
+
++70000000011 — тестовый пользователь с деньгами на счету
++70000000022 — тестовый пользователь без денег на счету
++70000000033 — тестовый пользователь с операциями по счету
+Добавим автотест test_identifiers в файл test_parametrization.py и в качестве параметров будем использовать номера телефонов следующим образом:
+
+@pytest.mark.parametrize("phone_number", ["+70000000011", "+70000000022", "+70000000033"])
+def test_identifiers(phone_number: str):
+    pass
+Если мы запустим этот автотест, то в логах увидим следующее:
+
+tests/test_parametrization.py::test_identifiers[+70000000011] PASSED
+tests/test_parametrization.py::test_identifiers[+70000000022] PASSED
+tests/test_parametrization.py::test_identifiers[+70000000033] PASSED
+На первый взгляд, все выглядит нормально. Однако возникает проблема с читабельностью тестов. Сможете ли вы сразу понять, к какому пользователю относится каждый номер телефона, если бы я не предоставил выше описание? Я тоже сомневаюсь, что это будет легко сделать. А теперь представьте, что у вас есть несколько десятков или даже сотен тестовых пользователей, каждый из которых используется в автотестах. Запомнить, к какому пользователю относится какой номер телефона, становится весьма сложной задачей.
+
+Здесь на помощь приходят идентификаторы (IDs). Используя их, мы можем сделать наши тесты более понятными. Давайте перепишем пример автотеста test_identifiers, но уже с использованием идентификаторов:
+
+@pytest.mark.parametrize(
+    "phone_number",
+    ["+70000000011", "+70000000022", "+70000000033"],
+    ids=[
+        "User with money on bank account",
+        "User without money on bank account",
+        "User with operations on bank account"
+    ]
+)
+def test_identifiers(phone_number: str):
+    pass
+Теперь, при запуске этого теста, мы увидим более информативные логи:
+
+tests/test_parametrization.py::test_identifiers[User with money on bank account] PASSED
+tests/test_parametrization.py::test_identifiers[User without money on bank account] PASSED
+tests/test_parametrization.py::test_identifiers[User with operations on bank account] PASSED
+С помощью идентификаторов мы можем легко понять, о каком пользователе идет речь в каждом тесте, что делает нашу тестовую базу более управляемой и понятной
+
+Динамические идентификаторы в параметризации
+В предыдущем примере мы использовали список с описаниями номеров телефонов пользователей для указания ids, чтобы сделать тесты более читаемыми. Однако, что если мы хотим динамически генерировать идентификаторы в зависимости от переданного значения? Например, можно настроить лог таким образом, чтобы в нем отображались как номера телефонов, так и описание каждого пользователя:
+
+tests/test_parametrization.py::test_identifiers[+70000000011: User with money on bank account] PASSED
+tests/test_parametrization.py::test_identifiers[+70000000022: User without money on bank account] PASSED
+tests/test_parametrization.py::test_identifiers[+70000000033: User with operations on bank account] PASSED
+Конечно, мы могли бы просто вручную добавить номер телефона в описание пользователя, но это привело бы к дублированию данных: номер телефона был бы указан и в параметрах, и в описании. Дублирование информации нежелательно, поэтому давайте модифицируем предыдущий пример, чтобы избежать его. Мы будем генерировать идентификаторы динамически на основе переданного номера телефона.
+
+Пример
+Создадим словарь, где ключом будет номер телефона, а значением — описание пользователя:
+
+# Словарь пользователей: номер телефона — ключ, описание — значение
+users = {
+    "+70000000011": "User with money on bank account",
+    "+70000000022": "User without money on bank account",
+    "+70000000033": "User with operations on bank account"
+}
+
+@pytest.mark.parametrize(
+    "phone_number",
+    users.keys(),  # Передаем список номеров телефонов
+    ids=lambda phone_number: f"{phone_number}: {users[phone_number]}"  # Генерируем идентификаторы динамически
+)
+def test_identifiers(phone_number: str):
+    pass
+Здесь:
+
+Мы используем users.keys(), чтобы передать список номеров телефонов как параметры для теста.
+С помощью аргумента ids и лямбда-функции динамически формируем строку, которая включает в себя и номер телефона, и описание пользователя.
+Теперь, если запустить тест test_identifiers с помощью команды:
+
+python -m pytest -k "test_identifiers" -s -v
+Мы увидим следующий лог:
+
+tests/test_parametrization.py::test_identifiers[+70000000011: User with money on bank account] PASSED
+tests/test_parametrization.py::test_identifiers[+70000000022: User without money on bank account] PASSED
+tests/test_parametrization.py::test_identifiers[+70000000033: User with operations on bank account] PASSED
+Таким образом, использование динамически формируемых идентификаторов улучшает читаемость логов тестов и избавляет от необходимости дублировать данные. Теперь каждому номеру телефона соответствует его уникальное описание прямо в идентификаторе теста.
+
+=================================================
+Финальный файл test_parametrization.py
+=================================================
+
+    import pytest
+    from _pytest.fixtures import SubRequest
+
+
+    @pytest.mark.parametrize("number", [1, 2, 3, -1])
+    def test_numbers(number: int):
+        assert number > 0
+
+
+    @pytest.mark.parametrize("number, expected", [(1, 1), (2, 4), (3, 9)])
+    def test_several_numbers(number: int, expected: int):
+        assert number ** 2 == expected
+
+
+    @pytest.mark.parametrize("os", ["macos", "windows", "linux", "debian"])
+    @pytest.mark.parametrize("host", [
+        "https://dev.company.com",
+        "https://stable.company.com",
+        "https://prod.company.com"
+    ])
+    def test_multiplication_of_numbers(os: str, host: str):
+        assert len(os + host) > 0
+
+
+    @pytest.fixture(params=[
+        "https://dev.company.com",
+        "https://stable.company.com",
+        "https://prod.company.com"
+    ])
+    def host(request: SubRequest) -> str:
+        return request.param
+
+
+    def test_host(host: str):
+        print(f"Running test on host: {host}")
+
+
+    @pytest.mark.parametrize("user", ["Alice", "Zara"])
+    class TestOperations:
+        def test_user_with_operations(self, user: str):
+            print(f"User with operations: {user}")
+
+        def test_user_without_operations(self, user: str):
+            print(f"User without operations: {user}")
+
+
+    users = {
+        "+70000000011": "User with money on bank account",
+        "+70000000022": "User without money on bank account",
+        "+70000000033": "User with operations on bank account"
+    }
+
+
+    @pytest.mark.parametrize(
+        "phone_number",
+        users.keys(),
+        ids=lambda phone_number: f"{phone_number}: {users[phone_number]}"
+    )
+    def test_identifiers(phone_number: str):
+        pass

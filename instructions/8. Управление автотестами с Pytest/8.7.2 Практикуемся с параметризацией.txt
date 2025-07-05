@@ -1,0 +1,208 @@
+Практикуемся с параметризацией pytest
+Базовый случай
+Рассмотрим самый базовый и самый распространенный случай использования pytest параметризации
+
+1. Создадим файл test_parametrization.py
+
+.
+└── tests/
+    └── test_parametrization.py
+2. В файл test_parametrization.py добавм автотест test_numbers:
+
+import pytest
+
+
+@pytest.mark.parametrize("number", [1, 2, 3, -1])  # Параметризируем тест
+# Название "number" в декораторе "parametrize" и в аргументах автотеста должны совпадать
+def test_numbers(number: int):
+    assert number > 0
+Важно! Название number в декораторе @pytest.mark.parametrize и в аргументах автотеста должны совпадать. Например, такой автотест работать не будет:
+
+import pytest
+
+
+@pytest.mark.parametrize("number", [1, 2, 3, -1])
+# Если мы запустим этот автотест то будет ошибка: In test_numbers: function uses no argument 'number'
+def test_numbers(custom_number: int):
+    assert custom_number > 0
+3. Запустим автотест test_numbers:
+
+python -m pytest -k "test_numbers" -s -v
+Пример вывода в консоль при успешном запуске команды будет выглядеть так:
+
+(.venv) username@ip-8-8-8-8 autotests-api % python -m pytest -k "test_numbers" -s -v
+====================================================================== test session starts =======================================================================
+platform darwin -- Python 3.11.9, pytest-8.3.3, pluggy-1.5.0 -- /Users/username/Documents/autotests-api/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/username/Documents/autotests-api
+configfile: pytest.ini
+plugins: Faker-36.2.2, anyio-4.8.0
+collected 19 items / 15 deselected / 4 selected
+
+tests/test_parametrization.py::test_numbers[1] PASSED
+tests/test_parametrization.py::test_numbers[2] PASSED
+tests/test_parametrization.py::test_numbers[3] PASSED
+tests/test_parametrization.py::test_numbers[-1] FAILED
+
+============================================================================ FAILURES ============================================================================
+________________________________________________________________________ test_numbers[-1] ________________________________________________________________________
+
+number = -1
+
+    @pytest.mark.parametrize("number", [1, 2, 3, -1])
+    def test_numbers(number: int):
+>       assert number > 0
+E       assert -1 > 0
+
+tests/test_parametrization.py:6: AssertionError
+==================================================================== short test summary info =====================================================================
+FAILED tests/test_parametrization.py::test_numbers[-1] - assert -1 > 0
+=========================================================== 1 failed, 3 passed, 15 deselected in 0.03s ===========================================================
+Посмотрим на результат выполнения автотестов:
+
+tests/test_parametrization.py::test_numbers[1] PASSED
+tests/test_parametrization.py::test_numbers[2] PASSED
+tests/test_parametrization.py::test_numbers[3] PASSED
+tests/test_parametrization.py::test_numbers[-1] FAILED
+Здесь показано, что тест test_numbers был запущен с четырьмя разными значениями (1, 2, 3 и -1). Каждый запуск теста с различным значением параметра отображается как отдельный тест с указанием того, какое именно значение использовалось в данный момент.
+
+test_numbers[1] PASSED — тест с параметром 1 прошел успешно.
+test_numbers[2] PASSED — тест с параметром 2 также успешно завершился.
+test_numbers[3] PASSED — тест с параметром 3 также прошел.
+test_numbers[-1] FAILED — тест с параметром -1 завершился неудачно, так как условие assert number > 0 для -1 не выполнено.
+Здесь важно понимать, что каждая строка в логе соответствует отдельному прогону теста с конкретным значением параметра. Именно параметризация позволила выполнить один и тот же тест несколько раз с разными входными данными.
+
+Несколько параметров
+Теперь рассмотрим случай, когда параметризация используется для передачи сразу нескольких параметров сразу
+
+1. В уже созданный файл test_parametrization.py добавм автотест test_several_numbers:
+
+@pytest.mark.parametrize("number, expected", [(1, 1), (2, 4), (3, 9)])
+# В данном случае в качестве данных используется список с кортежами
+def test_several_numbers(number: int, expected: int):
+    # Возводим число number в квадрат и проверяем, что оно равно ожидаемому
+    assert number ** 2 == expected
+В данном пример в качестве данных используется список с кортежами. Возьмем кортеж (3, 9) в качестве примера, число 3 соответствует аргументу number, число 9 соотвтествует аргументу expected
+
+2. Запустим автотест test_several_numbers:
+
+python -m pytest -k "test_several_numbers" -s -v
+Пример вывода в консоль при успешном запуске команды будет выглядеть так:
+
+(.venv) username@ip-8-8-8-8 autotests-api % python -m pytest -k "test_several_numbers" -s -v
+====================================================================== test session starts =======================================================================
+platform darwin -- Python 3.11.9, pytest-8.3.3, pluggy-1.5.0 -- /Users/username/Documents/autotests-api/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/username/Documents/autotests-api
+configfile: pytest.ini
+plugins: Faker-36.2.2, anyio-4.8.0
+collected 22 items / 19 deselected / 3 selected
+
+tests/test_parametrization.py::test_several_numbers[1-1] PASSED
+tests/test_parametrization.py::test_several_numbers[2-4] PASSED
+tests/test_parametrization.py::test_several_numbers[3-9] PASSED
+
+================================================================ 3 passed, 19 deselected in 0.01s ================================================================
+Посмотрим на результат выполнения автотестов:
+
+tests/test_parametrization.py::test_several_numbers[1-1] PASSED
+tests/test_parametrization.py::test_several_numbers[2-4] PASSED
+tests/test_parametrization.py::test_several_numbers[3-9] PASSED
+Здесь подробно показаны результаты каждого теста:
+
+test_several_numbers[1-1] PASSED: Тест с параметрами number=1 и expected=1 прошел успешно.
+test_several_numbers[2-4] PASSED: Тест с параметрами number=2 и expected=4 прошел успешно.
+test_several_numbers[3-9] PASSED: Тест с параметрами number=3 и expected=9 прошел успешно.
+Важно отметить несколько пунктов:
+
+Мы передаем два аргумента — number и expected — в каждый прогон теста. Это позволяет тестировать различные входные данные и ожидания в одном тесте.
+В декораторе @pytest.mark.parametrize("number, expected", [(1, 1), (2, 4), (3, 9)]) указаны три набора параметров.
+Названия аргументов number и expected должны совпадать с именами параметров функции test_several_numbers.
+В квадратных скобках отображаются значения каждого набора параметров, с которыми запускался тест, что позволяет легко отследить, с какими данными работал каждый прогон.
+Пример: test_several_numbers[1-1] указывает, что тест был выполнен с number=1 и expected=1
+Перемножение параметров
+Разберем более сложный случай, но тем не менее тоже очень распространенный. Есть ситуации, когда нам необходимо проверить сразу матрицу из нескольких параметров. Например, есть задача запустить один и тот же автотест на нескольких операционных системах и на каждой операционной системе запустить на нескольких хостах. Это называется декартовым произведением (каждый элемент из первого множества комбинируется с каждым элементом из второго множества)
+
+Вот как будет выглядеть таблица всех комбинаций:
+
+Test Run	os	host
+1	macos	https://dev.company.com
+2	macos	https://stable.company.com
+3	macos	https://prod.company.com
+4	windows	https://dev.company.com
+5	windows	https://stable.company.com
+6	windows	https://prod.company.com
+7	linux	https://dev.company.com
+8	linux	https://stable.company.com
+9	linux	https://prod.company.com
+10	debian	https://dev.company.com
+11	debian	https://stable.company.com
+12	debian	https://prod.company.com
+ 1. В уже созданный файл test_parametrization.py добавм автотест test_multiplication_of_numbers:
+
+@pytest.mark.parametrize("os", ["macos", "windows", "linux", "debian"])  # Параметризируем по операционной системе
+@pytest.mark.parametrize("host", [
+    "https://dev.company.com",
+    "https://stable.company.com",
+    "https://prod.company.com"
+])  # Параметризируем по хосту
+def test_multiplication_of_numbers(os: str, host: str):
+    assert len(os + host) > 0  # Проверка указана для примера
+Параметры os и host будут "перемножаться", в итоге будет запущено 12 автотестов
+
+2. Запустим автотест test_multiplication_of_numbers:
+
+python -m pytest -k "test_multiplication_of_numbers" -s -v
+Пример вывода в консоль при успешном запуске команды будет выглядеть так:
+
+(.venv) username@ip-8-8-8-8 autotests-api % python -m pytest -k "test_multiplication_of_numbers" -s -v
+====================================================================== test session starts =======================================================================
+platform darwin -- Python 3.11.9, pytest-8.3.3, pluggy-1.5.0 -- /Users/username/Documents/autotests-api/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/username/Documents/autotests-api
+configfile: pytest.ini
+plugins: Faker-36.2.2, anyio-4.8.0
+collected 34 items / 22 deselected / 12 selected
+
+tests/test_parametrization.py::test_multiplication_of_numbers[https://dev.company.com-macos] PASSED
+tests/test_parametrization.py::test_multiplication_of_numbers[https://dev.company.com-windows] PASSED
+tests/test_parametrization.py::test_multiplication_of_numbers[https://dev.company.com-linux] PASSED
+tests/test_parametrization.py::test_multiplication_of_numbers[https://dev.company.com-debian] PASSED
+tests/test_parametrization.py::test_multiplication_of_numbers[https://stable.company.com-macos] PASSED
+tests/test_parametrization.py::test_multiplication_of_numbers[https://stable.company.com-windows] PASSED
+tests/test_parametrization.py::test_multiplication_of_numbers[https://stable.company.com-linux] PASSED
+tests/test_parametrization.py::test_multiplication_of_numbers[https://stable.company.com-debian] PASSED
+tests/test_parametrization.py::test_multiplication_of_numbers[https://prod.company.com-macos] PASSED
+tests/test_parametrization.py::test_multiplication_of_numbers[https://prod.company.com-windows] PASSED
+tests/test_parametrization.py::test_multiplication_of_numbers[https://prod.company.com-linux] PASSED
+tests/test_parametrization.py::test_multiplication_of_numbers[https://prod.company.com-debian] PASSED
+
+
+=============================================================== 12 passed, 22 deselected in 0.02s ================================================================
+Важно отметить несколько пунктов:
+
+В строках вида tests/test_parametrization.py::test_multiplication_of_numbers[https://dev.company.com-macos] PASSED видны имена тестов. Здесь каждый тест включает в себя название самого теста test_multiplication_of_numbers, а также параметры, с которыми он был выполнен. Эти параметры отображаются в квадратных скобках и выглядят как [host-os].
+Например, тест с комбинацией параметров https://dev.company.com для хоста и macos для операционной системы отображается как test_multiplication_of_numbers[https://dev.company.com-macos]
+Тесты выполняются для всех комбинаций параметров, начиная с первой операционной системы и поочередно для каждого хоста. Например: Сначала идет https://dev.company.com для всех операционных систем: https://dev.company.com-macos, https://dev.company.com-windows, https://dev.company.com-linux, https://dev.company.com-debian. Затем идет https://stable.company.com для тех же операционных систем. И так далее для хоста https://prod.company.com
+Финальный файл test_parametrization.py
+import pytest
+
+
+@pytest.mark.parametrize("number", [1, 2, 3, -1])
+def test_numbers(number: int):
+    assert number > 0
+
+
+@pytest.mark.parametrize("number, expected", [(1, 1), (2, 4), (3, 9)])
+def test_several_numbers(number: int, expected: int):
+    assert number ** 2 == expected
+
+
+@pytest.mark.parametrize("os", ["macos", "windows", "linux", "debian"])
+@pytest.mark.parametrize("host", [
+    "https://dev.company.com",
+    "https://stable.company.com",
+    "https://prod.company.com"
+])
+def test_multiplication_of_numbers(os: str, host: str):
+    assert len(os + host) > 0
