@@ -13,7 +13,8 @@ from tools.assertions.users import assert_create_user_response, assert_get_user_
 
 @pytest.mark.users
 @pytest.mark.regression
-def test_create_user(public_users_client: PublicUsersClient): # Инициализация клиента public_users_client с помощью фикстуры, которая возвращает экземпляр PublicUsersClient
+@pytest.mark.parametrize("email", ["mail.ru", "gmail.com", "example.com"])  # параметризация теста по доменам электронной почты/ Тест test_create_user будет запущен три раза с разными значениями email: "mail.ru", "gmail.com", "example.com"
+def test_create_user(email: str, public_users_client: PublicUsersClient): # Инициализация клиента public_users_client с помощью фикстуры, которая возвращает экземпляр PublicUsersClient
     request = CreateUserRequestSchema()  # создание запроса на создание пользователя c помощью схемы CreateUserRequestSchema (aтрибуты будут заполнены случайными фейковыми значениями)
     response = public_users_client.create_user_api(request)  # отправка запроса на создание пользователя c помощью метода create_user_api (для анализа Response)
     response_data = CreateUserResponseSchema.model_validate_json(response.text)  # преобразование ответа в словарь с данными пользователя с помощью метода model_value_json класса CreateUserResponseSchema
