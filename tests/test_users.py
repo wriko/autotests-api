@@ -5,6 +5,7 @@ from clients.users.public_users_client import PublicUsersClient
 from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, GetUserResponseSchema
 from http import HTTPStatus
 
+from faker_example import fake
 from fixtures.users import UserFixture
 from tools.assertions.base import assert_status_code
 from tools.assertions.schema import validate_json_schema
@@ -15,7 +16,7 @@ from tools.assertions.users import assert_create_user_response, assert_get_user_
 @pytest.mark.regression
 @pytest.mark.parametrize("email", ["mail.ru", "gmail.com", "example.com"])  # параметризация теста по доменам электронной почты/ Тест test_create_user будет запущен три раза с разными значениями email: "mail.ru", "gmail.com", "example.com"
 def test_create_user(email: str, public_users_client: PublicUsersClient): # Инициализация клиента public_users_client с помощью фикстуры, которая возвращает экземпляр PublicUsersClient
-    request = CreateUserRequestSchema()  # создание запроса на создание пользователя c помощью схемы CreateUserRequestSchema (aтрибуты будут заполнены случайными фейковыми значениями)
+    request = CreateUserRequestSchema(email=fake.email(domain=email))  # создание запроса на создание пользователя с помощью класса CreateUserRequestSchema, который наследуется от BaseModel для создания моделей данных с помощью Pydantic. Параметр email будет передан в качестве аргумента в метод email класса fake, который генерирует случайный email с указанным доменом из параметрайза.
     response = public_users_client.create_user_api(request)  # отправка запроса на создание пользователя c помощью метода create_user_api (для анализа Response)
     response_data = CreateUserResponseSchema.model_validate_json(response.text)  # преобразование ответа в словарь с данными пользователя с помощью метода model_value_json класса CreateUserResponseSchema
 
