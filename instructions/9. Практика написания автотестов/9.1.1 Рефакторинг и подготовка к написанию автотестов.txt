@@ -1,0 +1,242 @@
+Реализация фикстур для работы с файлами
+
+
+В этом уроке мы подготовим наш проект autotests-api к написанию автотестов.
+Цель данного этапа — заранее реализовать необходимый вспомогательный функционал,
+чтобы во время написания тестов сосредоточиться только на тестировании бизнес-логики, не отвлекаясь на рефакторинг и доработки.
+
+На этом шаге мы реализуем фикстуры для работы с файлами и добавим их в pytest-плагины.
+
+1. Создаем файл files.py
+В директории fixtures создадим новый файл files.py, который будет содержать фикстуры для работы с файлами.
+
+Структура проекта после добавления нового файла:
+
+.
+└── autotests-api/
+    └── fixtures/
+        └── files.py
+
+2. Реализуем фикстуры для работы с файлами
+Откроем /fixtures/files.py и добавим в него следующий код:
+
+    import pytest
+    from pydantic import BaseModel
+
+    from clients.files.files_client import get_files_client, FilesClient
+    from clients.files.files_schema import CreateFileRequestSchema, CreateFileResponseSchema
+    from fixtures.users import UserFixture
+
+
+    class FileFixture(BaseModel):
+        request: CreateFileRequestSchema
+        response: CreateFileResponseSchema
+
+
+    @pytest.fixture
+    def files_client(function_user: UserFixture) -> FilesClient:
+        return get_files_client(function_user.authentication_user)
+
+
+    @pytest.fixture
+    def function_file(files_client: FilesClient) -> FileFixture:
+        request = CreateFileRequestSchema(upload_file="./testdata/files/image.png")
+        response = files_client.create_file(request)
+        return FileFixture(request=request, response=response)
+
+
+Здесь импортируются необходимые модули:
+ - pytest — для создания фикстур.
+ - BaseModel из pydantic — используется для описания структур данных.
+ - get_files_client и FilesClient — клиент для взаимодействия с API работы с файлами.
+ - CreateFileRequestSchema и CreateFileResponseSchema — схемы запроса и ответа при создании файла.
+ - UserFixture — фикстура, предоставляющая пользователя, необходимого для аутентификации при работе с API.
+
+
+Определяем вспомогательный класс FileFixture
+
+    class FileFixture(BaseModel):
+        request: CreateFileRequestSchema
+        response: CreateFileResponseSchema
+
+Этот класс представляет объект, содержащий:
+ - request — данные запроса на загрузку файла (CreateFileRequestSchema).
+ - response — ответ от API после успешного создания файла (CreateFileResponseSchema).
+Использование BaseModel из pydantic позволяет работать с объектом более удобно и с проверкой типов.
+
+Фикстура files_client
+
+    @pytest.fixture
+    def files_client(function_user: UserFixture) -> FilesClient:
+        return get_files_client(function_user.authentication_user)
+
+Эта фикстура создает клиент FilesClient, который будет использоваться для работы с API загрузки файлов.
+ - В аргумент передается function_user — пользователь, полученный через фикстуру UserFixture.
+ - Используется метод get_files_client, который создает клиент, уже настроенный для работы от имени данного пользователя.
+ - Фикстура возвращает объект FilesClient, который можно использовать в тестах.
+
+Фикстура function_file
+
+        @pytest.fixture
+        def function_file(files_client: FilesClient) -> FileFixture:
+            request = CreateFileRequestSchema(upload_file="./testdata/files/image.png")
+            response = files_client.create_file(request)
+            return FileFixture(request=request, response=response)
+
+Эта фикстура автоматически создает тестовый файл перед каждым тестом и возвращает информацию о нем:
+ - Создается объект request типа CreateFileRequestSchema, в котором указывается путь к тестовому файлу (./testdata/files/image.png).
+ - Затем files_client.create_file(request) отправляет запрос в API, загружая файл.
+ - После успешного создания файла возвращается объект FileFixture, содержащий данные запроса и ответа API.
+Таким образом, при вызове function_file в тестах уже будет готовый загруженный файл, который можно использовать для дальнейших проверок.
+
+3. Подключаем фикстуры в pytest-плагины
+Чтобы фикстуры для работы с файлами были доступны во всех тестах, их нужно подключить в pytest_plugins.
+
+Открываем conftest.py, который находится в корневой директории проекта autotests-api, и добавляем в него строку:
+
+    pytest_plugins = (
+        "fixtures.users",
+        "fixtures.files",  # Добавляем фикстуры для работы с файлами
+        "fixtures.authentication"
+    )
+
+После этого фикстуры из files.py будут автоматически подгружаться во всех тестах проекта.
+
+Итог
+После выполнения этих шагов у нас будет готовый механизм работы с тестовыми файлами:
+
+1. Клиент для загрузки файлов (files_client).
+2. Автоматическая загрузка тестового файла перед каждым тестом (function_file).
+3. Подключение фикстур в pytest_plugins, чтобы они были доступны во всем проекте.
+
+
+
+
+
+
+=============================
+
+
+
+
+
+Реализация фикстур для работы с курсами
+На этом этапе мы добавим в проект autotests-api фикстуры, которые помогут при тестировании функциональности, связанной с курсами.
+
+Как и в предыдущих шагах, мы реализуем фикстуры и подключим их в pytest_plugins, чтобы они были доступны во всех тестах.
+
+1. Создаем файл courses.py
+В директории fixtures создаем новый файл courses.py, который будет содержать фикстуры для работы с курсами:
+
+.
+└── autotests-api/
+    └── fixtures/
+        └── courses.py
+2. Реализуем фикстуры для работы с курсами
+Открываем /fixtures/courses.py и добавляем следующий код:
+
+import pytest
+from pydantic import BaseModel
+
+from clients.courses.courses_client import CoursesClient, get_courses_client
+from clients.courses.courses_schema import CreateCourseRequestSchema, CreateCourseResponseSchema
+from fixtures.files import FileFixture
+from fixtures.users import UserFixture
+
+
+class CourseFixture(BaseModel):
+    request: CreateCourseRequestSchema
+    response: CreateCourseResponseSchema
+
+
+@pytest.fixture
+def courses_client(function_user: UserFixture) -> CoursesClient:
+    return get_courses_client(function_user.authentication_user)
+
+
+@pytest.fixture
+def function_course(
+        courses_client: CoursesClient,
+        function_user: UserFixture,
+        function_file: FileFixture
+) -> CourseFixture:
+    request = CreateCourseRequestSchema(
+        preview_file_id=function_file.response.file.id,
+        created_by_user_id=function_user.response.user.id
+    )
+    response = courses_client.create_course(request)
+    return CourseFixture(request=request, response=response)
+Что здесь импортируется:
+pytest — для создания фикстур.
+BaseModel из pydantic — используется для типизации данных фикстуры.
+CoursesClient и get_courses_client — клиент для работы с API управления курсами.
+CreateCourseRequestSchema и CreateCourseResponseSchema — схемы запроса и ответа при создании курса.
+FileFixture — фикстура, предоставляющая загруженный файл (например, изображение для превью курса).
+UserFixture — фикстура, предоставляющая тестового пользователя.
+Определяем вспомогательный класс CourseFixture
+class CourseFixture(BaseModel):
+    request: CreateCourseRequestSchema
+    response: CreateCourseResponseSchema
+Этот класс представляет объект с данными созданного курса:
+
+request — содержит данные запроса на создание курса (CreateCourseRequestSchema).
+response — содержит ответ API после создания курса (CreateCourseResponseSchema).
+Использование BaseModel из pydantic помогает проверять корректность данных, упрощая работу с объектами в тестах.
+
+Фикстура courses_client
+@pytest.fixture
+def courses_client(function_user: UserFixture) -> CoursesClient:
+    return get_courses_client(function_user.authentication_user)
+Эта фикстура создает клиент CoursesClient, который используется для взаимодействия с API курсов.
+
+В аргумент передается function_user — фикстура, предоставляющая тестового пользователя.
+Используется get_courses_client, который создает и возвращает объект CoursesClient, уже аутентифицированный от имени данного пользователя.
+Теперь в тестах можно использовать courses_client для отправки запросов в API курсов.
+Фикстура function_course
+@pytest.fixture
+def function_course(
+        courses_client: CoursesClient,
+        function_user: UserFixture,
+        function_file: FileFixture
+) -> CourseFixture:
+    request = CreateCourseRequestSchema(
+        preview_file_id=function_file.response.file.id,
+        created_by_user_id=function_user.response.user.id
+    )
+    response = courses_client.create_course(request)
+    return CourseFixture(request=request, response=response)
+Эта фикстура создает тестовый курс перед выполнением теста и возвращает объект с данными созданного курса.
+
+Передаваемые параметры:
+
+courses_client — клиент для работы с API курсов.
+function_user — пользователь, от имени которого создается курс.
+function_file — загруженный файл, который будет использоваться в качестве изображения превью курса.
+Алгоритм работы:
+
+Создается объект request типа CreateCourseRequestSchema, содержащий:
+preview_file_id — идентификатор файла (из function_file), который будет использоваться как изображение для курса.
+created_by_user_id — идентификатор пользователя, создавшего курс.
+Затем courses_client.create_course(request) отправляет запрос на создание курса в API.
+После успешного создания курса возвращается объект CourseFixture, содержащий запрос и ответ API.
+Таким образом, при вызове function_course в тесте уже будет подготовленный курс, который можно использовать для дальнейших проверок.
+
+3. Подключаем фикстуры в pytest-плагины
+Чтобы фикстуры для работы с курсами были доступны во всех тестах, подключаем их в pytest_plugins.
+
+Открываем conftest.py, который находится в корневой директории проекта autotests-api, и добавляем строку:
+
+pytest_plugins = (
+    "fixtures.users",
+    "fixtures.files",
+    "fixtures.courses",  # Добавляем фикстуры для работы с курсами
+    "fixtures.authentication"
+)
+После этого фикстуры из courses.py будут автоматически подгружаться во всех тестах проекта.
+
+Итог
+Теперь у нас есть готовый механизм для работы с тестовыми курсами:
+
+Фикстура courses_client предоставляет клиент API курсов.
+Фикстура function_course автоматически создает тестовый курс перед тестом.
+Фикстуры подключены в pytest_plugins, что делает их доступными во всех тестах проекта.
