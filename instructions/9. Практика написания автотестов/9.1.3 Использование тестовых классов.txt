@@ -1,0 +1,208 @@
+Использование тестовых классов
+Почему тестовые классы лучше тестовых функций?
+Ранее мы использовали тестовые функции для написания автотестов, а теперь перейдем на тестовые классы. Тестовые классы являются рекомендуемым подходом в pytest. Почему? Потому что они позволяют более удобно применять общие данные, такие как маркировки и параметризацию. Рассмотрим пример: если нужно добавить маркировку @pytest.mark.regression для нескольких тестов, используя функции, потребуется дублировать эту строку несколько раз:
+
+    import pytest
+
+
+    @pytest.mark.regression
+    def test_1():
+        pass
+
+
+    @pytest.mark.regression
+    def test_2():
+        pass
+
+
+    @pytest.mark.regression
+    def test_3():
+        pass
+
+Но для тестового класса маркировку можно указать один раз для всего класса:
+
+    import pytest
+
+
+    @pytest.mark.regression
+    class TestFeature:
+
+        def test_1(self):
+            pass
+
+        def test_2(self):
+            pass
+
+        def test_3(self):
+            pass
+
+
+Преимущества тестовых классов:
+
+1. Централизованное применение маркировок: как видно из примера, маркировку можно указать один раз для всего класса.
+2. Меньше повторяющегося кода: при параметризации, вместо дублирования параметров для каждой функции, параметризация указывается один раз для класса.
+
+
+Пример параметризации для функций:
+
+    import pytest
+
+
+    @pytest.mark.parametrize('browser', ['chromium', 'webkit', 'firefox'])
+    def test_1(browser):
+        pass
+
+
+    @pytest.mark.parametrize('browser', ['chromium', 'webkit', 'firefox'])
+    def test_2(browser):
+        pass
+
+
+    @pytest.mark.parametrize('browser', ['chromium', 'webkit', 'firefox'])
+    def test_3(browser):
+        pass
+
+
+Тут один и тот же код повторяется три раза, что увеличивает вероятность ошибки. В классе же параметризация указывается один раз:
+
+    @pytest.mark.parametrize('browser', ['chromium', 'webkit', 'firefox'])
+    class TestFeature:
+
+        def test_1(self, browser):
+            pass
+
+        def test_2(self, browser):
+            pass
+
+        def test_3(self, browser):
+            pass
+
+
+От сюда можно сделать вывод, что тестовые функции это не плохо, но классы все же лучше и это будет нашей целевой картиной для написание автотесов
+
+Вывод
+Тестовые функции не плохи сами по себе, но использование классов делает код более чистым и менее подверженным ошибкам. Поэтому тестовые классы будут основным подходом для написания автотестов в будущем.
+
+
+================================================
+Рефакторинг существующих автотестов
+================================================
+Начнем с рефакторинга тестов авторизации в файле tests/authentication/test_authentication.py. Вот пример, как выглядит существующий тест с использованием тестовых функций:
+
+    from http import HTTPStatus
+
+    import pytest
+
+    from clients.authentication.authentication_client import AuthenticationClient
+    from clients.authentication.authentication_schema import LoginRequestSchema, LoginResponseSchema
+    from clients.users.public_users_client import PublicUsersClient
+    from fixtures.users import UserFixture
+    from tools.assertions.authentication import assert_login_response
+    from tools.assertions.base import assert_status_code
+    from tools.assertions.schema import validate_json_schema
+
+
+    @pytest.mark.regression
+    @pytest.mark.authentication
+    def test_login(
+            function_user: UserFixture,
+            public_users_client: PublicUsersClient,
+            authentication_client: AuthenticationClient
+    ):
+        request = LoginRequestSchema(email=function_user.email, password=function_user.password)
+        response = authentication_client.login_api(request)
+        response_data = LoginResponseSchema.model_validate_json(response.text)
+
+        assert_status_code(response.status_code, HTTPStatus.OK)
+        assert_login_response(response_data)
+
+        validate_json_schema(response.json(), response_data.model_json_schema())
+
+
+Теперь перепишем на тестовый класс:
+
+    from http import HTTPStatus
+
+    import pytest
+
+    from clients.authentication.authentication_client import AuthenticationClient
+    from clients.authentication.authentication_schema import LoginRequestSchema, LoginResponseSchema
+    from clients.users.public_users_client import PublicUsersClient
+    from fixtures.users import UserFixture
+    from tools.assertions.authentication import assert_login_response
+    from tools.assertions.base import assert_status_code
+    from tools.assertions.schema import validate_json_schema
+
+
+    @pytest.mark.regression
+    @pytest.mark.authentication
+    class TestAuthentication:
+        def test_login(
+                self,
+                function_user: UserFixture,
+                public_users_client: PublicUsersClient,
+                authentication_client: AuthenticationClient
+        ):
+            request = LoginRequestSchema(email=function_user.email, password=function_user.password)
+            response = authentication_client.login_api(request)
+            response_data = LoginResponseSchema.model_validate_json(response.text)
+
+            assert_status_code(response.status_code, HTTPStatus.OK)
+            assert_login_response(response_data)
+
+            validate_json_schema(response.json(), response_data.model_json_schema())
+
+Изменения:
+
+Маркировки теперь указаны на уровне класса, а не функции.
+Тестовые функции преобразованы в методы (появился аргумент self).
+Теперь проделаем тоже самое со всеми остальными автотестами
+
+    tests/users/test_users.py
+
+    from http import HTTPStatus
+
+    import pytest
+
+    from clients.users.private_users_client import PrivateUsersClient
+    from clients.users.public_users_client import PublicUsersClient
+    from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, GetUserResponseSchema
+    from fixtures.users import UserFixture
+    from tools.assertions.base import assert_status_code
+    from tools.assertions.schema import validate_json_schema
+    from tools.assertions.users import assert_create_user_response, assert_get_user_response
+    from tools.fakers import fake
+
+
+    @pytest.mark.users
+    @pytest.mark.regression
+    class TestUsers:
+        @pytest.mark.parametrize("email", ["mail.ru", "gmail.com", "example.com"])
+        def test_create_user(self, email: str, public_users_client: PublicUsersClient):
+            request = CreateUserRequestSchema(email=fake.email(domain=email))
+            response = public_users_client.create_user_api(request)
+            response_data = CreateUserResponseSchema.model_validate_json(response.text)
+
+            assert_status_code(response.status_code, HTTPStatus.OK)
+            assert_create_user_response(request, response_data)
+
+            validate_json_schema(response.json(), response_data.model_json_schema())
+
+        def test_ger_user_me(
+                self,
+                function_user: UserFixture,
+                private_users_client: PrivateUsersClient
+        ):
+            response = private_users_client.get_user_me_api()
+            response_data = GetUserResponseSchema.model_validate_json(response.text)
+
+            assert_status_code(response.status_code, HTTPStatus.OK)
+            assert_get_user_response(response_data, function_user.response)
+
+            validate_json_schema(response.json(), response_data.model_json_schema())
+
+
+Тестирование
+Запустим все автотесты и убедимся, что они проходят успешно:
+
+python -m pytest -m "regression" -s -v
