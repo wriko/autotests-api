@@ -18,7 +18,7 @@ def courses_client(function_user: UserFixture) -> CoursesClient: # В аргум
 
 # Эта фикстура создает тестовый курс перед выполнением теста и возвращает объект с данными созданного курса.
 @pytest.fixture
-def function_course(courses_client: CoursesClient, function_user: UserFixture, function_file: FilesFixture): # — клиент для работы с API курсов.  пользователь, от имени которого создается курс.  загруженный файл, который будет использоваться в качестве изображения превью курса.
+def function_course(courses_client: CoursesClient, function_user: UserFixture, function_file: FilesFixture) -> CourseFixture: # — клиент для работы с API курсов.  пользователь, от имени которого создается курс.  загруженный файл, который будет использоваться в качестве изображения превью курса.
     request = CreateCourseRequestSchema() # Создается объект request типа CreateCourseRequestSchema, содержащий preview_file_id — идентификатор файла (из function_file), который будет использоваться как изображение для курса. created_by_user_id — идентификатор пользователя, создавшего курс
     response = courses_client.create_course(request) # Затем courses_client.create_course(request) отправляет запрос на создание курса в API.
     return CourseFixture(request=request, response=response) # После успешного создания курса возвращается объект CourseFixture, содержащий запрос и ответ API.
