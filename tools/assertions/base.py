@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Sized
 
 def assert_status_code(actual: int, expected: int):
     """
@@ -41,3 +41,15 @@ def assert_is_true(actual: Any, name: str):
         f'Incorrect value: "{name}". '
         f'Expected true value but got: {actual}'
     )
+
+
+def assert_length(actual: Sized, expected: Sized, name: str):
+    """
+    Проверяет, что фактическая длина объекта соответствует ожидаемой.
+
+    :param actual: Фактическая длина объекта.
+    :param expected: Ожидаемая длина объекта.
+    :param name: Название проверяемого объекта.
+    :raises AssertionError: Если длины не совпадают.
+    """
+    assert len(actual) == len(expected), (f"Некорректная длина обекта {name}. Ожидалось {len(expected)}, получено {len(actual)}")

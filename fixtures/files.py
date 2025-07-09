@@ -5,7 +5,7 @@ from clients.files.files_client import FilesClient, get_files_client
 from clients.files.files_schema import CreateFileRequestSchema, CreateFileResponseSchema
 
 
-class FilesFixture(BaseModel):
+class FileFixture(BaseModel):
     request: CreateFileRequestSchema # данные запроса на загрузку файла
     response: CreateFileResponseSchema # ответ от API после успешного создания файл
 
@@ -17,7 +17,7 @@ def files_client(function_user: UserFixture) -> FilesClient: # В аргумен
 
 # Фикстура автоматически создает тестовый файл перед каждым тестом и возвращает информацию о нем
 @pytest.fixture
-def function_file(files_client: FilesClient) -> FilesFixture:
+def function_file(files_client: FilesClient) -> FileFixture:
     request = CreateFileRequestSchema(upload_file="./testdata/files/image.png") # Создается объект request типа CreateFileRequestSchema, в котором указывается путь к тестовому файлу (./testdata/files/image.png).
     response = files_client.create_file(request) # Затем files_client.create_file(request) отправляет запрос в API, загружая файл.
-    return FilesFixture(request=request, response=response) # После успешного создания файла возвращается объект FileFixture, содержащий данные запроса и ответа API.
+    return FileFixture(request=request, response=response) # После успешного создания файла возвращается объект FileFixture, содержащий данные запроса и ответа API.
