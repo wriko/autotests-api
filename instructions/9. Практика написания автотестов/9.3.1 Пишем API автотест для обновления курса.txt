@@ -1,0 +1,270 @@
+Пишем API автотест для обновления курса
+Мы уже освоили написание различных API автотестов, но до этого не рассматривали сценарии обновления сущностей. В этом уроке мы научимся писать автотесты на обновление данных, используя в качестве примера обновление курса.
+
+Наш автотест будет выполнять следующие шаги:
+1. Создать курс (используя фикстуру function_course).
+2. Отправить запрос на эндпоинт PATCH /api/v1/courses/{course_id} для обновления данных.
+3. Проверить статус-код ответа (ожидаем 200 OK) и убедиться, что в ответе вернулась обновлённая модель курса.
+4. Провалидировать JSON-схему ответа, чтобы убедиться, что структура данных соответствует ожиданиям.
+
+-----------------------------------------------------------
+1. Добавляем модель ответа для обновления курса
+-----------------------------------------------------------
+Перед тем как писать автотест, необходимо создать модель, которая будет использоваться для десериализации ответа API после обновления курса.
+
+Добавим в файл /clients/courses/courses_schema.py следующий код:
+
+    # Остальной код без изменений
+
+    class UpdateCourseResponseSchema(BaseModel):
+        """
+        Описание структуры ответа обновления курса.
+        """
+        course: CourseSchema
+
+Теперь у нас есть схема, которая позволит валидировать JSON-ответ от сервера после обновления курса.
+
+-----------------------------------------------------------
+2. Добавим проверку assert_update_course_response
+-----------------------------------------------------------
+Теперь создадим функцию для проверки ответа обновления курса.
+
+Функцию проверки добавим в новый файл courses.py, который создадим в папке /tools/assertions:
+
+.
+└── autotests-api/
+    └── tools/
+        ├── __init__.py
+        └── assertions/
+            ├── __init__.py
+            └── courses.py
+
+Добавим следующий код в файл /tools/assertions/courses.py:
+
+    from clients.courses.courses_schema import UpdateCourseRequestSchema, UpdateCourseResponseSchema
+    from tools.assertions.base import assert_equal
+
+
+    def assert_update_course_response(
+            request: UpdateCourseRequestSchema,
+            response: UpdateCourseResponseSchema
+    ):
+        """
+        Проверяет, что ответ на обновление курса соответствует данным из запроса.
+
+        :param request: Исходный запрос на обновление курса.
+        :param response: Ответ API с обновленными данными курса.
+        :raises AssertionError: Если хотя бы одно поле не совпадает.
+        """
+        assert_equal(response.course.title, request.title, "title")
+        assert_equal(response.course.max_score, request.max_score, "max_score")
+        assert_equal(response.course.min_score, request.min_score, "min_score")
+        assert_equal(response.course.description, request.description, "description")
+        assert_equal(response.course.estimated_time, request.estimated_time, "estimated_time")
+
+Функция assert_update_course_response принимает два параметра:
+ - request – исходные данные, которые мы отправили в запросе обновления курса.
+ - response – данные, которые вернул API в ответе.
+
+
+Проверка сравнивает значения ключевых полей курса до и после обновления, чтобы убедиться, что API действительно обновило данные.
+
+Теперь можно использовать эту функцию в автотестах для проверки корректности обновления курса.
+
+------------------
+Важный нюанс при тестировании обновления данных
+------------------
+Важно! При тестировании API необходимо понимать разницу между полным и частичным обновлением данных.
+
+Например, если у нас есть эндпоинт для обновления курса, и он использует метод PATCH, логично предположить, что API поддерживает частичное обновление. Это означает, что можно отправить запрос с только теми полями, которые нужно изменить, а остальные останутся без изменений.
+
+Пример частичного обновления
+У нас есть схема запроса UpdateCourseRequestSchema, и мы хотим изменить только название курса, оставив остальные поля нетронутыми. Тогда запрос будет выглядеть так:
+
+    request = UpdateCourseRequestSchema(
+        title="New Course!",
+        max_score=None,
+        min_score=None,
+        description=None,
+        estimated_time=None
+    )
+
+Однако при сериализации (преобразовании в JSON) важно исключить поля, значения которых равны None, чтобы они не перезаписывали существующие значения в базе данных. Для этого в методе model_dump() (Pydantic) нужно передать аргумент exclude_none=True:
+
+request.model_dump(by_alias=True, exclude_none=True)
+Этот аргумент исключит все поля со значением None, и в итоге сформируется корректное тело запроса:
+
+    {
+        "title": "New Course!"
+    }
+
+Такой запрос изменит только название курса, а все остальные поля останутся неизменными.
+
+
+Проверка частичного обновления
+Для тестирования частичного обновления важно учитывать только те поля, которые действительно были переданы в запросе. Проверка должна быть гибкой и учитывать только заполненные значения.
+
+Пример функции для проверки ответа API:
+
+    def assert_update_course_response(
+            request: UpdateCourseRequestSchema,
+            response: UpdateCourseResponseSchema
+    ):
+        """
+        Проверяет, что ответ на обновление курса соответствует данным из запроса.
+
+        :param request: Исходный запрос на обновление курса.
+        :param response: Ответ API с обновленными данными курса.
+        :raises AssertionError: Если хотя бы одно поле не совпадает.
+        """
+        if request.title is not None:
+            assert_equal(response.course.title, request.title, "title")
+
+        if request.max_score is not None:
+            assert_equal(response.course.max_score, request.max_score, "max_score")
+
+        if request.min_score is not None:
+            assert_equal(response.course.min_score, request.min_score, "min_score")
+
+        if request.description is not None:
+            assert_equal(response.course.description, request.description, "description")
+
+        if request.estimated_time is not None:
+            assert_equal(response.course.estimated_time, request.estimated_time, "estimated_time")
+
+Что здесь важно?
+- Проверяем только те поля, которые были переданы в запросе (if request.field is not None).
+- Если какое-то поле не передавалось, оно не должно сбрасываться в None, а должно остаться в системе без изменений.
+
+
+Частичное или полное обновление?
+Перед тестированием обновления данных важно уточнить у аналитиков, продакт-менеджеров или разработчиков, как именно реализован API:
+ - Действительно ли API поддерживает частичное обновление?
+ - Можно ли отправлять только изменённые поля?
+ - Не происходит ли фактически полного перезаписывания данных, даже если API использует метод PATCH?
+На практике бывает, что API декларирует поддержку PATCH, но по факту клиент всегда отправляет полный набор данных. В таком случае особого смысла тестировать частичное обновление нет, так как бизнес-логика нацелена на полное обновление.
+
+Пример несоответствия в API:
+ - В Swagger указано, что PATCH /courses/{id} поддерживает частичное обновление.
+ - Но при этом на клиенте всегда отправляется полный JSON с всеми полями, даже если изменилось только одно значение.
+В таких случаях имеет смысл тестировать только полное обновление, так как именно оно отражает реальный сценарий использования API.
+
+Итог:
+ - PATCH ≠ всегда частичное обновление!
+ - Перед тестированием уточняйте реальное поведение API.
+ - Если API действительно поддерживает частичное обновление — проверяйте только изменённые поля.
+ - Если клиент всегда отправляет полный JSON — тестируйте полное обновление, а не частичное.
+В нашем случае, в рамках курса, мы будем проверять полное обновление модели курса, так как именно это соответствует реальному сценарию использования API.
+
+------------------
+3. Пишем тест test_update_course
+------------------
+Теперь добавим тест, который проверит корректность обновления курса.
+
+Создадим в папке tests новую папку courses и добавим в нее файл test_courses.py:
+
+.
+└── autotests-api/
+    └── tests/
+        ├── __init__.py
+        └── courses/
+            ├── __init__.py
+            └── test_courses.py
+
+Добавим тестовый класс TestCourses в файл /tests/courses/test_courses.py:
+
+    from http import HTTPStatus
+
+    import pytest
+
+    from clients.courses.courses_client import CoursesClient
+    from clients.courses.courses_schema import UpdateCourseRequestSchema, UpdateCourseResponseSchema
+    from fixtures.courses import CourseFixture
+    from tools.assertions.base import assert_status_code
+    from tools.assertions.courses import assert_update_course_response
+    from tools.assertions.schema import validate_json_schema
+
+
+    @pytest.mark.courses
+    @pytest.mark.regression
+    class TestCourses:
+        def test_update_course(self, courses_client: CoursesClient, function_course: CourseFixture):
+            # Формируем данные для обновления
+            request = UpdateCourseRequestSchema()
+            # Отправляем запрос на обновление курса
+            response = courses_client.update_course_api(function_course.response.course.id, request)
+            # Преобразуем JSON-ответ в объект схемы
+            response_data = UpdateCourseResponseSchema.model_validate_json(response.text)
+
+            # Проверяем статус-код ответа
+            assert_status_code(response.status_code, HTTPStatus.OK)
+            # Проверяем, что данные в ответе соответствуют запросу
+            assert_update_course_response(request, response_data)
+
+            # Валидируем JSON-схему ответа
+            validate_json_schema(response.json(), response_data.model_json_schema())
+
+
+
+Дополнительные рекомендации по тестированию обновления сущностей
+
+
+В реальных проектах после обновления сущности недостаточно проверять только ответ API. Дополнительно следует убедиться, что изменения действительно применились, выполнив отдельный GET-запрос на получение данных сущности.
+
+Пример расширенной проверки:
+1. Отправить PATCH-запрос на обновление курса.
+2. Проверить, что в ответе API пришли обновленные данные.
+3. Отправить GET-запрос на получение курса по его ID.
+4. Проверить, что в ответе GET-запроса содержатся обновленные данные.
+
+Когда такая проверка важна?
+ - В распределенных системах (микросервисах) обновление может быть асинхронным. Данные могут обновляться в разных сервисах с задержкой.
+ - Если курс хранится в кэше, то API может сразу возвращать обновленные данные, но при последующем запросе данные могут быть устаревшими.
+
+В тестируемом нами сервере обновление работает синхронно, и если API вернул 200 OK, значит данные обновились. Поэтому мы не добавляем дополнительную проверку через GET.
+
+Однако в сложных микросервисных системах стоит учитывать специфику работы и проверять, как обновление данных влияет на другие сервисы. В таких случаях тест может дополнительно:
+ - Проверять, что курс обновился в других сервисах.
+ - Подождать некоторое время и повторить GET-запрос.
+ - Проверять логи или события в системе, если обновление происходит асинхронно.
+ - В продакшене всегда стоит уточнять, как именно работает система, и разрабатывать тесты с учетом ее особенностей.
+
+------------------
+5. Регистрируем маркировку courses
+------------------
+Открываем файл pytest.ini и добавляем туда новую маркировку:
+
+    [pytest]
+    addopts = -s -v
+    python_files = *_tests.py test_*.py
+    python_classes = Test*
+    python_functions = test_*
+    markers =
+        users: Маркировка для тестов, связанных с пользователями.
+        files: Маркировка для тестов, связанных с файлами.
+        courses: Маркировка для тестов, связанных с курсами.
+        regression: Маркировка для регрессионных тестов.
+        authentication: Маркировка для тестов, связанных с аутентификацией.
+
+Теперь Pytest официально распознает маркировку courses, и мы сможем запускать тесты по этой метке.
+
+------------------
+6. Запускаем автотест test_update_course
+------------------
+Теперь проверим работу теста обновления курса, запустив его командой ниже:
+    python -m pytest -k "test_update_course"
+
+Если тест успешно прошел, в консоли отобразится примерно такой вывод:
+
+    (.venv) username@ip-8-8-8-8 autotests-api % python -m pytest -k "test_update_course"
+    ====================================================================== test session starts =======================================================================
+    platform darwin -- Python 3.11.9, pytest-8.3.5, pluggy-1.5.0 -- /Users/username/Documents/autotests-api/.venv/bin/python
+    cachedir: .pytest_cache
+    rootdir: /Users/username/Documents/autotests-api
+    configfile: pytest.ini
+    plugins: Faker-36.2.2, anyio-4.8.0, rerunfailures-15.0
+    collected 44 items / 43 deselected / 1 selected
+
+    tests/courses/test_courses.py::TestCourses::test_update_course PASSED
+
+    ================================================================ 1 passed, 43 deselected in 1.24s ================================================================
