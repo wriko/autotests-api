@@ -1,0 +1,35 @@
+from http import HTTPStatus
+
+import pytest
+
+from clients.exercises.exercises_client import ExercisesClient
+from clients.exercises.exercises_schema import CreateExerciseRequestSchema, ExerciseResponseSchema
+from fixtures.courses import CourseFixture
+from tools.assertions.base import assert_status_code
+from tools.assertions.exercises import assert_create_exercise_response
+from tools.assertions.schema import validate_json_schema
+
+
+@pytest.mark.exercises
+@pytest.mark.regression
+class TestExercises:
+    def test_create_exercise(
+            self,
+            exercises_client: ExercisesClient, # фикстура, предоставляющая клиент для работы с заданиями
+            function_course: CourseFixture, # фикстура, создающая курс и возвращающая его данные (нужен будет course_id)
+    ):
+        # Создаем объект запроса на создание задания
+        request = CreateExerciseRequestSchema(course_id=function_course.response.course.id)
+        # POST-запрос к эндпоинту /api/v1/exercises, используя API-клиент ExercisesClient.create_exercise_api
+        response = exercises_client.create_exercise_api(request)
+
+        # Проверяем, что ответ от сервера соответствует ожидаемой структуре (Pydantic-схеме).
+        response_data = ExerciseResponseSchema.model_validate_json(response.text)
+        # Проверяем, что статус ответа равен HTTPStatus.OK (200)
+        assert_status_code(response.status_code, HTTPStatus.OK)
+        # Проверьте, что тело ответа соответствует запросу на создание задания
+        assert_create_exercise_response(request, response_data)
+        # Проверяем, что JSON-структура ответа соответствует ожидаемой схеме
+        validate_json_schema(response.json(), response_data.model_json_schema())
+
+
