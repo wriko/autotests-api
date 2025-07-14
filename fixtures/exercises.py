@@ -21,6 +21,7 @@ def exercises_client(function_user: UserFixture) -> ExercisesClient:
 @pytest.fixture
 def function_exercise(
     exercises_client: ExercisesClient, function_user: UserFixture, function_course: CourseFixture) -> ExerciseFixture:
-    request = CreateExerciseRequestSchema()
+    request = CreateExerciseRequestSchema(course_id = function_course.response.course.id)
     response = exercises_client.create_exercise(request)
+
     return ExerciseFixture(request=request, response=response)
