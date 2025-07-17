@@ -25,11 +25,14 @@ import allure
 @allure.tag(AllureTag.EXERCISES, AllureTag.REGRESSION)
 @allure.epic(AllureEpic.LMS)  # статическая аннотация для allure, которая задает эпик для класса. Берутся из Enam AllureEpic
 @allure.feature(AllureFeature.EXERCISES)  # статическая аннотация для allure, которая задает фичу для класса. Берутся из Enam AllureFeature
+@allure.parent_suite(AllureEpic.LMS)  # allure.parent_suite == allure.epic
+@allure.suite(AllureFeature.EXERCISES)  # allure.suite == allure.feature
 class TestExercises:
     @allure.tag(AllureTag.CREATE_ENTITY)
     @allure.story(AllureStory.CREATE_ENTITY)
     @allure.title('Создание задания')
     @allure.severity(Severity.BLOCKER)
+    @allure.sub_suite(AllureStory.CREATE_ENTITY)
     def test_create_exercise(
             self,
             exercises_client: ExercisesClient,  # фикстура, предоставляющая клиент для работы с заданиями
@@ -53,6 +56,7 @@ class TestExercises:
     @allure.story(AllureStory.GET_ENTITY)
     @allure.title('Получение задания')
     @allure.severity(Severity.BLOCKER)
+    @allure.sub_suite(AllureStory.GET_ENTITY)
     def test_get_exercise(
             self,
             exercises_client: ExercisesClient,  # фикстура, предоставляющая клиент для работы с заданиями
@@ -75,6 +79,7 @@ class TestExercises:
     @allure.story(AllureStory.UPDATE_ENTITY)
     @allure.title('Обновление задания')
     @allure.severity(Severity.CRITICAL)
+    @allure.sub_suite(AllureStory.UPDATE_ENTITY)
     def test_update_exercise(
             self,
             exercises_client: ExercisesClient,  # фикстура, предоставляющая клиент для работы с заданиями
@@ -99,6 +104,7 @@ class TestExercises:
     @allure.story(AllureStory.DELETE_ENTITY)
     @allure.title('Удаление задания')
     @allure.severity(Severity.CRITICAL)
+    @allure.sub_suite(AllureStory.DELETE_ENTITY)
     def test_delete_exercise(
             self,
             exercises_client: ExercisesClient,  # фикстура, предоставляющая клиент для работы с заданиями
@@ -127,6 +133,7 @@ class TestExercises:
     @allure.story(AllureStory.GET_ENTITIES)
     @allure.title('Получение списка заданий')
     @allure.severity(Severity.BLOCKER)
+    @allure.sub_suite(AllureStory.GET_ENTITIES)
     def test_get_exercises(
             self,
             exercises_client: ExercisesClient,  # фикстура, предоставляющая клиент для работы с заданиями

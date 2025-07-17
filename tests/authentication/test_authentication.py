@@ -22,10 +22,13 @@ import allure
 @allure.tag(AllureTag.AUTHENTICATION, AllureTag.REGRESSION)
 @allure.epic(AllureEpic.LMS)  # статическая аннотация для allure, которая задает эпик для класса. Берутся из Enam AllureEpic
 @allure.feature(AllureFeature.AUTHENTICATION)  # статическая аннотация для allure, которая задает фичу для класса. Берутся из Enam AllureFeature
+@allure.parent_suite(AllureEpic.LMS)  # allure.parent_suite == allure.epic
+@allure.suite(AllureFeature.AUTHENTICATION)  # allure.suite == allure.feature
 class TestAuthentication:
     @allure.story(AllureStory.LOGIN)  # статическая аннотация для allure, которая задает историю для метода. Берутся из Enam AllureStory
     @allure.title('Тест аутентификации пользователя c корректным логином и паролем')
     @allure.severity(Severity.BLOCKER)  # статическая аннотация для allure, которая задает важность теста. Берутся из Enam Severity
+    @allure.sub_suite(AllureStory.LOGIN)
     def test_login(self, function_user: UserFixture, authentication_client: AuthenticationClient):  # инициализация клиента и создание пользователя с помощью фикстуры function_user, которая возвращает экземпляр UserFixture с данными пользователя
         # подготовка данных для аутентификации
         request = LoginRequestSchema(email=function_user.email, password=function_user.password)  # создание запроса на аутентификацию с помощью LoginRequestSchema, используя email и password из фикстуры function_user

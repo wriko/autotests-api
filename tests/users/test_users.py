@@ -24,12 +24,15 @@ from allure_commons.types import Severity
 @allure.tag(AllureTag.USERS, AllureTag.REGRESSION)  # статическая аннотация для allure, которая задает теги для класса. Берутся из Enam AllureTag
 @allure.epic(AllureEpic.LMS)  # статическая аннотация для allure, которая задает эпик для класса. Берутся из Enam AllureEpic
 @allure.feature(AllureFeature.USERS)  # статическая аннотация для allure, которая задает фичу для класса. Берутся из Enam AllureFeature
+@allure.parent_suite(AllureEpic.LMS)  # allure.parent_suite == allure.epic
+@allure.suite(AllureFeature.USERS)  # allure.suite == allure.feature
 class TestUser:
     @pytest.mark.parametrize("email", ["mail.ru", "gmail.com", "example.com"])  # параметризация теста по доменам электронной почты/ Тест test_create_user будет запущен три раза с разными значениями email: "mail.ru", "gmail.com", "example.com"
     @allure.tag(AllureTag.CREATE_ENTITY)  # статическая аннотация для allure, которая задает теги для теста. Берутся из Enam AllureTag
     @allure.story(AllureStory.CREATE_ENTITY)
     @allure.title("Создание пользователя")  # статическая аннотация для allure, которая задает название теста
     @allure.severity(Severity.BLOCKER)  # статическая аннотация для allure, которая задает важность теста. Берутся из Enam Severity
+    @allure.sub_suite(AllureStory.CREATE_ENTITY)  # allure.sub_suite == allure.story
     def test_create_user(self, email: str, public_users_client: PublicUsersClient):  # Инициализация клиента public_users_client с помощью фикстуры, которая возвращает экземпляр PublicUsersClient
         allure.dynamic.title(f"Создание пользователя c {email}")  # динамическая аннотация для allure, которая задает описание теста
 
@@ -47,6 +50,7 @@ class TestUser:
     @allure.story(AllureStory.GET_ENTITY)
     @allure.title("Получение текущего пользователя")
     @allure.severity(Severity.CRITICAL)  # статическая аннотация для allure, которая задает важность теста. Берутся из Enam Severity
+    @allure.sub_suite(AllureStory.GET_ENTITY)
     def test_get_user_me(self, function_user: UserFixture, private_users_client: PrivateUsersClient):  # Инициализация клиента private_users_client с помощью фикстуры, которая возвращает экземпляр PrivateUsersClient
         response = private_users_client.get_user_me_api()  # отправка запроса на получение текущего пользователя c помощью метода get_user_me_api (для анализа Response)
         response_data = GetUserResponseSchema.model_validate_json(response.text)  # преобразование ответа в словарь с данными пользователя с помощью метода model_value_json класса CreateUserResponseSchema

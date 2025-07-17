@@ -25,11 +25,14 @@ import allure
 @allure.tag(AllureTag.COURSES, AllureTag.REGRESSION)
 @allure.epic(AllureEpic.LMS)  # статическая аннотация для allure, которая задает эпик для класса. Берутся из Enam AllureEpic
 @allure.feature(AllureFeature.COURSES)  # статическая аннотация для allure, которая задает фичу для класса. Берутся из Enam AllureFeature
+@allure.parent_suite(AllureEpic.LMS)  # allure.parent_suite == allure.epic
+@allure.suite(AllureFeature.COURSES)  # allure.suite == allure.feature
 class TestCourses:
     @allure.tag(AllureTag.CREATE_ENTITY)
     @allure.story(AllureStory.CREATE_ENTITY)
     @allure.title("Cоздание курса")
     @allure.severity(Severity.BLOCKER)  # статическая аннотация для allure, которая задает важность теста. Берутся из Enam Severity
+    @allure.sub_suite(AllureStory.CREATE_ENTITY)
     def test_create_course(
             self,
             courses_client: CoursesClient, # CoursesClient - фикстура, предоставляющая клиент для работы с курсами
@@ -55,6 +58,7 @@ class TestCourses:
     @allure.story(AllureStory.GET_ENTITIES)
     @allure.title("Получение курсов по пользователю")
     @allure.severity(Severity.BLOCKER)
+    @allure.sub_suite(AllureStory.GET_ENTITIES)
     def test_get_courses(
             self,
             courses_client: CoursesClient, # CoursesClient - фикстура, предоставляющая клиент для работы с курсами
@@ -80,6 +84,7 @@ class TestCourses:
     @allure.story(AllureStory.UPDATE_ENTITY)
     @allure.title("Обновление курса")
     @allure.severity(Severity.CRITICAL)
+    @allure.sub_suite(AllureStory.UPDATE_ENTITY)
     def test_update_course(self, courses_client: CoursesClient, function_course: CourseFixture): # CoursesClient - фикстура, предоставляющая клиент для работы с курсами, CourseFixture - фикстура, создающая тестовый курс и возвращающая его данные
         # Создаем объект запроса на обновление курса, заполняя его поля данными из фикстуры (генерируемых данных default-factory)
         request = UpdateCourseRequestSchema(title="123")
