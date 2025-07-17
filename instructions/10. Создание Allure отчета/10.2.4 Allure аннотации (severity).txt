@@ -1,0 +1,338 @@
+Allure аннотации: @allure.severity
+Что такое уровень важности (severity) автотеста?
+Уровень важности или критичности (severity) указывает на значимость функционала, который проверяется автотестом. Этот параметр позволяет оценить, насколько критично работоспособность данного функционала для всего приложения. Например, такие процессы, как авторизация и регистрация, почти всегда считаются критичными, поскольку без них пользоваться приложением нельзя. В то же время такие функции, как отображение даты рождения в профиле пользователя, являются менее важными.
+
+Какие уровни важности бывают?
+Обычно выделяют пять уровней критичности:
+
+blocker — Самый важный функционал. Если он не работает, то пользоваться приложением невозможно.
+critical — Очень важный функционал. Если он сломан, приложение будет бесполезным с точки зрения бизнес-логики, хотя некоторые функции могут работать.
+normal — Важный функционал. Если он не работает, это создаст неудобства для пользователя, но есть обходные пути.
+minor — Некритичный функционал. Даже если он не работает, приложение остается полностью функциональным.
+trivial — Совершенно незначительный функционал. Например, визуальные несоответствия, такие как кнопка, которая больше на 1 пиксель или слегка неправильный цвет.
+В Allure уже встроен enum с уровнями важности:
+
+from enum import Enum
+
+
+class Severity(str, Enum):
+    BLOCKER = 'blocker'
+    CRITICAL = 'critical'
+    NORMAL = 'normal'
+    MINOR = 'minor'
+    TRIVIAL = 'trivial'
+Как видно, использование enum-ов — это распространенная практика, которая упрощает работу с предопределенными значениями, снижает количество ошибок и делает код более структурированным.
+
+Пример использования аннотации @allure.severity
+Аннотацию @allure.severity можно добавлять как на уровне тестового класса, так и на уровне конкретного теста. Давайте рассмотрим пример использования на основе класса TestUsers.
+
+from http import HTTPStatus
+
+import allure
+import pytest
+from allure_commons.types import Severity  # Импортируем enum Severity из Allure
+
+from clients.users.private_users_client import PrivateUsersClient
+from clients.users.public_users_client import PublicUsersClient
+from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, GetUserResponseSchema
+from fixtures.users import UserFixture
+from tools.allure.epics import AllureEpic
+from tools.allure.features import AllureFeature
+from tools.allure.stories import AllureStory
+from tools.allure.tags import AllureTag
+from tools.assertions.base import assert_status_code
+from tools.assertions.schema import validate_json_schema
+from tools.assertions.users import assert_create_user_response, assert_get_user_response
+from tools.fakers import fake
+
+
+@pytest.mark.users
+@pytest.mark.regression
+@allure.tag(AllureTag.USERS, AllureTag.REGRESSION)
+@allure.epic(AllureEpic.LMS)
+@allure.feature(AllureFeature.USERS)
+class TestUsers:
+    @pytest.mark.parametrize("email", ["mail.ru", "gmail.com", "example.com"])
+    @allure.tag(AllureTag.CREATE_ENTITY)
+    @allure.story(AllureStory.CREATE_ENTITY)
+    @allure.title("Create user")
+    @allure.severity(Severity.BLOCKER)  # Добавили severity
+    def test_create_user(self, email: str, public_users_client: PublicUsersClient):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.GET_ENTITY)
+    @allure.story(AllureStory.GET_ENTITY)
+    @allure.title("Get user me")
+    @allure.severity(Severity.CRITICAL)  # Добавили severity
+    def test_ger_user_me(
+            self,
+            function_user: UserFixture,
+            private_users_client: PrivateUsersClient
+    ):
+        # Остальной код без изменений
+Объяснение:
+test_create_user: Этот тест проверяет блокирующий функционал создания пользователя. Если создание пользователя не работает, то пользоваться приложением будет невозможно.
+test_get_user_me: Этот тест проверяет критический функционал получения текущего пользователя. Если получения текущего пользователя не будет работать, то приложение останется работоспособным, но будет функционировать с ошибками.
+Запуск автотестов
+Перед запуском тестов удалите папку allure-results, чтобы получить свежие результаты:
+
+python -m pytest -m "regression" --alluredir=./allure-results
+После выполнения тестов вы можете сгенерировать отчёт Allure с помощью команды:
+
+allure serve ./allure-results
+Теперь в деталях каждого теста в отчёте Allure будет отображаться уровень его важности:
+
+
+
+Добавление @allure.severity ко всем автотестам
+Теперь добавим аннотацию @allure.severity заголовки ко всем остальным автотестам:
+
+/tests/authentication/test_authentication.py
+
+from http import HTTPStatus
+
+import allure
+import pytest
+from allure_commons.types import Severity  # Импортируем enum Severity из Allure
+
+from clients.authentication.authentication_client import AuthenticationClient
+from clients.authentication.authentication_schema import LoginRequestSchema, LoginResponseSchema
+from clients.users.public_users_client import PublicUsersClient
+from fixtures.users import UserFixture
+from tools.allure.epics import AllureEpic
+from tools.allure.features import AllureFeature
+from tools.allure.stories import AllureStory
+from tools.allure.tags import AllureTag
+from tools.assertions.authentication import assert_login_response
+from tools.assertions.base import assert_status_code
+from tools.assertions.schema import validate_json_schema
+
+
+@pytest.mark.regression
+@pytest.mark.authentication
+@allure.tag(AllureTag.REGRESSION, AllureTag.AUTHENTICATION)
+@allure.epic(AllureEpic.LMS)
+@allure.feature(AllureFeature.AUTHENTICATION)
+class TestAuthentication:
+    @allure.story(AllureStory.LOGIN)
+    @allure.title("Login with correct email and password")
+    @allure.severity(Severity.BLOCKER)  # Добавили severity
+    def test_login(
+            self,
+            function_user: UserFixture,
+            public_users_client: PublicUsersClient,
+            authentication_client: AuthenticationClient
+    ):
+        # Остальной код без изменений
+/tests/files/test_files.py
+
+from http import HTTPStatus
+
+import allure
+import pytest
+from allure_commons.types import Severity  # Импортируем enum Severity из Allure
+
+from clients.errors_schema import ValidationErrorResponseSchema, InternalErrorResponseSchema
+from clients.files.files_client import FilesClient
+from clients.files.files_schema import CreateFileRequestSchema, CreateFileResponseSchema, GetFileResponseSchema
+from fixtures.files import FileFixture
+from tools.allure.epics import AllureEpic
+from tools.allure.features import AllureFeature
+from tools.allure.stories import AllureStory
+from tools.allure.tags import AllureTag
+from tools.assertions.base import assert_status_code
+from tools.assertions.files import assert_create_file_response, assert_create_file_with_empty_filename_response, \
+    assert_create_file_with_empty_directory_response, assert_file_not_found_response, \
+    assert_get_file_with_incorrect_file_id_response, assert_get_file_response
+from tools.assertions.schema import validate_json_schema
+
+
+@pytest.mark.files
+@pytest.mark.regression
+@allure.tag(AllureTag.FILES, AllureTag.REGRESSION)
+@allure.epic(AllureEpic.LMS)
+@allure.feature(AllureFeature.FILES)
+class TestFiles:
+    @allure.tag(AllureTag.CREATE_ENTITY)
+    @allure.story(AllureStory.CREATE_ENTITY)
+    @allure.title("Create file")
+    @allure.severity(Severity.BLOCKER)  # Добавили severity
+    def test_create_file(self, files_client: FilesClient):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.GET_ENTITY)
+    @allure.story(AllureStory.GET_ENTITY)
+    @allure.title("Get file")
+    @allure.severity(Severity.BLOCKER)  # Добавили severity
+    def test_get_file(self, files_client: FilesClient, function_file: FileFixture):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.DELETE_ENTITY)
+    @allure.story(AllureStory.DELETE_ENTITY)
+    @allure.title("Delete file")
+    @allure.severity(Severity.NORMAL)  # Добавили severity
+    def test_delete_file(self, files_client: FilesClient, function_file: FileFixture):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.VALIDATE_ENTITY)
+    @allure.story(AllureStory.VALIDATE_ENTITY)
+    @allure.title("Create file with empty filename")
+    @allure.severity(Severity.NORMAL)  # Добавили severity
+    def test_create_file_with_empty_filename(self, files_client: FilesClient):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.VALIDATE_ENTITY)
+    @allure.story(AllureStory.VALIDATE_ENTITY)
+    @allure.title("Create file with empty directory")
+    @allure.severity(Severity.NORMAL)  # Добавили severity
+    def test_create_file_with_empty_directory(self, files_client: FilesClient):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.VALIDATE_ENTITY)
+    @allure.story(AllureStory.VALIDATE_ENTITY)
+    @allure.title("Get file with incorrect file id")
+    @allure.severity(Severity.NORMAL)  # Добавили severity
+    def test_get_file_with_incorrect_file_id(self, files_client: FilesClient):
+        # Остальной код без изменений
+/tests/courses/test_courses.py
+
+from http import HTTPStatus
+
+import allure
+import pytest
+from allure_commons.types import Severity  # Импортируем enum Severity из Allure
+
+from clients.courses.courses_client import CoursesClient
+from clients.courses.courses_schema import UpdateCourseRequestSchema, UpdateCourseResponseSchema, GetCoursesQuerySchema, \
+    GetCoursesResponseSchema, CreateCourseRequestSchema, CreateCourseResponseSchema
+from fixtures.courses import CourseFixture
+from fixtures.files import FileFixture
+from fixtures.users import UserFixture
+from tools.allure.epics import AllureEpic
+from tools.allure.features import AllureFeature
+from tools.allure.stories import AllureStory
+from tools.allure.tags import AllureTag
+from tools.assertions.base import assert_status_code
+from tools.assertions.courses import assert_update_course_response, assert_get_courses_response, \
+    assert_create_course_response
+from tools.assertions.schema import validate_json_schema
+
+
+@pytest.mark.courses
+@pytest.mark.regression
+@allure.tag(AllureTag.COURSES, AllureTag.REGRESSION)
+@allure.epic(AllureEpic.LMS)
+@allure.feature(AllureFeature.COURSES)
+class TestCourses:
+    @allure.tag(AllureTag.GET_ENTITIES)
+    @allure.story(AllureStory.GET_ENTITIES)
+    @allure.title("Get courses")
+    @allure.severity(Severity.BLOCKER)  # Добавили severity
+    def test_get_courses(
+            self,
+            courses_client: CoursesClient,
+            function_user: UserFixture,
+            function_course: CourseFixture
+    ):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.UPDATE_ENTITY)
+    @allure.story(AllureStory.UPDATE_ENTITY)
+    @allure.title("Update course")
+    @allure.severity(Severity.CRITICAL)  # Добавили severity
+    def test_update_course(self, courses_client: CoursesClient, function_course: CourseFixture):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.CREATE_ENTITY)
+    @allure.story(AllureStory.CREATE_ENTITY)
+    @allure.title("Create course")
+    @allure.severity(Severity.BLOCKER)  # Добавили severity
+    def test_create_course(
+            self,
+            courses_client: CoursesClient,
+            function_user: UserFixture,
+            function_file: FileFixture
+    ):
+        # Остальной код без изменений
+ /tests/exercises/test_exercises.py
+
+from http import HTTPStatus
+
+import allure
+import pytest
+from allure_commons.types import Severity  # Импортируем enum Severity из Allure
+
+from clients.errors_schema import InternalErrorResponseSchema
+from clients.exercises.exercises_client import ExercisesClient
+from clients.exercises.exercises_schema import CreateExerciseRequestSchema, CreateExerciseResponseSchema, \
+    GetExerciseResponseSchema, UpdateExerciseRequestSchema, UpdateExerciseResponseSchema, GetExercisesQuerySchema, \
+    GetExercisesResponseSchema
+from fixtures.courses import CourseFixture
+from fixtures.exercises import ExerciseFixture
+from tools.allure.epics import AllureEpic
+from tools.allure.features import AllureFeature
+from tools.allure.stories import AllureStory
+from tools.allure.tags import AllureTag
+from tools.assertions.base import assert_status_code
+from tools.assertions.exercises import assert_create_exercise_response, assert_get_exercise_response, \
+    assert_update_exercise_response, assert_exercise_not_found_response, assert_get_exercises_response
+from tools.assertions.schema import validate_json_schema
+
+
+@pytest.mark.exercises
+@pytest.mark.regression
+@allure.tag(AllureTag.EXERCISES, AllureTag.REGRESSION)
+@allure.epic(AllureEpic.LMS)
+@allure.feature(AllureFeature.EXERCISES)
+class TestExercises:
+    @allure.tag(AllureTag.CREATE_ENTITY)
+    @allure.story(AllureStory.CREATE_ENTITY)
+    @allure.title("Create exercise")
+    @allure.severity(Severity.BLOCKER)  # Добавили severity
+    def test_create_exercise(self, exercises_client: ExercisesClient):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.GET_ENTITY)
+    @allure.story(AllureStory.GET_ENTITY)
+    @allure.title("Get exercise")
+    @allure.severity(Severity.BLOCKER)  # Добавили severity
+    def test_get_exercise(
+            self,
+            exercises_client: ExercisesClient,
+            function_exercise: ExerciseFixture
+    ):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.UPDATE_ENTITY)
+    @allure.story(AllureStory.UPDATE_ENTITY)
+    @allure.title("Update exercise")
+    @allure.severity(Severity.CRITICAL)  # Добавили severity
+    def test_update_exercise(
+            self,
+            exercises_client: ExercisesClient,
+            function_exercise: ExerciseFixture
+    ):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.DELETE_ENTITY)
+    @allure.story(AllureStory.DELETE_ENTITY)
+    @allure.title("Delete exercise")
+    @allure.severity(Severity.CRITICAL)  # Добавили severity
+    def test_delete_exercise(
+            self,
+            exercises_client: ExercisesClient,
+            function_exercise: ExerciseFixture
+    ):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.GET_ENTITIES)
+    @allure.story(AllureStory.GET_ENTITIES)
+    @allure.title("Get exercises")
+    @allure.severity(Severity.BLOCKER)  # Добавили severity
+    def test_get_exercises(
+            self,
+            exercises_client: ExercisesClient,
+            function_course: CourseFixture,
+            function_exercise: ExerciseFixture
+    ):
+        # Остальной код без изменений

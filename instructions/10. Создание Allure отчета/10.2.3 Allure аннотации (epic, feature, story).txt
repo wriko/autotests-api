@@ -1,0 +1,370 @@
+llure аннотации: @allure.epic, @allure.feature, @allure.story
+В этом шаге мы разберём три ключевые аннотации в Allure: @allure.epic, @allure.feature и @allure.story. Эти аннотации помогают структурировать отчёты, связывая автотесты с функциональными блоками системы, которые они проверяют. Давайте определим, что каждая из них означает и как их правильно использовать.
+
+1. @allure.epic
+Epic — это крупная часть продукта, объединяющая функциональные блоки, которые решают крупные задачи системы. Это уровень самого высокого абстрактного представления, например, проект или модуль в системе.
+
+Пример:
+@allure.epic("User Management") — указывает на то, что все тесты внутри связаны с крупной функциональной частью системы, такой как управление пользователями.
+
+2. @allure.feature
+Feature — это функциональная возможность продукта, более конкретная, чем epic, но всё ещё широкого охвата. Feature описывает отдельные аспекты системы, такие как конкретные модули или крупные функции.
+
+Пример:
+@allure.feature("Authorization") — тесты, относящиеся к фиче "Авторизация" (например, вход в систему, восстановление пароля).
+
+3. @allure.story
+Story — это конкретный пользовательский сценарий или задача, описывающая конкретные действия, которые может совершать пользователь или система. Story является самой детализированной аннотацией, используемой для описания автотестов.
+
+Пример:
+@allure.story("User login with valid credentials") — описывает сценарий входа пользователя с корректными данными, являясь частью feature "Авторизация".
+
+В Allure отчете это отображается следующим образом:
+
+
+
+Хранение epic, feature и story в enum
+Для удобства и уменьшения риска ошибок при использовании аннотаций epic, feature и story, лучше всего хранить их значения в enum-ах. Это позволяет централизованно управлять изменениями и избежать проблем с дублированием и неправильными именами. Давайте создадим три файла: epics.py, features.py и stories.py, в которых будут храниться эти значения.
+
+Структура проекта будет выглядеть следующим образом:
+
+.
+└── autotests-api/
+    └── tools/
+        ├── __init__.py
+        └── allure/
+            ├── __init__.py
+            ├── tags.py
+            ├── epics.py
+            ├── stories.py
+            └── features.py
+Содержимое файла epics.py:
+
+from enum import Enum
+
+
+class AllureEpic(str, Enum):
+    LMS = "LMS service"
+    STUDENT = "Student service"
+    ADMINISTRATION = "Administration service"
+В рамках курса мы предполагаем, что наша система состоит из трёх основных частей: LMS (система управления обучением), система для студентов и система администрирования. Так как мы тестируем LMS, для всех автотестов будем использовать AllureEpic.LMS.
+
+Содержимое файла features.py:
+
+from enum import Enum
+
+
+class AllureFeature(str, Enum):
+    USERS = "Users"
+    FILES = "Files"
+    COURSES = "Courses"
+    EXERCISES = "Exercises"
+    AUTHENTICATION = "Authentication"
+Здесь описаны ключевые функциональные блоки (фичи) нашей системы, такие как пользователи, файлы, курсы, задания и аутентификация.
+
+Содержимое файла stories.py:
+
+from enum import Enum
+
+
+class AllureStory(str, Enum):
+    LOGIN = "Login"
+
+    GET_ENTITY = "Get entity"
+    GET_ENTITIES = "Get entities"
+    CREATE_ENTITY = "Create entity"
+    UPDATE_ENTITY = "Update entity"
+    DELETE_ENTITY = "Delete entity"
+    VALIDATE_ENTITY = "Validate entity"
+Истории (story) описывают конкретные сценарии, которые можно выполнять в рамках каждой фичи, например, создание и удаление сущности
+
+Пример добавления аннотаций epic, feature и story.
+Теперь рассмотрим, как добавить аннотации @allure.epic, @allure.feature и @allure.story к тестам. Их можно применять как на уровне класса, так и на уровне конкретных тестов (функций/методов).
+
+Пример использования в тестовом классе TestUsers:
+
+from http import HTTPStatus
+
+import allure
+import pytest
+
+from clients.users.private_users_client import PrivateUsersClient
+from clients.users.public_users_client import PublicUsersClient
+from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, GetUserResponseSchema
+from fixtures.users import UserFixture
+from tools.allure.epics import AllureEpic  # Импортируем enum AllureEpic
+from tools.allure.features import AllureFeature  # Импортируем enum AllureFeature
+from tools.allure.stories import AllureStory  # Импортируем enum AllureStory
+from tools.allure.tags import AllureTag
+from tools.assertions.base import assert_status_code
+from tools.assertions.schema import validate_json_schema
+from tools.assertions.users import assert_create_user_response, assert_get_user_response
+from tools.fakers import fake
+
+
+@pytest.mark.users
+@pytest.mark.regression
+@allure.tag(AllureTag.USERS, AllureTag.REGRESSION)
+@allure.epic(AllureEpic.LMS)  # Добавили epic
+@allure.feature(AllureFeature.USERS)  # Добавили feature
+class TestUsers:
+    @pytest.mark.parametrize("email", ["mail.ru", "gmail.com", "example.com"])
+    @allure.tag(AllureTag.CREATE_ENTITY)
+    @allure.story(AllureStory.CREATE_ENTITY)  # Добавили story
+    @allure.title("Create user")
+    def test_create_user(self, email: str, public_users_client: PublicUsersClient):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.GET_ENTITY)
+    @allure.story(AllureStory.GET_ENTITY)  # Добавили story
+    @allure.title("Get user me")
+    def test_ger_user_me(
+            self,
+            function_user: UserFixture,
+            private_users_client: PrivateUsersClient
+    ):
+        # Остальной код без изменений
+Запуск автотестов
+Перед тем как запустить тесты, удалите папку allure-results, чтобы получить свежие результаты:
+
+python -m pytest -m "regression" --alluredir=./allure-results
+После выполнения тестов вы можете запустить Allure-отчёт командой:
+
+allure serve ./allure-results
+На вкладке Behaviors в Allure-отчёте вы увидите древовидную структуру, в которой тесты будут организованы по epic, feature и story. Это позволит легко фильтровать и анализировать тесты на уровне функциональных блоков и сценариев.
+
+
+
+Добавление @allure.epic, @allure.feature, @allure.story ко всем автотестам
+Теперь добавим аннотацию @allure.epic, @allure.feature, @allure.story заголовки ко всем остальным автотестам:
+
+/tests/authentication/test_authentication.py
+
+from http import HTTPStatus
+
+import allure
+import pytest
+
+from clients.authentication.authentication_client import AuthenticationClient
+from clients.authentication.authentication_schema import LoginRequestSchema, LoginResponseSchema
+from clients.users.public_users_client import PublicUsersClient
+from fixtures.users import UserFixture
+from tools.allure.epics import AllureEpic  # Импортируем enum AllureEpic
+from tools.allure.features import AllureFeature  # Импортируем enum AllureFeature
+from tools.allure.stories import AllureStory  # Импортируем enum AllureStory
+from tools.allure.tags import AllureTag
+from tools.assertions.authentication import assert_login_response
+from tools.assertions.base import assert_status_code
+from tools.assertions.schema import validate_json_schema
+
+
+@pytest.mark.regression
+@pytest.mark.authentication
+@allure.tag(AllureTag.REGRESSION, AllureTag.AUTHENTICATION)
+@allure.epic(AllureEpic.LMS)  # Добавили epic
+@allure.feature(AllureFeature.AUTHENTICATION)  # Добавили feature
+class TestAuthentication:
+    @allure.story(AllureStory.LOGIN)  # Добавили story
+    @allure.title("Login with correct email and password")
+    def test_login(
+            self,
+            function_user: UserFixture,
+            public_users_client: PublicUsersClient,
+            authentication_client: AuthenticationClient
+    ):
+        # Остальной код без изменений
+/tests/files/test_files.py
+
+from http import HTTPStatus
+
+import allure
+import pytest
+
+from clients.errors_schema import ValidationErrorResponseSchema, InternalErrorResponseSchema
+from clients.files.files_client import FilesClient
+from clients.files.files_schema import CreateFileRequestSchema, CreateFileResponseSchema, GetFileResponseSchema
+from fixtures.files import FileFixture
+from tools.allure.epics import AllureEpic  # Импортируем enum AllureEpic
+from tools.allure.features import AllureFeature  # Импортируем enum AllureFeature
+from tools.allure.stories import AllureStory  # Импортируем enum AllureStory
+from tools.allure.tags import AllureTag
+from tools.assertions.base import assert_status_code
+from tools.assertions.files import assert_create_file_response, assert_create_file_with_empty_filename_response, \
+    assert_create_file_with_empty_directory_response, assert_file_not_found_response, \
+    assert_get_file_with_incorrect_file_id_response, assert_get_file_response
+from tools.assertions.schema import validate_json_schema
+
+
+@pytest.mark.files
+@pytest.mark.regression
+@allure.tag(AllureTag.FILES, AllureTag.REGRESSION)
+@allure.epic(AllureEpic.LMS)  # Добавили epic
+@allure.feature(AllureFeature.FILES)  # Добавили feature
+class TestFiles:
+    @allure.tag(AllureTag.CREATE_ENTITY)
+    @allure.story(AllureStory.CREATE_ENTITY)  # Добавили story
+    @allure.title("Create file")
+    def test_create_file(self, files_client: FilesClient):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.GET_ENTITY)
+    @allure.story(AllureStory.GET_ENTITY)  # Добавили story
+    @allure.title("Get file")
+    def test_get_file(self, files_client: FilesClient, function_file: FileFixture):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.DELETE_ENTITY)
+    @allure.story(AllureStory.DELETE_ENTITY)  # Добавили story
+    @allure.title("Delete file")
+    def test_delete_file(self, files_client: FilesClient, function_file: FileFixture):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.VALIDATE_ENTITY)
+    @allure.story(AllureStory.VALIDATE_ENTITY)  # Добавили story
+    @allure.title("Create file with empty filename")
+    def test_create_file_with_empty_filename(self, files_client: FilesClient):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.VALIDATE_ENTITY)
+    @allure.story(AllureStory.VALIDATE_ENTITY)  # Добавили story
+    @allure.title("Create file with empty directory")
+    def test_create_file_with_empty_directory(self, files_client: FilesClient):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.VALIDATE_ENTITY)  # Добавили тег
+    @allure.story(AllureStory.VALIDATE_ENTITY)  # Добавили story
+    @allure.title("Get file with incorrect file id")
+    def test_get_file_with_incorrect_file_id(self, files_client: FilesClient):
+        # Остальной код без изменений
+/tests/courses/test_courses.py
+
+from http import HTTPStatus
+
+import allure
+import pytest
+
+from clients.courses.courses_client import CoursesClient
+from clients.courses.courses_schema import UpdateCourseRequestSchema, UpdateCourseResponseSchema, GetCoursesQuerySchema, \
+    GetCoursesResponseSchema, CreateCourseRequestSchema, CreateCourseResponseSchema
+from fixtures.courses import CourseFixture
+from fixtures.files import FileFixture
+from fixtures.users import UserFixture
+from tools.allure.epics import AllureEpic  # Импортируем enum AllureEpic
+from tools.allure.features import AllureFeature  # Импортируем enum AllureFeature
+from tools.allure.stories import AllureStory  # Импортируем enum AllureStory
+from tools.allure.tags import AllureTag
+from tools.assertions.base import assert_status_code
+from tools.assertions.courses import assert_update_course_response, assert_get_courses_response, \
+    assert_create_course_response
+from tools.assertions.schema import validate_json_schema
+
+
+@pytest.mark.courses
+@pytest.mark.regression
+@allure.tag(AllureTag.COURSES, AllureTag.REGRESSION)
+@allure.epic(AllureEpic.LMS)  # Добавили epic
+@allure.feature(AllureFeature.COURSES)  # Добавили feature
+class TestCourses:
+    @allure.tag(AllureTag.GET_ENTITIES)
+    @allure.story(AllureStory.GET_ENTITIES)  # Добавили story
+    @allure.title("Get courses")
+    def test_get_courses(
+            self,
+            courses_client: CoursesClient,
+            function_user: UserFixture,
+            function_course: CourseFixture
+    ):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.UPDATE_ENTITY)
+    @allure.story(AllureStory.UPDATE_ENTITY)  # Добавили story
+    @allure.title("Update course")
+    def test_update_course(self, courses_client: CoursesClient, function_course: CourseFixture):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.CREATE_ENTITY)
+    @allure.story(AllureStory.CREATE_ENTITY)  # Добавили story
+    @allure.title("Create course")
+    def test_create_course(
+            self,
+            courses_client: CoursesClient,
+            function_user: UserFixture,
+            function_file: FileFixture
+    ):
+        # Остальной код без изменений
+/tests/exercises/test_exercises.py
+
+from http import HTTPStatus
+
+import allure
+import pytest
+
+from clients.errors_schema import InternalErrorResponseSchema
+from clients.exercises.exercises_client import ExercisesClient
+from clients.exercises.exercises_schema import CreateExerciseRequestSchema, CreateExerciseResponseSchema, \
+    GetExerciseResponseSchema, UpdateExerciseRequestSchema, UpdateExerciseResponseSchema, GetExercisesQuerySchema, \
+    GetExercisesResponseSchema
+from fixtures.courses import CourseFixture
+from fixtures.exercises import ExerciseFixture
+from tools.allure.epics import AllureEpic  # Импортируем enum AllureEpic
+from tools.allure.features import AllureFeature  # Импортируем enum AllureFeature
+from tools.allure.stories import AllureStory  # Импортируем enum AllureStory
+from tools.allure.tags import AllureTag
+from tools.assertions.base import assert_status_code
+from tools.assertions.exercises import assert_create_exercise_response, assert_get_exercise_response, \
+    assert_update_exercise_response, assert_exercise_not_found_response, assert_get_exercises_response
+from tools.assertions.schema import validate_json_schema
+
+
+@pytest.mark.exercises
+@pytest.mark.regression
+@allure.tag(AllureTag.EXERCISES, AllureTag.REGRESSION)
+@allure.epic(AllureEpic.LMS)  # Добавили epic
+@allure.feature(AllureFeature.EXERCISES)  # Добавили feature
+class TestExercises:
+    @allure.tag(AllureTag.CREATE_ENTITY)
+    @allure.story(AllureStory.CREATE_ENTITY)  # Добавили story
+    @allure.title("Create exercise")
+    def test_create_exercise(self, exercises_client: ExercisesClient):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.GET_ENTITY)
+    @allure.story(AllureStory.GET_ENTITY)  # Добавили story
+    @allure.title("Get exercise")
+    def test_get_exercise(
+            self,
+            exercises_client: ExercisesClient,
+            function_exercise: ExerciseFixture
+    ):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.UPDATE_ENTITY)
+    @allure.story(AllureStory.UPDATE_ENTITY)  # Добавили story
+    @allure.title("Update exercise")
+    def test_update_exercise(
+            self,
+            exercises_client: ExercisesClient,
+            function_exercise: ExerciseFixture
+    ):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.DELETE_ENTITY)
+    @allure.story(AllureStory.DELETE_ENTITY)  # Добавили story
+    @allure.title("Delete exercise")
+    def test_delete_exercise(
+            self,
+            exercises_client: ExercisesClient,
+            function_exercise: ExerciseFixture
+    ):
+        # Остальной код без изменений
+
+    @allure.tag(AllureTag.GET_ENTITIES)
+    @allure.story(AllureStory.GET_ENTITIES)  # Добавили story
+    @allure.title("Get exercises")
+    def test_get_exercises(
+            self,
+            exercises_client: ExercisesClient,
+            function_course: CourseFixture,
+            function_exercise: ExerciseFixture
+    ):
+        # Остальной код без изменений
