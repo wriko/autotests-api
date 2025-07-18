@@ -1,0 +1,206 @@
+Добавление allure.step в API-клиенты
+
+
+Почему это важно?
+У нас уже есть шаги на низком уровне — в APIClient, где отражается работа с HTTP-протоколом.
+Однако эти шаги технические и непонятны для бизнес-пользователей, таких как аналитики, проджект-менеджеры или ручные тестировщики.
+Чтобы отчеты были читаемыми и логичными, необходимо добавить человекочитаемые шаги на уровень API-клиентов (PrivateUsersClient, CoursesClient, FilesClient и т. д.).
+
+------------------------------------------
+1. Добавляем шаги в PrivateUsersClient
+------------------------------------------
+Открываем файл /clients/users/private_users_client.py. Добавляем allure.step в каждый метод, чтобы сделать отчет более информативным.
+
+    import allure  # Импортируем allure
+    from httpx import Response
+
+    from clients.api_client import APIClient
+    from clients.private_http_builder import get_private_http_client, AuthenticationUserSchema
+    from clients.users.users_schema import UpdateUserRequestSchema, GetUserResponseSchema
+
+
+    class PrivateUsersClient(APIClient):
+        """
+        Клиент для работы с /api/v1/users
+        """
+
+        @allure.step("Get user me")  # Добавили allure шаг
+        def get_user_me_api(self) -> Response:
+            # Остальной код без изменений
+
+        @allure.step("Get user by id {user_id}")  # Добавили allure шаг
+        def get_user_api(self, user_id: str) -> Response:
+            # Остальной код без изменений
+
+        @allure.step("Update user by id {user_id}")  # Добавили allure шаг
+        def update_user_api(self, user_id: str, request: UpdateUserRequestSchema) -> Response:
+            # Остальной код без изменений
+
+        @allure.step("Delete user by id {user_id}")  # Добавили allure шаг
+        def delete_user_api(self, user_id: str) -> Response:
+            # Остальной код без изменений
+
+    # Остальной код без изменений
+
+
+Что изменилось и почему это лучше?
+- Человекочитаемые шаги. Теперь отчеты Allure показывают бизнес-логику, а не просто HTTP-запросы.
+- Параметризация шагов. Использование {user_id} в allure.step позволяет в отчете сразу видеть, с каким ID выполнялся запрос.
+- Единообразие и удобство. Все API-клиенты оформлены в одном стиле, что упрощает анализ отчетов и делает их понятными для всей команды.
+
+------------------------------------------
+2. Добавление allure.step в FilesClient
+------------------------------------------
+Продолжим разбирать, как правильно добавлять шаги Allure на уровне API-клиентов, на примере FilesClient. Как и в случае с PrivateUsersClient, шаги на уровне APIClient уже показывают работу с HTTP-запросами, но они слишком технические.
+
+Открываем файл /clients/files/files_client.py. Добавляем allure.step в каждый метод:
+
+    import allure  # Импортируем allure
+    from httpx import Response
+
+    from clients.api_client import APIClient
+    from clients.files.files_schema import CreateFileRequestSchema, CreateFileResponseSchema
+    from clients.private_http_builder import AuthenticationUserSchema, get_private_http_client
+
+
+    class FilesClient(APIClient):
+        """
+        Клиент для работы с /api/v1/files
+        """
+
+        @allure.step("Get file by id {file_id}")  # Добавили allure шаг
+        def get_file_api(self, file_id: str) -> Response:
+            # Остальной код без изменений
+
+        @allure.step("Create file")  # Добавили allure шаг
+        def create_file_api(self, request: CreateFileRequestSchema) -> Response:
+            # Остальной код без изменений
+
+        @allure.step("Delete file by id {file_id}")  # Добавили allure шаг
+        def delete_file_api(self, file_id: str) -> Response:
+            # Остальной код без изменений
+
+    # Остальной код без изменений
+
+
+------------------------------------------
+3. Остальные клиенты
+------------------------------------------
+Теперь по аналогии добавим allure.step к остальным API клиентам
+
+    /clients/users/public_users_client.py
+
+    import allure  # Импортируем allure
+    from httpx import Response
+
+    from clients.api_client import APIClient
+    from clients.public_http_builder import get_public_http_client
+    from clients.users.users_schema import CreateUserResponseSchema, CreateUserRequestSchema
+
+
+    class PublicUsersClient(APIClient):
+        """
+        Клиент для работы с /api/v1/users
+        """
+
+        @allure.step("Create user")  # Добавили allure шаг
+        def create_user_api(self, request: CreateUserRequestSchema) -> Response:
+            # Остальной код без изменений
+
+    # Остальной код без изменений
+
+
+/clients/authentication/authentication_client.py
+
+    import allure  # Импортируем allure
+    from httpx import Response
+
+    from clients.api_client import APIClient
+    from clients.authentication.authentication_schema import LoginRequestSchema, RefreshRequestSchema, LoginResponseSchema
+    from clients.public_http_builder import get_public_http_client
+
+
+    class AuthenticationClient(APIClient):
+        """
+        Клиент для работы с /api/v1/authentication
+        """
+
+        @allure.step("Authenticate user")  # Добавили allure шаг
+        def login_api(self, request: LoginRequestSchema) -> Response:
+            # Остальной код без изменений
+
+        @allure.step("Refresh authentication token")  # Добавили allure шаг
+        def refresh_api(self, request: RefreshRequestSchema) -> Response:
+            # Остальной код без изменений
+
+    # Остальной код без изменений
+
+
+/clients/courses/courses_client.py
+
+    import allure  # Импортируем allure
+    from httpx import Response
+
+    from clients.api_client import APIClient
+    from clients.courses.courses_schema import GetCoursesQuerySchema, CreateCourseRequestSchema, UpdateCourseRequestSchema, \
+        CreateCourseResponseSchema
+    from clients.private_http_builder import AuthenticationUserSchema, get_private_http_client
+
+
+    class CoursesClient(APIClient):
+        """
+        Клиент для работы с /api/v1/courses
+        """
+
+        @allure.step("Get courses")  # Добавили allure шаг
+        def get_courses_api(self, query: GetCoursesQuerySchema) -> Response:
+            # Остальной код без изменений
+
+        @allure.step("Get course by id {course_id}")  # Добавили allure шаг
+        def get_course_api(self, course_id: str) -> Response:
+            # Остальной код без изменений
+
+        @allure.step("Create course")  # Добавили allure шаг
+        def create_course_api(self, request: CreateCourseRequestSchema) -> Response:
+            # Остальной код без изменений
+
+        @allure.step("Update course by id {course_id}")  # Добавили allure шаг
+        def update_course_api(self, course_id: str, request: UpdateCourseRequestSchema) -> Response:
+            # Остальной код без изменений
+
+        @allure.step("Delete course by id {course_id}")  # Добавили allure шаг
+        def delete_course_api(self, course_id: str) -> Response:
+            # Остальной код без изменений
+
+    # Остальной код без изменений
+
+
+Запускаем тесты и анализируем Allure-отчет
+Теперь давайте запустим тесты и посмотрим, как Allure-отчет отражает добавленные шаги.
+
+python -m pytest -m "regression" --alluredir=./allure-results
+После выполнения тестов отчет будет выглядеть следующим образом:
+
+
+
+Анализ отчета
+
+Как видно из скриншота, каждый тест теперь содержит бизнес-ориентированные шаги, описывающие выполняемое действие.
+ - Понятная структура отчета. Шаги описывают действия с точки зрения бизнеса, а не просто технические HTTP-запросы.
+ - Детализация при необходимости. Если нам нужна более подробная информация, мы можем раскрыть шаг, где увидим:
+ - Запрос к API (URL, метод, заголовки, тело запроса)
+
+
+Это делает Allure-отчет мощным инструментом не только для QA Automation Engineer, но и для всей команды:
+ - Ручных тестировщиков – видят понятный процесс тестирования
+ - Разработчиков – могут быстро анализировать ошибки
+ - Аналитиков и менеджеров – получают доступный отчет о проверенной функциональности
+
+
+Вывод
+Как мы убедились, грамотно организованная архитектура API-клиентов позволяет легко добавлять Allure-шаги без изменения самих автотестов.
+
+Преимущества такого подхода:
+ - Читаемые отчеты – тесты выглядят как сценарии, понятные всей команде
+ - Минимальные изменения в коде – шаги добавляются на уровне API-клиентов, а не в тестах
+ - Гибкость – можно анализировать тест на разном уровне детализации

@@ -2,13 +2,14 @@ from clients.api_client import APIClient   #  импортируем базов�
 from httpx import Response  # импортируем класс Response из библиотеки httpx для работы с ответами на HTTP-запросы
 from clients.public_http_builder import get_public_http_client
 from clients.authentication.authentication_schema import LoginRequestSchema, LoginResponseSchema,  RefreshRequestSchema  # импортируем схемы для валидации данных запросов и ответов из authentication_shema.py
-
+import allure
 
 class AuthenticationClient(APIClient): # создаем класс AuthenticationClient, который наследуется от ApiClient для выполнения запросов к API авторизации
     """
     Клиент для работы с /api/v1/authentication
     """
 
+    @allure.step('Аутентификация пользователя')
     def login_api(self, request: LoginRequestSchema) -> Response: # создаем метод для отправки запроса на авторизацию
         """
         Метод выполняет аутентификацию пользователя.
@@ -18,7 +19,7 @@ class AuthenticationClient(APIClient): # создаем класс Authenticatio
         """
         return self.post('/api/v1/authentication/login', json = request.model_dump(by_alias=True)) # отправляем POST-запрос на URL /api/v1/authentication/login с данными запроса в формате JSON. Используем метод model_dump из Pydantic для преобразования схемы запроса в словарь с учетом псевдонимов полей (by_alias=True).
 
-
+    @allure.step('Обновление токена аутентификации')
     def refresh_api(self, request: RefreshRequestSchema) -> Response: # создаем метод для отправки запроса на обновление токена
         """
         Метод обновляет токен авторизации.

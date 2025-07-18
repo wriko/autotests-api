@@ -3,13 +3,14 @@ from httpx import Response  # импортируем класс Response из б
 from clients.public_http_builder import get_public_http_client # импортируем функцию get_public_http_client для создания HTTP-клиента с настройками для публичных запросов
 from clients.api_client import APIClient  # импортируем базовый класс ApiClient для выполнения HTTP-запросов
 from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema # импортируем схемы CreateUserRequestSchema и CreateUserResponseSchema для создания и получения данных пользователя
-
+import allure
 
 class PublicUsersClient(APIClient):  # создаем класс PublicUsersClient, который наследуется от ApiClient для выполнения запросов к API создания пользователя
     """
     Клиент для работы с /api/v1/users для создания пользователя
     """
 
+    @allure.step("Создание пользователя")
     def create_user_api(self, request: CreateUserRequestSchema) -> Response:  # создаем метод для отправки запроса на создание пользователя в системе и получение ответа от сервера
         """
         Метод выполняет создание нового пользователя в системе с помощью POST-запроса.

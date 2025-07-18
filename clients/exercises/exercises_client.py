@@ -1,17 +1,16 @@
 from httpx import Response
 from clients.api_client import APIClient
-
 from clients.private_http_builder import get_private_http_client, AuthenticationUserSchema
 from clients.exercises.exercises_schema import ExerciseResponseSchema, CreateExerciseRequestSchema, \
     UpdateExerciseRequestSchema, GetExercisesQuerySchema, GetExercisesResponseSchema  # Импортируем необходимые схемы из exercises_schema.py
-
+import allure
 
 
 class ExercisesClient(APIClient):  # Клиент для работы с /api/v1/exercises
     """
     Клиент для работы с /api/v1/exercises
     """
-
+    @allure.step("Получение списка заданий")
     def get_exercises_api(self, query: GetExercisesQuerySchema) -> Response:  #
         """
         Получение списка заданий для определенного курса.
@@ -22,6 +21,7 @@ class ExercisesClient(APIClient):  # Клиент для работы с /api/v1
         return self.get("/api/v1/exercises", params=query.model_dump(by_alias=True))  # Вызов метода get класса APIClient с передачей пути "/api/v1/exercises" и параметров запроса params=query. Ответ от сервера возвращается в виде объекта httpx.Response.
 
 
+    @allure.step("Получение информации о задании по его идентификатору {exercise_id}")
     def get_exercise_api(self, exercise_id: str) -> Response:
         """
         Получение информации о задании по exercise_id
@@ -32,6 +32,7 @@ class ExercisesClient(APIClient):  # Клиент для работы с /api/v1
         return self.get(f"/api/v1/exercises/{exercise_id}")
 
 
+    @allure.step("Создание задания")
     def create_exercise_api(self, request: CreateExerciseRequestSchema) -> Response:
         """
         Создание задания.
@@ -43,6 +44,7 @@ class ExercisesClient(APIClient):  # Клиент для работы с /api/v1
         return self.post("/api/v1/exercises", request.model_dump(by_alias=True))
 
 
+    @allure.step("Обновление данных задания по его идентификатору {exercise_id}")
     def update_exercise_api(self, exercise_id: str, request: UpdateExerciseRequestSchema) -> Response:
         """
         Обновление данных задания.
@@ -52,6 +54,8 @@ class ExercisesClient(APIClient):  # Клиент для работы с /api/v1
         """
         return self.patch(f"/api/v1/exercises/{exercise_id}", request.model_dump(by_alias=True))
 
+
+    @allure.step("Удаление задания по его идентификатору {exercise_id}")
     def delete_exercise_api(self, exercise_id: str) -> Response:
         """
         Удавление задания.
