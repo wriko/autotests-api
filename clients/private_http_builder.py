@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from functools import lru_cache
 from clients.authentication.authentication_client import get_authentication_client
 from clients.authentication.authentication_schema import LoginRequestSchema
-
+from clients.event_hooks import curl_event_hook
 
 
 class AuthenticationUserSchema(BaseModel, frozen=True): # Используем frozen=True для создания неизменяемого объекта, что позволяет использовать его в качестве ключа кэша
@@ -25,5 +25,6 @@ def get_private_http_client(user: AuthenticationUserSchema) -> Client:
 
     return Client(base_url='http://localhost:8000/',
                   timeout=100,
-                  headers={"Authorization": f"Bearer {login_response.token.access_token}"}
+                  headers={"Authorization": f"Bearer {login_response.token.access_token}"},
+                  event_hooks={"request": [curl_event_hook]}  # Добавляем хук для логирования
                   )

@@ -27,7 +27,7 @@ class APIClient:
         return self.client.get(url, params=params)
 
 
-    @allure.step("Делаеем POST запрос к {url}")
+    @allure.step("Делаем POST запрос к {url}")
     def post(
             self, url: URL | str,
             json: Any | None = None,
