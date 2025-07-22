@@ -30,7 +30,7 @@ class FilesClient(APIClient):
         return self.post(
             "/api/v1/files",
             data= request.model_dump(by_alias=True, exclude={"upload_file"}), # model_dump преобразует объект в словарь с учетом псевдонимов полей (например, filename -> name) и исключением поля upload_file, так как оно не должно быть передано в теле запроса.
-            files={"upload_file": open(request.upload_file, "rb")}
+            files = {"upload_file": request.upload_file.read_bytes()}
         )
 
     @allure.step("Удаление файла по id {file_id}")
