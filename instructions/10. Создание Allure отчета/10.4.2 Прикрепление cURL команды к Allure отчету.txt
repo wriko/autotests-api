@@ -1,0 +1,229 @@
+Прикрепляем cURL команду к Allure отчету
+Ссылки:
+
+Прикрепление файлов к allure отчету - https://allurereport.org/docs/pytest/#attach-screenshots-and-other-files
+Документация по работе с event hooks в HTTPX - https://www.python-httpx.org/advanced/event-hooks/
+
+
+Чтобы упростить анализ HTTP-запросов в отчетах Allure, мы можем автоматически прикреплять сгенерированные cURL команды. Это позволит в любой момент посмотреть, какой именно запрос отправлялся, скопировать его и воспроизвести в терминале.
+
+В HTTPX для таких задач предусмотрены event hooks.
+
+----------------------------------
+Что такое event hooks в HTTPX?
+----------------------------------
+Event hooks (хуки событий) в httpx — это механизм, позволяющий выполнять дополнительные действия перед отправкой запроса или после получения ответа.
+
+Виды хуков в HTTPX:
+
+request — вызывается перед отправкой запроса.
+response — вызывается при получении ответа.
+В нашем случае нам нужен request hook, так как мы хотим прикрепить cURL команду до выполнения запроса.
+
+Пример использования хуков:
+
+    import httpx
+
+    def request_hook(request: httpx.Request):
+        print(f"Запрос: {request.method} {request.url}")
+
+    client = httpx.Client(event_hooks={"request": [request_hook]})
+    response = client.get("https://example.com")
+
+Здесь перед отправкой запроса будет выведена информация о нем.
+
+-------------------------------------
+1. Создаем event hook для прикрепления cURL
+-------------------------------------
+Мы будем использовать request-хук, который ожидает функцию вида:
+
+    def hook_function(request: httpx.Request):
+        ...
+
+Создадим новый файл event_hooks.py в папке clients, где будем хранить все хуки:
+
+.
+└── autotests-api/
+    └── clients/
+        ├── __init__.py
+        └── event_hooks.py
+
+Реализуем curl_event_hook в event_hooks.py:
+
+    import allure
+    from httpx import Request
+
+    from tools.http.curl import make_curl_from_request
+
+
+    def curl_event_hook(request: Request):
+        """
+        Event hook для автоматического прикрепления cURL команды к Allure отчету.
+
+        :param request: HTTP-запрос, переданный в `httpx` клиент.
+        """
+        # Генерируем команду cURL из объекта запроса
+        curl_command = make_curl_from_request(request)
+
+        # Прикрепляем сгенерированную cURL команду к отчету Allure
+        allure.attach(curl_command, "cURL command", allure.attachment_type.TEXT)
+
+
+Разбор кода:
+1. Импортируем необходимые модули:
+- allure — для прикрепления информации к отчету.
+- Request из httpx — для работы с объектом запроса.
+- make_curl_from_request — наша ранее созданная функция для генерации cURL команды.
+
+2.Создаем функцию curl_event_hook(request: Request):
+- Она принимает объект request (HTTP-запрос).
+
+3. Генерируем команду cURL:
+
+    curl_command = make_curl_from_request(request)
+- Вызываем make_curl_from_request(), чтобы получить строку с cURL командой.
+
+4. Прикрепляем cURL команду к отчету Allure:
+    allure.attach(curl_command, "cURL command", allure.attachment_type.TEXT)
+- allure.attach() добавляет текстовый файл в отчет.
+- "cURL command" — название вложения.
+ - allure.attachment_type.TEXT — указываем, что вложение текстовое.
+
+
+------------------
+Прикрепление файла к Allure-отчету
+------------------
+allure.attach(): Этот метод используется для прикрепления данных к отчету, когда данные передаются непосредственно в виде текстового содержимого или байтов. Например, если у вас есть текст, который вы хотите прикрепить (например, cURL команду или JSON-данные), вы используете allure.attach(). Это позволяет вам передавать строки или байтовые данные непосредственно в функцию.
+
+Пример использования:
+
+allure.attach("This is a plain text", name="Text Attachment", attachment_type=allure.attachment_type.TEXT)
+Здесь:
+
+"This is a plain text" — это содержимое, которое вы хотите прикрепить.
+name="Text Attachment" — это имя файла в отчете.
+attachment_type=allure.attachment_type.TEXT — тип файла, в данном случае текст.
+Вы можете передавать разные типы данных:
+
+allure.attachment_type.TEXT — для текстовых данных.
+allure.attachment_type.JSON — для JSON-данных.
+allure.attachment_type.PNG — для изображений в формате PNG.
+И другие типы для различных форматов.
+allure.attach.file(): Этот метод используется, когда нужно прикрепить файл, находящийся на диске. В отличие от allure.attach(), где данные передаются напрямую, allure.attach.file() работает с файлом, указав путь к нему. Это особенно полезно, когда вы хотите прикрепить изображение, лог-файл или другие ресурсы, которые уже существуют в файловой системе.
+
+Пример использования:
+
+allure.attach.file("/path/to/file.txt", name="Attached File", attachment_type=allure.attachment_type.TEXT)
+Здесь:
+
+"/path/to/file.txt" — это путь к файлу, который нужно прикрепить.
+name="Attached File" — имя файла в отчете.
+attachment_type=allure.attachment_type.TEXT — тип файла (например, текстовый файл).
+Разница между allure.attach() и allure.attach.file():
+allure.attach(): используется для прикрепления данных, переданных в виде строки или байтов.
+allure.attach.file(): используется для прикрепления существующего файла, указав путь к нему.
+
+----------------
+2. Подключаем функцию curl_event_hook к клиентам httpx.Client
+----------------
+Теперь добавим нашу функцию curl_event_hook в event_hooks клиентов httpx.Client.
+
+Напомню, что за инициализацию httpx.Client в проекте отвечают две функции:
+    get_public_http_client
+    get_private_http_client
+
+Эти функции создают и возвращают готовые экземпляры httpx.Client с предустановленными настройками (таймаут, базовый URL, заголовки и т. д.). Именно в этих функциях мы добавим наш event hook, который будет автоматически прикреплять cURL-команды к отчету Allure перед отправкой HTTP-запроса
+
+Начнем с функции get_public_http_client, которая находится в файле /clients/public_http_builder.py:
+
+    from httpx import Client
+
+    from clients.event_hooks import curl_event_hook  # Импортируем event hook
+
+
+    def get_public_http_client() -> Client:
+        """
+        Функция создаёт экземпляр httpx.Client с базовыми настройками.
+
+        :return: Готовый к использованию объект httpx.Client.
+        """
+        return Client(
+            timeout=100,
+            base_url="http://localhost:8000",
+            event_hooks={"request": [curl_event_hook]}  # Добавляем event hook для запроса
+        )
+
+Разбор кода
+Импортируем curl_event_hook. Эта функция обрабатывает событие request и добавляет cURL-команду в Allure-отчет.
+
+Добавляем event hook. event_hooks={"request": [curl_event_hook]} — добавляем обработчик request, который будет вызываться перед каждым отправляемым запросом.
+
+Таким образом, при каждом HTTP-запросе, отправляемом через этот клиент, curl_event_hook автоматически добавит cURL-команду в Allure-отчет.
+
+Теперь по аналогии добавим event_hooks в функцию get_private_http_client, которая находится в файле /clients/private_http_builder.py:
+
+    from functools import lru_cache
+
+    from httpx import Client
+    from pydantic import BaseModel
+
+    from clients.authentication.authentication_client import get_authentication_client
+    from clients.authentication.authentication_schema import LoginRequestSchema
+    from clients.event_hooks import curl_event_hook  # Импортируем event hook
+
+
+    class AuthenticationUserSchema(BaseModel, frozen=True):
+        email: str
+        password: str
+
+
+    @lru_cache(maxsize=None)
+    def get_private_http_client(user: AuthenticationUserSchema) -> Client:
+        """
+        Функция создаёт экземпляр httpx.Client с аутентификацией пользователя.
+
+        :param user: Объект AuthenticationUserSchema с email и паролем пользователя.
+        :return: Готовый к использованию объект httpx.Client с установленным заголовком Authorization.
+        """
+        authentication_client = get_authentication_client()
+
+        login_request = LoginRequestSchema(email=user.email, password=user.password)
+        login_response = authentication_client.login(login_request)
+
+        return Client(
+            timeout=100,
+            base_url="http://localhost:8000",
+            headers={"Authorization": f"Bearer {login_response.token.access_token}"},
+            event_hooks={"request": [curl_event_hook]}  # Добавляем event hook для запроса
+        )
+
+
+Почему использование event_hooks — правильное решение?
+Использование event_hooks позволяет гибко управлять поведением HTTP-клиентов без изменения их основной логики.
+
+Мы добавили cURL-команды только в нужные нам клиенты (public и private), не модифицируя APIClient.
+APIClient получает уже настроенный httpx.Client, ничего не зная о event_hooks, что делает его универсальным и переиспользуемым.
+Если в будущем потребуется добавить логирование заголовков только для get_private_http_client, это можно сделать без изменения APIClient — просто добавив новый event_hook.
+Таким образом, использование event_hooks в httpx делает код более гибким, удобным и масштабируемым.
+
+------------------
+3. Запускаем автотесты и анализируем Allure-отчет
+------------------
+Теперь давайте запустим автотесты и проверим, как выглядят cURL-команды в Allure-отчете. Для запуска тестов используем следующую команду:
+    python -m pytest -m "regression" --alluredir=./allure-results
+
+После завершения тестов запускаем Allure-отчет:
+    allure serve ./allure-results
+
+Теперь в отчете, в каждом шаге выполнения HTTP-запроса через APIClient, будет прикреплен TXT-файл с соответствующей cURL-командой. Это позволяет легко воспроизвести любой запрос, отправленный тестами.
+
+На скриншоте ниже показано, как это выглядит в отчете:
+
+
+
+Как видно на скриншоте, внутри шага "Make POST request to '/api/v1/courses'" прикреплен текстовый файл "cURL command". Этот файл можно:
+
+- Открыть прямо из Allure-отчета.
+- Скопировать команду cURL и вставить в терминал для воспроизведения запроса.
+- Использовать команду в Postman или другом инструменте API-тестирования.
+- Благодаря этому подходу можно легко отлаживать тесты, анализировать отправляемые запросы и быстро воспроизводить их при необходимости.
