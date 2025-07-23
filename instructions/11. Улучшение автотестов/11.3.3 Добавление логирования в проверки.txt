@@ -1,0 +1,522 @@
+Добавление логирования в проверки
+На этом шаге мы добавим логирование в проверки, чтобы можно было видеть, какие именно проверки выполняются и на каком этапе возникает ошибка.
+
+----------------------------
+1. Добавляем логирование в базовые проверки
+----------------------------
+Начнем с базовых проверок, которые используются во всех автотестах. Откроем файл /tools/assertions/base.py и добавим в него логирование:
+
+    from typing import Any, Sized
+
+    import allure
+
+    from tools.logger import get_logger  # Импортируем функцию для создания логгера
+
+    logger = get_logger("BASE_ASSERTIONS")  # Создаем логгер с именем "BASE_ASSERTIONS"
+
+
+    @allure.step("Check that response status code equals to {expected}")
+    def assert_status_code(actual: int, expected: int):
+        """
+        Проверяет, что фактический статус-код ответа соответствует ожидаемому.
+
+        :param actual: Фактический статус-код ответа.
+        :param expected: Ожидаемый статус-код.
+        :raises AssertionError: Если статус-коды не совпадают.
+        """
+        logger.info(f"Check that response status code equals to {expected}")  # Логируем проверку
+
+        assert actual == expected, (
+            f'Incorrect response status code. '
+            f'Expected status code: {expected}. '
+            f'Actual status code: {actual}'
+        )
+
+
+    @allure.step("Check that {name} equals to {expected}")
+    def assert_equal(actual: Any, expected: Any, name: str):
+        """
+        Проверяет, что фактическое значение равно ожидаемому.
+
+        :param name: Название проверяемого значения.
+        :param actual: Фактическое значение.
+        :param expected: Ожидаемое значение.
+        :raises AssertionError: Если фактическое значение не равно ожидаемому.
+        """
+        logger.info(f'Check that "{name}" equals to {expected}')  # Логируем проверку
+
+        assert actual == expected, (
+            f'Incorrect value: "{name}". '
+            f'Expected value: {expected}. '
+            f'Actual value: {actual}'
+        )
+
+
+    @allure.step("Check that {name} is true")
+    def assert_is_true(actual: Any, name: str):
+        """
+        Проверяет, что фактическое значение является истинным.
+
+        :param name: Название проверяемого значения.
+        :param actual: Фактическое значение.
+        :raises AssertionError: Если фактическое значение ложно.
+        """
+        logger.info(f'Check that "{name}" is true')  # Логируем проверку
+
+        assert actual, (
+            f'Incorrect value: "{name}". '
+            f'Expected true value but got: {actual}'
+        )
+
+
+    def assert_length(actual: Sized, expected: Sized, name: str):
+        """
+        Проверяет, что длины двух объектов совпадают.
+
+        :param name: Название проверяемого объекта.
+        :param actual: Фактический объект.
+        :param expected: Ожидаемый объект.
+        :raises AssertionError: Если длины не совпадают.
+        """
+        with allure.step(f"Check that length of {name} equals to {len(expected)}"):
+            logger.info(f'Check that length of "{name}" equals to {len(expected)}')  # Логируем проверку
+
+            assert len(actual) == len(expected), (
+                f'Incorrect object length: "{name}". '
+                f'Expected length: {len(expected)}. '
+                f'Actual length: {len(actual)}'
+            )
+
+
+Почему мы дублируем сообщения в логах и Allure-шагах?
+Мы сознательно пишем в лог то же самое сообщение, что и в Allure-отчетах. Это сделано по следующим причинам:
+- Простота — нам не нужно придумывать разные сообщения для логов и Allure.
+- Единообразие — логи и отчеты Allure отображают информацию в одном формате, что снижает вероятность недопонимания.
+- Информативность — шаги в Allure уже содержат необходимую информацию, поэтому просто дублируем их в логах.
+
+Единственное различие между логами и Allure — это добавление кавычек для строковых значений, например "name".
+- В Allure кавычки добавляются автоматически.
+- В логах их нет, поэтому мы добавляем их вручную.
+
+Размещение логов в коде:
+Очень важно правильно размещать логи.
+
+Плохо: Лог записывается до выполнения действия, из-за чего в случае ошибки он может ввести в заблуждение.
+
+    logger.info('Check user')  # Записали лог, но пользователь еще не получен
+    user = client.get_user()
+    assert_user(user)
+
+Хорошо: Лог записывается перед самой проверкой, когда данные уже получены.
+
+    user = client.get_user()
+    logger.info('Check user')  # Теперь лог пишется перед проверкой
+    assert_user(user)
+
+
+Выгода от вынесения проверок в отдельные функции:
+Добавив логирование в базовые функции, мы моментально получили логи проверок во всех тестах без необходимости модифицировать сами автотесты. Это доказывает, насколько мощным и удобным было решение централизовать проверки в одном месте.
+
+Теперь, если нам потребуется обновить логику логирования или изменить формат сообщений, мы сможем сделать это всего в одном файле без дублирования кода по всему проекту.
+
+
+------------------------------
+2. Добавление логирования к валидации JSON Schema
+------------------------------
+Теперь добавим логирование для проверок валидации JSON Schema, которые расположены в файле /tools/assertions/schema.py.
+Логирование поможет нам фиксировать факт начала валидации, что упростит отладку и анализ ошибок.
+
+    from typing import Any
+
+    import allure
+    from jsonschema import validate
+    from jsonschema.validators import Draft202012Validator
+
+    from tools.logger import get_logger  # Импортируем функцию для создания логгера
+
+    logger = get_logger("SCHEMA_ASSERTIONS")  # Создаем логгер с именем "SCHEMA_ASSERTIONS"
+
+
+    @allure.step("Validating JSON schema")
+    def validate_json_schema(instance: Any, schema: dict) -> None:
+        """
+        Проверяет, соответствует ли JSON-объект (instance) заданной JSON-схеме (schema).
+
+        :param instance: JSON-данные, которые нужно проверить.
+        :param schema: Ожидаемая JSON-schema.
+        :raises jsonschema.exceptions.ValidationError: Если instance не соответствует schema.
+        """
+        # Логируем факт начала валидации
+        logger.info("Validating JSON schema")
+
+        validate(
+            schema=schema,
+            instance=instance,
+            format_checker=Draft202012Validator.FORMAT_CHECKER,
+        )
+
+
+Разбор кода:
+
+Как и в предыдущем шаге, мы добавили логирование перед выполнением основной операции – валидации JSON-объекта. Это позволяет:
+1. Явно фиксировать момент начала валидации. Если тест падает, мы будем точно знать, что валидация началась, но где-то внутри возникла ошибка.
+2. Облегчить отладку. Если логов с валидацией нет, значит, функция даже не была вызвана, что поможет быстрее сузить поиск проблемы.
+3. Упрощает анализ тестов. В логах появится понятное сообщение о том, что выполнялась валидация JSON Schema, а значит, ошибки легко будет соотнести с тестами.
+Как и ранее, мы используем ту же самую формулировку логов, что и в шаге Allure. Это сделано специально для унификации логов и отчетов.
+
+-----------------------------
+3. Добавление логирования к проверкам пользователей
+-----------------------------
+Теперь добавим логирование к проверкам пользователей. Откроем файл /tools/assertions/users.py и добавим логирование в ключевые места:
+
+    import allure
+
+    from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, GetUserResponseSchema, \
+        UserSchema
+    from tools.assertions.base import assert_equal
+    from tools.logger import get_logger  # Импортируем функцию для создания логгера
+
+    logger = get_logger("USERS_ASSERTIONS")  # Создаем логгер с именем "USERS_ASSERTIONS"
+
+
+    @allure.step("Check create user response")
+    def assert_create_user_response(request: CreateUserRequestSchema, response: CreateUserResponseSchema):
+        """
+        Проверяет, что ответ на создание пользователя соответствует запросу.
+
+        :param request: Исходный запрос на создание пользователя.
+        :param response: Ответ API с данными пользователя.
+        :raises AssertionError: Если хотя бы одно поле не совпадает.
+        """
+        # Логируем факт начала проверки
+        logger.info("Check create user response")
+
+        # Остальной код без изменений
+
+
+    @allure.step("Check user")
+    def assert_user(actual: UserSchema, expected: UserSchema):
+        """
+        Проверяет, что фактические данные пользователя соответствуют ожидаемым.
+
+        :param actual: Фактические данные пользователя.
+        :param expected: Ожидаемые данные пользователя.
+        :raises AssertionError: Если хотя бы одно поле не совпадает.
+        """
+        # Логируем факт начала проверки
+        logger.info("Check user")
+
+        # Остальной код без изменений
+
+
+    @allure.step("Check get user response")
+    def assert_get_user_response(
+            get_user_response: GetUserResponseSchema,
+            create_user_response: CreateUserResponseSchema
+    ):
+        """
+        Проверяет, что ответ на получение пользователя соответствует ответу на его создание.
+
+        :param get_user_response: Ответ API при запросе данных пользователя.
+        :param create_user_response: Ответ API при создании пользователя.
+        :raises AssertionError: Если данные пользователя не совпадают.
+        """
+        # Логируем факт начала проверки
+        logger.info("Check get user response")
+
+        # Остальной код без изменений
+
+------------------------------
+4. Добавление логирования к остальным проверкам
+------------------------------
+По аналогии с предыдущими шагами добавим логирование в остальные проверки.
+
+/tools/assertions/authentication.py
+
+    import allure
+
+    from clients.authentication.authentication_schema import LoginResponseSchema
+    from tools.assertions.base import assert_equal, assert_is_true
+    from tools.logger import get_logger  # Импортируем функцию для создания логгера
+
+    # Создаем логгер с именем "AUTHENTICATION_ASSERTIONS"
+    logger = get_logger("AUTHENTICATION_ASSERTIONS")
+
+
+    @allure.step("Check login response")
+    def assert_login_response(response: LoginResponseSchema):
+        """
+        Проверяет корректность ответа при успешной авторизации.
+
+        :param response: Объект ответа с токенами авторизации.
+        :raises AssertionError: Если какое-либо из условий не выполняется.
+        """
+        # Логируем факт начала проверки
+        logger.info("Check login response")
+
+        # Остальной код без изменений
+
+/tools/assertions/files.py
+
+    import allure
+
+    from clients.errors_schema import ValidationErrorResponseSchema, ValidationErrorSchema, InternalErrorResponseSchema
+    from clients.files.files_schema import CreateFileResponseSchema, CreateFileRequestSchema, FileSchema, \
+        GetFileResponseSchema
+    from config import settings
+    from tools.assertions.base import assert_equal
+    from tools.assertions.errors import assert_validation_error_response, assert_internal_error_response
+    from tools.logger import get_logger  # Импортируем функцию для создания логгера
+
+    logger = get_logger("FILES_ASSERTIONS")  # Создаем логгер с именем "FILES_ASSERTIONS"
+
+
+    @allure.step("Check create file response")
+    def assert_create_file_response(request: CreateFileRequestSchema, response: CreateFileResponseSchema):
+        """
+        Проверяет, что ответ на создание файла соответствует запросу.
+
+        :param request: Исходный запрос на создание файла.
+        :param response: Ответ API с данными файла.
+        :raises AssertionError: Если хотя бы одно поле не совпадает.
+        """
+        # Логируем факт начала проверки
+        logger.info("Check create file response")
+
+        # Остальной код без изменений
+
+
+    @allure.step("Check file")
+    def assert_file(actual: FileSchema, expected: FileSchema):
+        """
+        Проверяет, что фактические данные файла соответствуют ожидаемым.
+
+        :param actual: Фактические данные файла.
+        :param expected: Ожидаемые данные файла.
+        :raises AssertionError: Если хотя бы одно поле не совпадает.
+        """
+        # Логируем факт начала проверки
+        logger.info("Check file")
+
+        # Остальной код без изменений
+
+
+    @allure.step("Check get file response")
+    def assert_get_file_response(
+            get_file_response: GetFileResponseSchema,
+            create_file_response: CreateFileResponseSchema
+    ):
+        """
+        Проверяет, что ответ на получение пользователя соответствует ответу на его создание.
+
+        :param get_file_response: Ответ API при запросе данных пользователя.
+        :param create_file_response: Ответ API при создании пользователя.
+        :raises AssertionError: Если данные пользователя не совпадают.
+        """
+        # Логируем факт начала проверки
+        logger.info("Check get file response")
+
+        # Остальной код без изменений
+
+
+    @allure.step("Check create file with empty filename response")
+    def assert_create_file_with_empty_filename_response(actual: ValidationErrorResponseSchema):
+        """
+        Проверяет, что ответ на создание файла с пустым именем файла соответствует ожидаемой валидационной ошибке.
+
+        :param actual: Ответ от API с ошибкой валидации, который необходимо проверить.
+        :raises AssertionError: Если фактический ответ не соответствует ожидаемому.
+        """
+        # Логируем факт начала проверки
+        logger.info("Check create file with empty filename response")
+
+        # Остальной код без изменений
+
+
+    @allure.step("Check create file with empty directory response")
+    def assert_create_file_with_empty_directory_response(actual: ValidationErrorResponseSchema):
+        """
+        Проверяет, что ответ на создание файла с пустым значением директории соответствует ожидаемой валидационной ошибке.
+
+        :param actual: Ответ от API с ошибкой валидации, который необходимо проверить.
+        :raises AssertionError: Если фактический ответ не соответствует ожидаемому.
+        """
+        # Логируем факт начала проверки
+        logger.info("Check create file with empty directory response")
+
+        # Остальной код без изменений
+
+
+    @allure.step("Check file not found response")
+    def assert_file_not_found_response(actual: InternalErrorResponseSchema):
+        """
+        Функция для проверки ошибки, если файл не найден на сервере.
+
+        :param actual: Фактический ответ.
+        :raises AssertionError: Если фактический ответ не соответствует ошибке "File not found"
+        """
+        # Логируем факт начала проверки
+        logger.info("Check file not found response")
+
+        # Остальной код без изменений
+
+
+    @allure.step("Check get file with incorrect file id response")
+    def assert_get_file_with_incorrect_file_id_response(actual: ValidationErrorResponseSchema):
+        """
+        Проверяет, что ответ API на запрос файла с некорректным file_id
+        соответствует ожидаемому формату ошибки валидации.
+
+        :param actual: Фактический ответ API с ошибкой валидации
+        :raises AssertionError: Если фактический ответ не соответствует ожидаемому
+        """
+        # Логируем факт начала проверки
+        logger.info("Check get file with incorrect file id response")
+
+        # Остальной код без изменений
+
+
+/tools/assertions/courses.py
+
+    import allure
+
+    from clients.courses.courses_schema import CourseSchema, UpdateCourseRequestSchema, UpdateCourseResponseSchema, \
+        GetCoursesResponseSchema, CreateCourseResponseSchema, CreateCourseRequestSchema
+    from tools.assertions.base import assert_equal, assert_length
+    from tools.assertions.files import assert_file
+    from tools.assertions.users import assert_user
+    from tools.logger import get_logger  # Импортируем функцию для создания логгера
+
+    logger = get_logger("COURSES_ASSERTIONS")  # Создаем логгер с именем "COURSES_ASSERTIONS"
+
+
+    @allure.step("Check update course response")
+    def assert_update_course_response(
+            request: UpdateCourseRequestSchema,
+            response: UpdateCourseResponseSchema
+    ):
+        """
+        Проверяет, что ответ на обновление курса соответствует запросу.
+
+        :param request: Исходный запрос на обновление курса.
+        :param response: Ответ API с данными курса.
+        :raises AssertionError: Если хотя бы одно поле не совпадает.
+        """
+        # Логируем факт начала проверки
+        logger.info("Check update course response")
+
+        # Остальной код без изменений
+
+
+    @allure.step("Check course")
+    def assert_course(actual: CourseSchema, expected: CourseSchema):
+        """
+        Проверяет, что фактические данные курса соответствуют ожидаемым.
+
+        :param actual: Фактические данные курса.
+        :param expected: Ожидаемые данные курса.
+        :raises AssertionError: Если хотя бы одно поле не совпадает.
+        """
+        # Логируем факт начала проверки
+        logger.info("Check course")
+
+        # Остальной код без изменений
+
+
+    @allure.step("Check get courses response")
+    def assert_get_courses_response(
+            get_courses_response: GetCoursesResponseSchema,
+            create_course_responses: list[CreateCourseResponseSchema]
+    ):
+        """
+        Проверяет, что ответ на получение списка курсов соответствует ответам на их создание.
+
+        :param get_courses_response: Ответ API при запросе списка курсов.
+        :param create_course_responses: Список API ответов при создании курсов.
+        :raises AssertionError: Если данные курсов не совпадают.
+        """
+        # Логируем факт начала проверки
+        logger.info("Check get courses response")
+
+        # Остальной код без изменений
+
+
+    @allure.step("Check create course response")
+    def assert_create_course_response(
+            request: CreateCourseRequestSchema,
+            response: CreateCourseResponseSchema
+    ):
+        """
+        Проверяет, что ответ на создание курса соответствует запросу.
+
+        :param request: Исходный запрос на создание курса.
+        :param response: Ответ API с данными курса.
+        :raises AssertionError: Если хотя бы одно поле не совпадает.
+        """
+        # Логируем факт начала проверки
+        logger.info("Check create course response")
+
+        # Остальной код без изменений
+
+
+/tools/assertions/errors.py
+
+    import allure
+
+    from clients.errors_schema import ValidationErrorSchema, ValidationErrorResponseSchema, InternalErrorResponseSchema
+    from tools.assertions.base import assert_equal, assert_length
+    from tools.logger import get_logger  # Импортируем функцию для создания логгера
+
+    logger = get_logger("ERRORS_ASSERTIONS")  # Создаем логгер с именем "ERRORS_ASSERTIONS"
+
+
+    @allure.step("Check validation error")
+    def assert_validation_error(actual: ValidationErrorSchema, expected: ValidationErrorSchema):
+        """
+        Проверяет, что объект ошибки валидации соответствует ожидаемому значению.
+
+        :param actual: Фактическая ошибка.
+        :param expected: Ожидаемая ошибка.
+        :raises AssertionError: Если значения полей не совпадают.
+        """
+        # Логируем факт начала проверки
+        logger.info("Check validation error")
+
+        # Остальной код без изменений
+
+
+    @allure.step("Check validation error response")
+    def assert_validation_error_response(
+            actual: ValidationErrorResponseSchema,
+            expected: ValidationErrorResponseSchema
+    ):
+        """
+        Проверяет, что объект ответа API с ошибками валидации (`ValidationErrorResponseSchema`)
+        соответствует ожидаемому значению.
+
+        :param actual: Фактический ответ API.
+        :param expected: Ожидаемый ответ API.
+        :raises AssertionError: Если значения полей не совпадают.
+        """
+        # Логируем факт начала проверки
+        logger.info("Check validation error response")
+
+        # Остальной код без изменений
+
+
+    @allure.step("Check internal error response")
+    def assert_internal_error_response(
+            actual: InternalErrorResponseSchema,
+            expected: InternalErrorResponseSchema
+    ):
+        """
+        Функция для проверки внутренней ошибки. Например, ошибки 404 (File not found).
+
+        :param actual: Фактический ответ API.
+        :param expected: Ожидаемый ответ API.
+        :raises AssertionError: Если значения полей не совпадают.
+        """
+        # Логируем факт начала проверки
+        logger.info("Check internal error response")
+
+        # Остальной код без изменений
