@@ -4,6 +4,11 @@ from tools.assertions.base import assert_equal, assert_length
 from tools.assertions.files import assert_file
 from tools.assertions.users import assert_user
 import allure
+from tools.logger import get_logger
+
+
+
+logger = get_logger("COURSES_ASSERTIONS")
 
 
 
@@ -16,6 +21,8 @@ def assert_update_course_response(request: UpdateCourseRequestSchema, response: 
     :param response: Ответ API c обновленными данными курса.
     :raise AssertionError: Если хотя бы одно поле не совпадает.
     """
+    logger.info("Проверка ответа на обновление курса")
+
     assert_equal(response.course.title, request.title, name="title")
     assert_equal(response.course.max_score, request.max_score, name="max_score")
     assert_equal(response.course.min_score, request.min_score, name="min_score")
@@ -32,6 +39,8 @@ def assert_course(actual: CourseSchema, expected: CourseSchema):
     :param expected: Ожидаемые данные курса.
     :raises AssertionError: Если хотя бы одно поле не совпадает.
     """
+    logger.info("Проверка данных курса")
+
     assert_equal(actual.id, expected.id, name="id")
     assert_equal(actual.title, expected.title, name="title")
     assert_equal(actual.max_score, expected.max_score, name="max_score")
@@ -56,6 +65,8 @@ def assert_get_courses_response(
     :param create_course_responses: Список API ответов при создании курсов.
     :raises AssertionError: Если данные пользователя не совпадают.
     """
+    logger.info("Проверка ответа на получение списка курсов")
+
     assert_length(actual=get_courses_response.courses, expected=create_course_responses, name="courses")
 
     for index, create_course_response in enumerate(create_course_responses):
@@ -71,6 +82,8 @@ def assert_create_course_response(request: CreateCourseRequestSchema, response: 
     :param response: Ответ API c данными созданного курса.
     :raise AssertionError: Если хотя бы одно поле не совпадает.
     """
+    logger.info("Проверка ответа на создание курса")
+
     assert_equal(response.course.title, request.title, name="title")
     assert_equal(response.course.max_score, request.max_score, name="max_score")
     assert_equal(response.course.min_score, request.min_score, name="min_score")
