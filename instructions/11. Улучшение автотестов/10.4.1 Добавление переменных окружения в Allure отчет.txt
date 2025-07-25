@@ -1,0 +1,195 @@
+Добавление переменных окружения в Allure отчет
+Ссылки:
+
+Официальная документация Allure - https://allurereport.org/docs/how-it-works-environment-file/
+Пример Allure отчета с переменными окружения - https://nikita-filonov.github.io/playwright_typescript_api/
+
+
+В Allure отчет можно добавлять переменные окружения или любые другие настройки, которые будут отображаться в отчете. Э
+то очень полезно, чтобы видеть общую информацию о том, на каком окружении выполнялись автотесты, какие тестовые данные использовались и т.д.
+Например, в Allure отчете можно увидеть добавленную информацию об окружении на примере по следующей ссылке: https://nikita-filonov.github.io/playwright_typescript_api/
+
+Теперь давайте настроим автоматическое добавление информации о переменных окружения в нашем проекте.
+
+----------------------------------
+1. Работа с environment.properties
+----------------------------------
+В Allure для отображения информации об окружении требуется файл environment.properties, который следует поместить в директорию allure-results. Пример содержимого environment.properties:
+    os_platform = linux
+    os_release = 5.15.0-60-generic
+    os_version = #66-Ubuntu SMP Fri Jan 20 14:29:49 UTC 2023
+    python_version = Python 3.10.9
+
+Давайте добавим в нашу текущую папку allure-results файл environment.properties и поместим в него содержимое из примера выше:
+
+.
+└── autotests-api/
+    └── allure-results/
+        └── environment.properties
+
+Теперь запустим Allure отчет командой:
+    allure serve ./allure-results
+
+В результате в отчете на виджете Environment мы увидим переменные из файла environment.properties.
+
+
+----------------------------------
+2. Создаем функцию для генерации файла environment.properties
+----------------------------------
+
+Теперь давайте создадим функцию, которая будет автоматически генерировать файл environment.properties.
+Для этого будем использовать настройки из файла config.py, добавив новый параметр allure_results_dir, который будет хранить путь к папке allure-results в одном месте.
+
+Однако есть одна проблема. Если вызвать модель Settings, а директория allure-results не существует, произойдет ошибка, и экземпляр класса Settings не будет создан.
+Даже если передать переменную ALLURE_RESULTS_DIR через переменные окружения, если сама директория физически отсутствует на диске, возникнет ошибка.
+Это происходит потому, что типы FilePath и DirectoryPath в Pydantic требуют существования указанных файлов и директорий. Если этих объектов нет, выбрасывается ошибка.
+
+Для решения этой проблемы мы можем автоматически создавать директории и файлы на этапе инициализации модели Settings, если они не существуют. Это особенно важно для поля allure_results_dir.
+
+Путь к папке allure_results_dir используется для временных файлов и артефактов тестирования, которые могут не существовать до запуска тестов.
+
+    from typing import Self
+
+    from pydantic import BaseModel, HttpUrl, FilePath, DirectoryPath
+    from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+    class HTTPClientConfig(BaseModel):
+        url: HttpUrl
+        timeout: float
+
+        @property
+        def client_url(self) -> str:
+            return str(self.url)
+
+
+    class TestDataConfig(BaseModel):
+        image_png_file: FilePath
+
+
+    class Settings(BaseSettings):
+        model_config = SettingsConfigDict(
+            env_file=".env",
+            env_file_encoding="utf-8",
+            env_nested_delimiter=".",
+        )
+
+        test_data: TestDataConfig
+        http_client: HTTPClientConfig
+        allure_results_dir: DirectoryPath  # Добавили новое поле
+
+        # Добавили метод initialize
+        @classmethod
+        def initialize(cls) -> Self:  # Возвращает экземпляр класса Settings
+            allure_results_dir = DirectoryPath("./allure-results")  # Создаем объект пути к папке
+            allure_results_dir.mkdir(exist_ok=True)  # Создаем папку allure-results, если она не существует
+
+            # Передаем allure_results_dir в инициализацию настроек
+            return Settings(allure_results_dir=allure_results_dir)
+
+
+    # Теперь вызываем метод initialize
+    settings = Settings.initialize()
+
+
+
+Что изменилось?
+
+Мы добавили метод initialize, который автоматически создает необходимые директории, если они отсутствуют.
+Метод возвращает готовую к использованию модель Settings. Теперь, вместо того чтобы вызывать Settings(), используем Settings.initialize() для инициализации настроек.
+Это гарантирует, что папка allure-results будет создана до того, как мы начнем использовать настройки.
+
+Теперь создадим функцию create_allure_environment_file, которая будет автоматически создавать файл environment.properties. Для этого создадим файл environment.py в папке /tools/allure:
+
+.
+└── autotests-api/
+    └── tools/
+        └── allure/
+            ├── __init__.py
+            └── environment.py
+
+В файле environment.py создадим функцию create_allure_environment_file:
+
+    from config import settings
+
+
+    def create_allure_environment_file():
+        # Создаем список из элементов в формате {key}={value}
+        items = [f'{key}={value}' for key, value in settings.model_dump().items()]
+        # Собираем все элементы в единую строку с переносами
+        properties = '\n'.join(items)
+
+        # Открываем файл ./allure-results/environment.properties на чтение
+        with open(settings.allure_results_dir.joinpath('environment.properties'), 'w+') as file:
+            file.write(properties)  # Записываем переменные в файл
+    Давайте разберем детальнее функцию create_allure_environment_file:
+
+    items = [f'{key}={value}' for key, value in settings.model_dump().items()]
+    Затем, с помощью .items(), мы итерируемся по каждому ключу и значению словаря, формируя список, который выглядит следующим образом:
+
+    [
+        "test_data={'image_png_file': PosixPath('testdata/files/image.png')}",
+        "http_client={'url': HttpUrl('http://localhost:8000/'), 'timeout': 100.0}",
+        'allure_results_dir=allure-results'
+    ]
+     После этого мы собираем все элементы в единую строку с переносами строк:
+
+    properties = '\n'.join(items)
+     В итоге получается строка, готовая для сохранения в файл environment.properties.
+
+    test_data={'image_png_file': PosixPath('testdata/files/image.png')}
+    http_client={'url': HttpUrl('http://localhost:8000/'), 'timeout': 100.0}
+    allure_results_dir=allure-results
+    Открываем файл на запись:
+
+    with open(settings.allure_results_dir.joinpath('environment.properties'), 'w+') as file:
+        file.write(properties)  # Записываем переменные в файл
+
+
+Таким образом, реализация функции create_allure_environment_file завершена.
+
+------------------------------------
+3. Автоматически создаем файл environment.properties
+------------------------------------
+Чтобы автоматически сохранять файл environment.properties после завершения всех автотестов, можно использовать фикстуру со скоупом session и параметром autouse=True. Создадим такую фикстуру в файле ./fixtures/allure.py, добавив в него фикстуру save_allure_environment_file, которая будет запускать функцию create_allure_environment_file по завершении автотестов:
+
+    import pytest
+
+    from tools.allure.environment import create_allure_environment_file
+
+
+    @pytest.fixture(scope='session', autouse=True)
+    def save_allure_environment_file():
+        # До начала автотестов ничего не делаем
+        yield  # Запукаются автотесты...
+        # После завершения автотестов создаем файл environment.properties
+        create_allure_environment_file()
+    Добавим эту фикстуру в файл conftest.py:
+
+    pytest_plugins = (
+        "fixtures.users",
+        "fixtures.files",
+        "fixtures.courses",
+        "fixtures.exercises",
+        "fixtures.authentication",
+
+        "fixtures.allure"  # Добавили плагин
+    )
+
+Теперь фикстура save_allure_environment_file будет автоматически запускаться на каждую тестовую сессию и по окончании тестов создавать файл environment.properties.
+
+------------------------------------
+4. Тестирование
+------------------------------------
+Теперь давайте запустим все наши автотесты и посмотрим на Allure отчет. Не забудьте перед запуском автотестов удалить папку allure-results:
+
+python -m pytest -m "regression" --alluredir=./allure-results
+Запустим Allure отчет:
+
+allure serve ./allure-results
+Теперь в отчете на виджете Environment мы можем видеть информацию об окружении:
+
+
+
+Заключение
+В данном уроке мы рассмотрели, как можно добавить информацию об окружении в Allure отчет. Также стоит отметить, что в отчет можно добавлять любые переменные и информацию, не обязательно ограничиваясь данными из настроек. Например, можно включить версию операционной системы, версию python
