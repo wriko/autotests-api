@@ -5,6 +5,9 @@ from clients.api_client import APIClient  # импортируем базовы�
 from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema # импортируем схемы CreateUserRequestSchema и CreateUserResponseSchema для создания и получения данных пользователя
 import allure
 
+from tools.routes import APIRoutes
+
+
 class PublicUsersClient(APIClient):  # создаем класс PublicUsersClient, который наследуется от ApiClient для выполнения запросов к API создания пользователя
     """
     Клиент для работы с /api/v1/users для создания пользователя
@@ -18,7 +21,7 @@ class PublicUsersClient(APIClient):  # создаем класс PublicUsersClie
         :param request: Словарь с данными запроса, содержащим следующие поля: email, password, lastName, firstName, middleName.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.post('/api/v1/users',json=request.model_dump(by_alias=True))  # отправляем POST-запрос на создание пользователя с данными из словаря request, преобразованного в JSON с помощью метода model_dump класса CreateUserRequestSchema
+        return self.post(APIRoutes.USERS,json=request.model_dump(by_alias=True))  # отправляем POST-запрос на создание пользователя с данными из словаря request, преобразованного в JSON с помощью метода model_dump класса CreateUserRequestSchema
 
 
     def create_user(self, request: CreateUserRequestSchema) -> CreateUserResponseSchema: # создаем метод для отправки запроса на создание пользователя в системе и получения ответа от сервера и преобразования ответа в словарь с данными пользователя

@@ -4,6 +4,9 @@ from clients.public_http_builder import get_public_http_client
 from clients.authentication.authentication_schema import LoginRequestSchema, LoginResponseSchema,  RefreshRequestSchema  # импортируем схемы для валидации данных запросов и ответов из authentication_shema.py
 import allure
 
+from tools.routes import APIRoutes
+
+
 class AuthenticationClient(APIClient): # создаем класс AuthenticationClient, который наследуется от ApiClient для выполнения запросов к API авторизации
     """
     Клиент для работы с /api/v1/authentication
@@ -17,7 +20,7 @@ class AuthenticationClient(APIClient): # создаем класс Authenticatio
         :param request: Словарь с email и password.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.post('/api/v1/authentication/login', json = request.model_dump(by_alias=True)) # отправляем POST-запрос на URL /api/v1/authentication/login с данными запроса в формате JSON. Используем метод model_dump из Pydantic для преобразования схемы запроса в словарь с учетом псевдонимов полей (by_alias=True).
+        return self.post(f'{APIRoutes.AUTHENTICATION}/login', json = request.model_dump(by_alias=True)) # отправляем POST-запрос на URL /api/v1/authentication/login с данными запроса в формате JSON. Используем метод model_dump из Pydantic для преобразования схемы запроса в словарь с учетом псевдонимов полей (by_alias=True).
 
     @allure.step('Обновление токена аутентификации')
     def refresh_api(self, request: RefreshRequestSchema) -> Response: # создаем метод для отправки запроса на обновление токена
@@ -27,7 +30,7 @@ class AuthenticationClient(APIClient): # создаем класс Authenticatio
         :param request: Словарь с refreshToken.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.post('/api/v1/authentication/refresh', json = request.model_dump(by_alias=True))
+        return self.post(f'{APIRoutes.AUTHENTICATION}/refresh', json = request.model_dump(by_alias=True))
 
 
     def login(self, request: LoginRequestSchema) -> LoginResponseSchema: # создаем метод для отправки запроса на авторизацию и получения токена авторизации

@@ -4,6 +4,9 @@ from clients.private_http_builder import AuthenticationUserSchema, get_private_h
 from clients.files.files_schema import CreateFileRequestSchema, CreateFileResponseSchema
 import allure
 
+from tools.routes import APIRoutes
+
+
 class FilesClient(APIClient):
     """
     Клиент для работы с /api/v1/files
@@ -17,7 +20,7 @@ class FilesClient(APIClient):
         :param file_id: Идентификатор файла.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.get(f"/api/v1/files/{file_id}")
+        return self.get(f"{APIRoutes.FILES}/{file_id}")
 
     @allure.step("Создание файла")
     def create_file_api(self, request: CreateFileRequestSchema) -> Response:
@@ -28,7 +31,7 @@ class FilesClient(APIClient):
         :return: Ответ от сервера в виде объекта httpx.Response
         """
         return self.post(
-            "/api/v1/files",
+            APIRoutes.FILES,
             data= request.model_dump(by_alias=True, exclude={"upload_file"}), # model_dump преобразует объект в словарь с учетом псевдонимов полей (например, filename -> name) и исключением поля upload_file, так как оно не должно быть передано в теле запроса.
             files = {"upload_file": request.upload_file.read_bytes()}
         )
@@ -41,7 +44,7 @@ class FilesClient(APIClient):
         :param file_id: Идентификатор файла.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.delete(f"/api/v1/files/{file_id}")  # удаление файла по идентификатору. Возвращает 204. Необходимо проверить, что файл действительно удален. В случае удаления возвращает пустой объект.
+        return self.delete(f"{APIRoutes.FILES}/{file_id}")  # удаление файла по идентификатору. Возвращает 204. Необходимо проверить, что файл действительно удален. В случае удаления возвращает пустой объект.
 
 
     def create_file(self, request: CreateFileRequestSchema) -> CreateFileResponseSchema:  # Создание файла на сервере с проверкой на ошибки сервера и получением ответа сервера

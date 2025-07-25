@@ -4,6 +4,9 @@ from clients.private_http_builder import AuthenticationUserSchema, get_private_h
 from clients.courses.courses_schema import GetCoursesQuerySchema, CreateCourseRequestSchema, CreateCourseResponseSchema, UpdateCourseRequestSchema
 import allure
 
+from tools.routes import APIRoutes
+
+
 class CoursesClient(APIClient):
     """
     Клиент для работы с /api/v1/courses
@@ -17,7 +20,7 @@ class CoursesClient(APIClient):
         :param query: Словарь с userId.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.get("/api/v1/courses", params=query.model_dump(by_alias=True)) # Используем by_alias для использования алиасов ключей
+        return self.get(APIRoutes.COURSES, params=query.model_dump(by_alias=True)) # Используем by_alias для использования алиасов ключей
 
 
     @allure.step("Получение курса по идентификатору {course_id}")
@@ -28,7 +31,7 @@ class CoursesClient(APIClient):
         :param course_id: Идентификатор курса.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.get(f"/api/v1/courses/{course_id}")
+        return self.get(f"{APIRoutes.COURSES}/{course_id}")
 
 
     @allure.step("Создание курса")
@@ -40,7 +43,7 @@ class CoursesClient(APIClient):
         previewFileId, createdByUserId.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.post("/api/v1/courses", json=request.model_dump(by_alias=True)) # Отправляем POST-запрос на создание курса с данными из словаря request, преобразованного в JSON с помощью метода model_dump класса CreateCourseRequestSchema
+        return self.post(APIRoutes.COURSES, json=request.model_dump(by_alias=True)) # Отправляем POST-запрос на создание курса с данными из словаря request, преобразованного в JSON с помощью метода model_dump класса CreateCourseRequestSchema
 
 
     @allure.step("Обновление курса по идентификатору {course_id}")
@@ -52,7 +55,7 @@ class CoursesClient(APIClient):
         :param request: Словарь с title, maxScore, minScore, description, estimatedTime.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.patch(f"/api/v1/courses/{course_id}", json=request.model_dump(by_alias=True)) # Отправляем PATCH-запрос на обновление курса с данными из словаря request, преобразованного в JSON с помощью метода model_dump класса UpdateCourseRequestSchema
+        return self.patch(f"{APIRoutes.COURSES}/{course_id}", json=request.model_dump(by_alias=True)) # Отправляем PATCH-запрос на обновление курса с данными из словаря request, преобразованного в JSON с помощью метода model_dump класса UpdateCourseRequestSchema
 
 
     @allure.step("Удаление курса по идентификатору {course_id}")
@@ -63,7 +66,7 @@ class CoursesClient(APIClient):
         :param course_id: Идентификатор курса.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.delete(f"/api/v1/courses/{course_id}")
+        return self.delete(f"{APIRoutes.COURSES}/{course_id}")
 
 
     def create_course(self, request: CreateCourseRequestSchema) -> CreateCourseResponseSchema:

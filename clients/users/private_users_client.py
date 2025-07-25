@@ -5,6 +5,8 @@ from clients.private_http_builder import get_private_http_client, Authentication
 from clients.users.users_schema import GetUserResponseSchema, UpdateUserRequestSchema
 import allure
 
+from tools.routes import APIRoutes
+
 
 class PrivateUsersClient(APIClient):
     """
@@ -18,7 +20,7 @@ class PrivateUsersClient(APIClient):
 
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.get("/api/v1/users/me")
+        return self.get(f"{APIRoutes.USERS}/me")
 
     @allure.step("Получение пользователя по идентификатору {user_id}")
     def get_user_api(self, user_id: str) -> Response:
@@ -28,7 +30,7 @@ class PrivateUsersClient(APIClient):
         :param user_id: Идентификатор пользователя.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.get(f"/api/v1/users/{user_id}")
+        return self.get(f"{APIRoutes.USERS}/{user_id}")
 
     @allure.step("Обновление пользователя по идентификатору {user_id}")
     def update_user_api(self, user_id: str, request: UpdateUserRequestSchema) -> Response:
@@ -39,7 +41,7 @@ class PrivateUsersClient(APIClient):
         :param request: Словарь с email, lastName, firstName, middleName.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.patch(f"/api/v1/users/{user_id}", json=request.model_dump(by_alias=True)) # Отправляем PATCH-запрос на обновление пользователя с данными из словаря request, преобразованного в JSON с помощью метода model_dump класса UpdateUserRequestShema
+        return self.patch(f"{APIRoutes.USERS}/{user_id}", json=request.model_dump(by_alias=True)) # Отправляем PATCH-запрос на обновление пользователя с данными из словаря request, преобразованного в JSON с помощью метода model_dump класса UpdateUserRequestShema
 
     @allure.step("Удаление пользователя по идентификатору {user_id}")
     def delete_user_api(self, user_id: str) -> Response:
@@ -49,7 +51,7 @@ class PrivateUsersClient(APIClient):
         :param user_id: Идентификатор пользователя.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.delete(f"/api/v1/users/{user_id}")
+        return self.delete(f"{APIRoutes.USERS}/{user_id}")
 
     @allure.step("Получение текущего пользователя с помощью метода get_user_me")
     def get_user(self, user_id: str) -> GetUserResponseSchema:
