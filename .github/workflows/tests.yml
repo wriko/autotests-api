@@ -100,4 +100,4 @@ jobs:
       - name: Show Allure Report link
         if: always()
         run:
-          echo "👉 Allure Report: https://wriko.github.io/autotests-api/"
+          echo "Allure Report: https://wriko.github.io/autotests-api/"
