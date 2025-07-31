@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEzOjU1OjUyLjU2MTgwNCIsInVzZXJfaWQiOiJjMjRlZTY4ZC01Yjk1LTQ1MmMtOGIwYi0zNWU2MWI3MDNmZjQifQ.pqgM9LFdJl9v9MVevENgXk1JCvECtksLNWH0NG4lr3w' \
+ -H 'content-length: 358' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Apply certainly market high work couple.","maxScore":90,"minScore":33,"description":"Recently property foot science. Avoid morning get similar century spring behavior. Can public per writer lawyer thank set.","estimatedTime":"19 weeks","previewFileId":"58d85243-b509-4dc3-a81f-c6adee1d6fda","createdByUserId":"c24ee68d-5b95-452c-8b0b-35e61b703ff4"}'

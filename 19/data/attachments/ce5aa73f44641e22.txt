@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEzOjU1OjUwLjQyNjQ3OSIsInVzZXJfaWQiOiI5ZTM5OGI1Yy1mZjNmLTQzMjAtYWIzZS1kMmYxY2YzMmY0ZDIifQ.XBtq7m9k1fotuF9xYeI0Ps2YFScVH1VghV1fWcmYI1o' \
+ -H 'content-length: 408' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Network girl since hotel painting.","maxScore":80,"minScore":3,"description":"American activity population top each.\nTake last special so. Record little fund month building help. Should factor this provide move.\nEasy own her stage. Meet idea federal more.","estimatedTime":"70 weeks","previewFileId":"60b473aa-783a-49e4-9b3c-3b2d8f450ed1","createdByUserId":"9e398b5c-ff3f-4320-ab3e-d2f1cf32f4d2"}'

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEzOjU1OjUwLjcwMDY0NyIsInVzZXJfaWQiOiJjODBmNDM3OS0xNDc5LTQ0YWQtYjBhYi0wMTY1ODhmMjg4NDAifQ.oRO8RCTmoskjklaHA-VKAYV2FXPuOAo_qvvkdh56hb8' \
+ -H 'content-length: 313' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Half almost none property end.","courseId":"30ea9cb2-d8b6-4552-956d-eeb663f2e196","maxScore":100,"minScore":1,"orderIndex":98,"description":"Board instead treatment language itself pay time. Condition owner sister yard.\nPerson early generation. Recently doctor animal care.","estimatedTime":"26 weeks"}'

@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/219bda68-b9f9-41b8-82fb-f0b075d70a4e' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEzOjU1OjQ5LjUzMDY0MSIsInVzZXJfaWQiOiJkMWNhMzAxMi1lMGYzLTRhNGUtOTY1MS0zY2ViOTFkNzMzZWIifQ.dWmRR-WrK-VhMtKwcHlz12wH4pKSHYoW7tlza4YEKBs' \
+ -H 'content-length: 221' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":84,"minScore":20,"description":"Drive thank discuss very attack great free. Appear nor knowledge feeling. Single party group attention those. Themselves avoid moment.","estimatedTime":"43 weeks"}'

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEzOjU1OjQ4LjEyMTUwNiIsInVzZXJfaWQiOiI0YzU3MTU5My02ZGE2LTQ5MTktOWNlMS1kOWQ4YjIxZmY3NTUifQ.RCzlCkOs1F77NB5Qvd1lTXbS9KdKnWbrOiYEX9ahQpg' \
+ -H 'content-length: 422' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Left order watch able image different.","maxScore":62,"minScore":41,"description":"Marriage view Congress billion cold. Similar whom once strong simple. The north mother though over.\nEffort take job option her. Test father establish think far. Policy morning garden add.","estimatedTime":"21 weeks","previewFileId":"91b25058-6547-4335-bef5-2f78e16f1eb6","createdByUserId":"4c571593-6da6-4919-9ce1-d9d8b21ff755"}'

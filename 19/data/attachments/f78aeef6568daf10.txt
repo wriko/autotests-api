@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEzOjU1OjQ5LjI1Nzg1MiIsInVzZXJfaWQiOiI0NjQ3NDM0MS1jZjNiLTQxZDQtODViOS01YmE2ZWQ3ZmJjOWMifQ.nnK0B5CYFOp1NGTyTdTfMi773fHprnnCw381Tl-ZVfg' \
+ -H 'content-length: 365' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Hour those citizen region yet meeting.","maxScore":71,"minScore":5,"description":"Benefit type deal medical method. Piece score money approach reduce possible all.\nNot benefit six for. There future citizen follow.","estimatedTime":"69 weeks","previewFileId":"c02acf01-6bcc-4ea3-b7f0-cab31af02efa","createdByUserId":"46474341-cf3b-41d4-85b9-5ba6ed7fbc9c"}'

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEzOjU1OjUxLjg3OTczNiIsInVzZXJfaWQiOiI1NGEzOTU3Mi05Y2E3LTQ5ZWMtOWY5Ny04ZWMxNThhNTg0NTgifQ.0TT-hQrOPtDbKjJJKOkBsnbYmp2n2PUBbl11AZRS5v4' \
+ -H 'content-length: 375' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Participant fear less author before no.","maxScore":98,"minScore":47,"description":"Laugh past gun shoulder high early. Foot spend American office mind.\nSound blood professional so itself. Property or between car rock buy.","estimatedTime":"100 weeks","previewFileId":"17065566-a7a3-437c-b0e9-eb554224c41b","createdByUserId":"54a39572-9ca7-49ec-9f97-8ec158a58458"}'

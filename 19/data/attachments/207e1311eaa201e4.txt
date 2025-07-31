@@ -1,0 +1,19 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:85 Проверка ответа на создание курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Hour those citizen region yet meeting.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 71
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 5
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'preview_file_id' соответствует c02acf01-6bcc-4ea3-b7f0-cab31af02efa
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Benefit type deal medical method. Piece score money approach reduce possible all.
+Not benefit six for. There future citizen follow.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 69 weeks
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'created_by_user_id' соответствует 46474341-cf3b-41d4-85b9-5ba6ed7fbc9c
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

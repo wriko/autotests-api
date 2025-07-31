@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEzOjU1OjUwLjcwMDY0NyIsInVzZXJfaWQiOiJjODBmNDM3OS0xNDc5LTQ0YWQtYjBhYi0wMTY1ODhmMjg4NDAifQ.oRO8RCTmoskjklaHA-VKAYV2FXPuOAo_qvvkdh56hb8' \
+ -H 'content-length: 435' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Property foot each recent too how particularly.","maxScore":65,"minScore":16,"description":"Wife participant himself right plant well. Five talk factor. Religious Mrs woman.\nTv if account join my become eye. Before bed table million. Able Republican indeed author pick involve short.","estimatedTime":"21 weeks","previewFileId":"1c3aa0c4-80c7-42e3-8b54-3a2bb94690c5","createdByUserId":"c80f4379-1479-44ad-b0ab-016588f28840"}'

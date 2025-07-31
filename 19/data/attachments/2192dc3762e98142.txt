@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEzOjU1OjUxLjYwNzc3OCIsInVzZXJfaWQiOiJmMjdkMGFmNi00NjFkLTQzN2EtYjAzOC1iZjMzZWU5MjI4N2EifQ.Kjn-BcuzrOcqtf1hNYSLbhd36Rs5VAF-JkZnCoU9P1I' \
+ -H 'content-length: 425' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Begin down brother example evidence community free.","maxScore":89,"minScore":8,"description":"Attention produce program around social. Card position model. Even reach space test action news.\nVoice affect want American.\nThere table tax. Source discover mind cup as during.","estimatedTime":"90 weeks","previewFileId":"993b659e-1885-403a-b92b-7306ce3bbfca","createdByUserId":"f27d0af6-461d-437a-b038-bf33ee92287a"}'
