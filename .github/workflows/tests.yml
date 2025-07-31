@@ -77,12 +77,15 @@ jobs:
           allure_results: allure-results  # Указываем каталог с результатами тестов
           allure_history: allure-history  # Указываем каталог для истории отчётов Allure
 
-      - name: Override CNAME with empty value
-        run: echo > ./allure-history/CNAME
 
       # 9.2. Показываем содержимое папки allure-history для контроля
       - name: List files in allure-history
         run: ls -la allure-history
+
+      - name: Override CNAME with empty value
+        if: always()
+        run: |
+            echo "" | tee ./allure-history/CNAME
 
 
       # 10.  Шаг для деплоя отчёта Allure на GitHub Pages, чтобы его можно было просматривать в браузере
