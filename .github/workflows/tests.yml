@@ -77,9 +77,8 @@ jobs:
           allure_results: allure-results  # Указываем каталог с результатами тестов
           allure_history: allure-history  # Указываем каталог для истории отчётов Allure
 
-      # 9.1. Удаляем CNAME, если он там есть
-      - name: Remove CNAME file if exists
-        run: rm -f allure-history/CNAME
+      - name: Override CNAME with empty value
+        run: echo > ./allure-history/CNAME
 
       # 9.2. Показываем содержимое папки allure-history для контроля
       - name: List files in allure-history
