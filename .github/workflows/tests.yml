@@ -94,3 +94,10 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}  # Токен для аутентификации на GitHub
           publish_branch: gh-pages  # Указываем, что отчёт будет опубликован в ветке gh-pages
           publish_dir: allure-history  # Указываем папку, которая будет опубликована на GitHub Pages
+
+
+      # 11. Шаг для вывода ссылки на Allure-отчёт
+      - name: Show Allure Report link
+        if: always()
+        run:
+          echo "👉 Allure Report: https://wriko.github.io/autotests-api/"
