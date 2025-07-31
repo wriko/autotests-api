@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/259d2cf8-2c4b-4a3b-a9fa-fc44a29b161e' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEzOjU4OjM1LjAwMzI2NCIsInVzZXJfaWQiOiI1NTcyZTk3OS1iN2M3LTRhYTMtODcyZi03NTg2YTY2ZTljOGQifQ.XMi0sYdquBZyrR0Xd2IPUioUZz-0frC2vEIdI8wB0tw' \
+ -H 'content-length: 169' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":99,"minScore":1,"description":"Drug attention doctor tough activity positive build. Tonight thought share TV area.","estimatedTime":"96 weeks"}'

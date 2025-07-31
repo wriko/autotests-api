@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEzOjU4OjM2LjgwODIxNSIsInVzZXJfaWQiOiJkMzJmYjMwMy0wNjZhLTQ3NzItOWVmYi01NTIxOWVkODQyMGEifQ.nE7MNkpV-dnRoJWD_l8q6QfAkAa3MSm0iy7W5FULdUk' \
+ -H 'content-length: 380' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Day thus affect over only.","maxScore":58,"minScore":47,"description":"Rate education past finish allow trip growth recent. Ground consumer religious another better role future. Film age leader today. Different bit unit employee.","estimatedTime":"55 weeks","previewFileId":"dcdf2f65-d2ce-4499-845e-bc3bc7984b2c","createdByUserId":"d32fb303-066a-4772-9efb-55219ed8420a"}'

@@ -1,0 +1,25 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем GET запрос к http://localhost:8000/api/v1/exercises?courseId=aa05cb75-600d-465f-a928-965141030abc
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises?courseId=aa05cb75-600d-465f-a928-965141030abc
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:69 Проверка ответа на получение списка заданий
+INFO     BASE_ASSERTIONS:base.py:73 Проверяем что длина 'exercises' соответствует 1
+INFO     EXERCISES_ASSERTIONS:exercises.py:45 Проверка данных задания
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 27f74435-a764-4f6b-b95e-d260d972e5ab
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Country join seem us sound term like.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'course_id' соответствует aa05cb75-600d-465f-a928-965141030abc
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 78
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 41
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'order_index' соответствует 97
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Myself smile short sometimes. Point poor material describe per present hour color. Quite amount boy situation room call understand.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 26 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

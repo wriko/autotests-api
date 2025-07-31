@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEzOjU4OjM1LjU4ODM4NiIsInVzZXJfaWQiOiJjOTI5Mjg2Zi01OGM2LTQ3Y2QtOTg5Mi01ZDM5MzA1MjAzYWMifQ.eVNWVqJeMYErq71H2HtTQPCz8utncbq0X98Noe6ijd8' \
+ -H 'content-length: 355' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Gas police sense machine Congress.","courseId":"b631a354-cfbd-4e2f-915a-111a9537684d","maxScore":83,"minScore":48,"orderIndex":90,"description":"Us color ago.\nTurn good can so future. Most argue late our answer bring painting. With worker article than.\nKnowledge leave for. Expert loss cultural represent lot kind.","estimatedTime":"13 weeks"}'

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEzOjU4OjM2LjIxODgxNiIsInVzZXJfaWQiOiIxYWQ5MWY0MC04OTI1LTRlOGYtYmY2ZS1iOGY0NWQ3YTk1ZTIifQ.VBZuynINbWtpIjih0_2xj1Y3lbYIdKbiXvR7gt-D3zA' \
+ -H 'content-length: 400' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Activity into thus himself age same assume south.","maxScore":69,"minScore":46,"description":"Clear reduce difficult enter. Purpose per service effort alone lay manage.\nStop owner less deal first. Pattern meet just cut. Stage Mr tough strategy part.","estimatedTime":"6 weeks","previewFileId":"15d4b9ff-7882-441d-b209-c039cd1bd7f1","createdByUserId":"1ad91f40-8925-4e8f-bf6e-b8f45d7a95e2"}'

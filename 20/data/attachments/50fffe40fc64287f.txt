@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEzOjU4OjM3LjQ0MDQ0MyIsInVzZXJfaWQiOiJhY2RlMjMyNi1kYzY0LTRjMzYtYjE3My02OWY1YjM4MjU4YTMifQ.VJcnKNymb42wMC_Q26R5tqI83UBPQD3RUtmh2k-BxvE' \
+ -H 'content-length: 386' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Miss color floor media late quality on goal.","maxScore":79,"minScore":2,"description":"Sister sea final look figure similar away. Word woman everybody role national reality usually.\nHerself like property commercial leave simply true.","estimatedTime":"82 weeks","previewFileId":"c63e4b42-b4c4-476d-97eb-eb0e0e4e7eb3","createdByUserId":"acde2326-dc64-4c36-b173-69f5b38258a3"}'

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEzOjU4OjM1LjU4ODM4NiIsInVzZXJfaWQiOiJjOTI5Mjg2Zi01OGM2LTQ3Y2QtOTg5Mi01ZDM5MzA1MjAzYWMifQ.eVNWVqJeMYErq71H2HtTQPCz8utncbq0X98Noe6ijd8' \
+ -H 'content-length: 393' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Enter also onto road employee girl.","maxScore":65,"minScore":48,"description":"Call condition like throughout. Certainly require give girl take foot different. Wait office any offer.\nFew discover use traditional. Else we travel south stage.","estimatedTime":"77 weeks","previewFileId":"0f6573f9-72ce-40ab-a207-c0a19300ddd1","createdByUserId":"c929286f-58c6-47cd-9892-5d39305203ac"}'

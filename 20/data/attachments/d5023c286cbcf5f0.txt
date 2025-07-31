@@ -1,0 +1,22 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем PATCH запрос к http://localhost:8000/api/v1/exercises/d29e51c6-dc5d-4624-bb54-371a36402bf8
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises/d29e51c6-dc5d-4624-bb54-371a36402bf8
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:100 Проверка ответа на обновление задания
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует To last reflect day former everyone process.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 84
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 8
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'order_index' соответствует 29
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Culture cup thank education. Opportunity interest recent production eight week modern yourself.
+Exist agency music several. Material party popular citizen yet attorney. Record have list.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 2 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы
