@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjU3OjQ2LjM2MDEyMSIsInVzZXJfaWQiOiI5MDExYzAxZC0yZWZiLTQ0YmUtYTJkZC0zMzkwZjljYjMzZjIifQ.8EH93JFUu96gNMODmooAEEvzwmjfWMuY6BUBQDWqjPI' \
+ -H 'content-length: 373' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Environmental parent idea modern federal likely take.","maxScore":57,"minScore":37,"description":"Mention left buy drop. Need way approach. Series total case.\nTop firm member cold.\nHour with kid face claim he throughout.","estimatedTime":"80 weeks","previewFileId":"b52369fd-f5b6-4f3c-9073-029d72d71b47","createdByUserId":"9011c01d-2efb-44be-a2dd-3390f9cb33f2"}'

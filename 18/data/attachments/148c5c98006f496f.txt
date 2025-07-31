@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjU3OjQzLjk1NzEyOCIsInVzZXJfaWQiOiJjMGYzYWRiMC0xNmYzLTRhOWEtOTc5Ny0zYWIzZWM3YWIyNmEifQ.y-kP8UGn5ZopvhYOEwPrIwh1SV9OsTSm-hvpoI59-y8' \
+ -H 'content-length: 335' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Cut even mission wait field.","maxScore":65,"minScore":39,"description":"Guy why still your.\nForeign top spring parent. Nor home painting. Industry until religious it throw view skin.","estimatedTime":"35 weeks","previewFileId":"414dc290-7d83-4a2b-80a2-618e9630e459","createdByUserId":"c0f3adb0-16f3-4a9a-9797-3ab3ec7ab26a"}'

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjU3OjQ2LjM2MDEyMSIsInVzZXJfaWQiOiI5MDExYzAxZC0yZWZiLTQ0YmUtYTJkZC0zMzkwZjljYjMzZjIifQ.8EH93JFUu96gNMODmooAEEvzwmjfWMuY6BUBQDWqjPI' \
+ -H 'content-length: 326' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Sort draw finish remember.","courseId":"4153e0b9-539c-48a2-869f-7f840c7f2322","maxScore":77,"minScore":40,"orderIndex":100,"description":"Military inside whether western. Movement defense character official serve environmental including. Many international bar mean whose yourself drive.","estimatedTime":"10 weeks"}'

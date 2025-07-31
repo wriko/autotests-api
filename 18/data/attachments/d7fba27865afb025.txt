@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjU3OjQ2Ljk3NjU3NyIsInVzZXJfaWQiOiJiYWVmMDk3Zi0xZmNlLTQ4MTQtYWVmYi00NDRhOTBhOTBjNmQifQ.hM9Skl2dTyNc74JpKAuN8gatwc5kTc4nY3DF0y4sF3Y' \
+ -H 'content-length: 341' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Risk minute from strong within hour.","courseId":"10d0c21c-296d-44c1-a8b1-3549fd487c88","maxScore":61,"minScore":44,"orderIndex":31,"description":"Themselves resource voice hospital.\nSea realize lot. Teacher product pay prepare same wish. Smile at exactly democratic performance expert shoulder whose.","estimatedTime":"35 weeks"}'

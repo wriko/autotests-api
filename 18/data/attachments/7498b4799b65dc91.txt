@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjU3OjQ0LjU1MDM5MSIsInVzZXJfaWQiOiJjYWIzNGFmYy00NGNhLTQ0YWYtYjc3YS04ODQ3MTZlY2Q5OGMifQ.1wjGCuQFO3wIwQ7tmq-Z-Gak3WOO-o3aVnev5XE2_PM' \
+ -H 'content-length: 351' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Network watch discuss ask again final against.","maxScore":68,"minScore":38,"description":"Serve maybe reflect teacher kitchen. Maybe fine prevent teach front nearly. Time sport street how every fish.","estimatedTime":"64 weeks","previewFileId":"a30f17a5-02e5-4b0f-b7f9-e23724686a1d","createdByUserId":"cab34afc-44ca-44af-b77a-884716ecd98c"}'

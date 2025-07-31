@@ -1,0 +1,20 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:25 Проверка ответа на создание задания
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Outside college which entire anything spend job.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'course_id' соответствует 8c59364a-2b4f-4e96-9bb7-3b22767857f3
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 72
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 44
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'order_index' соответствует 13
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Eight mother visit. She turn lay build. Special fire sound son.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 31 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjU3OjQyLjc1MDQ2NSIsInVzZXJfaWQiOiI3ODQzM2E0Yy01YmYzLTQ4M2MtOWJhMC02YTRhNWI5OGExYmIifQ.cxDbbllUkLYMlVF91qQqDtIjraIwpRLBg1-PI7ZnJmQ' \
+ -H 'content-length: 361' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Fund operation evening family.","maxScore":96,"minScore":48,"description":"Service spend little special who gas. Million card can sure. Drop around during small feel despite her.\nCost light rest marriage trip.","estimatedTime":"92 weeks","previewFileId":"ed8301b6-f3af-4fe0-a149-87ad4cb47540","createdByUserId":"78433a4c-5bf3-483c-9ba0-6a4a5b98a1bb"}'

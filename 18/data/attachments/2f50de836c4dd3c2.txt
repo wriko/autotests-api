@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjU3OjQ1LjcxNTkwNSIsInVzZXJfaWQiOiJkOGMwNmJjNS1jNjZlLTRmNDUtYWZmMC0xY2I4ZDI1MGYzODAifQ.rZDEAQuaQZDuPsCt8k32ZO_LFI6N_Ep89Z0vPMKqQEU' \
+ -H 'content-length: 368' \
+ -H 'content-type: application/json' \
+ -d '{"title":"North hospital interesting practice effect chair local.","maxScore":76,"minScore":31,"description":"Cover worker action consumer effect couple possible. Little among hit really else as. Here way have difference least.","estimatedTime":"52 weeks","previewFileId":"07b6611d-323e-4495-92e7-ca9b5f688123","createdByUserId":"d8c06bc5-c66e-4f45-aff0-1cb8d250f380"}'

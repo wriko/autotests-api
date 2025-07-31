@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjU3OjQ0LjU1MDM5MSIsInVzZXJfaWQiOiJjYWIzNGFmYy00NGNhLTQ0YWYtYjc3YS04ODQ3MTZlY2Q5OGMifQ.1wjGCuQFO3wIwQ7tmq-Z-Gak3WOO-o3aVnev5XE2_PM' \
+ -H 'content-length: 261' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Outside college which entire anything spend job.","courseId":"8c59364a-2b4f-4e96-9bb7-3b22767857f3","maxScore":72,"minScore":44,"orderIndex":13,"description":"Eight mother visit. She turn lay build. Special fire sound son.","estimatedTime":"31 weeks"}'
