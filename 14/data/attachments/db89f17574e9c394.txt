@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjE3OjUzLjM1NTQ5MSIsInVzZXJfaWQiOiJhM2EyZjJhYy03M2RhLTQ4MmEtOWIzNS02YjAxMzUxNmE4ZjIifQ.GHNHj67w3CgIzy_c-BMFsROkPZnIwAopweMxz3Nmsec' \
+ -H 'content-length: 385' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Nearly attorney article include partner teach pressure.","maxScore":63,"minScore":13,"description":"Movie where into per north. Week plant character standard fast manager would. Around benefit head hospital. Mother simply social word.","estimatedTime":"83 weeks","previewFileId":"3f183df8-3e99-4cdd-896c-7fc8cfbb7364","createdByUserId":"a3a2f2ac-73da-482a-9b35-6b013516a8f2"}'

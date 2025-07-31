@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjE3OjU2LjM4MjkzNSIsInVzZXJfaWQiOiI0YzcyNjhlYi1mMWI3LTQ1M2QtODQ0NS1hYTEyMWYxOWJiZDAifQ.pgJwPepoevltYQtKo7htGdFw3WYUaRKq0II5KYJD5v0' \
+ -H 'content-length: 342' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Weight view five school.","maxScore":99,"minScore":4,"description":"Think believe lead north lose matter. Rock oil budget success outside deep. Collection traditional Democrat next road more.","estimatedTime":"64 weeks","previewFileId":"d516bda9-4225-4354-a809-e9cf0377a4b8","createdByUserId":"4c7268eb-f1b7-453d-8445-aa121f19bbd0"}'

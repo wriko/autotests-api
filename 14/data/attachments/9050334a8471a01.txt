@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjE3OjU0LjI1MzY3NCIsInVzZXJfaWQiOiJjMjYyYzE3OS1hNmE0LTQwODUtYjJlNS02NmFmN2ZkM2YyNTgifQ.0egHW3iFSI9FH00gBII86jdpP8z8OnGoq6b4mGProOo' \
+ -H 'content-length: 354' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Begin so few central car offer.","courseId":"5717184f-34ff-4a5f-8282-dc63e47e8c32","maxScore":60,"minScore":10,"orderIndex":46,"description":"Trip find much. Born meet establish fish cold. Through establish seven.\nBenefit success someone during central. Thus business relate. Threat detail sure first admit choose.","estimatedTime":"40 weeks"}'

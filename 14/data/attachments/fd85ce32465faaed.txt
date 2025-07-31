@@ -1,0 +1,19 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:85 Проверка ответа на создание курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует One role hospital industry too.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 84
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 8
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'preview_file_id' соответствует 02087b7b-f1fb-4ba8-bfd8-37daa97a0b56
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует They kind that size society through turn. Sign exist class all ten vote along let. Anything participant black force record painting.
+Can wide total lay early. Game good once.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 94 weeks
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'created_by_user_id' соответствует d7f7a721-4556-4cf7-ad5e-753333b32074
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

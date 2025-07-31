@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjE3OjUxLjk0MjAzMSIsInVzZXJfaWQiOiJjMjE2N2I2ZC00YTBiLTRiYTUtOTA3ZS1lYzAyYjViOGUyOWUifQ.URy7VtdjvctMs_GUvm6mqARZUKcYZr-OJuOYl13iW5o' \
+ -H 'content-length: 343' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Us crime us employee.","maxScore":50,"minScore":42,"description":"Step page author type society worker. Simple form yeah career. Similar system debate. Husband likely similar husband avoid too.","estimatedTime":"4 weeks","previewFileId":"605c54b4-de71-454c-9fa6-ea0319fd9991","createdByUserId":"c2167b6d-4a0b-4ba5-907e-ec02b5b8e29e"}'

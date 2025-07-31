@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjE3OjU1LjcwOTEwMCIsInVzZXJfaWQiOiI4NDNkOGY0NC1mZDU5LTQ3NmItYWY5Ni1mYzNjNDNiOGY4M2QifQ.Cs_wFRRUBkzRwhoIxd6hbTx4jdIGnsuPWLSW65ItrzY' \
+ -H 'content-length: 354' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Kid sense think able work some month represent.","maxScore":82,"minScore":27,"description":"Only media perform four ten stuff. Record report artist ask inside stuff particular. Nor direction power early.","estimatedTime":"28 weeks","previewFileId":"d735ed0e-1b12-4fe7-807a-1cc2c7c3db7a","createdByUserId":"843d8f44-fd59-476b-af96-fc3c43b8f83d"}'

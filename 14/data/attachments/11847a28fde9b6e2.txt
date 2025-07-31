@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/9bf8839b-e3ea-4c94-8592-9739926da097' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjE3OjUzLjM1NTQ5MSIsInVzZXJfaWQiOiJhM2EyZjJhYy03M2RhLTQ4MmEtOWIzNS02YjAxMzUxNmE4ZjIifQ.GHNHj67w3CgIzy_c-BMFsROkPZnIwAopweMxz3Nmsec' \
+ -H 'content-length: 217' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":50,"minScore":5,"description":"Hotel attention politics others something country plant military. Prove win light success everyone.\nReduce poor camera so produce.","estimatedTime":"25 weeks"}'

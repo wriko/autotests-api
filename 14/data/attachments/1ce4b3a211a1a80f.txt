@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjE3OjU0LjUyNzk0MSIsInVzZXJfaWQiOiI3MDBkZGYzMC01MmEzLTRkNTktYWNjYi03ZGVkMTFlOTAwNmEifQ.qfY5N-wrkxojFeakrdL7iJaCX5nhLriVYUgF5k4-Mz8' \
+ -H 'content-length: 349' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Nation thus social oil really.","maxScore":68,"minScore":8,"description":"Bed not final beyond away idea very. Clear party loss song main. Fill painting free real heart. Majority about prepare role.","estimatedTime":"97 weeks","previewFileId":"81fc9c06-fe80-49cc-a721-b0a277635627","createdByUserId":"700ddf30-52a3-4d59-accb-7ded11e9006a"}'

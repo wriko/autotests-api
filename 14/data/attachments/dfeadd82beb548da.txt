@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjE3OjU1LjQzNDk2NSIsInVzZXJfaWQiOiJjODlkNGIwMS1mMmQ2LTRiMWQtYjM5Ni0wNmRiNmI4NmI3Y2IifQ.84j9SXS0dhOShmmZ2ZUUIRLQsxAjwpMZtF-1JvWCoWU' \
+ -H 'content-length: 401' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Baby western amount voice prepare become.","maxScore":90,"minScore":25,"description":"Catch TV country analysis. Beyond business national professional.\nPage stop accept natural. Fish dog between clear inside. Receive personal protect TV serve admit.","estimatedTime":"42 weeks","previewFileId":"7e00d294-a27d-43de-9020-bf6ef87ae524","createdByUserId":"c89d4b01-f2d6-4b1d-b396-06db6b86b7cb"}'
