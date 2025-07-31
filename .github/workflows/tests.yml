@@ -99,5 +99,4 @@ jobs:
       # 11. Шаг для вывода ссылки на Allure-отчёт
       - name: Show Allure Report link
         if: always()
-        run:
-          echo "Allure Report: https://wriko.github.io/autotests-api/"
+        run: echo "Allure Report https://wriko.github.io/autotests-api/"
