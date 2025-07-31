@@ -73,6 +73,12 @@ jobs:
           allure_results: allure-results  # Указываем каталог с результатами тестов
           allure_history: allure-history  # Указываем каталог для истории отчётов Allure
 
+      - name: Remove CNAME if exists in allure-report
+        run: rm -f ./allure-report/CNAME
+
+      - name: Remove CNAME if exists in allure-history
+        run: rm -f ./allure-history/CNAME
+
       # 10.  Шаг для деплоя отчёта Allure на GitHub Pages, чтобы его можно было просматривать в браузере
       - name: Deploy report to  Github Pages
         if: always()  # Выполняется всегда, независимо от успеха других шагов
