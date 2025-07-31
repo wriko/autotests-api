@@ -1,0 +1,33 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем GET запрос к http://localhost:8000/api/v1/courses?userId=cc907871-d65a-43e1-8202-919b43b8c871
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses?userId=cc907871-d65a-43e1-8202-919b43b8c871
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:68 Проверка ответа на получение списка курсов
+INFO     BASE_ASSERTIONS:base.py:73 Проверяем что длина 'courses' соответствует 1
+INFO     COURSES_ASSERTIONS:courses.py:42 Проверка данных курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 968c1b51-0309-4bd4-9687-a83e30d7e1a5
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Admit brother bag knowledge pattern mention head woman.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 67
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 35
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Me which decide area modern actually thought. Scientist operation expert direction nearly organization cup.
+Yeah south late state. Everybody sport up clear skill room.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 76 weeks
+INFO     FILES_ASSERTIONS:files.py:42 Проверка данных файла
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 8420c68d-f468-4108-9d80-087f3db3060c
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'url' соответствует http://localhost:8000/static/tests/18f46505-eeec-44c7-ae9a-341ad4518065.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'filename' соответствует 18f46505-eeec-44c7-ae9a-341ad4518065.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'directory' соответствует tests
+INFO     USERS_ASSERTIONS:users.py:38 Проверка данных пользователя
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует cc907871-d65a-43e1-8202-919b43b8c871
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'email' соответствует shirleybradley@example.net
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'last_name' соответствует Brown
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'first_name' соответствует Yvette
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'middle_name' соответствует Savannah
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjExOjIzLjMyMjk1OCIsInVzZXJfaWQiOiJmYjEwY2Y1OS0yMjJkLTRmOTYtYjIxZC00YjdmYjhhYWZkNjYifQ.nBOYCi-ogHEXfonMYgHzZYZSJz2wgKp73xJNf3VuPOU' \
+ -H 'content-length: 376' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Trade listen material trade low third similar.","maxScore":53,"minScore":32,"description":"Picture tend win as performance. Situation onto international safe add young voice.\nValue miss room. Cold happen no style it brother.","estimatedTime":"54 weeks","previewFileId":"339add8a-0726-4861-bd12-8be5a10a03bf","createdByUserId":"fb10cf59-222d-4f96-b21d-4b7fb8aafd66"}'

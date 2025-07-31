@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjExOjIwLjkyNjI4OCIsInVzZXJfaWQiOiJiNzMzMWY2MC04ZjY4LTQ3ZTEtOGVjNS0xNGM4OTI0ZTQ2NDAifQ.liduXKlDDX82WWgM2rjoFCQKIrQMX-M8fO7A_CzxzIA' \
+ -H 'content-length: 381' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Beyond minute board adult natural fact.","maxScore":100,"minScore":24,"description":"Address sometimes decide them somebody court director. Read fly under teacher.\nFish huge require first air. Assume candidate cause kind century.","estimatedTime":"78 weeks","previewFileId":"901c0096-b56e-477f-b7f2-214e77510928","createdByUserId":"b7331f60-8f68-47e1-8ec5-14c8924e4640"}'

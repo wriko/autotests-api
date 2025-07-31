@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjExOjE5Ljc1MjQ0MSIsInVzZXJfaWQiOiJjYzkwNzg3MS1kNjVhLTQzZTEtODIwMi05MTliNDNiOGM4NzEifQ.yebBW5h33s_o01TtMCdzYjm3nfk-VONObqB6b-hkPAM' \
+ -H 'content-length: 419' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Admit brother bag knowledge pattern mention head woman.","maxScore":67,"minScore":35,"description":"Me which decide area modern actually thought. Scientist operation expert direction nearly organization cup.\nYeah south late state. Everybody sport up clear skill room.","estimatedTime":"76 weeks","previewFileId":"8420c68d-f468-4108-9d80-087f3db3060c","createdByUserId":"cc907871-d65a-43e1-8202-919b43b8c871"}'
