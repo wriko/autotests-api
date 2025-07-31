@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIwOjU2LjMwOTUxNSIsInVzZXJfaWQiOiIyZTg3MDQyZC04M2I0LTRlNmQtOTJiNS1mMjdjMmI0NzI0ZTEifQ.VkV4-zqu3IxCtAB0vaByEO4xwf9KeiqPKcXRuByRnL4' \
+ -H 'content-length: 369' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Upon meeting near growth nor city appear.","maxScore":82,"minScore":1,"description":"Heart the green magazine. Within term so bill very throw under.\nLaugh fish direction wall look history after. Window technology run.","estimatedTime":"26 weeks","previewFileId":"38d7e002-bb77-4a09-a57a-7799a9e54440","createdByUserId":"2e87042d-83b4-4e6d-92b5-f27c2b4724e1"}'

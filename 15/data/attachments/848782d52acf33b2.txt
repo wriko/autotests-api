@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/ab7d345c-7c89-4784-b773-a87e0d91c339' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIwOjU0LjQ4ODY3OSIsInVzZXJfaWQiOiJiZmM2ODgwNC04Mzg0LTQ0ZTgtYmJjZS1kMTI2MGU1MGZjZGQifQ.OIrOCbO042rIAFHO5MEop3zHj8c1z8tLxi1_7L3xi-M' \
+ -H 'content-length: 223' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":68,"minScore":11,"description":"During worker manager pick. Future wrong toward high check father direction. Discover certainly hope where. Night size space game range.","estimatedTime":"78 weeks"}'

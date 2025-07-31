@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIwOjU0LjQ4ODY3OSIsInVzZXJfaWQiOiJiZmM2ODgwNC04Mzg0LTQ0ZTgtYmJjZS1kMTI2MGU1MGZjZGQifQ.OIrOCbO042rIAFHO5MEop3zHj8c1z8tLxi1_7L3xi-M' \
+ -H 'content-length: 320' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Blue itself foot.","maxScore":51,"minScore":41,"description":"Certainly me stuff everybody run year nice your.\nWind avoid herself easy. Dog right than difficult economy.","estimatedTime":"5 weeks","previewFileId":"714e2e31-1e1e-44b4-87eb-6fb323adeece","createdByUserId":"bfc68804-8384-44e8-bbce-d1260e50fcdd"}'

@@ -1,0 +1,19 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:85 Проверка ответа на создание курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Middle medical country accept north same age medical.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 79
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 20
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'preview_file_id' соответствует dedbefbe-bd5f-4cf2-b86a-8df8578e549c
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Admit method human term despite present. Short common hand southern raise may.
+Reason body not black. Data skill onto point.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 57 weeks
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'created_by_user_id' соответствует dc47153d-3c02-41b8-82e1-90fc7fea749e
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

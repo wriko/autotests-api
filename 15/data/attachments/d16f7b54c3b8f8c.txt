@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIwOjUzLjMwNjgzNCIsInVzZXJfaWQiOiI5NDMxMjMyYi1jZjM4LTRkYzEtODU4OC03Mzg3ZTc0NDZmNjEifQ.bxfDi_qAGVox7PvG2oEfiU2svlGkW_GZMh70Kj2_i3k' \
+ -H 'content-length: 373' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Night smile special character every thing.","maxScore":85,"minScore":21,"description":"Sense bit beat include. Total see over suddenly process along.\nRelate physical know its own have. Myself hard under do piece describe.","estimatedTime":"58 weeks","previewFileId":"5da2e9fb-9846-4315-8179-fe08238dd8c6","createdByUserId":"9431232b-cf38-4dc1-8588-7387e7446f61"}'

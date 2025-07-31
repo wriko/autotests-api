@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIwOjU1LjA3NDI5NCIsInVzZXJfaWQiOiJiY2I3ZmRhZC0zZDcwLTQ0N2ItOGQ0Ny04MDI4MDQ5OGQ2MDAifQ.KxOTJ38GCS3NmyGJrtF38YP9BtpMiybCmc72PTMROMs' \
+ -H 'content-length: 326' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Long or actually participant.","maxScore":68,"minScore":16,"description":"It lay peace. Act one word special know.\nDinner chance pressure. Important do offer watch food wear.","estimatedTime":"61 weeks","previewFileId":"db80c9b5-f124-4b3a-bc13-1d4148d2f80a","createdByUserId":"bcb7fdad-3d70-447b-8d47-80280498d600"}'

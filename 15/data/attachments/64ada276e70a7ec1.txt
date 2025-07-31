@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIwOjU2LjMwOTUxNSIsInVzZXJfaWQiOiIyZTg3MDQyZC04M2I0LTRlNmQtOTJiNS1mMjdjMmI0NzI0ZTEifQ.VkV4-zqu3IxCtAB0vaByEO4xwf9KeiqPKcXRuByRnL4' \
+ -H 'content-length: 363' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Kind fly project six hundred teacher window.","courseId":"17a69b5d-1725-461d-b400-784dca3eff99","maxScore":60,"minScore":39,"orderIndex":34,"description":"Energy third quality trial relate sing table.\nWhile good trip his buy. Admit drop believe according physical too. Everybody above democratic compare appear mean behind.","estimatedTime":"35 weeks"}'

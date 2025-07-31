@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/exercises/c68cd866-7aef-42cf-a55c-56d951485db1' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIwOjU1LjcyNTM5NCIsInVzZXJfaWQiOiJiMGVlYmI0Zi0xOGMyLTQ4YTctYjllMC04NjQ1OTU0M2MwYjEifQ.zggqZcWnAF20O5d3qiIJKpWV0Qrfw8-VreYqdN2lFq8' \
+ -H 'content-length: 255' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Travel image us government professor about.","maxScore":87,"minScore":34,"orderIndex":3,"description":"Position significant lay sometimes. Event across actually artist.\nWindow agree treatment fire idea trial quickly.","estimatedTime":"9 weeks"}'

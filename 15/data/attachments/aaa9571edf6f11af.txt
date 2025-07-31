@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIwOjU1LjcyNTM5NCIsInVzZXJfaWQiOiJiMGVlYmI0Zi0xOGMyLTQ4YTctYjllMC04NjQ1OTU0M2MwYjEifQ.zggqZcWnAF20O5d3qiIJKpWV0Qrfw8-VreYqdN2lFq8' \
+ -H 'content-length: 406' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Design race nor young which common.","maxScore":79,"minScore":21,"description":"Citizen fine herself hold. Site agent body mother central.\nOf carry all according factor cover even. Subject member score boy. Who amount become scientist drop myself follow.","estimatedTime":"74 weeks","previewFileId":"51c9ca2b-d109-4284-95be-f164d7054d2a","createdByUserId":"b0eebb4f-18c2-48a7-b9e0-86459543c0b1"}'

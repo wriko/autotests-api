@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIwOjU3LjU1Mjk4NiIsInVzZXJfaWQiOiI3NmFmZmY3OS1iM2ZkLTRiM2UtYmY5MS01YTk1NzZmMjg4ZmIifQ.Lo2-fgUW1DACrRkUKFOKSHP1-ZnGZschbymIIIJ9uVw' \
+ -H 'content-length: 392' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Hard affect should during whether character.","maxScore":51,"minScore":18,"description":"Arrive source any cell there realize. Base age significant letter.\nWork traditional remember that per build animal occur. Face establish dream surface.","estimatedTime":"69 weeks","previewFileId":"ec8060af-fc6c-4a18-94db-92cfcddf2f76","createdByUserId":"76afff79-b3fd-4b3e-bf91-5a9576f288fb"}'
