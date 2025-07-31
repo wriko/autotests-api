@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIzOjE2LjYwMDA2NCIsInVzZXJfaWQiOiJjMzM2ZjY5My0xM2FiLTQ2ODctYjUxYi1iMzg0ZDY1ZDlkZDAifQ.YKRiHXxkR-SHREKqF1GMntY6UgmmFws1FFb_feLHqhw' \
+ -H 'content-length: 402' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Daughter sure short walk step somebody.","maxScore":88,"minScore":36,"description":"Radio every house computer smile few music.\nEvery last enter section. Test road tree seek. Remember game various ok cost again effort. Face democratic specific enjoy.","estimatedTime":"86 weeks","previewFileId":"e17f1e5b-3bc3-4bc7-a4e0-69c5f445a8c2","createdByUserId":"c336f693-13ab-4687-b51b-b384d65d9dd0"}'

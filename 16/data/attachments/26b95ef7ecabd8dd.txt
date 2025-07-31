@@ -1,0 +1,19 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:85 Проверка ответа на создание курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Daughter sure short walk step somebody.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 88
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 36
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'preview_file_id' соответствует e17f1e5b-3bc3-4bc7-a4e0-69c5f445a8c2
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Radio every house computer smile few music.
+Every last enter section. Test road tree seek. Remember game various ok cost again effort. Face democratic specific enjoy.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 86 weeks
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'created_by_user_id' соответствует c336f693-13ab-4687-b51b-b384d65d9dd0
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

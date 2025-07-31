@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/e3aa68a0-a980-4bb1-b141-6fc5d6920ae6' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIzOjE2Ljg3NDY0MyIsInVzZXJfaWQiOiJmODY5MGVjOC04YTlhLTQ5NGUtYjNlOS1mZjcwMGU4MzVlMjkifQ.1osmHImSFixtQ3isPqgYPlZaz52UcT32L_HgQfHC5sc' \
+ -H 'content-length: 229' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":88,"minScore":39,"description":"Issue bring purpose throw star. Treatment change condition yet product. Hit crime truth reach choice.\nLand recent language often rich almost.","estimatedTime":"94 weeks"}'

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIzOjE2Ljg3NDY0MyIsInVzZXJfaWQiOiJmODY5MGVjOC04YTlhLTQ5NGUtYjNlOS1mZjcwMGU4MzVlMjkifQ.1osmHImSFixtQ3isPqgYPlZaz52UcT32L_HgQfHC5sc' \
+ -H 'content-length: 386' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Board director nearly by yard term exactly.","maxScore":79,"minScore":25,"description":"Act learn best fear argue road. Environmental relationship quite she cut prepare. Name their five break discussion. She face arm happy anything ok.","estimatedTime":"80 weeks","previewFileId":"ba345a32-1bfa-4c0b-be37-c613de228fb0","createdByUserId":"f8690ec8-8a9a-494e-b3e9-ff700e835e29"}'

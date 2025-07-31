@@ -1,0 +1,12 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     FILES_ASSERTIONS:files.py:24 Проверка ответа на создание файла
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'url' соответствует http://localhost:8000/static/tests/5c0febb4-ad59-42f3-b9d9-39242a0f30fc.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'filename' соответствует 5c0febb4-ad59-42f3-b9d9-39242a0f30fc.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'directory' соответствует tests
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIzOjE4Ljk2NzUyNSIsInVzZXJfaWQiOiJjOGY1N2EyOC1kNWEzLTQxN2EtOTY3Yi00MzRlNzJlZTJhZWEifQ.yGHLBcIUv1i-9GCY8qYnGO03OQtNi7Tw_dZXgf69yx0' \
+ -H 'content-length: 403' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Officer maybe remember commercial will experience.","maxScore":91,"minScore":35,"description":"Bank identify decide little. His thought detail either wonder. Director example interest direction first.\nHealth lot author exist. Sell into project friend.","estimatedTime":"33 weeks","previewFileId":"96b87bbd-fab2-49c2-9a58-e26565e84349","createdByUserId":"c8f57a28-d5a3-417a-967b-434e72ee2aea"}'

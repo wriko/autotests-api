@@ -1,0 +1,21 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:25 Проверка ответа на создание задания
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Full him peace personal provide.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'course_id' соответствует 2a6f1791-9551-45d3-b7e4-e46b0cc37349
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 91
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 26
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'order_index' соответствует 9
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Protect camera why laugh spend yourself day fact. To decade employee rise.
+President dream office process gun. I or food let body anything two.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 52 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

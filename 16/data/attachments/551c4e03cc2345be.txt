@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIzOjE3Ljc4MzkwNSIsInVzZXJfaWQiOiI4NTdmYmU3NC0zZGQ3LTQ3MmEtOGQ2NS03NGIzZTIyNmIzZGMifQ.DY1DBjD6-sciyC_T-MV8l6LM0WjKnEgy4Zr6UtxvtFo' \
+ -H 'content-length: 331' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Must much rest blue ready boy get.","maxScore":61,"minScore":11,"description":"Character budget hour there throughout name fire. My not positive deal indicate. Avoid site add walk.","estimatedTime":"40 weeks","previewFileId":"35986fc1-7edf-4c47-85e3-0cc2d543e227","createdByUserId":"857fbe74-3dd7-472a-8d65-74b3e226b3dc"}'

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIzOjE4LjA1Njc2NyIsInVzZXJfaWQiOiJhODJjZTk4Ni1lY2JkLTQwZjUtYTNjYi0wZmU5MzQ0ZThlY2QifQ.JnMJI9_AhnSAjqJCTGNjTt3y8axm2UUV67YG4mOj1Lw' \
+ -H 'content-length: 406' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Upon land affect pretty radio shake.","maxScore":63,"minScore":27,"description":"Born occur compare. Bill raise she scene see science. Church pressure series town reach.\nSecurity though exactly give arm. Live staff deal girl continue. Size listen if test.","estimatedTime":"8 weeks","previewFileId":"8d0f5451-96ae-4d94-887e-7ad2584ee3a1","createdByUserId":"a82ce986-ecbd-40f5-a3cb-0fe9344e8ecd"}'

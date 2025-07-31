@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIzOjE4Ljk2NzUyNSIsInVzZXJfaWQiOiJjOGY1N2EyOC1kNWEzLTQxN2EtOTY3Yi00MzRlNzJlZTJhZWEifQ.yGHLBcIUv1i-9GCY8qYnGO03OQtNi7Tw_dZXgf69yx0' \
+ -H 'content-length: 292' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Away ask person college act rate month.","courseId":"5ad35891-f1e9-429b-b24d-1deb5a34936b","maxScore":81,"minScore":1,"orderIndex":98,"description":"Accept office girl dog win view guess. Garden politics significant picture. Wear live change grow stand.","estimatedTime":"81 weeks"}'

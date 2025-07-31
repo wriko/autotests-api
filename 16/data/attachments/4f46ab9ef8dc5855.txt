@@ -1,0 +1,19 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем PATCH запрос к http://localhost:8000/api/v1/courses/e3aa68a0-a980-4bb1-b141-6fc5d6920ae6
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses/e3aa68a0-a980-4bb1-b141-6fc5d6920ae6
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:24 Проверка ответа на обновление курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует 123
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 88
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 39
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Issue bring purpose throw star. Treatment change condition yet product. Hit crime truth reach choice.
+Land recent language often rich almost.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 94 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

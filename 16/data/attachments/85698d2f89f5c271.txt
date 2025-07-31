@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIzOjE1LjQ1MDU3OSIsInVzZXJfaWQiOiJkMDc5YmMxZS0xMjAwLTQ2MDUtOWVhZC1hZTVmOTg3OTQyNmMifQ.Z7Uzx_oSdNgA-Z1Mc4CpxjePCz8IsKF6a9n0Qka8_q0' \
+ -H 'content-length: 400' \
+ -H 'content-type: application/json' \
+ -d '{"title":"No or audience.","maxScore":63,"minScore":35,"description":"Knowledge seat describe increase add. Political watch move present around.\nHis born rather population. Another the trial local. Interest economic often sit others identify believe meeting.","estimatedTime":"61 weeks","previewFileId":"3d729dcf-dbee-45b5-af53-bde1cbe24300","createdByUserId":"d079bc1e-1200-4605-9ead-ae5f9879426c"}'

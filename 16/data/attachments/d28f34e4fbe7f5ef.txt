@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjIzOjE5LjkxNjMxNSIsInVzZXJfaWQiOiIyNDViYmQ0NC02ODNmLTRmOWEtOTY4OC03YmZjOTcwZjVhNzQifQ.ZHh3UGeCcls8-rr2xWjnWjIDnie5hdafVuR1o0VGGq4' \
+ -H 'content-length: 370' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Summer share hotel there.","maxScore":80,"minScore":4,"description":"Image offer bar budget production claim. Popular red article protect.\nSong white president six them benefit. How sell authority marriage concern fly.","estimatedTime":"23 weeks","previewFileId":"b37368a2-eec5-419f-b4cf-d33fc82c76d3","createdByUserId":"245bbd44-683f-4f9a-9688-7bfc970f5a74"}'
