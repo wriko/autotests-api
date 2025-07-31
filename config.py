@@ -19,6 +19,7 @@ class TestDataConfig(BaseModel):  # настройки тестовых данн
 
 class Settings(BaseSettings):  # настройки
     model_config = SettingsConfigDict(  # используем для переопределения настроек
+        extra="allow", # разрешаем дополнительные поля в файле настроек (если они есть)
         env_file=".env",  # Указываем, из какого файла читать настройки
         env_file_encoding="utf-8",  # Указываем кодировку файла
         env_nested_delimiter="."  # Указываем разделитель для вложенных переменных
