@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/93588cd0-52ac-453d-b2ea-efc0d0d9f09d' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjMxOjI0LjQ0NDc0OSIsInVzZXJfaWQiOiI0ZTJlYTU0Yi03OTc0LTRmZTQtOGQ5OS1hYTFkYjZjNTExYTgifQ.obaj8n09mdf3u76wsy3zD4MDkcvaq1dT8kjoWPnq2Cg' \
+ -H 'content-length: 174' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":73,"minScore":26,"description":"Assume true speech course ability help. National response start language general space.","estimatedTime":"78 weeks"}'

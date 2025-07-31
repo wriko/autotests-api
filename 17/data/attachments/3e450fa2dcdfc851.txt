@@ -1,0 +1,21 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:25 Проверка ответа на создание задания
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Pressure one reduce professor nor.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'course_id' соответствует 8c03ca00-4c81-4aaf-9b3a-13d7fac5cd02
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 98
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 12
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'order_index' соответствует 29
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Research cold southern idea. Allow trouble such increase game.
+Year two fund course exist natural. Buy particular authority. Would skill son very.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 8 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

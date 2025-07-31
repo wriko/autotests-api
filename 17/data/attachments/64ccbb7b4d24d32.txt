@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjMxOjI2LjkxMTA0OCIsInVzZXJfaWQiOiJhMWYyZDYzOC1kMDVhLTQyMTctOWJiMS1lMDBmMDNhZjAzZmQifQ.RSNRcYuUiX8F6gvoItndsP8QWa7KhM6blGi-dWinBc0' \
+ -H 'content-length: 358' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Feel land lead various.","courseId":"9f312b0c-76a6-42ae-9891-c05cf88f6bd5","maxScore":94,"minScore":21,"orderIndex":66,"description":"Impact investment per factor. Kind consider development yeah work. Happen player strong continue.\nFamily should subject test thousand condition. Professional he media follow word stop.","estimatedTime":"43 weeks"}'

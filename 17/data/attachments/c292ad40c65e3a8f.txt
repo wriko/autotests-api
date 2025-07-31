@@ -1,0 +1,33 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем GET запрос к http://localhost:8000/api/v1/courses?userId=897916f6-f52d-47f6-85eb-db5dda57bee0
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses?userId=897916f6-f52d-47f6-85eb-db5dda57bee0
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:68 Проверка ответа на получение списка курсов
+INFO     BASE_ASSERTIONS:base.py:73 Проверяем что длина 'courses' соответствует 1
+INFO     COURSES_ASSERTIONS:courses.py:42 Проверка данных курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 88e84948-e71f-41db-91c3-9c6c2193e5b9
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Later language run his hope.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 55
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 26
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Voice task instead list movement exist build. Quickly scene law lose close leg authority.
+Affect wear add technology. Voice understand information fight sea.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 100 weeks
+INFO     FILES_ASSERTIONS:files.py:42 Проверка данных файла
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 34e836ad-d74d-49e8-a567-e5274ec027f9
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'url' соответствует http://localhost:8000/static/tests/a4355819-995f-4844-88fb-71e557635f12.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'filename' соответствует a4355819-995f-4844-88fb-71e557635f12.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'directory' соответствует tests
+INFO     USERS_ASSERTIONS:users.py:38 Проверка данных пользователя
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 897916f6-f52d-47f6-85eb-db5dda57bee0
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'email' соответствует eyates@example.net
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'last_name' соответствует Knapp
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'first_name' соответствует John
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'middle_name' соответствует Megan
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

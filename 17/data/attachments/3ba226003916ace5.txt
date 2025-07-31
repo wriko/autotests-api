@@ -1,0 +1,25 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем GET запрос к http://localhost:8000/api/v1/exercises?courseId=c82def1d-65c9-44b2-8d3a-05c93973093d
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises?courseId=c82def1d-65c9-44b2-8d3a-05c93973093d
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:69 Проверка ответа на получение списка заданий
+INFO     BASE_ASSERTIONS:base.py:73 Проверяем что длина 'exercises' соответствует 1
+INFO     EXERCISES_ASSERTIONS:exercises.py:45 Проверка данных задания
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует a7b5c8e4-6b7d-47ae-8a5f-1a2eb60e6b33
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Many list interview shoulder election.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'course_id' соответствует c82def1d-65c9-44b2-8d3a-05c93973093d
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 78
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 13
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'order_index' соответствует 11
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Campaign mention different computer arm what move receive. Professional try factor PM. Necessary campaign significant growth. Others blood data far as sometimes.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 24 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

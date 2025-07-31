@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjMxOjIzLjg2MDYzMSIsInVzZXJfaWQiOiI2OWM3MmUyMC01ZDczLTRjZmUtYTE2OS05MTZlNTAxMDNjYzgifQ.dTKkM1AKWMDywBNgTOyyXw7XrQ4850B7_nyhbMZ2_Ss' \
+ -H 'content-length: 417' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Son pick pull sister be line.","maxScore":99,"minScore":48,"description":"Including impact national beat. Beat family compare base military not tax.\nIncluding say special capital right. After learn another stage analysis term. Difference scene manager itself event.","estimatedTime":"68 weeks","previewFileId":"b09cc555-92c0-4b6a-af80-dce5fa98b305","createdByUserId":"69c72e20-5d73-4cfe-a169-916e50103cc8"}'

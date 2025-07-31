@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjMxOjI0LjQ0NDc0OSIsInVzZXJfaWQiOiI0ZTJlYTU0Yi03OTc0LTRmZTQtOGQ5OS1hYTFkYjZjNTExYTgifQ.obaj8n09mdf3u76wsy3zD4MDkcvaq1dT8kjoWPnq2Cg' \
+ -H 'content-length: 358' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Bed very physical want.","maxScore":54,"minScore":39,"description":"While describe morning mission. My month couple at character. Bag wear left focus produce person hair wide.\nBelieve half we. Add only not.","estimatedTime":"36 weeks","previewFileId":"fcc79bc4-75fa-4075-90fe-4d0119a621c0","createdByUserId":"4e2ea54b-7974-4fe4-8d99-aa1db6c511a8"}'

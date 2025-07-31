@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjMxOjI1LjAyOTk4OCIsInVzZXJfaWQiOiIxZGYzZDAzMy1jNDEzLTRhNGYtYTJjOC03OTkwYjI0YmU4NjIifQ.ryl2dI8EIbvlxzT7kKxJMTslIz6mGjuXYr0vhniznHo' \
+ -H 'content-length: 391' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Growth face act beyond.","maxScore":59,"minScore":41,"description":"Tv economic region process. Sing phone stage herself. Blood drug forward order director.\nShould cover them onto option if know other. Itself game work door can sport half.","estimatedTime":"53 weeks","previewFileId":"1bbc674c-4ab8-4d0f-b4d0-34d50ae1a1fd","createdByUserId":"1df3d033-c413-4a4f-a2c8-7990b24be862"}'

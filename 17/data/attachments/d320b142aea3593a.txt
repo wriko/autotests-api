@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjMxOjI2LjkxMTA0OCIsInVzZXJfaWQiOiJhMWYyZDYzOC1kMDVhLTQyMTctOWJiMS1lMDBmMDNhZjAzZmQifQ.RSNRcYuUiX8F6gvoItndsP8QWa7KhM6blGi-dWinBc0' \
+ -H 'content-length: 405' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Industry couple compare product director.","maxScore":75,"minScore":24,"description":"South word hard capital analysis reality. Painting develop suggest young ability.\nOften economy chance live so test away. Dog prevent us weight almost thought nothing.","estimatedTime":"15 weeks","previewFileId":"0a55f382-0434-4f44-ab49-a16d8a8b9e34","createdByUserId":"a1f2d638-d05a-4217-9bb1-e00f03af03fd"}'

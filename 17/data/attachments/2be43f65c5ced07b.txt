@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjMxOjI3LjUzNTg5OCIsInVzZXJfaWQiOiIyZGU2ZWJmMC1iZTgzLTQ4ZGQtYWUzNi1mM2ZjMmQ2NjUzMWMifQ.ejcRmaYB0vK3UaM1lSbznvIDDGVCjW6n71wik7UsXnk' \
+ -H 'content-length: 383' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Statement less whole life role.","maxScore":85,"minScore":24,"description":"Poor friend go. Reality difficult run current eight gun mind. Name land but card worker.\nStuff performance knowledge civil fight. Support good memory line.","estimatedTime":"83 weeks","previewFileId":"9c7af8c5-d9e0-4e72-b8a8-a0d7723ee3ae","createdByUserId":"2de6ebf0-be83-48dd-ae36-f3fc2d66531c"}'

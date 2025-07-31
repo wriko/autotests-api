@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjMxOjI1LjAyOTk4OCIsInVzZXJfaWQiOiIxZGYzZDAzMy1jNDEzLTRhNGYtYTJjOC03OTkwYjI0YmU4NjIifQ.ryl2dI8EIbvlxzT7kKxJMTslIz6mGjuXYr0vhniznHo' \
+ -H 'content-length: 330' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Pressure one reduce professor nor.","courseId":"8c03ca00-4c81-4aaf-9b3a-13d7fac5cd02","maxScore":98,"minScore":12,"orderIndex":29,"description":"Research cold southern idea. Allow trouble such increase game.\nYear two fund course exist natural. Buy particular authority. Would skill son very.","estimatedTime":"8 weeks"}'
