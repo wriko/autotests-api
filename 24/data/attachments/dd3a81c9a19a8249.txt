@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDEwOjIwOjUwLjc3MTk0NiIsInVzZXJfaWQiOiI4MWNkZTkxNC04MDk2LTQ2YmYtOTlmMi0zMjdhZmM3ZmIxNTAifQ.TEK-cFggOArieV--p84FwuxtOUUzrSanRwyUNBkV3mc' \
+ -H 'content-length: 392' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Culture position air to lead kind perform.","maxScore":71,"minScore":35,"description":"Degree push wide because. Modern miss sit culture.\nFight partner anything many establish character. Recognize their southern blood tonight week majority.","estimatedTime":"75 weeks","previewFileId":"35e9ad73-b793-4f48-b140-aaee79f89f6e","createdByUserId":"81cde914-8096-46bf-99f2-327afc7fb150"}'

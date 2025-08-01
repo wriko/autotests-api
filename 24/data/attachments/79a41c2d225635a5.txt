@@ -1,0 +1,19 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:85 Проверка ответа на создание курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Picture nature section information.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 73
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 31
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'preview_file_id' соответствует 57138943-c51f-4009-9f5d-b347b48f7d87
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Interesting suffer eat phone not. Far free one right its goal understand. Natural focus case debate.
+Great wrong radio else process. Piece business letter much next rock.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 13 weeks
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'created_by_user_id' соответствует 47f2ba1e-1aa3-48a9-b9b7-13652ea00a37
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

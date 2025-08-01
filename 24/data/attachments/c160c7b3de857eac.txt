@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDEwOjIwOjUzLjgzOTE1MyIsInVzZXJfaWQiOiJhZGQ0YzVhNC1jODBiLTQ2NDQtYTBmMC1mYmMwMDAxNjEyNGEifQ.hTyDAbUtnQZs_dAM8lyFuKqs6vTXaeYsiqcrS8gxOCo' \
+ -H 'content-length: 282' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Whole avoid fill commercial.","courseId":"f9871fcc-d61b-4b9d-92f6-656783a709ab","maxScore":62,"minScore":24,"orderIndex":45,"description":"President hit identify like.\nContain discover center station style serious. Wrong within contain wrong.","estimatedTime":"27 weeks"}'

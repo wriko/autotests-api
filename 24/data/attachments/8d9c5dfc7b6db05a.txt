@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDEwOjIwOjUyLjAwMzQ4MSIsInVzZXJfaWQiOiJiODY4OWRmYy02MTljLTRmMTUtYTBhNi02YWY4MmMzYTA0YWYifQ.gncsWiU8veR4aMazr8k3jaS4Ebc75VHGVFrtHOIf-bE' \
+ -H 'content-length: 366' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Catch ten personal occur across specific couple find.","maxScore":65,"minScore":23,"description":"Evening appear training group technology often.\nAs process list prevent. Hospital west mouth work moment wall coach.","estimatedTime":"65 weeks","previewFileId":"6a426bcb-a061-4b45-9d44-ccce5c78f472","createdByUserId":"b8689dfc-619c-4f15-a0a6-6af82c3a04af"}'

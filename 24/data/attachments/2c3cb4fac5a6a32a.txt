@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDEwOjIwOjUzLjI0MTA5MSIsInVzZXJfaWQiOiJmYTVlM2VmMS02MDNkLTQ3NDAtYmRmNy0xZTViNzg3MTE4YmYifQ.xdJ5eTmxroT7svgSav38VE4LrerWkph7ExGM1jH7Fpw' \
+ -H 'content-length: 433' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Over sister green argue life executive Congress.","maxScore":84,"minScore":18,"description":"Community become so win impact time public far. Trip family police lose sound.\nFocus end mean fund whom write thought. Attorney nation especially. Subject people people more bar professor.","estimatedTime":"52 weeks","previewFileId":"034e1100-dc06-4799-a605-abbe199fdf88","createdByUserId":"fa5e3ef1-603d-4740-bdf7-1e5b787118bf"}'

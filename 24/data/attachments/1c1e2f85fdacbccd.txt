@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDEwOjIwOjUxLjM1OTM5MiIsInVzZXJfaWQiOiI2ZTFkNWY1MC1mYjRhLTQ5YzEtYWIyYy02MzA2Mzc4MTZkOTgifQ.cRgita5lwuku2p_Nc9dnXy_EW66xiU-EfuIOFd5BLKI' \
+ -H 'content-length: 380' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Region goal red case learn place claim.","maxScore":93,"minScore":24,"description":"Check show against man. Ready even current than itself most national. Owner baby visit practice.\nExplain tax benefit body technology plant feel.","estimatedTime":"82 weeks","previewFileId":"43cee0cd-1b21-4335-84a2-769a595377a1","createdByUserId":"6e1d5f50-fb4a-49c1-ab2c-630637816d98"}'

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDEwOjIwOjUyLjU5NjQ4MCIsInVzZXJfaWQiOiIwZDc0YjQzNi1mZWNkLTRhYWYtYjY2Yi03MjBjNzQ3MGI2NzQifQ.9w1ArUtgyiZfdoUdJu7zuMzLrPE8R0nNWurjW23e2lk' \
+ -H 'content-length: 328' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Necessary successful identify seven happy.","maxScore":83,"minScore":14,"description":"Stop almost admit. Their consumer official be usually life care. Property only place term.","estimatedTime":"36 weeks","previewFileId":"f878c3d2-2505-405a-ac8b-333faac499c6","createdByUserId":"0d74b436-fecd-4aaf-b66b-720c7470b674"}'

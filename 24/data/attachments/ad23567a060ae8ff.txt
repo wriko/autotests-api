@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDEwOjIwOjUyLjAwMzQ4MSIsInVzZXJfaWQiOiJiODY4OWRmYy02MTljLTRmMTUtYTBhNi02YWY4MmMzYTA0YWYifQ.gncsWiU8veR4aMazr8k3jaS4Ebc75VHGVFrtHOIf-bE' \
+ -H 'content-length: 376' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Often physical civil town religious which out unit.","courseId":"7ecd899d-555f-417b-a143-5646c55a7802","maxScore":90,"minScore":35,"orderIndex":63,"description":"Nation charge maintain. Enough third management. Eight decade environment.\nTreatment all character serious food. Store firm field them section team see hit. Size wrong stage.","estimatedTime":"57 weeks"}'

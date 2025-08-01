@@ -1,0 +1,22 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем PATCH запрос к http://localhost:8000/api/v1/exercises/e609833e-bbda-4116-b52b-500db04d9986
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises/e609833e-bbda-4116-b52b-500db04d9986
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:100 Проверка ответа на обновление задания
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Trip sit whose better until.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 73
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 47
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'order_index' соответствует 76
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Range television which information meeting western. High animal determine become score project event value.
+Sometimes course will. Central center development attack national itself item.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 26 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDEwOjIwOjQ5LjU1MTcwMiIsInVzZXJfaWQiOiJkZmZlNGRjOC0zOWU3LTQ4NzktOGEwNC03YmFkM2ZkZjljODQifQ.Xpq6uD3Ix3lpyubKtCp7nCex4JT9WgLgNmWyJCRoBDE' \
+ -H 'content-length: 385' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Seven team time explain pattern PM camera.","maxScore":66,"minScore":42,"description":"Word notice us system. Leader name upon hand remember magazine religious.\nGet executive will future land let. Strategy family hour point thousand.","estimatedTime":"28 weeks","previewFileId":"dd28ebd7-49a4-43cc-a145-a06c2cfeef3f","createdByUserId":"dffe4dc8-39e7-4879-8a04-7bad3fdf9c84"}'

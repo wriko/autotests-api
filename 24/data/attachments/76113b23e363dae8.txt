@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/0f5f54cc-575d-44ad-80a1-12645bd72642' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDEwOjIwOjUwLjc3MTk0NiIsInVzZXJfaWQiOiI4MWNkZTkxNC04MDk2LTQ2YmYtOTlmMi0zMjdhZmM3ZmIxNTAifQ.TEK-cFggOArieV--p84FwuxtOUUzrSanRwyUNBkV3mc' \
+ -H 'content-length: 218' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":65,"minScore":1,"description":"Push sea attack such ago over election. Source also bit research. Billion drug budget.\nHome series mean current significant remain.","estimatedTime":"68 weeks"}'
