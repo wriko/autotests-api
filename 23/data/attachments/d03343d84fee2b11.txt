@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA4OjIxOjU5LjMyMDcwMSIsInVzZXJfaWQiOiI2YzliZTI1Ny02MWM3LTRmMWMtOTMwYy03MDU5NGJiZDZlZjcifQ.9psxmyt00w-35n6U4xs6TlXUiUgvN-vfLMCPUf6Ms_I' \
+ -H 'content-length: 444' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Treatment situation head keep establish stand make share.","maxScore":73,"minScore":3,"description":"City exactly statement home civil else. Film continue natural them live act.\nDevelop finally ten head however. Analysis financial significant draw huge manage few. Recognize theory chair huge.","estimatedTime":"7 weeks","previewFileId":"7e86dcc2-728f-4c03-b6d3-bde102a5afbb","createdByUserId":"6c9be257-61c7-4f1c-930c-70594bbd6ef7"}'

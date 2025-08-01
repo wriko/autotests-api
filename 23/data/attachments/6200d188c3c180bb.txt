@@ -1,0 +1,25 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем GET запрос к http://localhost:8000/api/v1/exercises/478ef912-3d60-4b09-ad9d-e7f95af76f97
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises/478ef912-3d60-4b09-ad9d-e7f95af76f97
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:86 Проверка ответа на получение задания
+INFO     EXERCISES_ASSERTIONS:exercises.py:45 Проверка данных задания
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 478ef912-3d60-4b09-ad9d-e7f95af76f97
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Under push enough attorney.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'course_id' соответствует 2e55cf6b-1114-4c88-90a2-0f7ecf174eb0
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 60
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 32
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'order_index' соответствует 4
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Increase less media often could what amount. Office buy indicate common possible.
+Growth attack might dog. Measure wrong truth response.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 28 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

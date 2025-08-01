@@ -1,0 +1,22 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем PATCH запрос к http://localhost:8000/api/v1/exercises/5650d1c1-a187-463f-a21d-b532bcf48d34
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises/5650d1c1-a187-463f-a21d-b532bcf48d34
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:100 Проверка ответа на обновление задания
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Accept around foot in choose figure first.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 99
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 27
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'order_index' соответствует 17
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Later six community paper. Present evidence trouble show.
+Fine every fill speak wrong. For city else accept test himself.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 52 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

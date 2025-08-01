@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/beb4425e-0e70-40bc-a625-2d6d20261aad' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA4OjIxOjU3LjIzNTgwMCIsInVzZXJfaWQiOiIzYzY2ZjFiOS04NjVkLTQ4YmUtYWZkYy1mZjc1ODJmMjJhN2IifQ.b3NZ-Ry7EPxiPr5QaiqYdhAdafTHPZsnvlV72VvQ0P8' \
+ -H 'content-length: 174' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":64,"minScore":31,"description":"Fear time politics pretty. Any instead determine whom. Idea group discussion news wear.","estimatedTime":"13 weeks"}'

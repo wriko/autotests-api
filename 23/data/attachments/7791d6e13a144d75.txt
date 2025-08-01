@@ -1,0 +1,15 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем GET запрос к http://localhost:8000/api/v1/users/me
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users/me
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     USERS_ASSERTIONS:users.py:56 Проверка ответа на получение пользователя
+INFO     USERS_ASSERTIONS:users.py:38 Проверка данных пользователя
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует dbfd46c9-ae6a-46e0-a044-3d54c128383f
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'email' соответствует lmoreno@example.net
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'last_name' соответствует Mays
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'first_name' соответствует Matthew
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'middle_name' соответствует William
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

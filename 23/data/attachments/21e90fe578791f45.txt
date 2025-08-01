@@ -1,0 +1,21 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:25 Проверка ответа на создание задания
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Himself right present Republican fear ever stop research.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'course_id' соответствует 1d6a2dae-8b66-4b73-94a0-ac6ec18f03c7
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 90
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 35
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'order_index' соответствует 4
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Military through none theory no. Country former hot challenge increase across candidate.
+Practice always what successful generation note fund. Thank natural still. School six morning.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 67 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

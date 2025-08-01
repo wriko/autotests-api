@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA4OjIyOjAwLjI2NjA0NCIsInVzZXJfaWQiOiI5MDI5NDVkMi1hMjVhLTQzYzktYWU4YS01ZGY0NDY1MTMwNzgifQ.LTakdwHvzKGUFvbd_peYHeQtCIXJKS8EV4RZkJo0Kgk' \
+ -H 'content-length: 345' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Bit conference letter event.","maxScore":53,"minScore":16,"description":"Which court have Congress across us.\nBetween herself capital level rest hope. Own plan lose how capital look throughout.","estimatedTime":"41 weeks","previewFileId":"d7ff2ad2-a2f2-4a87-a5a1-2e38d7387c14","createdByUserId":"902945d2-a25a-43c9-ae8a-5df446513078"}'

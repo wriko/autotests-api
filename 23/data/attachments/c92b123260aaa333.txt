@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA4OjIxOjU5LjU5Mzc5MyIsInVzZXJfaWQiOiI3MDVkNWQwNS04N2RkLTRiMzEtYThhNC0xZDE3ZWM1ZjRhMzkifQ.3syEC9Hor175f4GzI4sZDpRy0WAkiso0qAo57-E_ojM' \
+ -H 'content-length: 340' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Worry radio staff put tell part.","courseId":"7b77aa0e-db3a-4690-83f8-e3b96a487fec","maxScore":88,"minScore":44,"orderIndex":66,"description":"Interview daughter real work stop heavy rule. Event set news green.\nArt others quite. Make get maybe shoulder account his mind.\nNote writer especially vote.","estimatedTime":"81 weeks"}'

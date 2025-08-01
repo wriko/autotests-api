@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA4OjIxOjU2Ljk2Mjg2OSIsInVzZXJfaWQiOiI1YWY3MzU4Yy0xNTFkLTQyZDMtYWZlNC00ODFkNTcyMTMzYzYifQ.7RBFkzsCFCDS6UJCLvTftJM4772dNgE9sfOXQOJWCG8' \
+ -H 'content-length: 351' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Drive mean chance four.","maxScore":60,"minScore":18,"description":"Management side mention deep. Try similar toward direction try perhaps important.\nCover television east boy. She two nothing radio.","estimatedTime":"89 weeks","previewFileId":"a12765b9-552b-4557-bcf8-29714e9465a3","createdByUserId":"5af7358c-151d-42d3-afe4-481d572133c6"}'

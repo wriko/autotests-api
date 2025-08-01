@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA4OjIxOjU1LjgwOTE2NSIsInVzZXJfaWQiOiI0NDVkMWZiYS1kNzhkLTRjNDYtOWY5OS02YmYzNmFjNzc1MTkifQ.CIjlygvi_2B_40bgRdNX4SgXQp7Fqz32daRODPj819U' \
+ -H 'content-length: 373' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Economy fact matter white degree.","maxScore":88,"minScore":33,"description":"Candidate appear the identify child spring of group.\nYes school how try. Director best however true. Something subject evening tend glass case.","estimatedTime":"20 weeks","previewFileId":"4719ad32-fa2e-4c7a-99b2-23bf249eed6a","createdByUserId":"445d1fba-d78d-4c46-9f99-6bf36ac77519"}'

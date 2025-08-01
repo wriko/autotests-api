@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA4OjIxOjU3LjIzNTgwMCIsInVzZXJfaWQiOiIzYzY2ZjFiOS04NjVkLTQ4YmUtYWZkYy1mZjc1ODJmMjJhN2IifQ.b3NZ-Ry7EPxiPr5QaiqYdhAdafTHPZsnvlV72VvQ0P8' \
+ -H 'content-length: 383' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Family detail morning be check should opportunity common.","maxScore":56,"minScore":27,"description":"Artist Republican with role Mr car body expert. Enjoy inside eye southern.\nI skill agency church. Current event couple direction.","estimatedTime":"83 weeks","previewFileId":"77ef9d65-f13e-41b4-8873-c0e1c71c11cd","createdByUserId":"3c66f1b9-865d-48be-afdc-ff7582f22a7b"}'

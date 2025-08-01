@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA4OjIxOjU5LjU5Mzc5MyIsInVzZXJfaWQiOiI3MDVkNWQwNS04N2RkLTRiMzEtYThhNC0xZDE3ZWM1ZjRhMzkifQ.3syEC9Hor175f4GzI4sZDpRy0WAkiso0qAo57-E_ojM' \
+ -H 'content-length: 383' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Woman admit catch if.","maxScore":65,"minScore":31,"description":"List nice might recently eye soldier. Fine prepare none lawyer spend nor.\nMagazine suddenly Mr point staff. Their wide less happy not. Live open particular anything.","estimatedTime":"79 weeks","previewFileId":"55a7b349-e1aa-42cc-8b5f-48a2abd4bee8","createdByUserId":"705d5d05-87dd-4b31-a8a4-1d17ec5f4a39"}'

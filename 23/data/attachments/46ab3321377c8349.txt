@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA4OjIxOjU4LjEzMzQxNCIsInVzZXJfaWQiOiIyY2ZhNjZiZi02NzA5LTQwYmEtYWQ1OS1iOTQxYWIzZGQzZjkifQ.tK_mOVGm2KiYpIajYQ9feFV1qTqcnH4IwOW4xuQswkY' \
+ -H 'content-length: 410' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Administration reality significant.","maxScore":63,"minScore":28,"description":"Popular teacher walk meeting result understand how. Local team happen red. Who writer interesting style lose space.\nSummer guess new place oil person. Draw land party course art.","estimatedTime":"65 weeks","previewFileId":"89693d2c-c7ea-4a31-8c57-72601a805ae3","createdByUserId":"2cfa66bf-6709-40ba-ad59-b941ab3dd3f9"}'
