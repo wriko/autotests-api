@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA3OjAwOjE1Ljg5NDYyMCIsInVzZXJfaWQiOiIyNDVmZjJlYS1lNjQ3LTRmNzEtODE4Ni04YjRmYTg1NDBjNjEifQ.QEGpX_HLl1g5hGsUfw3B9kZGlCod-Sn1X4J50RUHJZ4' \
+ -H 'content-length: 404' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Soldier those paper including court toward above work.","courseId":"3b786f8b-8cb7-4920-a3ff-7b0cf1b70273","maxScore":50,"minScore":47,"orderIndex":30,"description":"Police against control detail. Throw culture thus position mother year. Team blood five media cost.\nLight party conference decision dark artist hundred. Under whose as down. Country goal because not.","estimatedTime":"18 weeks"}'

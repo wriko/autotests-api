@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA3OjAwOjE1Ljg5NDYyMCIsInVzZXJfaWQiOiIyNDVmZjJlYS1lNjQ3LTRmNzEtODE4Ni04YjRmYTg1NDBjNjEifQ.QEGpX_HLl1g5hGsUfw3B9kZGlCod-Sn1X4J50RUHJZ4' \
+ -H 'content-length: 394' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Lose take idea candidate.","maxScore":51,"minScore":28,"description":"Sense hospital administration look just this. Total economy class truth character mother become.\nFly board relate show state human happy. Tough employee drug prove outside.","estimatedTime":"86 weeks","previewFileId":"e9f46729-e3e3-4fad-b14f-f5409be062e6","createdByUserId":"245ff2ea-e647-4f71-8186-8b4fa8540c61"}'

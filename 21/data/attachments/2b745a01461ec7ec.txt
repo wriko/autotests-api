@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA3OjAwOjEzLjI1MzQ1OCIsInVzZXJfaWQiOiI5NjQxZDEwNi1jNTRkLTRhYmEtYTQ4NC0yOWI4OTllNzdiZmEifQ.5Lj93uKNEzTKfq_spUXkPf5FY9xlH1t6uog8B1lNJbk' \
+ -H 'content-length: 423' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Usually local trip relate step very force.","maxScore":52,"minScore":31,"description":"Even daughter ask analysis.\nThank total black price sense. Message professional fear thing.\nAgreement Republican and commercial administration. Cause early contain require voice give.","estimatedTime":"67 weeks","previewFileId":"7e45687c-74e0-4638-a967-b28c13f142ae","createdByUserId":"9641d106-c54d-4aba-a484-29b899e77bfa"}'

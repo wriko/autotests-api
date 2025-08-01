@@ -1,0 +1,20 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем PATCH запрос к http://localhost:8000/api/v1/courses/64d87196-812f-4f80-b336-1b1f765dc182
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses/64d87196-812f-4f80-b336-1b1f765dc182
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:24 Проверка ответа на обновление курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует 123
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 94
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 15
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Tonight energy develop already perform improve month. Service apply individual they.
+Early may later fire. Her discuss onto program tree step end it.
+Smile challenge current.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 31 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

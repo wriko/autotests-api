@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA3OjAwOjE0LjcwODgwMCIsInVzZXJfaWQiOiI2M2RkY2NkMS0zM2NiLTRhZDUtYTI4ZS1mMzliZWE4MjIwYzMifQ.qp-I8Oe45u4S_KOl0ewgzBoGp875YCYDGycYsrP0OOA' \
+ -H 'content-length: 347' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Such base measure away.","maxScore":89,"minScore":18,"description":"Nearly floor week such success bag teach. Surface street newspaper pass meeting. Common evidence last whether affect allow unit.","estimatedTime":"17 weeks","previewFileId":"7b14f43b-d4e7-4484-8387-badfbb8df223","createdByUserId":"63ddccd1-33cb-4ad5-a28e-f39bea8220c3"}'

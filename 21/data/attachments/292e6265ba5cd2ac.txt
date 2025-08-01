@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA3OjAwOjE0LjQzNDYxMSIsInVzZXJfaWQiOiIxZTNjNTk1MC04ZTY2LTQwNGItODUwZC0wODBiMjEzODJkODUifQ.Hoqx90nnJNjqbKm6zlmluaQVYMzfLfEN960UEQVjc60' \
+ -H 'content-length: 330' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Rather charge computer shoulder chair give feeling.","maxScore":70,"minScore":9,"description":"Serve loss fish cut yourself war attention lose. Compare policy firm try become job.","estimatedTime":"57 weeks","previewFileId":"a921230c-1018-433a-9217-f834ebc29788","createdByUserId":"1e3c5950-8e66-404b-850d-080b21382d85"}'

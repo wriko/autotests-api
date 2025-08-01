@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/64d87196-812f-4f80-b336-1b1f765dc182' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA3OjAwOjEzLjUyNjQ2NSIsInVzZXJfaWQiOiIxNmFhZWJiYi01NGRkLTQ0YjItYjNlZC00MmUwODI1MTNmZGUifQ.KRdAkcLEqTdubsQZa0SMv1--_xzMbmkKIsipMt9wPHo' \
+ -H 'content-length: 263' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":94,"minScore":15,"description":"Tonight energy develop already perform improve month. Service apply individual they.\nEarly may later fire. Her discuss onto program tree step end it.\nSmile challenge current.","estimatedTime":"31 weeks"}'

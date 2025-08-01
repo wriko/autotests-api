@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA3OjAwOjEzLjUyNjQ2NSIsInVzZXJfaWQiOiIxNmFhZWJiYi01NGRkLTQ0YjItYjNlZC00MmUwODI1MTNmZGUifQ.KRdAkcLEqTdubsQZa0SMv1--_xzMbmkKIsipMt9wPHo' \
+ -H 'content-length: 317' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Its data either natural.","maxScore":90,"minScore":35,"description":"Cultural card loss.\nProvide sing know trade world. Couple product hundred level control develop.","estimatedTime":"52 weeks","previewFileId":"42ef99da-8bf6-47b5-85ce-d57b3d19c350","createdByUserId":"16aaebbb-54dd-44b2-b3ed-42e082513fde"}'

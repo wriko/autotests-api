@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA3OjAwOjE1LjYyMDgyNyIsInVzZXJfaWQiOiJkYTQ5YjdlYS01YjgwLTQwM2UtYjE3YS02OTVjY2JlODdjNmIifQ.BlQbolEZQKPk5TlQdKB407KnZziuF5GEgscVfRNL9Cg' \
+ -H 'content-length: 346' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Any pay result a position.","courseId":"4757e671-2740-4ec7-a133-665a12d767ad","maxScore":65,"minScore":9,"orderIndex":46,"description":"Ago child them conference property religious past more. Certain help clear impact just.\nYou across trip else like. Coach value hold value. Attorney amount strategy catch.","estimatedTime":"64 weeks"}'

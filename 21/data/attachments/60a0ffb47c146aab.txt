@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA3OjAwOjE1LjYyMDgyNyIsInVzZXJfaWQiOiJkYTQ5YjdlYS01YjgwLTQwM2UtYjE3YS02OTVjY2JlODdjNmIifQ.BlQbolEZQKPk5TlQdKB407KnZziuF5GEgscVfRNL9Cg' \
+ -H 'content-length: 312' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Family cut star.","maxScore":62,"minScore":4,"description":"Drive game one apply they. Beautiful action character author present home race. Middle along company.","estimatedTime":"73 weeks","previewFileId":"c20adede-1a88-4ed6-ae16-a169b8735c21","createdByUserId":"da49b7ea-5b80-403e-b17a-695ccbe87c6b"}'

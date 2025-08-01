@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTAxVDA3OjAwOjEyLjExMzM3NCIsInVzZXJfaWQiOiJkNzE2M2FmOC1jMzdkLTQ0NzUtYjNlMC0yODIwZDFhNWM2MmYifQ.fyxGKE7Hp8daFH8uoQmHcGBW-yRYSB5jOGj2pltgyE4' \
+ -H 'content-length: 366' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Beyond concern just project run page until.","maxScore":72,"minScore":34,"description":"Sense social why exist total. Summer onto manager keep federal prevent also. Daughter interest course outside action beautiful.","estimatedTime":"24 weeks","previewFileId":"dce49f9b-7283-45f7-81c4-d7c6534fd9a1","createdByUserId":"d7163af8-c37d-4475-b3e0-2820d1a5c62f"}'
