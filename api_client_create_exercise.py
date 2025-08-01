@@ -25,7 +25,6 @@ autentication_user = AuthenticationUserSchema(
     password = create_user_request.password
 )
 
-
 files_client = get_files_client(autentication_user) # Получаем экземпляр FilesClient с уже настроенным HTTP-клиентом и передаем в него данные для аутентификации
 courses_client = get_courses_client(autentication_user) # Получаем экземпляр CoursesClient с уже настроенным HTTP-клиентом и передаем в него данные для аутентификации
 exercises_client = get_exercises_client(autentication_user) # Получаем экземпляр ExercisesClient с уже настроенным HTTP-клиентом и передаем в него данные для аутентификации
