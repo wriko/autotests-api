@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/622bcc08-aa0d-4946-82b7-ecee8c7b8cea' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA0VDEzOjI2OjE5LjgxOTU1NyIsInVzZXJfaWQiOiI3Mjg5NTY4ZC00M2JiLTQ4NzktYTVlNC1lZDk3NTI0MDMwZWEifQ.-H_EiOdFATx0L8WTMtbStYvNltyMjrvbQivu7bLlM2M' \
+ -H 'content-length: 211' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":84,"minScore":25,"description":"Floor may week your far life nor yard. Indicate fire issue rule strategy girl sense. He player particular not group quickly.","estimatedTime":"37 weeks"}'

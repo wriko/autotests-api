@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA0VDEzOjI2OjIxLjYzODc4NCIsInVzZXJfaWQiOiJhNmRhMmNkYy1iZjU2LTQxMDItOGQ1OS1kYzk5MmFkYjZiODcifQ.2jhLWR3Y1mrjsrujKu7L5PC9XfnKwNwoMX9jd5zMWhw' \
+ -H 'content-length: 385' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Able reflect chair see ready stock.","maxScore":99,"minScore":35,"description":"East vote always. Join civil though red in single.\nFoot edge represent financial just just. Now career reduce real. Fire wish remember song mention hard.","estimatedTime":"80 weeks","previewFileId":"62205171-5abd-46ca-bdd5-19d861d8e7a7","createdByUserId":"a6da2cdc-bf56-4102-8d59-dc992adb6b87"}'

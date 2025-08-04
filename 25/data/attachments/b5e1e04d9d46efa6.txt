@@ -1,0 +1,19 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:85 Проверка ответа на создание курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Beautiful side heavy.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 65
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 23
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'preview_file_id' соответствует 303fde18-acf4-48d9-9e48-de6d6899773c
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Now new economy down power impact.
+Pay new watch himself audience technology available. Affect yes east never garden them list. Down sign list situation.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 2 weeks
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'created_by_user_id' соответствует 88542f20-1850-4f56-9881-86f3519d980d
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA0VDEzOjI2OjIwLjQwNTY3MSIsInVzZXJfaWQiOiJlMjI2NWRhMi1mZTBlLTQyNjEtOTIyYS1lMGE4ZTZiYWRlMTIifQ.nraqC6XIt9iMCS_d-GmUfXZXYpU8_Hmn6Qm_4FPkr-o' \
+ -H 'content-length: 236' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Indeed leg anyone.","courseId":"72ed98f9-3fbc-423a-ae00-3bbd04bb4340","maxScore":55,"minScore":8,"orderIndex":24,"description":"Lay watch bed. Back even claim behavior around according alone owner.","estimatedTime":"10 weeks"}'

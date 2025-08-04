@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA0VDEzOjI2OjIwLjQwNTY3MSIsInVzZXJfaWQiOiJlMjI2NWRhMi1mZTBlLTQyNjEtOTIyYS1lMGE4ZTZiYWRlMTIifQ.nraqC6XIt9iMCS_d-GmUfXZXYpU8_Hmn6Qm_4FPkr-o' \
+ -H 'content-length: 352' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Just whose argue sound role.","maxScore":79,"minScore":30,"description":"Also film star expect provide return tend.\nAgo can challenge. Government form consumer. Time special guy modern amount several.","estimatedTime":"60 weeks","previewFileId":"fff5c46e-cdf7-4a34-a38e-30c35ee92e3d","createdByUserId":"e2265da2-fe0e-4261-922a-e0a8e6bade12"}'

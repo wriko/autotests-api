@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA0VDEzOjI2OjIxLjA1MTQxMiIsInVzZXJfaWQiOiIyNmM1Yjg0ZC1lNmEwLTQ5ZjMtYmIzNC0wNWY2ZGY0MDg0YTcifQ.DorGIA0QXVBJXh2O-htMFo3pRghNrETFh9CwXiYqgQU' \
+ -H 'content-length: 431' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Area rich eat community unit media.","maxScore":83,"minScore":15,"description":"Color class spend research similar police think. Recently practice part air media watch card.\nHundred thank teacher reflect event. Color throw nor despite market administration teacher international.","estimatedTime":"68 weeks","previewFileId":"b371d538-795b-4e01-b845-94b9c3d92f8c","createdByUserId":"26c5b84d-e6a0-49f3-bb34-05f6df4084a7"}'

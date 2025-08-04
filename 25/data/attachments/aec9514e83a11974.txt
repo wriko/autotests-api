@@ -1,0 +1,33 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем GET запрос к http://localhost:8000/api/v1/courses?userId=f5add28d-880c-4df7-8b4c-845e08f6014b
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses?userId=f5add28d-880c-4df7-8b4c-845e08f6014b
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:68 Проверка ответа на получение списка курсов
+INFO     BASE_ASSERTIONS:base.py:73 Проверяем что длина 'courses' соответствует 1
+INFO     COURSES_ASSERTIONS:courses.py:42 Проверка данных курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 2151ef3c-238e-4c28-b50b-b2300c83eb6e
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Blood yeah around place affect.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 94
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 27
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Its tough necessary relationship different policy morning follow. Production according main anyone position shake.
+Staff suddenly leg price. Fish serious age. Message key tree realize light base.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 82 weeks
+INFO     FILES_ASSERTIONS:files.py:42 Проверка данных файла
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 49470215-2d02-4b0d-8502-55b5cfa9ca9d
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'url' соответствует http://localhost:8000/static/tests/b352cad7-a9fd-477f-97c7-29da3fea0318.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'filename' соответствует b352cad7-a9fd-477f-97c7-29da3fea0318.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'directory' соответствует tests
+INFO     USERS_ASSERTIONS:users.py:38 Проверка данных пользователя
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует f5add28d-880c-4df7-8b4c-845e08f6014b
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'email' соответствует barnettsteven@example.com
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'last_name' соответствует Smith
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'first_name' соответствует Meredith
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'middle_name' соответствует Katrina
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

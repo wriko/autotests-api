@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA0VDEzOjI2OjE5LjgxOTU1NyIsInVzZXJfaWQiOiI3Mjg5NTY4ZC00M2JiLTQ4NzktYTVlNC1lZDk3NTI0MDMwZWEifQ.-H_EiOdFATx0L8WTMtbStYvNltyMjrvbQivu7bLlM2M' \
+ -H 'content-length: 417' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Include yes send senior.","maxScore":73,"minScore":34,"description":"List hear none effect through. Minute take real a. Floor project likely choice.\nFormer way treatment. Mr kitchen beyond glass.\nSon scientist mind card despite hand. Story guess system apply away.","estimatedTime":"96 weeks","previewFileId":"176346ad-8b38-4b72-a4f8-a9868043dc9d","createdByUserId":"7289568d-43bb-4879-a5e4-ed97524030ea"}'

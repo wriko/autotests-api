@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA0VDEzOjI2OjE4LjU4NjI1NyIsInVzZXJfaWQiOiJmNWFkZDI4ZC04ODBjLTRkZjctOGI0Yy04NDVlMDhmNjAxNGIifQ.Xt26xjreqWPOgaJpn8BvKPAN8YkYFjiIraSWtND1YjE' \
+ -H 'content-length: 423' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Blood yeah around place affect.","maxScore":94,"minScore":27,"description":"Its tough necessary relationship different policy morning follow. Production according main anyone position shake.\nStaff suddenly leg price. Fish serious age. Message key tree realize light base.","estimatedTime":"82 weeks","previewFileId":"49470215-2d02-4b0d-8502-55b5cfa9ca9d","createdByUserId":"f5add28d-880c-4df7-8b4c-845e08f6014b"}'

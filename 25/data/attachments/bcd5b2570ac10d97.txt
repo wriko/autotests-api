@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA0VDEzOjI2OjIyLjg3ODM3OSIsInVzZXJfaWQiOiI3ZjAyZjRiNC02MzcwLTQzNjUtOWYyOC1lN2NiMWEwNDZjNmEifQ.WQXLfxGDJOkib5GDyUos_j7dlpMp5lgJ7cI2UfTtieU' \
+ -H 'content-length: 334' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Dream discover author imagine.","maxScore":99,"minScore":17,"description":"Middle theory own yes. Money join rate discussion.\nWould measure decade huge until. Read billion large one.","estimatedTime":"67 weeks","previewFileId":"7e842fa8-c036-46d5-afb1-aa0c69059b8c","createdByUserId":"7f02f4b4-6370-4365-9f28-e7cb1a046c6a"}'

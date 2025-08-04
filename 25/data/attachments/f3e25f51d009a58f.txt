@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA0VDEzOjI2OjIyLjMwODA0NCIsInVzZXJfaWQiOiIyNTBmMzZhMy0wMjdiLTQ5ZjQtYjM1ZS03YWMwMWNjYTEzZDkifQ.H-8Ac7d7pQaIvt-p889Axm38upE748tm9Y4urV-f3nw' \
+ -H 'content-length: 403' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Share step happen seven.","maxScore":71,"minScore":31,"description":"Floor decide article save recent party. Security baby still which science everyone.\nDevelopment building involve national political production bar. Return see star player seek worry.","estimatedTime":"42 weeks","previewFileId":"7ce02458-a58b-4f00-bc03-bac2c43ff265","createdByUserId":"250f36a3-027b-49f4-b35e-7ac01cca13d9"}'

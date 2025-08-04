@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/exercises/6394d1fd-f3c7-495d-9e85-d9d98fcc80b9' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA0VDEzOjI2OjIxLjA1MTQxMiIsInVzZXJfaWQiOiIyNmM1Yjg0ZC1lNmEwLTQ5ZjMtYmIzNC0wNWY2ZGY0MDg0YTcifQ.DorGIA0QXVBJXh2O-htMFo3pRghNrETFh9CwXiYqgQU' \
+ -H 'content-length: 323' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Sort as life pass into later own senior.","maxScore":81,"minScore":35,"orderIndex":51,"description":"Hope any dinner table kitchen. Prove miss kitchen act.\nFamily its unit rest customer hard.\nResult culture five. Determine against significant. Always should but million well nature.","estimatedTime":"83 weeks"}'
