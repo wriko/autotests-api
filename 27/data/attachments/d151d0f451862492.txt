@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/exercises/cbd05cb2-06fc-4ee9-baf7-5591a7c041e1' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA2VDE4OjEyOjA0LjE2MDM2MCIsInVzZXJfaWQiOiI3YmVlNjU4Mi0zZDhkLTRiZDktYmFiOC01MDc3ZWEwMjg4MzUifQ.fMuWeIA59xyHqKD5CgNdf7dOddGZ3RIVN5-dbJOAXyc' \
+ -H 'content-length: 305' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Other visit provide everyone hotel spend provide senior.","maxScore":71,"minScore":21,"orderIndex":35,"description":"Myself before onto throw minute sport know.\nDifficult language Republican style safe turn mention. Receive some result else hard consumer skill not.","estimatedTime":"83 weeks"}'

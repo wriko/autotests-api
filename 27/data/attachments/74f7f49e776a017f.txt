@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA2VDE4OjEyOjA0LjE2MDM2MCIsInVzZXJfaWQiOiI3YmVlNjU4Mi0zZDhkLTRiZDktYmFiOC01MDc3ZWEwMjg4MzUifQ.fMuWeIA59xyHqKD5CgNdf7dOddGZ3RIVN5-dbJOAXyc' \
+ -H 'content-length: 366' \
+ -H 'content-type: application/json' \
+ -d '{"title":"None usually make add close hospital.","maxScore":74,"minScore":15,"description":"Speech sell form evening research couple fight happen. Our big almost sure without five find. Church husband view create study short.","estimatedTime":"22 weeks","previewFileId":"be74eb9a-4a86-4f49-8e57-879847a2abd0","createdByUserId":"7bee6582-3d8d-4bd9-bab8-5077ea028835"}'

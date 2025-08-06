@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA2VDE4OjEyOjA2LjMwNTMwMiIsInVzZXJfaWQiOiJhYjU3NGIwZS02MmQ0LTQzOTgtYTY2Mi05ZmY0NmQ4MDRkNTMifQ.JxBJkGniDbL3NLIz4rgj1Mbd4JIHREY5KCjNIKSNZIw' \
+ -H 'content-length: 336' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Chair no first finally until.","courseId":"946a682e-ce18-40ee-9b5f-fca2d78061a3","maxScore":92,"minScore":37,"orderIndex":51,"description":"Environmental base whether popular water sing. Security part reason choice. Actually high very east. Technology hotel story themselves operation bad cell go.","estimatedTime":"54 weeks"}'

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA2VDE4OjEyOjA1LjA4MTk3NCIsInVzZXJfaWQiOiIyZmFiNzk1YS1iYWMzLTRhNGMtYmM2Yi1iYjI0YzA1MDhmNjIifQ.UaYP5K-JJlpPQs0AAoiImmPRp09TeI4KsPodiflxNVk' \
+ -H 'content-length: 324' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Fact arrive itself try risk.","maxScore":68,"minScore":41,"description":"Still parent wear.\nHim organization author hit manage wide. Serve movement picture behavior public.","estimatedTime":"67 weeks","previewFileId":"df942fde-9bf7-4f7a-a433-bef5e8c94984","createdByUserId":"2fab795a-bac3-4a4c-bc6b-bb24c0508f62"}'

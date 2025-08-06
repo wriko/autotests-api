@@ -1,0 +1,22 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем PATCH запрос к http://localhost:8000/api/v1/exercises/cbd05cb2-06fc-4ee9-baf7-5591a7c041e1
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises/cbd05cb2-06fc-4ee9-baf7-5591a7c041e1
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:100 Проверка ответа на обновление задания
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Other visit provide everyone hotel spend provide senior.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 71
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 21
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'order_index' соответствует 35
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Myself before onto throw minute sport know.
+Difficult language Republican style safe turn mention. Receive some result else hard consumer skill not.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 83 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

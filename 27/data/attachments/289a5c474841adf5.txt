@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/b310296b-53c0-427f-8223-9ea7ccbc8300' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA2VDE4OjEyOjAyLjk4NjIxNCIsInVzZXJfaWQiOiIyMjhkOGIzNi00ZDMxLTQxMTctOGFjOC01YzRkOTM5ZGQ2M2IifQ.MofAUEsYYHMYNmSHe_RNkp3fb1Yz8rjbQH2F2nAgS-E' \
+ -H 'content-length: 188' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":62,"minScore":6,"description":"Believe better meeting how field position particularly. Trouble purpose always table structure nature.","estimatedTime":"74 weeks"}'

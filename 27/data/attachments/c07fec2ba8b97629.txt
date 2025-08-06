@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA2VDE4OjEyOjA2LjMwNTMwMiIsInVzZXJfaWQiOiJhYjU3NGIwZS02MmQ0LTQzOTgtYTY2Mi05ZmY0NmQ4MDRkNTMifQ.JxBJkGniDbL3NLIz4rgj1Mbd4JIHREY5KCjNIKSNZIw' \
+ -H 'content-length: 409' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Prepare short direction.","maxScore":64,"minScore":31,"description":"Science when resource cover describe environmental small. Technology home picture management war.\nAct sense quickly produce teacher truth story he. Write exist stage issue value hope cause.","estimatedTime":"7 weeks","previewFileId":"f3626836-1c37-457d-99bb-542c2e45160a","createdByUserId":"ab574b0e-62d4-4398-a662-9ff46d804d53"}'

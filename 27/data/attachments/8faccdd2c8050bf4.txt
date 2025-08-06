@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA2VDE4OjEyOjA1LjM1NDg5MSIsInVzZXJfaWQiOiI5MDg2MmRkMy0zMWI4LTQ5MGItOTBhNS1iYzYwYjFkNjRmNTIifQ.gspY--i6HnkXLUkcon8vE01J7h1RxL8D6ZlmyMDUnKs' \
+ -H 'content-length: 361' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Dinner part weight wife.","maxScore":99,"minScore":40,"description":"Human technology who common away state. So commercial store.\nShe would story stand suggest wear or. Expert church certainly add nearly wide.","estimatedTime":"44 weeks","previewFileId":"e19b5aff-e18a-4971-82a6-f748b54a99a9","createdByUserId":"90862dd3-31b8-490b-90a5-bc60b1d64f52"}'

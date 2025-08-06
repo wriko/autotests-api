@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA2VDE4OjEyOjA1LjA4MTk3NCIsInVzZXJfaWQiOiIyZmFiNzk1YS1iYWMzLTRhNGMtYmM2Yi1iYjI0YzA1MDhmNjIifQ.UaYP5K-JJlpPQs0AAoiImmPRp09TeI4KsPodiflxNVk' \
+ -H 'content-length: 310' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Main analysis human memory attack medical.","courseId":"4acb4b01-f732-4097-baf1-014dea82fa98","maxScore":91,"minScore":31,"orderIndex":46,"description":"Stay health through outside budget study bank. Would Congress improve deal. Wrong participant research type attention.","estimatedTime":"77 weeks"}'

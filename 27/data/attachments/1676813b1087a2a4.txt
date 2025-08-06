@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA2VDE4OjEyOjAxLjU3MDI3NSIsInVzZXJfaWQiOiJlNTZlMmFjZC1mNDY3LTQyZDctOGViMS0xOWE2MjUyODdiMDYifQ.nb0Yt_ibRGcnzbr7q54j9eSobScPauyGs_vMfqajULE' \
+ -H 'content-length: 391' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Response long prepare boy.","maxScore":76,"minScore":12,"description":"Rule benefit end open country. Gun education feeling letter. Minute nearly conference end range population happy. Remember quickly responsibility experience parent best.","estimatedTime":"16 weeks","previewFileId":"7cc91f89-3491-4416-9e36-6f2d76c17270","createdByUserId":"e56e2acd-f467-42d7-8eb1-19a625287b06"}'

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA2VDE4OjEyOjA0LjE2MDM2MCIsInVzZXJfaWQiOiI3YmVlNjU4Mi0zZDhkLTRiZDktYmFiOC01MDc3ZWEwMjg4MzUifQ.fMuWeIA59xyHqKD5CgNdf7dOddGZ3RIVN5-dbJOAXyc' \
+ -H 'content-length: 305' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Way nation order good writer over.","courseId":"53870bb0-7c86-4511-8f4f-da3978e4a544","maxScore":65,"minScore":8,"orderIndex":4,"description":"To his should few myself realize how. Painting including usually. Probably pattern treat daughter forward young difference.","estimatedTime":"92 weeks"}'

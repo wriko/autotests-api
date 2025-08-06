@@ -1,0 +1,25 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем GET запрос к http://localhost:8000/api/v1/exercises?courseId=946a682e-ce18-40ee-9b5f-fca2d78061a3
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises?courseId=946a682e-ce18-40ee-9b5f-fca2d78061a3
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:69 Проверка ответа на получение списка заданий
+INFO     BASE_ASSERTIONS:base.py:73 Проверяем что длина 'exercises' соответствует 1
+INFO     EXERCISES_ASSERTIONS:exercises.py:45 Проверка данных задания
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 587c1fe9-1818-427f-95e7-4373f80861fc
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Chair no first finally until.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'course_id' соответствует 946a682e-ce18-40ee-9b5f-fca2d78061a3
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 92
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 37
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'order_index' соответствует 51
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Environmental base whether popular water sing. Security part reason choice. Actually high very east. Technology hotel story themselves operation bad cell go.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 54 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

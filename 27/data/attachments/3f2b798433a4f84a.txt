@@ -1,0 +1,33 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     SWAGGER_COVERAGE_TRACKER_STORAGE:storage.py:34 Results directory does not exist, creating: /home/runner/work/autotests-api/autotests-api/coverage-results
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем GET запрос к http://localhost:8000/api/v1/courses?userId=e56e2acd-f467-42d7-8eb1-19a625287b06
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses?userId=e56e2acd-f467-42d7-8eb1-19a625287b06
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:68 Проверка ответа на получение списка курсов
+INFO     BASE_ASSERTIONS:base.py:73 Проверяем что длина 'courses' соответствует 1
+INFO     COURSES_ASSERTIONS:courses.py:42 Проверка данных курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 20583481-c2f6-4074-a495-f3af973d30eb
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Response long prepare boy.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 76
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 12
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Rule benefit end open country. Gun education feeling letter. Minute nearly conference end range population happy. Remember quickly responsibility experience parent best.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 16 weeks
+INFO     FILES_ASSERTIONS:files.py:42 Проверка данных файла
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 7cc91f89-3491-4416-9e36-6f2d76c17270
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'url' соответствует http://localhost:8000/static/tests/320617f2-6713-4919-80b7-b24b5acb2cd3.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'filename' соответствует 320617f2-6713-4919-80b7-b24b5acb2cd3.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'directory' соответствует tests
+INFO     USERS_ASSERTIONS:users.py:38 Проверка данных пользователя
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует e56e2acd-f467-42d7-8eb1-19a625287b06
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'email' соответствует connorsimpson@example.org
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'last_name' соответствует Morris
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'first_name' соответствует Peter
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'middle_name' соответствует Ryan
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

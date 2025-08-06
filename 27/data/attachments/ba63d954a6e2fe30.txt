@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA2VDE4OjEyOjA1LjM1NDg5MSIsInVzZXJfaWQiOiI5MDg2MmRkMy0zMWI4LTQ5MGItOTBhNS1iYzYwYjFkNjRmNTIifQ.gspY--i6HnkXLUkcon8vE01J7h1RxL8D6ZlmyMDUnKs' \
+ -H 'content-length: 269' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Low yourself during whether.","courseId":"e9226f33-4c0f-4797-a2eb-5d2a981d6c6e","maxScore":56,"minScore":36,"orderIndex":47,"description":"Himself character former with chair live add. Catch after family out bill expect soon fast.","estimatedTime":"11 weeks"}'

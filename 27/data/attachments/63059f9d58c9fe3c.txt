@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA2VDE4OjEyOjAzLjg4Njk0NiIsInVzZXJfaWQiOiI5MjY5YzQ3Mi1lNGU1LTRlOWMtYjQ4OC01NTljMjk3MjM2ODgifQ.koRHZswjypXQM6reymjHg-kweCilyDwGbX4EnxSrJXU' \
+ -H 'content-length: 417' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Career follow language meet.","maxScore":85,"minScore":48,"description":"Necessary option must yeah market. Skin mention pay appear remember painting.\nResponse adult morning cold number plan subject. Marriage great have there author.\nThird memory feeling material.","estimatedTime":"52 weeks","previewFileId":"c25e6104-3c9c-4224-a76c-418aec22c6bf","createdByUserId":"9269c472-e4e5-4e9c-b488-559c29723688"}'

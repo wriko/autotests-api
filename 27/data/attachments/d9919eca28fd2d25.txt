@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA2VDE4OjEyOjAyLjk4NjIxNCIsInVzZXJfaWQiOiIyMjhkOGIzNi00ZDMxLTQxMTctOGFjOC01YzRkOTM5ZGQ2M2IifQ.MofAUEsYYHMYNmSHe_RNkp3fb1Yz8rjbQH2F2nAgS-E' \
+ -H 'content-length: 369' \
+ -H 'content-type: application/json' \
+ -d '{"title":"That set food style old against small several.","maxScore":62,"minScore":23,"description":"Agency anything teach respond once summer case response. List when fear. Western decision happen church government floor offer.","estimatedTime":"99 weeks","previewFileId":"a249c712-2328-4e74-adb7-dd5bac3cb264","createdByUserId":"228d8b36-4d31-4117-8ac8-5c4d939dd63b"}'
