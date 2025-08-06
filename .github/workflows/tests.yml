@@ -56,13 +56,13 @@ jobs:
           pytest -m regression --alluredir=allure-results --numprocesses 2  # Запускаем тесты, отмеченные как "regression" в 2 потока, генерируем результаты для Allure
 
       # 8. Восстанавливаем историю покрытия из кеша, если она есть
-      - name: Restore coverage history
-        uses: actions/cache/restore@v4  # Используем action для восстановления кеша
+      - name: Restore Coverage history
+        uses: actions/cache/restore@v4
         with:
-          path: coverage-history.json  # Путь к файлу, который мы хотим восстановить
-          key: coverage-history-${{ github.run_id }}  # Ключ для кеша (используем уникальный идентификатор запуска)
+          path: coverage-history.json
+          key: coverage-history-${{ github.run_id }}
           restore-keys: |
-                coverage-history-  # Если точный ключ не найден, используем этот ключ для восстановления
+            coverage-history-
 
       # 9. Генерируем отчёт о покрытии кода тестами в формате JSON
       - name: Generate Coverage Report
