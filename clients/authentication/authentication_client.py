@@ -5,6 +5,7 @@ from clients.authentication.authentication_schema import LoginRequestSchema, Log
 import allure
 
 from tools.routes import APIRoutes
+from clients.api_coverage import tracker
 
 
 class AuthenticationClient(APIClient): # создаем класс AuthenticationClient, который наследуется от ApiClient для выполнения запросов к API авторизации
@@ -13,24 +14,26 @@ class AuthenticationClient(APIClient): # создаем класс Authenticatio
     """
 
     @allure.step('Аутентификация пользователя')
+    @tracker.track_coverage_httpx(f"{APIRoutes.AUTHENTICATION}/login")
     def login_api(self, request: LoginRequestSchema) -> Response: # создаем метод для отправки запроса на авторизацию
         """
         Метод выполняет аутентификацию пользователя.
 
         :param request: Словарь с email и password.
-        :return: Ответ от сервера в виде объекта httpx.Response
+        :return: Ответ от сервера в виде объекта httpx.Response.
         """
-        return self.post(f'{APIRoutes.AUTHENTICATION}/login', json = request.model_dump(by_alias=True)) # отправляем POST-запрос на URL /api/v1/authentication/login с данными запроса в формате JSON. Используем метод model_dump из Pydantic для преобразования схемы запроса в словарь с учетом псевдонимов полей (by_alias=True).
+        return self.post(f"{APIRoutes.AUTHENTICATION}/login", json = request.model_dump(by_alias=True)) # отправляем POST-запрос на URL /api/v1/authentication/login с данными запроса в формате JSON. Используем метод model_dump из Pydantic для преобразования схемы запроса в словарь с учетом псевдонимов полей (by_alias=True).
 
     @allure.step('Обновление токена аутентификации')
+    @tracker.track_coverage_httpx(f"{APIRoutes.AUTHENTICATION}/refresh")
     def refresh_api(self, request: RefreshRequestSchema) -> Response: # создаем метод для отправки запроса на обновление токена
         """
         Метод обновляет токен авторизации.
 
         :param request: Словарь с refreshToken.
-        :return: Ответ от сервера в виде объекта httpx.Response
+        :return: Ответ от сервера в виде объекта httpx.Response.
         """
-        return self.post(f'{APIRoutes.AUTHENTICATION}/refresh', json = request.model_dump(by_alias=True))
+        return self.post(f"{APIRoutes.AUTHENTICATION}/refresh", json = request.model_dump(by_alias=True)) # отправляем POST-запрос на URL /api/v1/authentication/refresh с данными запроса в формате JSON. Используем метод model_dump из Pydantic для преобразования схемы запроса в словарь с учетом псевдонимов полей (by_alias=True).
 
 
     def login(self, request: LoginRequestSchema) -> LoginResponseSchema: # создаем метод для отправки запроса на авторизацию и получения токена авторизации

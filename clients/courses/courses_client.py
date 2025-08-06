@@ -5,6 +5,7 @@ from clients.courses.courses_schema import GetCoursesQuerySchema, CreateCourseRe
 import allure
 
 from tools.routes import APIRoutes
+from clients.api_coverage import tracker
 
 
 class CoursesClient(APIClient):
@@ -13,6 +14,7 @@ class CoursesClient(APIClient):
     """
 
     @allure.step("Получение списка курсов")
+    @tracker.track_coverage_httpx(APIRoutes.COURSES)  # Отслеживаем покрытие для маршрута получения списка курсов
     def get_courses_api(self, query: GetCoursesQuerySchema) -> Response:
         """
         Метод получения списка курсов.
@@ -24,6 +26,7 @@ class CoursesClient(APIClient):
 
 
     @allure.step("Получение курса по идентификатору {course_id}")
+    @tracker.track_coverage_httpx(f"{APIRoutes.COURSES}/{{course_id}}")  # /{{course_id}} экранируем фигурные скобки, чтобы избежать ошибки в декораторе tracker
     def get_course_api(self, course_id: str) -> Response:
         """
         Метод получения курса по идентификатору.
@@ -35,6 +38,7 @@ class CoursesClient(APIClient):
 
 
     @allure.step("Создание курса")
+    @tracker.track_coverage_httpx(APIRoutes.COURSES)  # Отслеживаем покрытие для маршрута создания курса
     def create_course_api(self, request: CreateCourseRequestSchema) -> Response:
         """
         Метод создания курса.
@@ -47,6 +51,7 @@ class CoursesClient(APIClient):
 
 
     @allure.step("Обновление курса по идентификатору {course_id}")
+    @tracker.track_coverage_httpx(f"{APIRoutes.COURSES}/{{course_id}}")  # /{{course_id}} экранируем фигурные скобки, чтобы избежать ошибки в декораторе tracker
     def update_course_api(self, course_id: str, request: UpdateCourseRequestSchema) -> Response:
         """
         Метод обновления курса.
@@ -59,6 +64,7 @@ class CoursesClient(APIClient):
 
 
     @allure.step("Удаление курса по идентификатору {course_id}")
+    @tracker.track_coverage_httpx(f"{APIRoutes.COURSES}/{{course_id}}")  # /{{course_id}} экранируем фигурные скобки, чтобы избежать ошибки в декораторе tracker
     def delete_course_api(self, course_id: str) -> Response:
         """
         Метод удаления курса.

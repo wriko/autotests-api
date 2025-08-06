@@ -55,7 +55,37 @@ jobs:
         run: |
           pytest -m regression --alluredir=allure-results --numprocesses 2  # Запускаем тесты, отмеченные как "regression" в 2 потока, генерируем результаты для Allure
 
-      # 8. Сохраняем папку allure-results как артефакт для передачи в следующую джобу
+      # 8. Восстанавливаем историю покрытия из кеша, если она есть
+      - name: Restore coverage history
+        uses: actions/cache/restore@v4  # Используем action для восстановления кеша
+        with:
+          path: coverage-history.json  # Путь к файлу, который мы хотим восстановить
+          key: coverage-history-${{ github.run_id }}  # Ключ для кеша (используем уникальный идентификатор запуска)
+          restore-keys: |
+                coverage-history-  # Если точный ключ не найден, используем этот ключ для восстановления
+
+      # 9. Генерируем отчёт о покрытии кода тестами в формате JSON
+      - name: Generate Coverage Report
+        run: |
+          swagger-coverage-tool save-report
+
+      # 10. Сохраняем в кеш историю покрытия кода, чтобы использовать её в будущем
+      - name: Cache coverage history
+        if: always()  # Этот шаг выполняется всегда, даже если предыдущие шаги завершились с ошибкой
+        uses: actions/cache/save@v4  # Используем action для кеширования
+        with:
+          path: coverage-history.json  # Путь к файлу, который мы хотим сохранить в кеш
+          key: coverage-history-${{ github.run_id }}  # Ключ для кеша (используем уникальный идентификатор запуска)
+
+      # 11. Сохраняем отчёт о покрытии кода в формате HTML
+      - name: Upload Coverage Report
+        if: always()  # Этот шаг выполняется всегда, даже если предыдущие шаги завершились с ошибкой
+        uses: actions/upload-artifact@v4  # Используем action для загрузки артефакта
+        with:
+          name: coverage-report  # Имя артефакта
+          path: coverage.html  #  Путь к папке с результатами покрытия
+
+      # 12. Сохраняем папку allure-results как артефакт для передачи в следующую джобу
       - name: Upload Allure results as artifact
         uses: actions/upload-artifact@v4  # Используем action для загрузки артефакта
         with:

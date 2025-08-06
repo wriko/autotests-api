@@ -6,6 +6,7 @@ from clients.users.users_schema import GetUserResponseSchema, UpdateUserRequestS
 import allure
 
 from tools.routes import APIRoutes
+from clients.api_coverage import tracker
 
 
 class PrivateUsersClient(APIClient):
@@ -14,6 +15,7 @@ class PrivateUsersClient(APIClient):
     """
 
     @allure.step("Получение текущего пользователя")
+    @tracker.track_coverage_httpx(f"{APIRoutes.USERS}/me")
     def get_user_me_api(self) -> Response:
         """
         Метод получения текущего пользователя.
@@ -23,6 +25,7 @@ class PrivateUsersClient(APIClient):
         return self.get(f"{APIRoutes.USERS}/me")
 
     @allure.step("Получение пользователя по идентификатору {user_id}")
+    @tracker.track_coverage_httpx(f"{APIRoutes.USERS}/{{user_id}}") # /{{user_id}} экранируем фигурные скобки, чтобы избежать ошибки в декораторе tracker
     def get_user_api(self, user_id: str) -> Response:
         """
         Метод получения пользователя по идентификатору.
@@ -33,6 +36,7 @@ class PrivateUsersClient(APIClient):
         return self.get(f"{APIRoutes.USERS}/{user_id}")
 
     @allure.step("Обновление пользователя по идентификатору {user_id}")
+    @tracker.track_coverage_httpx(f"{APIRoutes.USERS}/{{user_id}}")  # /{{user_id}} экранируем фигурные скобки, чтобы избежать ошибки в декораторе tracker
     def update_user_api(self, user_id: str, request: UpdateUserRequestSchema) -> Response:
         """
         Метод обновления пользователя по идентификатору.
@@ -44,6 +48,7 @@ class PrivateUsersClient(APIClient):
         return self.patch(f"{APIRoutes.USERS}/{user_id}", json=request.model_dump(by_alias=True)) # Отправляем PATCH-запрос на обновление пользователя с данными из словаря request, преобразованного в JSON с помощью метода model_dump класса UpdateUserRequestShema
 
     @allure.step("Удаление пользователя по идентификатору {user_id}")
+    @tracker.track_coverage_httpx(f"{APIRoutes.USERS}/{{user_id}}")  # /{{user_id}} экранируем фигурные скобки, чтобы избежать ошибки в декораторе tracker
     def delete_user_api(self, user_id: str) -> Response:
         """
         Метод удаления пользователя по идентификатору.

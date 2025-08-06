@@ -1,0 +1,188 @@
+Применение покрытия для всех API клиентов
+Теперь, когда мы установили и настроили инструмент swagger-coverage-tool, а также разобрались с его применением на примере одного клиента, можем перейти к добавлению трекинга покрытия для всех остальных API-эндпоинтов.
+
+1. Добавление покрытия к API клиентам
+Давайте начнем с добавления покрытия для API клиента PublicUsersClient, расположенного в файле /clients/users/public_users_client.py.
+
+import allure
+from httpx import Response
+
+from clients.api_client import APIClient
+from clients.api_coverage import tracker  # Импортируем трекер
+from clients.public_http_builder import get_public_http_client
+from clients.users.users_schema import CreateUserResponseSchema, CreateUserRequestSchema
+from tools.routes import APIRoutes
+
+
+class PublicUsersClient(APIClient):
+    """
+    Клиент для работы с /api/v1/users
+    """
+
+    @allure.step("Create user")
+    # Добавили сбор покрытия для эндпоинта POST /api/v1/users
+    @tracker.track_coverage_httpx(APIRoutes.USERS)
+    def create_user_api(self, request: CreateUserRequestSchema) -> Response:
+        # Остальной код без изменений
+
+Импортируем трекер: В начале файла мы импортируем объект трекера tracker из модуля clients.api_coverage.
+Используем декоратор @tracker.track_coverage_httpx: Это основная строка для активации сбора покрытия для конкретного эндпоинта. В данном случае мы отслеживаем эндпоинт /api/v1/users для метода POST.
+Использование APIRoutes.USERS: Мы используем APIRoutes.USERS, что является перечислением (enum), которое хранит все эндпоинты. Это повышает читаемость и уменьшает вероятность ошибок, так как вам не нужно вручную прописывать URL.
+Теперь перейдем к следующему клиенту — PrivateUsersClient, расположенном в файле /clients/users/private_users_client.py.
+
+import allure
+from httpx import Response
+
+from clients.api_client import APIClient
+from clients.api_coverage import tracker  # Импортируем трекер
+from clients.private_http_builder import get_private_http_client, AuthenticationUserSchema
+from clients.users.users_schema import UpdateUserRequestSchema, GetUserResponseSchema
+from tools.routes import APIRoutes
+
+
+class PrivateUsersClient(APIClient):
+    """
+    Клиент для работы с /api/v1/users
+    """
+
+    @allure.step("Get user me")
+    # Добавили сбор покрытия для эндпоинта GET /api/v1/users/me
+    @tracker.track_coverage_httpx(f'{APIRoutes.USERS}/me')
+    def get_user_me_api(self) -> Response:
+        # Остальной код без изменений
+
+    @allure.step("Get user by id {user_id}")
+    # Добавили сбор покрытия для эндпоинта GET /api/v1/users/{user_id}
+    @tracker.track_coverage_httpx(f'{APIRoutes.USERS}/{{user_id}}')
+    def get_user_api(self, user_id: str) -> Response:
+        # Остальной код без изменений
+
+    @allure.step("Update user by id {user_id}")
+    # Добавили сбор покрытия для эндпоинта PATCH /api/v1/users/{user_id}
+    @tracker.track_coverage_httpx(f'{APIRoutes.USERS}/{{user_id}}')
+    def update_user_api(self, user_id: str, request: UpdateUserRequestSchema) -> Response:
+        # Остальной код без изменений
+
+    @allure.step("Delete user by id {user_id}")
+    # Добавили сбор покрытия для эндпоинта DELETE /api/v1/users/{user_id}
+    @tracker.track_coverage_httpx(f'{APIRoutes.USERS}/{{user_id}}')
+    def delete_user_api(self, user_id: str) -> Response:
+        # Остальной код без изменений
+В этом примере мы добавляем трекер для нескольких эндпоинтов: получения информации о текущем пользователе (/api/v1/users/me), получения информации о пользователе по ID (/api/v1/users/{user_id}), обновления информации о пользователе по ID (/api/v1/users/{user_id}) и удаления пользователя по ID (/api/v1/users/{user_id}).
+Использование f-строк для URL: Мы используем f'{APIRoutes.USERS}/{{user_id}}', где {user_id} — это переменная, которая будет подставляться в строку на момент вызова метода.
+Здесь важно отметить, что двойные фигурные скобки {{user_id}} — это синтаксис Python для того, чтобы экранировать фигурные скобки в строках, используемых в f-строках. В шаблоне URL мы хотим, чтобы фигурные скобки оставались частью строки, чтобы отобразить динамическую часть URL, и {{user_id}} означает, что в этой части URL будет подставлен идентификатор пользователя.
+2. Применение к остальным клиентам
+Теперь по аналогии с приведенными примерами можно добавить трекинг покрытия ко всем остальным API клиентам. Важно помнить, что в каждом клиенте мы добавляем декоратор @tracker.track_coverage_httpx для каждого метода, который должен быть покрыт.
+
+Таким образом, вся структура покрытия по мере добавления трекеров в клиентские методы будет полностью покрывать тестируемые эндпоинты и собирать статистику для дальнейшего анализа.
+
+/clients/files/files_client.py
+
+import allure
+from httpx import Response
+
+from clients.api_client import APIClient
+from clients.api_coverage import tracker  # Импортируем трекер
+from clients.files.files_schema import CreateFileRequestSchema, CreateFileResponseSchema
+from clients.private_http_builder import AuthenticationUserSchema, get_private_http_client
+from tools.routes import APIRoutes
+
+
+class FilesClient(APIClient):
+    """
+    Клиент для работы с /api/v1/files
+    """
+
+    @allure.step("Get file by id {file_id}")
+    # Добавили сбор покрытия для эндпоинта GET /api/v1/files/{file_id}
+    @tracker.track_coverage_httpx(f'{APIRoutes.FILES}/{{file_id}}')
+    def get_file_api(self, file_id: str) -> Response:
+        # Остальной код без изменений
+
+    @allure.step("Create file")
+    # Добавили сбор покрытия для эндпоинта POST /api/v1/files
+    @tracker.track_coverage_httpx(APIRoutes.FILES)
+    def create_file_api(self, request: CreateFileRequestSchema) -> Response:
+        # Остальной код без изменений
+
+    @allure.step("Delete file by id {file_id}")
+    # Добавили сбор покрытия для эндпоинта DELETE /api/v1/files/{file_id}
+    @tracker.track_coverage_httpx(f'{APIRoutes.FILES}/{{file_id}}')
+    def delete_file_api(self, file_id: str) -> Response:
+        # Остальной код без изменений
+/clients/courses/courses_client.py
+
+import allure
+from httpx import Response
+
+from clients.api_client import APIClient
+from clients.api_coverage import tracker  # Импортируем трекер
+from clients.courses.courses_schema import GetCoursesQuerySchema, CreateCourseRequestSchema, UpdateCourseRequestSchema, \
+    CreateCourseResponseSchema
+from clients.private_http_builder import AuthenticationUserSchema, get_private_http_client
+from tools.routes import APIRoutes
+
+
+class CoursesClient(APIClient):
+    """
+    Клиент для работы с /api/v1/courses
+    """
+
+    @allure.step("Get courses")
+    # Добавили сбор покрытия для эндпоинта GET /api/v1/courses
+    @tracker.track_coverage_httpx(APIRoutes.COURSES)
+    def get_courses_api(self, query: GetCoursesQuerySchema) -> Response:
+        # Остальной код без изменений
+
+    @allure.step("Get course by id {course_id}")
+    # Добавили сбор покрытия для эндпоинта GET /api/v1/courses/{course_id}
+    @tracker.track_coverage_httpx(f"{APIRoutes.COURSES}/{{course_id}}")
+    def get_course_api(self, course_id: str) -> Response:
+        # Остальной код без изменений
+
+    @allure.step("Create course")
+    # Добавили сбор покрытия для эндпоинта POST /api/v1/courses
+    @tracker.track_coverage_httpx(APIRoutes.COURSES)
+    def create_course_api(self, request: CreateCourseRequestSchema) -> Response:
+        # Остальной код без изменений
+
+    @allure.step("Update course by id {course_id}")
+    # Добавили сбор покрытия для эндпоинта PATCH /api/v1/courses/{course_id}
+    @tracker.track_coverage_httpx(f"{APIRoutes.COURSES}/{{course_id}}")
+    def update_course_api(self, course_id: str, request: UpdateCourseRequestSchema) -> Response:
+        # Остальной код без изменений
+
+    @allure.step("Delete course by id {course_id}")
+    # Добавили сбор покрытия для эндпоинта DELETE /api/v1/courses/{course_id}
+    @tracker.track_coverage_httpx(f"{APIRoutes.COURSES}/{{course_id}}")
+    def delete_course_api(self, course_id: str) -> Response:
+        # Остальной код без изменений
+3. Запуск тестов и генерация отчета
+Теперь, когда мы добавили трекинг покрытия для всех нужных API-методов, можно приступить к запуску автотестов и генерации отчетов о покрытии. Перед тем как запустить тесты, важно очистить папку с результатами покрытия, чтобы собрать свежие данные. Однако файлы отчетов, такие как index.html, coverage-report.json и coverage-history.json, можно не удалять, так как они содержат важную информацию для последующих анализов.
+
+Шаг 1. Очистка старых данных
+Удалите папку coverage-results, чтобы гарантировать, что в отчет будут включены только данные с актуальными результатами покрытия:
+
+Шаг 2. Запуск автотестов
+Теперь запустим автотесты с помощью команды pytest
+
+python -m pytest -m "regression"
+Шаг 3. Генерация нового отчета
+После выполнения тестов, сгенерируем отчет о покрытии с помощью инструмента swagger-coverage-tool:
+
+swagger-coverage-tool save-report
+Шаг 4. Открытие отчета
+Теперь, если мы откроем файл index.html в браузере, мы увидим обновленный отчет, который уже включает в себя собранное покрытие для всех эндпоинтов, для которых мы ранее добавили трекинг.
+
+
+
+
+
+
+
+Важные моменты:
+
+История покрытия: В отчете можно наглядно увидеть, как изменялось покрытие с момента первого запуска. Например, в первый раз общее покрытие сервиса было на уровне 5%, а после добавления покрытия для новых эндпоинтов оно увеличилось до 45%. Таким образом, с помощью истории покрытия можно отслеживать динамику изменений по мере того, как добавляются новые тесты и увеличивается покрытие.
+Отслеживание изменений на уровне эндпоинтов: Помимо общего покрытия, история сохраняется для каждого отдельного эндпоинта. Это позволяет отслеживать как изменения в общем покрытии, так и динамику покрытия конкретных API-методов. Например, можно увидеть, когда и какие эндпоинты начали покрываться тестами.
+Сохранение истории: История покрытия сохраняется благодаря файлу coverage-history.json, который мы не удаляли. Этот файл содержит информацию о предыдущих запусках и позволяет сохранять изменения в покрытии для дальнейшего анализа. Каждый новый отчет будет обновлять этот файл.
+Таким образом, с каждым новым запуском тестов и генерацией отчетов вы сможете отслеживать, как растет покрытие и улучшать качество тестирования ваших API.
