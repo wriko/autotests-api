@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA3VDA4OjQyOjI5Ljg5OTkxOSIsInVzZXJfaWQiOiJkNjc5ODNmNS0wZTRhLTRkYzEtYjg2YS01MzIzNThmNWNmYzUifQ.HPwAV6Y3VE4AE2hj_ZGUkcV9zjJbE8RHVjE45ihm1pw' \
+ -H 'content-length: 309' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Team still manage choice.","courseId":"94d0429a-8dbe-4954-8ad2-dee5c5249a55","maxScore":80,"minScore":5,"orderIndex":8,"description":"Respond card use investment nation.\nVery fine game west. Test popular smile soon improve mission cut. Pattern maybe popular let chance.","estimatedTime":"98 weeks"}'

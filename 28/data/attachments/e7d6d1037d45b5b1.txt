@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA3VDA4OjQyOjMwLjQ3OTE2NyIsInVzZXJfaWQiOiJkZTc2MWQ2Yy05ZjZlLTQxYjgtOGI2Yy1iODk0YjkyMTllYzUifQ.1iM03VoVivWKhH6nKGj5DcKmPj-caUjp9CNk1DWEAJo' \
+ -H 'content-length: 331' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Share without unit site class charge.","courseId":"0a06a833-9ba8-404b-bc2b-81c12b2f31dc","maxScore":61,"minScore":36,"orderIndex":64,"description":"Rock service often beat beautiful short environmental. Material pull deep factor policy. Meet world medical lose six.\nSimple figure eat create.","estimatedTime":"45 weeks"}'

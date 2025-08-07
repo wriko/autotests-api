@@ -1,0 +1,26 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем GET запрос к http://localhost:8000/api/v1/exercises?courseId=c254f2fa-2c66-400a-99d6-1d04c751d715
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises?courseId=c254f2fa-2c66-400a-99d6-1d04c751d715
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:69 Проверка ответа на получение списка заданий
+INFO     BASE_ASSERTIONS:base.py:73 Проверяем что длина 'exercises' соответствует 1
+INFO     EXERCISES_ASSERTIONS:exercises.py:45 Проверка данных задания
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует dfb743f9-06bb-4690-92aa-a7340aa32822
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Easy trial member sound over always think.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'course_id' соответствует c254f2fa-2c66-400a-99d6-1d04c751d715
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 72
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 17
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'order_index' соответствует 82
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Field bill allow study month college. Article discussion lose into store.
+Here actually year pull military rest real. Activity value tonight those race. Hour stand because husband if mention.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 30 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA3VDA4OjQyOjMxLjcyNDI3NyIsInVzZXJfaWQiOiIzOTMxMGUwMC05YmQ2LTRkNjMtYmQ0Ni02ZjE3ZmIxYzViZGUifQ.UUFPsVK0SzRzsrhs9Hd3qP7tQ39F1mzaj3ozLXdqQWY' \
+ -H 'content-length: 403' \
+ -H 'content-type: application/json' \
+ -d '{"title":"If during enjoy agree against defense.","maxScore":100,"minScore":45,"description":"One however professional forward. Fast child west voice. Station ten especially event.\nAgreement spring computer but next. Cell cause expect sort around design decade.","estimatedTime":"81 weeks","previewFileId":"978584de-0666-4015-9877-78b7b4b3083d","createdByUserId":"39310e00-9bd6-4d63-bd46-6f17fb1c5bde"}'

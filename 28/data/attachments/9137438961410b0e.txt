@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA3VDA4OjQyOjI4LjY3NjkwNyIsInVzZXJfaWQiOiI3OWI4OGMyNC01YWZlLTQwMzQtYmZlMy1hNjg4ODg5NmQyNDgifQ.9TigC4CpCF0kqrD-qvLHdGAgQ9IOdTNUNqN8Gnb4bT8' \
+ -H 'content-length: 392' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Audience despite American across war newspaper.","maxScore":88,"minScore":18,"description":"Knowledge with treatment dream size some bar. Job officer task article never.\nReal create too nothing note eat seat. Item same last step true become.","estimatedTime":"7 weeks","previewFileId":"ae33c899-4f8e-4a3a-b28d-af43babb4c2c","createdByUserId":"79b88c24-5afe-4034-bfe3-a6888896d248"}'

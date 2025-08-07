@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA3VDA4OjQyOjI3LjQ2NzUwNCIsInVzZXJfaWQiOiJlZDZiYWVmMy1hNDMzLTQzMmEtYmZmOS1lNjBmODFiYWQyMDYifQ.r7rhNIBe-TTU3PLkNr0OqF-TSSkVmvj9kbM5UE4zYZ8' \
+ -H 'content-length: 409' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Guy stage cell hard relate.","maxScore":71,"minScore":10,"description":"Hair prepare anyone action. Table health or man on network. Cup operation that young choose choose.\nOnce let security after any from although. Success else lot lot bag myself important.","estimatedTime":"74 weeks","previewFileId":"43b253a3-cc48-4df4-9342-2d7793e10e6e","createdByUserId":"ed6baef3-a433-432a-bff9-e60f81bad206"}'

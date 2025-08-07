@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA3VDA4OjQyOjMxLjE0NDA3MyIsInVzZXJfaWQiOiI3NjRjMDYwZS1hOTM1LTRkNDUtYWE5Ny0wMDY5ZWQzZGMzNDQifQ.u7uC1cDqur4mc0fxdto0n8pOq_7ZrH2fH0SfJcVzl7c' \
+ -H 'content-length: 412' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Network discuss anyone billion network figure.","maxScore":95,"minScore":20,"description":"Special listen everyone food there. With wait despite finally.\nBook family music. Stay wide board I week four better. During phone structure already day include special.","estimatedTime":"71 weeks","previewFileId":"e3e92527-2d99-4942-b9ba-7d15a092d613","createdByUserId":"764c060e-a935-4d45-aa97-0069ed3dc344"}'

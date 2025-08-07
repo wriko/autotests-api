@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA3VDA4OjQyOjMxLjE0NDA3MyIsInVzZXJfaWQiOiI3NjRjMDYwZS1hOTM1LTRkNDUtYWE5Ny0wMDY5ZWQzZGMzNDQifQ.u7uC1cDqur4mc0fxdto0n8pOq_7ZrH2fH0SfJcVzl7c' \
+ -H 'content-length: 390' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Off remain military fight mission camera everything.","courseId":"7b37f4c7-0f4e-461e-821e-5972631018a6","maxScore":65,"minScore":3,"orderIndex":93,"description":"Name school standard forget sign agency bag. Report word need father.\nNumber better peace politics modern give thousand but. Debate give lawyer team. Water instead everyone career certain.","estimatedTime":"51 weeks"}'

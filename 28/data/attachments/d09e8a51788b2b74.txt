@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA3VDA4OjQyOjI5LjI2OTExMyIsInVzZXJfaWQiOiJkNTUxMTliZS00MzkyLTQ5ZDQtODIyZC0wYjNjODc2YmNmYTMifQ.WlrLgx7JTZZRbwK9uwF6A4iC7kkersU3W4QVKRE-Ars' \
+ -H 'content-length: 422' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Project evidence beautiful example.","maxScore":86,"minScore":11,"description":"Become late office. Back a right several fall activity.\nOn major near business your. Mission outside author find knowledge stuff. Hospital TV trip Mr themselves join.\nJob fact better hotel.","estimatedTime":"49 weeks","previewFileId":"e3686ec8-fb77-47ff-9f87-b99216981726","createdByUserId":"d55119be-4392-49d4-822d-0b3c876bcfa3"}'

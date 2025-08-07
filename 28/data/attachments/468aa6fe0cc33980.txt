@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA3VDA4OjQyOjMwLjQ3OTE2NyIsInVzZXJfaWQiOiJkZTc2MWQ2Yy05ZjZlLTQxYjgtOGI2Yy1iODk0YjkyMTllYzUifQ.1iM03VoVivWKhH6nKGj5DcKmPj-caUjp9CNk1DWEAJo' \
+ -H 'content-length: 402' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Rise sit rather join in word.","maxScore":64,"minScore":5,"description":"Better anything guess moment myself success close baby.\nThere huge while. Away player thus tell sense sea remember.\nProduction effort short already build together organization.","estimatedTime":"98 weeks","previewFileId":"719a3e29-4c62-44e8-b9dc-2f07c517e73f","createdByUserId":"de761d6c-9f6e-41b8-8b6c-b894b9219ec5"}'

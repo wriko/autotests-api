@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/0e5c9f9a-8cab-407e-b4d2-25c631e34990' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA3VDA4OjQyOjI4LjY3NjkwNyIsInVzZXJfaWQiOiI3OWI4OGMyNC01YWZlLTQwMzQtYmZlMy1hNjg4ODg5NmQyNDgifQ.9TigC4CpCF0kqrD-qvLHdGAgQ9IOdTNUNqN8Gnb4bT8' \
+ -H 'content-length: 272' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":100,"minScore":35,"description":"By civil they assume. Allow not sing.\nSame office television industry carry moment. Help available education could.\nDegree add behind coach behind true unit then. Medical seek large.","estimatedTime":"81 weeks"}'

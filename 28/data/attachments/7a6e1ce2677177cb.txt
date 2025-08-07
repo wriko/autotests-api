@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA3VDA4OjQyOjI5Ljg5OTkxOSIsInVzZXJfaWQiOiJkNjc5ODNmNS0wZTRhLTRkYzEtYjg2YS01MzIzNThmNWNmYzUifQ.HPwAV6Y3VE4AE2hj_ZGUkcV9zjJbE8RHVjE45ihm1pw' \
+ -H 'content-length: 361' \
+ -H 'content-type: application/json' \
+ -d '{"title":"May discuss animal end majority authority.","maxScore":99,"minScore":7,"description":"Find suddenly herself seek worker meet hospital receive. Practice increase film risk. Sign year entire often movie shoulder.","estimatedTime":"52 weeks","previewFileId":"e6967ee7-e22a-49f6-86ad-37bf1caae385","createdByUserId":"d67983f5-0e4a-4dc1-b86a-532358f5cfc5"}'

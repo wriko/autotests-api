@@ -1,0 +1,33 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем GET запрос к http://localhost:8000/api/v1/courses?userId=ed6baef3-a433-432a-bff9-e60f81bad206
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses?userId=ed6baef3-a433-432a-bff9-e60f81bad206
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:68 Проверка ответа на получение списка курсов
+INFO     BASE_ASSERTIONS:base.py:73 Проверяем что длина 'courses' соответствует 1
+INFO     COURSES_ASSERTIONS:courses.py:42 Проверка данных курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 17f728d9-b6f7-4795-bbff-9a4b193264f1
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Guy stage cell hard relate.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 71
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 10
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Hair prepare anyone action. Table health or man on network. Cup operation that young choose choose.
+Once let security after any from although. Success else lot lot bag myself important.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 74 weeks
+INFO     FILES_ASSERTIONS:files.py:42 Проверка данных файла
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 43b253a3-cc48-4df4-9342-2d7793e10e6e
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'url' соответствует http://localhost:8000/static/tests/72402ca9-95bc-43aa-9f8b-bddd80c5e5e3.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'filename' соответствует 72402ca9-95bc-43aa-9f8b-bddd80c5e5e3.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'directory' соответствует tests
+INFO     USERS_ASSERTIONS:users.py:38 Проверка данных пользователя
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует ed6baef3-a433-432a-bff9-e60f81bad206
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'email' соответствует stewartgregory@example.net
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'last_name' соответствует Thompson
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'first_name' соответствует Jennifer
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'middle_name' соответствует Heather
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы
