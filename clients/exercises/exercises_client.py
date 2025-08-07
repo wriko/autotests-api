@@ -6,6 +6,7 @@ from clients.exercises.exercises_schema import ExerciseResponseSchema, CreateExe
 import allure
 
 from tools.routes import APIRoutes
+from clients.api_coverage import tracker
 
 
 class ExercisesClient(APIClient):  # Клиент для работы с /api/v1/exercises
@@ -13,6 +14,7 @@ class ExercisesClient(APIClient):  # Клиент для работы с /api/v1
     Клиент для работы с /api/v1/exercises
     """
     @allure.step("Получение списка заданий")
+    @tracker.track_coverage_httpx(APIRoutes.EXERCISES)  # Отслеживаем покрытие для маршрута получения списка заданий
     def get_exercises_api(self, query: GetExercisesQuerySchema) -> Response:  #
         """
         Получение списка заданий для определенного курса.
@@ -24,6 +26,7 @@ class ExercisesClient(APIClient):  # Клиент для работы с /api/v1
 
 
     @allure.step("Получение информации о задании по его идентификатору {exercise_id}")
+    @tracker.track_coverage_httpx(f"{APIRoutes.EXERCISES}/{{exercise_id}}")  # Отслеживаем покрытие для маршрута получения информации о задании/ экранируем фигурные скобки, чтобы избежать ошибки в декораторе tracker
     def get_exercise_api(self, exercise_id: str) -> Response:
         """
         Получение информации о задании по exercise_id
@@ -35,6 +38,7 @@ class ExercisesClient(APIClient):  # Клиент для работы с /api/v1
 
 
     @allure.step("Создание задания")
+    @tracker.track_coverage_httpx(APIRoutes.EXERCISES)  # Отслеживаем покрытие для  создания задания
     def create_exercise_api(self, request: CreateExerciseRequestSchema) -> Response:
         """
         Создание задания.
@@ -47,6 +51,7 @@ class ExercisesClient(APIClient):  # Клиент для работы с /api/v1
 
 
     @allure.step("Обновление данных задания по его идентификатору {exercise_id}")
+    @tracker.track_coverage_httpx(f"{APIRoutes.EXERCISES}/{{exercise_id}}")  # Отслеживаем покрытие для маршрута обновления данных задания / экранируем фигурные скобки, чтобы избежать ошибки в декораторе tracker
     def update_exercise_api(self, exercise_id: str, request: UpdateExerciseRequestSchema) -> Response:
         """
         Обновление данных задания.
@@ -58,6 +63,7 @@ class ExercisesClient(APIClient):  # Клиент для работы с /api/v1
 
 
     @allure.step("Удаление задания по его идентификатору {exercise_id}")
+    @tracker.track_coverage_httpx(f"{APIRoutes.EXERCISES}/{{exercise_id}}")  # Отслеживаем покрытие для маршрута удаления задания / экранируем фигурные скобки, чтобы избежать ошибки в декораторе tracker
     def delete_exercise_api(self, exercise_id: str) -> Response:
         """
         Удавление задания.

@@ -1,0 +1,299 @@
+Генерация отчета покрытия на CI/CD
+Ссылки:
+
+GitHub Action для кеширования - http://github.com/actions/cache
+GitHub Action для загрузки артефактов - https://github.com/actions/upload-artifact
+
+
+Настроим автоматическую генерацию HTML-отчета о покрытии API-тестов на CI/CD. После запуска тестов в GitHub Actions отчет будет:
+ - автоматически сгенерирован;
+ - сохранен как артефакт workflow;
+ - доступен для скачивания и анализа в браузере.
+
+----------------------------
+1. Фиксация зависимостей
+----------------------------
+Чтобы swagger-coverage-tool и остальные зависимости корректно устанавливались на CI/CD, необходимо зафиксировать их версии в requirements.txt.
+Убедитесь, что файл находится в корне проекта autotests-api. Добавьте в него следующую конфигурацию:
+
+allure-pytest==2.13.5
+email_validator==2.2.0
+Faker==36.2.2
+httpx==0.28.1
+jsonschema==4.23.0
+pydantic==2.10.6
+pydantic-settings==2.8.1
+pytest==8.3.5
+pytest-rerunfailures==15.0
+pytest-xdist==3.6.1
+swagger-coverage-tool==0.23.0
+
+Важно: Убедитесь, что requirements.txt был создан после прохождения урока "Подготовка проекта к запуску на CI". Если вы пропустили этот шаг — настоятельно рекомендуется вернуться и ознакомиться с ним.
+
+-----------------------------------------
+2. Переименование HTML-отчета покрытия
+-----------------------------------------
+По умолчанию swagger-coverage-tool сохраняет HTML-отчет под именем index.html. Это имя может быть неочевидным для анализа покрытия, особенно при скачивании из артефактов. Чтобы сделать отчет более понятным, переименуем его в coverage.html.
+
+Для этого:
+1. Откроем файл .env, расположенный в корне проекта autotests-api.
+2. Добавим в него переменную окружения SWAGGER_COVERAGE_HTML_REPORT_FILE, указав новое имя файла:
+
+    TEST_DATA.IMAGE_PNG_FILE="./testdata/files/image.png"
+
+    HTTP_CLIENT.URL="http://localhost:8000"
+    HTTP_CLIENT.TIMEOUT=100
+
+    SWAGGER_COVERAGE_SERVICES='[
+        {
+            "key": "api-course",
+            "name": "API Course",
+            "tags": ["API", "COURSES"],
+            "repository": "https://github.com/Nikita-Filonov/qa-automation-engineer-api-course",
+            "swagger_url": "http://localhost:8000/openapi.json"
+        }
+    ]'
+
+    # Переименование HTML-файла отчета покрытия
+    SWAGGER_COVERAGE_HTML_REPORT_FILE="./coverage.html"
+
+
+Важно! Если у вас уже существует файл index.html — удалите его. После следующего запуска генерации покрытия будет автоматически создан новый файл coverage.html, и именно он попадёт в артефакты CI/CD.
+
+---------------------------------
+3. Исключение артефактов покрытия из репозитория
+---------------------------------
+При локальной генерации отчета покрытия с помощью swagger-coverage-tool создаются следующие файлы:
+
+coverage.html — HTML-отчет о покрытии;
+coverage-report.json — JSON-файл с агрегированным покрытием;
+coverage-history.json — история покрытия для построения графика изменений;
+папка coverage-results/ — временные данные и файлы покрытия по каждому запуску.
+
+Эти файлы не должны попадать в репозиторий, так как:
+- они генерируются автоматически;
+- занимают лишнее место;
+- могут вызывать конфликты при работе в команде.
+
+Чтобы исключить эти файлы и папки из репозитория, необходимо добавить их в файл .gitignore, который должен находиться в корне проекта autotests-api:
+
+    # pycharm
+    .idea
+
+    # python
+    .venv
+    __pycache__
+
+    # allure
+    allure-results
+    allure-report
+
+    # coverage
+    coverage.html
+    coverage-results
+    coverage-report.json
+    coverage-history.json
+
+    .DS_Store
+
+Важно: Убедитесь, что файл .gitignore был создан после прохождения урока "Подготовка проекта к запуску на CI". Если вы пропустили этот шаг — настоятельно рекомендуется вернуться и внимательно его изучить.
+
+После добавления этих строк в .gitignore, убедитесь, что ненужные файлы действительно не отслеживаются Git. Если они уже были закоммичены ранее — их нужно удалить из индекса:
+
+    git rm --cached coverage.html coverage-report.json coverage-history.json
+    git rm --cached -r coverage-results/
+
+Затем закоммитьте изменения:
+
+    git commit -m "Удаление артефактов покрытия"
+
+-----------------------------------------
+4. Генерация отчета покрытия на CI/CD
+-----------------------------------------
+Теперь мы добавим шаги для автоматической генерации отчета покрытия на CI/CD. Наша цель:
+- После выполнения тестов сформировать HTML-отчет о покрытии;
+- Сохранить отчет как артефакт, чтобы его можно было скачать и открыть в браузере;
+- Сохранить историю покрытия между запусками, используя кеширование файла coverage-history.json.
+
+
+Что такое кеш (cache) в CI/CD
+Кеш (cache) — это механизм, позволяющий сохранять и повторно использовать данные между различными запусками workflow. В нашем случае это история покрытия (coverage-history.json). Благодаря кешу:
+- мы сохраняем накопленную статистику покрытия;
+- при следующем запуске мы восстанавливаем предыдущую историю и продолжаем её;
+- это помогает строить граф покрытия и отслеживать его изменения со временем.
+
+
+Обновляем файл .github/workflows/tests.yml
+Ниже представлен пример полностью доработанного workflow с комментариями по каждому шагу:
+
+    name: API tests
+
+    on:
+      push:
+        branches:
+          - main
+      pull_request:
+        branches:
+          - main
+
+    jobs:
+      run-tests:
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Check out repository
+            uses: actions/checkout@v4
+
+          - name: Set up Python
+            uses: actions/setup-python@v5
+            with:
+              python-version: '3.12'
+
+          - name: Clone test server repository
+            run: git clone https://github.com/Nikita-Filonov/qa-automation-engineer-api-course.git
+
+          - name: Install test server dependencies
+            run: pip install -r qa-automation-engineer-api-course/requirements.txt
+
+          - name: Start a test server
+            env:
+              APP_HOST: "http://localhost:8000"
+              DATABASE_URL: "sqlite+aiosqlite:///./local.db"
+              JWT_ALGORITHM: "HS256"
+              JWT_SECRET_KEY: "qa-automation-engineer-api-course-secret-key"
+              JWT_ACCESS_TOKEN_EXPIRE: 1800
+              JWT_REFRESH_TOKEN_EXPIRE: 5184000
+            run: uvicorn main:app --host 0.0.0.0 --port 8000 --app-dir ./qa-automation-engineer-api-course &
+
+          - name: Install dependencies
+            run: |
+              python -m pip install --upgrade pip
+              pip install -r requirements.txt
+
+          - name: Run API tests with pytest and generate Allure results
+            run: |
+              pytest -m regression --alluredir=allure-results --numprocesses=2
+
+          # Восстанавливаем историю покрытия из кеша
+          - name: Restore Coverage history
+            uses: actions/cache/restore@v4
+            with:
+              path: coverage-history.json
+              key: coverage-history-${{ github.run_id }}
+              restore-keys: |
+                coverage-history-
+
+          # Генерируем HTML-отчет и обновляем историю
+          - name: Generate Coverage report
+            run: |
+              swagger-coverage-tool save-report
+
+          # Сохраняем историю обратно в кеш
+          - name: Cache Coverage  history
+            if: always()
+            uses: actions/cache/save@v4
+            with:
+              path: coverage-history.json
+              key: coverage-history-${{ github.run_id }}
+
+          # Загружаем HTML-отчет как артефакт
+          - name: Upload Coverage report
+            if: always()
+            uses: actions/upload-artifact@v4
+            with:
+              name: coverage-report
+              path: coverage.html
+
+          - name: Upload Allure results
+            if: always()
+            uses: actions/upload-artifact@v4
+            with:
+              name: allure-results
+              path: allure-results
+
+      publish-report:
+        if: always()
+        needs: [ run-tests ]
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Check out repository
+            uses: actions/checkout@v4
+            with:
+              ref: gh-pages
+              path: gh-pages
+
+          - name: Download Allure results
+            uses: actions/download-artifact@v4
+            with:
+              name: allure-results
+              path: allure-results
+
+          - name: Generate Allure Report with history
+            uses: simple-elf/allure-report-action@v1.12
+            if: always()
+            with:
+              allure_results: allure-results
+              allure_history: allure-history
+
+          - name: Deploy report to Github Pages
+            if: always()
+            uses: peaceiris/actions-gh-pages@v4
+            with:
+              github_token: ${{ secrets.GITHUB_TOKEN }}
+              publish_branch: gh-pages
+              publish_dir: allure-history
+
+
+ - Restore Coverage history выполняется до генерации отчета, чтобы мы могли использовать предыдущие данные;
+ - Cache Coverage history выполняется после, чтобы сохранить обновленную историю покрытия;
+ - Используется ${{ github.run_id }} как ключ кеша — это уникальный ID запуска. Чтобы кеш работал как "цепочка", мы используем restore-keys с префиксом coverage-history- (он ищет ближайший кеш по префиксу);
+ - Артефакт coverage.html можно скачать прямо с GitHub — он сохраняется в разделе Artifacts после выполнения workflow;
+
+
+Важно! Файл .github/workflows/tests.yml должен быть создан после прохождения урока "Запуск автотестов на CI".
+Если вы пропустили этот шаг — обязательно вернитесь к нему и разберитесь, иначе настройки могут не работать корректно.
+
+Также файл должен быть доработан в рамках домашнего задания к этому уроку. Если вы его пропустили — рекомендую вернуться и детально с ним разобраться.
+
+----------------------
+5. Просмотр отчета о покрытии в артефактах
+----------------------
+После того как вы отправите изменения в удалённый репозиторий (push или pull request), автоматически запустится workflow GitHub Actions.
+
+Когда тесты завершатся, в интерфейсе workflow появится блок Artifacts — он отображается внизу страницы с результатами сборки. Там вы увидите новый артефакт с именем: coverage-report
+
+Если нажать на него — начнётся скачивание архива.
+Внутри архива находится файл coverage.html — это интерактивный отчёт о покрытии API, сгенерированный автоматически.
+
+
+После открытия coverage.html в браузере вы получите:
+
+Подробный визуальный отчёт о покрытии API — с группировкой по endpoint'ам, методам и статусам;
+Историю покрытия — отчёт включает данные предыдущих запусков, если workflow выполнялся несколько раз (и история не очищалась);
+Статистику покрытия в процентах;
+Возможность быстро определить, какие части API ещё не покрыты тестами.
+Попробуйте запустить workflow несколько раз, чтобы убедиться, что история покрытия действительно сохраняется.
+
+
+--------------------------
+Заключение: Интеграция swagger-coverage-tool в CI/CD
+--------------------------
+Поздравляю! Вы только что интегрировали swagger-coverage-tool в процесс CI/CD. Это мощный шаг к повышению качества автоматизированного тестирования API.
+
+Что мы реализовали:
+         Возможность	                           Реализация
+Автоматическое измерение покрытия	       Использование swagger-coverage-tool в тестах
+Генерация HTML-отчета	                   Через swagger-coverage-tool save-report
+Сохранение истории покрытия	               С помощью actions/cache
+Публикация результатов	                   Как артефакт coverage-report
+Удобный просмотр	                       Открытие coverage.html прямо из CI/CD
+
+
+Где пригодится этот инструмент
+swagger-coverage-tool особенно полезен в ситуациях, когда:
+
+Вы хотите оценить полноту тестов на уровне API;
+Вам нужно отслеживать прогресс покрытия от запуска к запуску;
+Вы внедряете тестовую культуру в команде и хотите прозрачности;
+Вы готовитесь к аудиту качества или релизу.
