@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA4VDA4OjI1OjI2LjcwMzE5OSIsInVzZXJfaWQiOiJhNmJmOGFlMC1kNjUzLTQzMTEtYTlkNi05MTY5YzJhOTNkMDAifQ.i8y_fxHTcGMuVgvBdLJNm2QZHKSO7fKuzloPoqPS6ZU' \
+ -H 'content-length: 410' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Phone policy guy quickly.","maxScore":50,"minScore":39,"description":"Over many believe generation economic. Task big commercial bill doctor.\nCover improve eight high organization.\nImpact entire meet yourself. Could reason carry senior education skin their.","estimatedTime":"52 weeks","previewFileId":"c3fd307e-03db-452c-b53a-06d8eef6f4dc","createdByUserId":"a6bf8ae0-d653-4311-a9d6-9169c2a93d00"}'

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA4VDA4OjI1OjI5LjI4OTYzNSIsInVzZXJfaWQiOiIxNzllZmRhMC05OWM5LTRmMDItOTAwMC01MzZhODAxY2EwNjEifQ.qhC390aa3WQoJH83s5qTWesDygIn7Tvu-6Z5icMcXhA' \
+ -H 'content-length: 390' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Also girl family build.","maxScore":93,"minScore":13,"description":"Clear career itself. Discussion onto my ability toward.\nHuge risk threat bill about anyone wrong. Pressure site think specific nearly trade. Yard word teacher allow near.","estimatedTime":"81 weeks","previewFileId":"47881ea4-73c4-448c-b432-13b4e2f26332","createdByUserId":"179efda0-99c9-4f02-9000-536a801ca061"}'

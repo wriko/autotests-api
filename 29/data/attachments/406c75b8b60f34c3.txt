@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA4VDA4OjI1OjI3Ljg0ODAyMyIsInVzZXJfaWQiOiI3ZjdkNTUzYy1mZjJhLTQ3YWMtYTQ1YS01NWQyNTcwYjNkNTEifQ.23OKEEVibQQo3rEdfxxvzavbMAiGSW0txfAoSserzA4' \
+ -H 'content-length: 443' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Letter defense drug direction appear professional.","maxScore":57,"minScore":15,"description":"Republican quickly free protect old hot media image. Central recognize fall.\nRadio provide region I catch four collection. Machine growth effect do treatment around begin. Live top share ago sort.","estimatedTime":"66 weeks","previewFileId":"7b0112f2-cbfe-43a9-9b6f-d1626f4241fa","createdByUserId":"7f7d553c-ff2a-47ac-a45a-55d2570b3d51"}'

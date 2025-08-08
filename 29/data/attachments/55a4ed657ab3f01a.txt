@@ -1,0 +1,20 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:25 Проверка ответа на создание задания
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Describe response section poor.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'course_id' соответствует 581032d4-4f3f-42be-a686-c9a183104f31
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 55
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 40
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'order_index' соответствует 44
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Issue still lawyer water exactly admit. Really PM tell discussion wait program near. Three Congress contain recent.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 68 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

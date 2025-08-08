@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA4VDA4OjI1OjI4LjEyMTEzMSIsInVzZXJfaWQiOiIxNGRjZDA1ZS03NTQ3LTRmNTctYWUwYy1lYWI3ODBiNTJlNzYifQ.u3Q_FZk-Ah_se6lUOhJgUKD4eUeJcdaly-gy7MwXWvE' \
+ -H 'content-length: 419' \
+ -H 'content-type: application/json' \
+ -d '{"title":"What really run policy may close.","maxScore":93,"minScore":28,"description":"Sport agent artist sell. Past place picture doctor.\nReal few exactly hard cut successful never chance.\nApproach memory most reduce election then. Order toward fall space bed sure deal few.","estimatedTime":"94 weeks","previewFileId":"95458df9-8b5c-4cbe-80f6-3f6c2599ce37","createdByUserId":"14dcd05e-7547-4f57-ae0c-eab780b52e76"}'

@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/32e0a548-5082-404c-9898-561567a96bb7' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA4VDA4OjI1OjI4LjEyMTEzMSIsInVzZXJfaWQiOiIxNGRjZDA1ZS03NTQ3LTRmNTctYWUwYy1lYWI3ODBiNTJlNzYifQ.u3Q_FZk-Ah_se6lUOhJgUKD4eUeJcdaly-gy7MwXWvE' \
+ -H 'content-length: 150' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":67,"minScore":25,"description":"Mr try heart it. Seek decide practice example think focus able.","estimatedTime":"47 weeks"}'

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTA4VDA4OjI1OjMwLjE5MzQ3NyIsInVzZXJfaWQiOiJmNjJjZWM0Ny1jMWQ4LTQyYzMtOTI0OC00NzlkYmIyN2NlZDMifQ.TmAbB8DdCfAzhk1ne_iLSpEZooyaaMWBuVjNRN4oB7U' \
+ -H 'content-length: 378' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Fact win him light read piece.","courseId":"558e6011-0e57-42db-aa92-1991051a7eb8","maxScore":92,"minScore":12,"orderIndex":27,"description":"Nothing happen several organization pay. Everybody campaign minute accept.\nLet writer machine present because. Song oil most city then nation. Future officer on thought.\nBy late born turn capital.","estimatedTime":"94 weeks"}'
