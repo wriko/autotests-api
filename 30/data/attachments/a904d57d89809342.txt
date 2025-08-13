@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTEzVDE3OjM2OjIxLjYzMzQ0OCIsInVzZXJfaWQiOiJkNTRkYmM1Zi05ZWJlLTQzM2MtOGJjNy02MDJlNzEyOTVkYzgifQ.3qKPxq4IN6yri-215q1D7VwVZ4lbadAHCFL2QvVBDZ4' \
+ -H 'content-length: 429' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Form surface what sense next friend party.","maxScore":57,"minScore":16,"description":"One yard yourself teach style. That stuff five return him task.\nOne major seven note serious six. Simple player culture me identify performance. Artist several onto tree cover help find bag.","estimatedTime":"26 weeks","previewFileId":"bc21a520-8cdb-4c8b-ace7-b9c312293d3f","createdByUserId":"d54dbc5f-9ebe-433c-8bc7-602e71295dc8"}'

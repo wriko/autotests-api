@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTEzVDE3OjM2OjE4LjA2Mzc4NyIsInVzZXJfaWQiOiI3ZDBkOWI3YS0wMTAwLTQ3ODAtOGY1ZS0yZWE5NjVjZTBjY2YifQ.4zozzYJ25_Z8skD2-xNO_ykiR8KUcs1BDUX_Mzs3OEU' \
+ -H 'content-length: 425' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Body school though while phone dream.","maxScore":85,"minScore":19,"description":"Six despite environment carry. Surface or civil unit fear those.\nPresident power example left here political. Commercial there involve pay food others remember. Matter pass table heavy those.","estimatedTime":"77 weeks","previewFileId":"efd72a1b-472b-4dda-bba4-7419c9a6dc88","createdByUserId":"7d0d9b7a-0100-4780-8f5e-2ea965ce0ccf"}'

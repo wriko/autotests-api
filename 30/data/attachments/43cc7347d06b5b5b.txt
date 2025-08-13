@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTEzVDE3OjM2OjIwLjY5NTgzNiIsInVzZXJfaWQiOiIyZDNkMDVkZS02MjJiLTQyNzctYTk5My0yZDNiNDI3NGU3OGMifQ.iNmbOhxcEOTKCza9w0vuCIWcSbwQzDZCGKw4LJ2E9mo' \
+ -H 'content-length: 413' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Bar who Mrs opportunity.","maxScore":65,"minScore":14,"description":"Look wide that development both one. Fill edge poor book.\nFirst population government. Answer he usually serious improve seem.\nLead film agency less camera. Raise ever believe key sport face.","estimatedTime":"47 weeks","previewFileId":"289399d4-cb9e-44c0-8313-3e3b1722e432","createdByUserId":"2d3d05de-622b-4277-a993-2d3b4274e78c"}'

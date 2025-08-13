@@ -1,0 +1,33 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     SWAGGER_COVERAGE_TRACKER_STORAGE:storage.py:34 Results directory does not exist, creating: /home/runner/work/autotests-api/autotests-api/coverage-results
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем GET запрос к http://localhost:8000/api/v1/courses?userId=3f5accaf-d6fe-4866-add3-51c6a20b894f
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses?userId=3f5accaf-d6fe-4866-add3-51c6a20b894f
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:68 Проверка ответа на получение списка курсов
+INFO     BASE_ASSERTIONS:base.py:73 Проверяем что длина 'courses' соответствует 1
+INFO     COURSES_ASSERTIONS:courses.py:42 Проверка данных курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 0c6bf053-6e41-4dda-a260-e4b40ea02dbf
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует East happen son go from laugh each.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 77
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 49
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Include stand lot leg. Ball measure enter decide increase exist. Nice throw space enter almost natural.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 96 weeks
+INFO     FILES_ASSERTIONS:files.py:42 Проверка данных файла
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 3a0e115e-a17a-40d7-8733-034087a7e0d7
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'url' соответствует http://localhost:8000/static/tests/0a2b55d9-4974-4461-b42b-6bc0907a5b8e.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'filename' соответствует 0a2b55d9-4974-4461-b42b-6bc0907a5b8e.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'directory' соответствует tests
+INFO     USERS_ASSERTIONS:users.py:38 Проверка данных пользователя
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 3f5accaf-d6fe-4866-add3-51c6a20b894f
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'email' соответствует kristinaarmstrong@example.com
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'last_name' соответствует Davila
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'first_name' соответствует Jordan
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'middle_name' соответствует Nicholas
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

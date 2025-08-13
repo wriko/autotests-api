@@ -1,0 +1,20 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:25 Проверка ответа на создание задания
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Treatment talk place key institution.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'course_id' соответствует deeea3e7-bf61-4667-8241-c5b32d90d569
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 88
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 43
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'order_index' соответствует 35
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Both manager radio task note on operation memory. Anything room game nice war themselves to. Page dinner my.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 13 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

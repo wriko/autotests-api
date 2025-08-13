@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTEzVDE3OjM2OjE4LjMzNjg3NCIsInVzZXJfaWQiOiIwODE2ZDdkMy1iNWU2LTQ1YjQtYWQ3MC03YTNlZGZlYjBmNTEifQ.tiki7z_Avv3wiIjV0Qc8pcLZp-lhqfh40zE3GAfPF9g' \
+ -H 'content-length: 373' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Stay partner clear north.","maxScore":82,"minScore":2,"description":"Finish color thank suggest each stop wait. Such loss against daughter doctor suggest this pay.\nSon quite program fall lay wait. Send fast reduce animal.","estimatedTime":"36 weeks","previewFileId":"dfa9edc4-a209-44a0-b32e-e708ef604c1f","createdByUserId":"0816d7d3-b5e6-45b4-ad70-7a3edfeb0f51"}'

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTEzVDE3OjM2OjE5LjIzNzA3MSIsInVzZXJfaWQiOiJmYjRiYzQ4MC05NGE5LTQxMDAtYTZmNi00ZWVhMDg2NDg0OTgifQ.hi4weA7GpUp8oZE8Jzg_PXhYxi9OQVgKmTXjIqFgq5U' \
+ -H 'content-length: 311' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Third phone per call north notice staff open.","maxScore":77,"minScore":30,"description":"Tax Republican food know later. Be Mr happy whom. Walk develop dinner.","estimatedTime":"47 weeks","previewFileId":"7dea2e31-f0a4-4031-8479-9626453df9cd","createdByUserId":"fb4bc480-94a9-4100-a6f6-4eea08648498"}'

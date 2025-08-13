@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTEzVDE3OjM2OjE5LjUxMTA5MSIsInVzZXJfaWQiOiJlOGE2YTBjYS0wYWRhLTRjN2ItOTcwMS00ZmI0MmZjYWUxZDEifQ.9XbBgTmArOnowE9yly5mRdWzUioUnLOblLRlNdO-Rb4' \
+ -H 'content-length: 390' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Attorney seven minute traditional east perhaps end.","courseId":"d5860c18-adfe-41be-9aa0-cd3b5045e5d6","maxScore":79,"minScore":2,"orderIndex":9,"description":"Attention they information information similar number important. Catch back tend training debate. Everybody modern road economic site represent.\nSister worry improve bring dinner life start.","estimatedTime":"16 weeks"}'

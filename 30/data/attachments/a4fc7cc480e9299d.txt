@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/exercises/1bab2e65-b576-429f-9cd6-b8896172813e' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTEzVDE3OjM2OjE5LjUxMTA5MSIsInVzZXJfaWQiOiJlOGE2YTBjYS0wYWRhLTRjN2ItOTcwMS00ZmI0MmZjYWUxZDEifQ.9XbBgTmArOnowE9yly5mRdWzUioUnLOblLRlNdO-Rb4' \
+ -H 'content-length: 337' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Sport always teach true hold decade peace blue.","maxScore":62,"minScore":44,"orderIndex":79,"description":"Seven his floor professor professional. Watch play husband.\nScientist loss whether individual. Sister Mrs local guess reality time particular. Around meeting billion able change begin when.","estimatedTime":"69 weeks"}'

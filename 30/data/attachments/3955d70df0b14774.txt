@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/35ae59cb-f946-4ddf-a041-15cc6ec3743a' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTEzVDE3OjM2OjE4LjMzNjg3NCIsInVzZXJfaWQiOiIwODE2ZDdkMy1iNWU2LTQ1YjQtYWQ3MC03YTNlZGZlYjBmNTEifQ.tiki7z_Avv3wiIjV0Qc8pcLZp-lhqfh40zE3GAfPF9g' \
+ -H 'content-length: 180' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":69,"minScore":1,"description":"Eight water thought development but little candidate scene. Condition consider show law while.","estimatedTime":"99 weeks"}'

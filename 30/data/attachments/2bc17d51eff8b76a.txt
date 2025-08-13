@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTEzVDE3OjM2OjIxLjYzMzQ0OCIsInVzZXJfaWQiOiJkNTRkYmM1Zi05ZWJlLTQzM2MtOGJjNy02MDJlNzEyOTVkYzgifQ.3qKPxq4IN6yri-215q1D7VwVZ4lbadAHCFL2QvVBDZ4' \
+ -H 'content-length: 294' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Feeling allow drive my training fall company.","courseId":"93829bfc-d911-406b-98d7-cfa0806c70ce","maxScore":60,"minScore":2,"orderIndex":59,"description":"Fund professor sound safe under him remember while. Source rich lawyer image catch industry realize.","estimatedTime":"20 weeks"}'

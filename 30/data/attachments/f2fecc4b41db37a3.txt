@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTEzVDE3OjM2OjIwLjQyMzI4MyIsInVzZXJfaWQiOiI4OGQxNWZhOC01YWM1LTQzMDItYWJhMy01YjA1YmFjNmRkNDcifQ.URJNh2QpR61Bic1nGbTR4qLQS80CeTn_ZWzrrhKE0l0' \
+ -H 'content-length: 312' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Few she guess outside tell field.","courseId":"60861829-4df8-4af7-864b-891a3bf110e7","maxScore":61,"minScore":36,"orderIndex":35,"description":"Safe power fight understand voice character beyond. Other common read remember over citizen. Really identify land air conference.","estimatedTime":"95 weeks"}'
