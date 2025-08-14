@@ -15,6 +15,7 @@ from tools.assertions.users import assert_create_user_response, assert_get_user_
 import allure
 from allure_commons.types import Severity
 
+from tools.fakers import fake
 
 
 @pytest.mark.users
