@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE0VDA4OjU5OjA2Ljg0MDIyOSIsInVzZXJfaWQiOiI2NGE5YTZlYi0yYzBlLTQ5MmUtOGFiOC0xZjliMzI0M2I0N2IifQ.GMH4fErCgozNxHHLBKRFRKEJRwSH1HL498w_dwLYGuA' \
+ -H 'content-length: 388' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Population hot sense.","maxScore":78,"minScore":26,"description":"Lawyer dream spring two line employee raise. Director behind run research protect defense Democrat. Away glass bit company. Step case throughout room system course series.","estimatedTime":"53 weeks","previewFileId":"58cb5b4f-6729-4892-81fe-a159ea59fe0d","createdByUserId":"64a9a6eb-2c0e-492e-8ab8-1f9b3243b47b"}'

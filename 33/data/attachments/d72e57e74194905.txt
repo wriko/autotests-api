@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE0VDA4OjU5OjA0LjQxNDE2MiIsInVzZXJfaWQiOiIxYmQ0NTMzZS02ZjU2LTQ1MWYtODIxNy00ZDMxOTExZmM0ZjAifQ.WCdHSZCW22L_IVz0Au2PXCkGvjvwXUY8P1bNSbqtMM4' \
+ -H 'content-length: 336' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Child green expert yourself.","courseId":"77dbc8a1-d0d0-476f-8260-84a4a17b64dc","maxScore":72,"minScore":9,"orderIndex":54,"description":"Common around knowledge help local success risk. Project bar skin use.\nIn production fire white person. Book room positive class indicate. Paper must us half.","estimatedTime":"52 weeks"}'

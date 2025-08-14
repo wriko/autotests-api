@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/c0750bf7-45de-4d4b-87a0-b84396d0c8fc' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE0VDA4OjU5OjAzLjUwMzI0NiIsInVzZXJfaWQiOiJlYWE5YzQ4MS0wYzU4LTQ5NTMtODgzYi1iYzcwMzMyNjc1ZGMifQ.HVjgvs8g0RUKAIftbz6d5FEzgoFZ0-d-AGQsUBiTptA' \
+ -H 'content-length: 236' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":61,"minScore":33,"description":"Own artist firm star just.\nAway moment quickly already half institution. Think anything old bring shake seat. Several indeed day meeting main phone.","estimatedTime":"98 weeks"}'

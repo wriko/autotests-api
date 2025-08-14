@@ -1,0 +1,26 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем GET запрос к http://localhost:8000/api/v1/exercises?courseId=d4559368-5f7d-4feb-a5dc-f7caf8aab5b6
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises?courseId=d4559368-5f7d-4feb-a5dc-f7caf8aab5b6
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:69 Проверка ответа на получение списка заданий
+INFO     BASE_ASSERTIONS:base.py:73 Проверяем что длина 'exercises' соответствует 1
+INFO     EXERCISES_ASSERTIONS:exercises.py:45 Проверка данных задания
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует b43b4c40-6e68-4dc2-96c0-c0374ba721c7
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Particular key you individual.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'course_id' соответствует d4559368-5f7d-4feb-a5dc-f7caf8aab5b6
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 54
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 10
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'order_index' соответствует 26
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Serious amount instead far about.
+Painting general daughter subject within key. Organization coach trade Mr. Democrat or him rather million city official.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 87 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE0VDA4OjU5OjA1Ljg5MDM4MCIsInVzZXJfaWQiOiJlYWZkNWViZS0xY2NiLTRmZmUtOTM3Yi0yNWZmNDZjZTQ3ZjEifQ.ttv5NesiOBSmCxDAVeuNAokNE4ZyVAp8Of0BCMTfbYE' \
+ -H 'content-length: 388' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Specific low statement visit.","maxScore":88,"minScore":45,"description":"Off suggest year mother ability everything. Vote certainly adult stock report especially support.\nBag worry so large part. Yet happy take those particularly many.","estimatedTime":"23 weeks","previewFileId":"8a9b6660-e459-4d18-a404-4bd924ea7d94","createdByUserId":"eafd5ebe-1ccb-4ffe-937b-25ff46ce47f1"}'

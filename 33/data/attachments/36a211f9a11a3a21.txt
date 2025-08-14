@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE0VDA4OjU5OjAyLjA4ODkwNSIsInVzZXJfaWQiOiI4MTM5NjIwYi0zNDFhLTQ2ZWMtYTQ1YS02MjU2NGM2YTExOTgifQ.aIJN87Sxpo434BErJz42EIwQF66SeR3O8lCn4s8jxe4' \
+ -H 'content-length: 366' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Against old radio life section also.","maxScore":91,"minScore":9,"description":"North thing who box event. Give stuff without want must.\nRole voice then billion answer system way. Everyone support world war design.","estimatedTime":"65 weeks","previewFileId":"3e5ce906-b711-4ff4-8afa-c5d984d25a47","createdByUserId":"8139620b-341a-46ec-a45a-62564c6a1198"}'

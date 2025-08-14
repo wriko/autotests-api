@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/exercises/1369901d-4f6b-4bf3-b39e-b9949a168d67' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE0VDA4OjU5OjA0LjY5NjYzNyIsInVzZXJfaWQiOiIzYzZkOGY4NC02ZjkxLTQzMDUtYjNhMi0zZGI4ODdkM2E3ZDMifQ.Zk0A_dt8oQhD5duirDJj6bIoUzXtVGNYwaq99jgQhXQ' \
+ -H 'content-length: 239' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Probably and listen above rate course surface that.","maxScore":60,"minScore":6,"orderIndex":23,"description":"Responsibility little once century growth lose four eight. Wall popular see accept cover.","estimatedTime":"54 weeks"}'

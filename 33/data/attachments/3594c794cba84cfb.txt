@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE0VDA4OjU5OjA0LjY5NjYzNyIsInVzZXJfaWQiOiIzYzZkOGY4NC02ZjkxLTQzMDUtYjNhMi0zZGI4ODdkM2E3ZDMifQ.Zk0A_dt8oQhD5duirDJj6bIoUzXtVGNYwaq99jgQhXQ' \
+ -H 'content-length: 431' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Similar heavy fall seem success star operation.","maxScore":70,"minScore":21,"description":"Shoulder sea word measure small draw yourself. Plant yeah see experience near type.\nBuild study fast smile. Voice some inside past gun usually. Window pick leg church generation need whom.","estimatedTime":"4 weeks","previewFileId":"519a0609-bf03-49df-a948-4e790b8a490e","createdByUserId":"3c6d8f84-6f91-4305-b3a2-3db887d3a7d3"}'

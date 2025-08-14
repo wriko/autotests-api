@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE0VDA4OjU5OjA1LjYxNjUyMCIsInVzZXJfaWQiOiJkOWQ2OGYzMC1lZjg0LTQ3MGYtOTJjNi02ZDQ5NGRiYjJlY2IifQ._Mp4iL8_XjeZaTsa0o50U7UKF2C3WpSG3fFXpZdHlxE' \
+ -H 'content-length: 420' \
+ -H 'content-type: application/json' \
+ -d '{"title":"How care possible adult use.","maxScore":85,"minScore":41,"description":"Wait growth notice feel foreign. Real protect eye government after rest. Result foot threat act investment word.\nSometimes to five according though though. Treat result structure direction start.","estimatedTime":"28 weeks","previewFileId":"db297f47-479d-4e09-b43b-1b2983d30371","createdByUserId":"d9d68f30-ef84-470f-92c6-6d494dbb2ecb"}'

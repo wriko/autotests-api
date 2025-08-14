@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE0VDA4OjU5OjAzLjIyNzk1NCIsInVzZXJfaWQiOiI5NGE0MDBhYi1mODJkLTRiNTgtODk5My01OGNlNDQxZDk3Y2MifQ.hSRF9wOkjiLpDYZg1PFONsNBkVrAv6RtMv0tInD2bkA' \
+ -H 'content-length: 383' \
+ -H 'content-type: application/json' \
+ -d '{"title":"See best second will card.","maxScore":59,"minScore":35,"description":"Collection meeting skill everyone idea draw. Hard include recently ahead. Cut present test material rate single. Mean plan employee agree base once degree three.","estimatedTime":"10 weeks","previewFileId":"ba707110-b629-44f7-838d-c4e9846278ce","createdByUserId":"94a400ab-f82d-4b58-8993-58ce441d97cc"}'

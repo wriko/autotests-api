@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE0VDA4OjU5OjAzLjUwMzI0NiIsInVzZXJfaWQiOiJlYWE5YzQ4MS0wYzU4LTQ5NTMtODgzYi1iYzcwMzMyNjc1ZGMifQ.HVjgvs8g0RUKAIftbz6d5FEzgoFZ0-d-AGQsUBiTptA' \
+ -H 'content-length: 412' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Best special though.","maxScore":77,"minScore":4,"description":"Two rock drop night improve worry task. Radio doctor paper see issue mother. Would consumer play yet author ask.\nSport whether note half minute nation director. Coach hit later major specific lay.","estimatedTime":"71 weeks","previewFileId":"592eea4c-e24d-4ab7-9d1a-1cc900cba2f4","createdByUserId":"eaa9c481-0c58-4953-883b-bc70332675dc"}'
