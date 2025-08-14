@@ -4,8 +4,6 @@ from clients.users.private_users_client import PrivateUsersClient
 from clients.users.public_users_client import PublicUsersClient
 from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, GetUserResponseSchema
 from http import HTTPStatus
-
-from faker_example import fake
 from fixtures.users import UserFixture
 from tools.allure.epics import AllureEpic
 from tools.allure.features import AllureFeature
