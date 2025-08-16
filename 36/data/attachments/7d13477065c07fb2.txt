@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjMwOjE4LjAwMTQ3NSIsInVzZXJfaWQiOiJmMGYyZDg2NS1lZTNmLTQ0OTEtYTc3Yi1jNjRjOGE1ZDNhZWIifQ.ZQaZOhCBPcYuy2RlaDB01K7NFoA2TherWu9dwD7MOX8' \
+ -H 'content-length: 387' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Ok new century leader seven type by hotel.","maxScore":76,"minScore":8,"description":"Little story consumer class couple memory young. Reach admit use media hand spring son ready.\nCamera quickly practice most. Modern discover push ask.","estimatedTime":"14 weeks","previewFileId":"0357b559-7338-4c24-bc95-4fe4a6f170d3","createdByUserId":"f0f2d865-ee3f-4491-a77b-c64c8a5d3aeb"}'

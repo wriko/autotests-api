@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjMwOjE4LjAwMTQ3NSIsInVzZXJfaWQiOiJmMGYyZDg2NS1lZTNmLTQ0OTEtYTc3Yi1jNjRjOGE1ZDNhZWIifQ.ZQaZOhCBPcYuy2RlaDB01K7NFoA2TherWu9dwD7MOX8' \
+ -H 'content-length: 377' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Church product quite fight face me hold.","courseId":"ecc4d7e9-5bb0-4832-b93b-556a920999d2","maxScore":61,"minScore":44,"orderIndex":24,"description":"Laugh itself yard south describe threat environmental. Everybody office total game stop trip. Friend little happen support different firm. Really consider new toward course reason create.","estimatedTime":"34 weeks"}'

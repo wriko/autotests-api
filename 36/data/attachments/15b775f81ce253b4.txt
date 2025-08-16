@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjMwOjE4LjI3NTQ0MyIsInVzZXJfaWQiOiI4MzA2NDIxMS0yMzdmLTQ1NjktOGEwMi1jODI3OWMzNjE0YjcifQ.JiOvY9XCEnSQOhVW_GgSCbWUZZ7-hpYdW6c-JhUkdfU' \
+ -H 'content-length: 335' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Fear eat traditional indeed almost around page.","courseId":"cc18be9d-46e5-4ced-b397-ea2cfb7a089b","maxScore":64,"minScore":45,"orderIndex":11,"description":"Paper public center. Behavior dark although cause because owner blood. Say happy yet under interest.\nCharacter Congress both heavy truth.","estimatedTime":"60 weeks"}'

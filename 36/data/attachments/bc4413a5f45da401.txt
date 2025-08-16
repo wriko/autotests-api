@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjMwOjE1LjMyODkwOCIsInVzZXJfaWQiOiI5MzU3NDhhOS01ZjVkLTRlNGYtYjgyYS0wY2Y0MzViZDk1ODUifQ.N3GrylKwfVoLHlRhlyT-hqsj0RtpLx_xgzNi6242wTc' \
+ -H 'content-length: 367' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Event he example consumer stand against heavy.","maxScore":96,"minScore":14,"description":"College personal heavy yes wind. Attention analysis officer dinner thus far. Result rate whether everyone picture road create.","estimatedTime":"8 weeks","previewFileId":"585d5f17-e4e6-41ed-9aaa-73a3af547e0e","createdByUserId":"935748a9-5f5d-4e4f-b82a-0cf435bd9585"}'

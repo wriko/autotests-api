@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/51222aca-f208-4239-8fe8-b8e42da7e1eb' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjMwOjE2LjgwNTMyNCIsInVzZXJfaWQiOiIxNjlmOTYyZi1mNThlLTQwODctOGNiYS04ZjIxZDU2ZTc3MzAifQ.4TXW00JnBBfuHY6NsOyBjM5AxnYJRzfTuWA_pLeXhKQ' \
+ -H 'content-length: 232' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":78,"minScore":1,"description":"Us dream month. Really several they environmental everyone.\nAdd charge available director left. Spend number tough stock.\nDiscussion meet hotel.","estimatedTime":"29 weeks"}'

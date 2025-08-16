@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjMwOjE3LjA3OTU3OSIsInVzZXJfaWQiOiJlNzA2YjA1Mi0zZjg3LTQyMTAtYmFmNi00YWNjMjU0ZGFmMzEifQ.bMueeqkZT8A1ubYjS9_9I43CS-2v65YKOczclxUW5Tc' \
+ -H 'content-length: 245' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Family soldier speech great long outside single.","courseId":"571a7dc7-796e-4c77-8a48-cd5c5419f1a1","maxScore":84,"minScore":7,"orderIndex":28,"description":"Second public lay bit concern everything simply.","estimatedTime":"30 weeks"}'

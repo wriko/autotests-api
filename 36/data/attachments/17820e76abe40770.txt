@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjMwOjE5LjUwOTQ2NCIsInVzZXJfaWQiOiJlZDdlM2E2OS03OWQ2LTQzZmEtYjVjNy0xMDllYmQ2MzMyMjAifQ.RcRMGtTIKMpGyeYZKwKwSTodrwLY-3wIbnTpvF6dtvM' \
+ -H 'content-length: 352' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Little my gun recently measure too question.","maxScore":55,"minScore":48,"description":"Tv early sure official receive. Will middle whole study game. Officer challenge order condition sea should last.","estimatedTime":"76 weeks","previewFileId":"9880ca54-ce7e-44f8-bac7-7792ebb3254f","createdByUserId":"ed7e3a69-79d6-43fa-b5c7-109ebd633220"}'

@@ -1,0 +1,32 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем GET запрос к http://localhost:8000/api/v1/courses?userId=935748a9-5f5d-4e4f-b82a-0cf435bd9585
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses?userId=935748a9-5f5d-4e4f-b82a-0cf435bd9585
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:68 Проверка ответа на получение списка курсов
+INFO     BASE_ASSERTIONS:base.py:73 Проверяем что длина 'courses' соответствует 1
+INFO     COURSES_ASSERTIONS:courses.py:42 Проверка данных курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 18ecece7-d455-481d-b482-07f53ff6828d
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Event he example consumer stand against heavy.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 96
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 14
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует College personal heavy yes wind. Attention analysis officer dinner thus far. Result rate whether everyone picture road create.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 8 weeks
+INFO     FILES_ASSERTIONS:files.py:42 Проверка данных файла
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 585d5f17-e4e6-41ed-9aaa-73a3af547e0e
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'url' соответствует http://localhost:8000/static/tests/4f5192e9-f3a2-4c79-b0fc-65d8d294c85c.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'filename' соответствует 4f5192e9-f3a2-4c79-b0fc-65d8d294c85c.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'directory' соответствует tests
+INFO     USERS_ASSERTIONS:users.py:38 Проверка данных пользователя
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует 935748a9-5f5d-4e4f-b82a-0cf435bd9585
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'email' соответствует dawn74@example.org
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'last_name' соответствует Stewart
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'first_name' соответствует Jorge
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'middle_name' соответствует Pamela
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

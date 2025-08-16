@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjMwOjE3LjA3OTU3OSIsInVzZXJfaWQiOiJlNzA2YjA1Mi0zZjg3LTQyMTAtYmFmNi00YWNjMjU0ZGFmMzEifQ.bMueeqkZT8A1ubYjS9_9I43CS-2v65YKOczclxUW5Tc' \
+ -H 'content-length: 310' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Can woman information.","maxScore":61,"minScore":29,"description":"Require traditional economic so rate across similar. Spring step surface college trade half.","estimatedTime":"11 weeks","previewFileId":"c5eb7faa-9268-40c9-828e-baaf2fce9a2d","createdByUserId":"e706b052-3f87-4210-baf6-4acc254daf31"}'

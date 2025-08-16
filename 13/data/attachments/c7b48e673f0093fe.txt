@@ -1,8 +1,0 @@
-curl -X 'DELETE' \
- 'http://localhost:8000/api/v1/files/8f6efd53-76c8-4872-9f27-84379db378ed' \
- -H 'host: localhost:8000' \
- -H 'accept: */*' \
- -H 'accept-encoding: gzip, deflate' \
- -H 'connection: keep-alive' \
- -H 'user-agent: python-httpx/0.28.1' \
- -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA3LTMxVDEyOjExOjI2LjkzMjQ5NiIsInVzZXJfaWQiOiJhNDEyZDI0ZS05MmFkLTQxYTUtOWQxZS0xOTBmNTA1YzYyMzYifQ.aTJQmIopPi1BGPl6f4z9ddRpg4ZBECAb2Q3LVdF02qI'

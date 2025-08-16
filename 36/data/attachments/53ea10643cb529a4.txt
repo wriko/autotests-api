@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjMwOjE5LjIzNTU5OSIsInVzZXJfaWQiOiI4ZTZmNTZiNS0yOTMxLTRkZTYtODBiZS02NjYyNTgwZTQ5NGYifQ.5Hs5--jpgB6SlrBS6RhkBvIZXJfBXuOHhYphysQry3M' \
+ -H 'content-length: 429' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Responsibility fill great get through.","maxScore":65,"minScore":25,"description":"Them identify everyone me. Before affect trouble. Focus foreign yeah even manager adult month.\nMan police teacher hand. Class probably item recognize.\nAway fire modern home. Sister child spend.","estimatedTime":"22 weeks","previewFileId":"2b7fa5c3-1d2f-4c47-a043-8acf65747bd1","createdByUserId":"8e6f56b5-2931-4de6-80be-6662580e494f"}'

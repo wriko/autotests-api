@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjMwOjE4LjI3NTQ0MyIsInVzZXJfaWQiOiI4MzA2NDIxMS0yMzdmLTQ1NjktOGEwMi1jODI3OWMzNjE0YjcifQ.JiOvY9XCEnSQOhVW_GgSCbWUZZ7-hpYdW6c-JhUkdfU' \
+ -H 'content-length: 398' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Final fire sign concern south suddenly fine remember.","maxScore":52,"minScore":25,"description":"Senior can raise toward glass clear. Environment day region agreement. Popular ready compare left job. Open contain investment next practice process.","estimatedTime":"57 weeks","previewFileId":"a0a2b1d1-4815-4bf0-8664-f3862aac1815","createdByUserId":"83064211-237f-4569-8a02-c8279c3614b7"}'
