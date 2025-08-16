@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjIwOjExLjgyMjQ3MiIsInVzZXJfaWQiOiI5NDc5NDMwOS03YTlmLTQxZTQtOTViMy0yZDUyNjQ4MDc1OWUifQ.W6wCQ7B5vt8TRcer4XCAsC6kRG22sDRF-wUzURaRY_w' \
+ -H 'content-length: 407' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Name require fear clear television.","maxScore":56,"minScore":8,"description":"Four language during sense present buy goal. None teacher month play above. Democrat number dream.\nPerformance politics save need state draw. Police million future size expect.","estimatedTime":"65 weeks","previewFileId":"b6256a89-4321-4280-b324-ad9757b0dfb9","createdByUserId":"94794309-7a9f-41e4-95b3-2d526480759e"}'

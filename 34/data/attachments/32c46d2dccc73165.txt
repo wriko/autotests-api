@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjIwOjA5LjY4NzkwNiIsInVzZXJfaWQiOiIyZjRlYzRmYi1kMTVjLTQwYjAtYmQ4Ni00ZGI5M2ZmMDAwMGYifQ.5DLFd9zQf2dZQVdxdA4Gt_HaqAKeEeg7YwwUp44ZzRU' \
+ -H 'content-length: 375' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Require agree itself language base our.","maxScore":75,"minScore":16,"description":"Show free better court may. Yes leave class of total song.\nPaper difficult today woman. Identify point fast baby special while fly ability.","estimatedTime":"53 weeks","previewFileId":"61e18931-dd15-496d-b295-085e22df8223","createdByUserId":"2f4ec4fb-d15c-40b0-bd86-4db93ff0000f"}'

@@ -1,0 +1,25 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем GET запрос к http://localhost:8000/api/v1/exercises/c01d2b37-88c4-4b01-80ab-17de28b07852
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/exercises/c01d2b37-88c4-4b01-80ab-17de28b07852
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:86 Проверка ответа на получение задания
+INFO     EXERCISES_ASSERTIONS:exercises.py:45 Проверка данных задания
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует c01d2b37-88c4-4b01-80ab-17de28b07852
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Chance town break owner according.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'course_id' соответствует c825a23b-f4c7-4450-8e7d-deafbf571429
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 72
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 44
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'order_index' соответствует 6
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Budget green east key attention cell oil. Adult different instead. Leg still charge director country.
+Serve recently myself up toward Mrs table. Mean general fly understand trade away.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 45 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

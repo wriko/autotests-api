@@ -1,0 +1,19 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем PATCH запрос к http://localhost:8000/api/v1/courses/f7efe667-cbe6-4ead-992b-6ed2e8993c5d
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses/f7efe667-cbe6-4ead-992b-6ed2e8993c5d
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:24 Проверка ответа на обновление курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует 123
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 63
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 13
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует A show operation law. East stage leader training per wall party.
+Skin almost program officer. Perform decision know field. Admit option impact mother situation despite range.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 88 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

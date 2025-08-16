@@ -1,0 +1,19 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:85 Проверка ответа на создание курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Build pay child term serious.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 78
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 36
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'preview_file_id' соответствует c352b5ee-8e9f-4bb7-a092-b218ca764ea0
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Rate attention lose stay. Big home require run contain also.
+Strong shoulder few purpose sister.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 89 weeks
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'created_by_user_id' соответствует 0f3b2604-dcae-4dd2-a9eb-223b942722b2
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

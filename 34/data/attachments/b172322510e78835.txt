@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/f7efe667-cbe6-4ead-992b-6ed2e8993c5d' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjIwOjA4LjUwNzc0OCIsInVzZXJfaWQiOiI0N2M1NjZlNy1hZmJiLTRlM2QtOGFkNC02MWM3OTIyY2Q5ZWQifQ.Zp6SxdN2WTLEZp7flclAtXGsQ5eH8oYQBPVId2iWzkY' \
+ -H 'content-length: 262' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":63,"minScore":13,"description":"A show operation law. East stage leader training per wall party.\nSkin almost program officer. Perform decision know field. Admit option impact mother situation despite range.","estimatedTime":"88 weeks"}'

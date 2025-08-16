@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjIwOjEwLjU5OTY1MiIsInVzZXJfaWQiOiJmMjljMGJmYi02MjI5LTQwZGUtOGYzNS01YTRhZjE2Y2M0ZmUifQ.sNY6-jaWntXL5v1WTkR2hfGsGZ8_Sx8rqZFD4GvocVQ' \
+ -H 'content-length: 349' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Bed green personal sometimes.","maxScore":98,"minScore":40,"description":"Voice hospital century street term including experience. Again take begin us others trip generation.\nRather expect develop.","estimatedTime":"21 weeks","previewFileId":"8165a2b0-28dd-477c-9c07-9861f8306de1","createdByUserId":"f29c0bfb-6229-40de-8f35-5a4af16cc4fe"}'

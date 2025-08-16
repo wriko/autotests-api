@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjIwOjA5LjY4NzkwNiIsInVzZXJfaWQiOiIyZjRlYzRmYi1kMTVjLTQwYjAtYmQ4Ni00ZGI5M2ZmMDAwMGYifQ.5DLFd9zQf2dZQVdxdA4Gt_HaqAKeEeg7YwwUp44ZzRU' \
+ -H 'content-length: 367' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Local catch remain wind letter quickly then girl.","courseId":"1974eb91-ae14-4a8e-8ac6-d41166f9b8dc","maxScore":81,"minScore":41,"orderIndex":82,"description":"Smile use character prepare. Soldier everybody model book management conference of.\nSomething important several deep recent. Fact price low camera. Home right western.","estimatedTime":"74 weeks"}'

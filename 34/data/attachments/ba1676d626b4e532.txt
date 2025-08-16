@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjIwOjA4LjUwNzc0OCIsInVzZXJfaWQiOiI0N2M1NjZlNy1hZmJiLTRlM2QtOGFkNC02MWM3OTIyY2Q5ZWQifQ.Zp6SxdN2WTLEZp7flclAtXGsQ5eH8oYQBPVId2iWzkY' \
+ -H 'content-length: 399' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Single meeting himself official.","maxScore":82,"minScore":43,"description":"Send interview wonder heart ability attorney. Would national bag make morning. Respond bar admit.\nWith understand only father third artist happy. Art fill already player.","estimatedTime":"63 weeks","previewFileId":"d99cb0ad-f760-4cb9-aa6f-943fe1c3d16c","createdByUserId":"47c566e7-afbb-4e3d-8ad4-61c7922cd9ed"}'

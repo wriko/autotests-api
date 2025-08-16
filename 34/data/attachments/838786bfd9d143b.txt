@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjIwOjA5LjQxNDEwOCIsInVzZXJfaWQiOiI3OWFhZDgzNC0wZmQ1LTQ4NGMtYmM5MC1mODc5OWU0ZDY2M2MifQ.SZm6xqHYS9bFm31pN1sh4UJoeF8FbFnpnandrRXebpY' \
+ -H 'content-length: 369' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Through less politics choice modern.","maxScore":64,"minScore":29,"description":"Station smile every inside. Get voice onto bit.\nPull every finally be. Me myself model gas task believe.\nPoint blood prove small movie.","estimatedTime":"47 weeks","previewFileId":"d8e19cfa-48d3-4928-9623-4a3b65d8d32a","createdByUserId":"79aad834-0fd5-484c-bc90-f8799e4d663c"}'

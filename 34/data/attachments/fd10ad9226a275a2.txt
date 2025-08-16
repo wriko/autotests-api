@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjIwOjA3LjA3OTMzMiIsInVzZXJfaWQiOiJhOTFlNzJlYi00OTk3LTRmNjctOTNlNS0wNDc0ZDI5YzU2ZWEifQ.u7oHQUJRPVsMWEatuEb3_nSEOPOCc87DAgkt_tzzfCk' \
+ -H 'content-length: 424' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Listen morning southern none.","maxScore":55,"minScore":19,"description":"Identify agency agent area human join. Yard sign artist office.\nHelp visit address common activity understand. Culture current growth language find.\nHappen cultural whether. Affect approach decade.","estimatedTime":"54 weeks","previewFileId":"65e4791f-dfce-4597-94e8-2dfc8950cce9","createdByUserId":"a91e72eb-4997-4f67-93e5-0474d29c56ea"}'

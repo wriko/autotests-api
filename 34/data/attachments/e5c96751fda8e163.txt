@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/exercises' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjIwOjEwLjU5OTY1MiIsInVzZXJfaWQiOiJmMjljMGJmYi02MjI5LTQwZGUtOGYzNS01YTRhZjE2Y2M0ZmUifQ.sNY6-jaWntXL5v1WTkR2hfGsGZ8_Sx8rqZFD4GvocVQ' \
+ -H 'content-length: 368' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Chance town break owner according.","courseId":"c825a23b-f4c7-4450-8e7d-deafbf571429","maxScore":72,"minScore":44,"orderIndex":6,"description":"Budget green east key attention cell oil. Adult different instead. Leg still charge director country.\nServe recently myself up toward Mrs table. Mean general fly understand trade away.","estimatedTime":"45 weeks"}'
