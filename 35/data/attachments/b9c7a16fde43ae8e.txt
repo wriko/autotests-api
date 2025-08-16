@@ -1,0 +1,19 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:85 Проверка ответа на создание курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Anyone feel culture weight trouble most under.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 82
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 9
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'preview_file_id' соответствует 91ab19ff-8423-459f-b1e8-d1a49e0615ec
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Factor evening policy reach positive. Explain foreign tax establish crime. Even charge region moment draw of remember.
+Work PM threat newspaper career care one. Clear try show herself cold sure.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 77 weeks
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'created_by_user_id' соответствует b86240fe-cbd0-4739-8e75-e2c70fd0d8f3
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

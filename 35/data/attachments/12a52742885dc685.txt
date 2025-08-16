@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://localhost:8000/api/v1/courses/b981c669-84a7-4679-b097-03341bec254a' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjI0OjI3Ljg4MjM3MiIsInVzZXJfaWQiOiI3ZTFjOTEzZi02NGMxLTQ3NGUtYTk0Ni04YTIxZjYxZWEwMTAifQ.dQ6nWw10H514TZOWRafeYHl11ArmADcL0IQKlJzc82M' \
+ -H 'content-length: 203' \
+ -H 'content-type: application/json' \
+ -d '{"title":"123","maxScore":55,"minScore":3,"description":"Article law long kind town leave. Professional walk soon poor. Party medical throughout new religious across student.","estimatedTime":"23 weeks"}'

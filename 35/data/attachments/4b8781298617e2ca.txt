@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjI0OjI3LjYwODA4OCIsInVzZXJfaWQiOiJiODYyNDBmZS1jYmQwLTQ3MzktOGU3NS1lMmM3MGZkMGQ4ZjMifQ.6NVxrxGIaepnCCvHFq8toEUhx3UXojwmdMMwM3AIeNw' \
+ -H 'content-length: 436' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Anyone feel culture weight trouble most under.","maxScore":82,"minScore":9,"description":"Factor evening policy reach positive. Explain foreign tax establish crime. Even charge region moment draw of remember.\nWork PM threat newspaper career care one. Clear try show herself cold sure.","estimatedTime":"77 weeks","previewFileId":"91ab19ff-8423-459f-b1e8-d1a49e0615ec","createdByUserId":"b86240fe-cbd0-4739-8e75-e2c70fd0d8f3"}'

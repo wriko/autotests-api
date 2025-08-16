@@ -1,0 +1,33 @@
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/users
+INFO     SWAGGER_COVERAGE_TRACKER_STORAGE:storage.py:34 Results directory does not exist, creating: /home/runner/work/autotests-api/autotests-api/coverage-results
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем POST запрос к http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:31 Выполняем GET запрос к http://localhost:8000/api/v1/courses?userId=dc666c5a-191a-4fa0-80e4-47150fe8001a
+INFO     HTTP_LOGGER:event_hooks.py:40 Получен ответ 200 OK от http://localhost:8000/api/v1/courses?userId=dc666c5a-191a-4fa0-80e4-47150fe8001a
+INFO     BASE_ASSERTIONS:base.py:20 Проверяем что статус-код ответа соответствует 200
+INFO     COURSES_ASSERTIONS:courses.py:68 Проверка ответа на получение списка курсов
+INFO     BASE_ASSERTIONS:base.py:73 Проверяем что длина 'courses' соответствует 1
+INFO     COURSES_ASSERTIONS:courses.py:42 Проверка данных курса
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует d60dc031-1713-45f2-9c19-b2667774f768
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'title' соответствует Across if involve soon always a third.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'max_score' соответствует 68
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'min_score' соответствует 45
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'description' соответствует Its task no Republican sometimes near. Service girl water effort national marriage sound yourself. Two life without western vote than. Brother when understand able art.
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'estimated_time' соответствует 33 weeks
+INFO     FILES_ASSERTIONS:files.py:42 Проверка данных файла
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует b4cab192-8172-4ea2-bc88-136a45356754
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'url' соответствует http://localhost:8000/static/tests/d1f8dc79-7c20-453a-b7a8-a3daa965a5d2.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'filename' соответствует d1f8dc79-7c20-453a-b7a8-a3daa965a5d2.png
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'directory' соответствует tests
+INFO     USERS_ASSERTIONS:users.py:38 Проверка данных пользователя
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'id' соответствует dc666c5a-191a-4fa0-80e4-47150fe8001a
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'email' соответствует ftapia@example.net
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'last_name' соответствует Thomas
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'first_name' соответствует Jay
+INFO     BASE_ASSERTIONS:base.py:38 Проверяем что 'middle_name' соответствует Tiffany
+INFO     SCHEMA_ASSERTIONS:schema.py:25 Валидация JSON схемы

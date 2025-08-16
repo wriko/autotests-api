@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjI0OjI3Ljg4MjM3MiIsInVzZXJfaWQiOiI3ZTFjOTEzZi02NGMxLTQ3NGUtYTk0Ni04YTIxZjYxZWEwMTAifQ.dQ6nWw10H514TZOWRafeYHl11ArmADcL0IQKlJzc82M' \
+ -H 'content-length: 412' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Worry opportunity office decide protect.","maxScore":85,"minScore":23,"description":"If church question use. Share community marriage. Blue that modern cut.\nTax into system hard. Down name spend fact mother set travel. She easy long our card official everyone.","estimatedTime":"80 weeks","previewFileId":"26ed1e01-ac0d-4091-94a5-1bf8ea480d86","createdByUserId":"7e1c913f-64c1-474e-a946-8a21f61ea010"}'

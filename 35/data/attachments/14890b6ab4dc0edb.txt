@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjI0OjMwLjI3MDQ4MCIsInVzZXJfaWQiOiJhNTI4MWU1MS01ZGQwLTQzZGUtYTYxNi01MGRhZjU0Mjc5ZDkifQ.t5v8yvUZKlksXx2TYJlB4n-kkxSg35ibNWndX05LGpU' \
+ -H 'content-length: 399' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Leave admit soon notice purpose than argue.","maxScore":66,"minScore":28,"description":"Really animal company medical today nice. Republican yeah stage activity message.\nDinner coach president number task play. Friend shoulder beat along arm worry.","estimatedTime":"1 weeks","previewFileId":"6f3a0c7a-0015-4d37-8634-26fcc12be998","createdByUserId":"a5281e51-5dd0-43de-a616-50daf54279d9"}'

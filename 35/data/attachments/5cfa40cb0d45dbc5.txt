@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://localhost:8000/api/v1/courses' \
+ -H 'host: localhost:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTA4LTE2VDA5OjI0OjI5LjA2ODc2OCIsInVzZXJfaWQiOiI3M2QzNDE4My0yMzJiLTRkZTEtYjhjMS1lYjZlNmYwOWU2NDEifQ.pXACgMkKWTmI_P4qRq3vZGR2wW8NmOf-gKo88rF9Llc' \
+ -H 'content-length: 449' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Minute free heart present both guess improve official.","maxScore":60,"minScore":29,"description":"Budget treatment subject among. Direction let world past enough fine lay much. My evidence cultural enter new. Summer matter thus identify thank too.\nUnderstand avoid year easy day. Scene music big.","estimatedTime":"96 weeks","previewFileId":"5ae06234-e7b9-42bc-8e8f-848a42958928","createdByUserId":"73d34183-232b-4de1-b8c1-eb6e6f09e641"}'
